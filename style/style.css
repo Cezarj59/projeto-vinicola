@@ -1,0 +1,59 @@
+:root {
+    --cor-primaria: #06141D;
+    --cor-secundaria: #2ecc71;
+}
+
+body {
+    font-size: 62,5%;
+    font-family: 'Philosopher', sans-serif; /* Defina a família da fonte desejada */
+}
+
+
+nav,
+.cor-primaria {
+    background-color: var(--cor-primaria);
+}
+
+
+
+
+/*---------------------------------------- section-info -------------------------------------*/
+/* Tamanho Extra Pequeno (xs) */
+@media (max-width: 575.98px) {
+    .img-section-info {
+        width: 375px;
+    }
+}
+
+/* Tamanho Pequeno (sm) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .img-section-info {
+        width: 576px;
+    }
+}
+
+/* Tamanho Médio (md) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .img-section-info {
+        width: 768px;
+    }
+}
+
+/* Tamanho Grande (lg) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .img-section-info {
+        width: 768px;
+    }
+}
+
+/* Tamanho Extra Grande (xl) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    /* Estilos para telas de 1200px até 1399px */
+}
+
+/* Tamanho Extra Extra Grande (xxl) */
+@media (min-width: 1400px) {
+    /* Estilos para telas de 1400px e maiores */
+}
+
+/*-----------------------------------------------------------------------------*/
