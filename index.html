@@ -16,38 +16,7 @@
 
         <style>
                
-              
-                /* Estilo para limitar a altura do carrossel */
-                #carouselExampleAutoplaying {
-                max-height: 70vh; /* Defina a altura máxima desejada em pixels ou outra unidade de medida */
-                overflow: hidden; /* Ocultar qualquer parte do carrossel que ultrapasse a altura máxima */
-                }
-
-                #carouselExampleAutoplaying .carousel-inner {
-                max-height: 100%; /* Ajustar a altura máxima para o conteúdo interno do carrossel */
-                }
-
-                #carouselExampleAutoplaying .carousel-item {
-                height: 100%; /* Garantir que cada item do carrossel ocupe a altura total do carrossel */
-    }
-
-    /* Responsividade para dispositivos móveis */
-    .carousel-item img {
-    display: block;
-    margin: auto;
-}
-
-@media (max-width: 768px) {
-    .carousel-item img, .carousel-item div {
-        max-width: 200%; /* Garantir que a imagem não ultrapasse a largura do container */
-        
-
-    }
-    .img-1-carousel{
-        width: 100vw;
-    height: 70vh;
-    }
-   }
+     
 
 
     .fundo-principal {
@@ -88,29 +57,14 @@
 }
 
 .elemento-vidro {
-      background-color: rgba(255, 255, 255, 0.5); /* Cor de fundo com opacidade para criar o efeito de vidro */
+      background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo com opacidade para criar o efeito de vidro */
       padding: 20px;
       border-radius: 10px;
       backdrop-filter: blur(10px); /* Aplica um desfoque ao elemento de fundo, criando o efeito de vidro */
+      height: 70vh;
     }
  
-    .img-1-carousel{
-        background-image: url(img/banner-principal.jpg);
-        display: block;
-        background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-
-    width: 100vw;
-    height: 70vh;
-
-    }
-    @media (max-width: 768px) {
-   
-    .img-1-carousel{
-    height: 60vh;
-    }
-   }
+  
 
   </style>
     </head>
@@ -193,29 +147,41 @@
             <div id="carouselExampleAutoplaying" class="carousel slide"
                 data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active ">
                         <div class="img-1-carousel d-block">
 
-                            <p class="text-light ">Lorem ipsum dolor sit amet
+                            <p class="text-light elemento-vidro col-4 mx-auto">Lorem ipsum dolor sit amet
                                 consectetur adipisicing elit. Praesentium sequi
                                 nostrum laborum fugiat suscipit architecto odit?
                                 Rem dolorum rerum eligendi eaque deserunt
                                 officiis, labore odio repellat praesentium
                                 magni, quas hic?</p>
                         </div>
-                        <!--  <img src="img/banner-principal.jpg"
-                            class="d-block" alt="..."> -->
+                    </div>
+                    <div class="carousel-item">
+                        <div class="img-2-carousel  d-block">
+                            <p class="text-light elemento-vidro col-4 mx-auto d-flex align-items-center">Lorem ipsum dolor sit amet
+                                consectetur adipisicing elit. Praesentium sequi
+                                nostrum laborum fugiat suscipit architecto odit?
+                                Rem dolorum rerum eligendi eaque deserunt
+                                officiis, labore odio repellat praesentium
+                                magni, quas hic?</p>
+                        </div>
 
                     </div>
-                    <div class="carousel-item">
-                        <img src="img/banner-2.jpg" class="d-block"
-                            alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/banner-4.jpg" class=" d-block"
-                            alt="...">
+
+                    <div class="carousel-item ">
+                        <div class="img-3-carousel d-block">
+                            <p class="text-light elemento-vidro col-4 mx-auto">Lorem ipsum dolor sit amet
+                                consectetur adipisicing elit. Praesentium sequi
+                                nostrum laborum fugiat suscipit architecto odit?
+                                Rem dolorum rerum eligendi eaque deserunt
+                                officiis, labore odio repellat praesentium
+                                magni, quas hic?</p>
+                        </div>
                     </div>
                 </div>
+
                 <button class="carousel-control-prev" type="button"
                     data-bs-target="#carouselExampleAutoplaying"
                     data-bs-slide="prev">

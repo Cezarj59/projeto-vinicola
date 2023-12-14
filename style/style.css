@@ -4,8 +4,9 @@
 }
 
 body {
-    font-size: 62,5%;
-    font-family: 'Philosopher', sans-serif; /* Defina a família da fonte desejada */
+    font-size: 62, 5%;
+    font-family: 'Philosopher', sans-serif;
+    /* Defina a família da fonte desejada */
 }
 
 
@@ -56,4 +57,73 @@ nav,
     /* Estilos para telas de 1400px e maiores */
 }
 
-/*-----------------------------------------------------------------------------*/
+/*---------------------------------### CAROUSEL ###--------------------------------------------*/
+
+/* Estilo para limitar a altura do carrossel */
+#carouselExampleAutoplaying {
+    max-height: 70vh;  /* Defina a altura máxima desejada em pixels ou outra unidade de medida */
+    overflow: hidden;  /* Ocultar qualquer parte do carrossel que ultrapasse a altura máxima */
+}
+
+#carouselExampleAutoplaying .carousel-inner {
+    max-height: 100%;   /* Ajustar a altura máxima para o conteúdo interno do carrossel */
+}
+
+#carouselExampleAutoplaying .carousel-item {
+    height: 100%;
+    /* Garantir que cada item do carrossel ocupe a altura total do carrossel */
+}
+
+/* Responsividade para dispositivos móveis */
+.carousel-item img {
+    display: block;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+
+       .carousel-item div {
+        max-width: 200%;
+        /* Garantir que a imagem não ultrapasse a largura do container */
+
+
+    }
+
+    .img-1-carousel {
+        width: 100vw;
+        height: 70vh;
+    }
+}
+
+
+
+
+.img-1-carousel {
+    background-image: url("../img/banner-principal.jpg");
+    width: 100vw;
+    height: 70vh;
+
+}
+
+.img-2-carousel {
+    background-image: url("../img/banner-2.jpg");
+    width: 100vw;
+    height: 70vh;
+
+}
+
+.img-3-carousel {
+    background-image: url("../img/banner-4.jpg");
+  
+    width: 100vw;
+    height: 70vh;
+
+}
+
+
+@media (max-width: 768px) {
+
+    .img-1-carousel {
+        height: 60vh;
+    }
+}
