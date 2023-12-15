@@ -1,129 +1,115 @@
 :root {
-    --cor-primaria: #06141D;
-    --cor-secundaria: #2ecc71;
+  --cor-primaria: #06141d;
 }
 
 body {
-    font-size: 62, 5%;
-    font-family: 'Philosopher', sans-serif;
-    /* Defina a família da fonte desejada */
+  font-size: 62, 5%;
+  font-family: "Philosopher", sans-serif;
 }
-
 
 nav,
 .cor-primaria {
-    background-color: var(--cor-primaria);
+  background-color: var(--cor-primaria);
 }
-
-
-
 
 /*---------------------------------------- section-info -------------------------------------*/
 /* Tamanho Extra Pequeno (xs) */
 @media (max-width: 575.98px) {
-    .img-section-info {
-        width: 375px;
-    }
+  .img-section-info {
+    width: 375px;
+  }
 }
 
 /* Tamanho Pequeno (sm) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .img-section-info {
-        width: 576px;
-    }
+  .img-section-info {
+    width: 576px;
+  }
 }
 
 /* Tamanho Médio (md) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .img-section-info {
-        width: 768px;
-    }
+  .img-section-info {
+    width: 768px;
+  }
 }
 
 /* Tamanho Grande (lg) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .img-section-info {
-        width: 768px;
-    }
+  .img-section-info {
+    width: 768px;
+  }
 }
 
 /* Tamanho Extra Grande (xl) */
 @media (min-width: 1200px) and (max-width: 1399.98px) {
-    /* Estilos para telas de 1200px até 1399px */
+  /* Estilos para telas de 1200px até 1399px */
 }
 
 /* Tamanho Extra Extra Grande (xxl) */
 @media (min-width: 1400px) {
-    /* Estilos para telas de 1400px e maiores */
+  /* Estilos para telas de 1400px e maiores */
 }
 
 /*---------------------------------### CAROUSEL ###--------------------------------------------*/
 
 /* Estilo para limitar a altura do carrossel */
 #carouselExampleAutoplaying {
-    max-height: 70vh;  /* Defina a altura máxima desejada em pixels ou outra unidade de medida */
-    overflow: hidden;  /* Ocultar qualquer parte do carrossel que ultrapasse a altura máxima */
+  max-height: 70vh;
+  /* Defina a altura máxima desejada em pixels ou outra unidade de medida */
+  overflow: hidden;
+  /* Ocultar qualquer parte do carrossel que ultrapasse a altura máxima */
 }
 
 #carouselExampleAutoplaying .carousel-inner {
-    max-height: 100%;   /* Ajustar a altura máxima para o conteúdo interno do carrossel */
+  max-height: 100%;
+  /* Ajustar a altura máxima para o conteúdo interno do carrossel */
 }
 
 #carouselExampleAutoplaying .carousel-item {
-    height: 100%;
-    /* Garantir que cada item do carrossel ocupe a altura total do carrossel */
+  height: 100%;
+  /* Garantir que cada item do carrossel ocupe a altura total do carrossel */
 }
 
 /* Responsividade para dispositivos móveis */
 .carousel-item img {
-    display: block;
-    margin: auto;
+  display: block;
+  margin: auto;
 }
 
 @media (max-width: 768px) {
+  .carousel-item div {
+    max-width: 200%;
+    /* Garantir que a imagem não ultrapasse a largura do container */
+  }
 
-       .carousel-item div {
-        max-width: 200%;
-        /* Garantir que a imagem não ultrapasse a largura do container */
-
-
-    }
-
-    .img-1-carousel {
-        width: 100vw;
-        height: 70vh;
-    }
+  .img-1-carousel {
+    width: 100vw;
+    height: 70vh;
+  }
 }
-
-
-
 
 .img-1-carousel {
-    background-image: url("../img/banner-principal.jpg");
-    width: 100vw;
-    height: 70vh;
-
+  background-image: url("../img/banner-principal.jpg");
+  width: 100vw;
+  height: 70vh;
 }
 
-.img-2-carousel {
-    background-image: url("../img/banner-2.jpg");
-    width: 100vw;
-    height: 70vh;
-
+.img-2-carousel { 
+  background-image: url("../img/banner-2.jpg");
+  width: 100vw;
+  height: 70vh;
 }
 
 .img-3-carousel {
-    background-image: url("../img/banner-4.jpg");
-  
-    width: 100vw;
-    height: 70vh;
+  background-image: url("../img/banner-4.jpg");
 
+  width: 100vw;
+  height: 70vh;
 }
 
-
 @media (max-width: 768px) {
-
-    .img-1-carousel {
-        height: 60vh;
-    }
+  .img-1-carousel {
+    height: 60vh;
+  }
 }
