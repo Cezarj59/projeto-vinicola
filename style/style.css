@@ -12,12 +12,60 @@ nav,
   background-color: var(--cor-primaria);
 }
 
+/*------------------------ IMAGEM DE FUNDO INDEX ----------------------------*/
+.fundo-principal {
+  background-image: url(img/fundo-principal.png);
+  background-size: cover;
+  background-position: center top;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+
+.fundo-secundario {
+  background-image: url(img/fundo-marron.jpg);
+}
+
+/*------------------------ TAMANHO ICONES SECTION INFORMAÇÕES ----------------------------*/
+.icon {
+  width: 110px;
+  height: 110px;
+}
+
+
+
+
+/*------------------------ CARDS SECTION FAC ----------------------------*/
+.card-fac>div:first-child {
+  font-family: "Philosopher", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.card-fac>.card-body .card-text {
+  font-family: "Philosopher", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.section-fac {
+  background-image: url(img/fac-background.png);
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+
+
+
 /*---------------------------------------- section-info -------------------------------------*/
 /* Tamanho Extra Pequeno (xs) */
 @media (max-width: 575.98px) {
   .img-section-info {
     width: 375px;
   }
+
+  
 }
 
 /* Tamanho Pequeno (sm) */
@@ -54,22 +102,30 @@ nav,
 /*---------------------------------### CAROUSEL ###--------------------------------------------*/
 
 /* Estilo para limitar a altura do carrossel */
-#carouselExampleAutoplaying {
+#carouselExampleCaptions {
   max-height: 70vh;
-  /* Defina a altura máxima desejada em pixels ou outra unidade de medida */
-  overflow: hidden;
-  /* Ocultar qualquer parte do carrossel que ultrapasse a altura máxima */
+  overflow: hidden;  /* Ocultar qualquer parte do carrossel que ultrapasse a altura máxima */
 }
 
-#carouselExampleAutoplaying .carousel-inner {
-  max-height: 100%;
-  /* Ajustar a altura máxima para o conteúdo interno do carrossel */
+#carouselExampleCaptions .carousel-inner {
+  max-height: 100%;  /* Ajustar a altura máxima para o conteúdo interno do carrossel */
 }
 
-#carouselExampleAutoplaying .carousel-item {
-  height: 100%;
-  /* Garantir que cada item do carrossel ocupe a altura total do carrossel */
+#carouselExampleCaptions .carousel-item {
+  height: 100%;  /* Garantir que cada item do carrossel ocupe a altura total do carrossel */
 }
+
+/* Textos do Carousel*/
+h1 {
+  color: #e81737;
+}
+
+.elemento-vidro, .elemento-vidro-paralelogramo p {
+  font-size: x-large;
+}
+
+
+
 
 /* Responsividade para dispositivos móveis */
 .carousel-item img {
@@ -79,37 +135,56 @@ nav,
 
 @media (max-width: 768px) {
   .carousel-item div {
-    max-width: 200%;
-    /* Garantir que a imagem não ultrapasse a largura do container */
-  }
-
-  .img-1-carousel {
-    width: 100vw;
-    height: 70vh;
+    max-width: 100%;
   }
 }
 
 .img-1-carousel {
   background-image: url("../img/banner-principal.jpg");
-  width: 100vw;
-  height: 70vh;
 }
 
-.img-2-carousel { 
+.img-2-carousel {
   background-image: url("../img/banner-2.jpg");
-  width: 100vw;
-  height: 70vh;
 }
 
 .img-3-carousel {
   background-image: url("../img/banner-4.jpg");
-
-  width: 100vw;
-  height: 70vh;
 }
 
 @media (max-width: 768px) {
-  .img-1-carousel {
+  .img-1-carousel, 
+  .img-2-carousel, 
+  .img-3-carousel {
     height: 60vh;
   }
 }
+
+
+
+
+
+
+
+
+/*----------------------------EFEITO DE VIDRO E PARALELOGRAMA DO CAROUSEL--------------------------------------------------*/
+.elemento-vidro, 
+.elemento-vidro-paralelogramo {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Cor de fundo com opacidade para criar o efeito de vidro */
+  padding: 5%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  /* Aplica um desfoque ao elemento de fundo, criando o efeito de vidro */
+  height: 70vh;
+}
+ /* Inclinação*/
+.elemento-vidro-paralelogramo {
+  transform: skew(-10deg);
+}
+ /* Inclinação contraria para alinhar o texto*/
+.elemento-vidro-paralelogramo h1,
+.elemento-vidro-paralelogramo p {
+  transform: skew(10deg);
+}
+
+/*----------------------------------------------*/
