@@ -51,14 +51,26 @@
             background-repeat: no-repeat;
         }
 
-        .elemento-vidro {
-            background-color: rgba(0, 0, 0, 0.5);
-            /* Cor de fundo com opacidade para criar o efeito de vidro */
-            padding: 20px;
+        .elemento-vidro-paralelogramo {
+            background-color: rgba(0, 0, 0, 0.5); /* Cor de fundo com opacidade para criar o efeito de vidro */
+            padding: 5%;
             border-radius: 10px;
-            backdrop-filter: blur(10px);
-            /* Aplica um desfoque ao elemento de fundo, criando o efeito de vidro */
+            backdrop-filter: blur(10px); /* Aplica um desfoque ao elemento de fundo, criando o efeito de vidro */
             height: 70vh;
+            transform: skew(-10deg);
+        }
+
+        .elemento-vidro-paralelogramo h1,
+        .elemento-vidro-paralelogramo  p {
+            transform: skew(10deg);
+        }
+
+        h1 {
+            color: #e81737;
+        }
+
+        .elemento-vidro-paralelogramo  p{
+            font-size: x-large;
         }
         </style>
     </head>
@@ -161,25 +173,28 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="img-1-carousel d-block">
-                            <div class="text-light elemento-vidro col-4 mx-auto d-flex flex-column justify-content-center align-items-center">
-                                <h1>Bem-vindo à nossa Vinicola</h1>
-                                <p>Bem-vindo à nossa Vinicola</p>
+                            <div class="text-light elemento-vidro-paralelogramo col-4 mx-auto d-flex flex-column justify-content-center align-items-center">
+                                <h1 class="text-center">Bem-vindo à nossa Vinicola</h1>
+                                <p>
+                                    O Sabor da Tradição
+                                    <img src="img/bandeira-da-italia.jpg" width="50" alt="">
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="img-2-carousel d-block">
-                            <div class="text-light elemento-vidro col-4 mx-auto d-flex flex-column justify-content-center align-items-center">
-                                <h1>Apresentamos a nossa gama de vinhos com rótulo próprio</h1>
-                                <p>Bem-vindo à nossa Vinicola</p>
+                            <div class="text-light elemento-vidro-paralelogramo col-4 mx-auto d-flex flex-column justify-content-center align-items-center">
+                                <h1 class="slogan text-center">Apresentamos a nossa gama de vinhos com rótulos próprio</h1>
+                                <p>Exclusividades</p>
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <div class="img-3-carousel d-block">
-                            <div class="text-light elemento-vidro col-4 mx-auto d-flex flex-column justify-content-center align-items-center">
-                                <h1>Sabor autêntico, aroma inconfundível</h1>
-                                <p>Bem-vindo à nossa Vinicola</p>
+                            <div class="text-light elemento-vidro-paralelogramo col-4 mx-auto d-flex flex-column justify-content-center align-items-center">
+                                <h1 class="text-center">Sabor autêntico, aroma inconfundível</h1>
+                                <p>Os Melhores Vinhos</p>
                             </div>
                         </div>
                     </div>
@@ -207,35 +222,37 @@
         <!--SEÇÃO TEXTO 1-->
         <section class="container">
             <div class="d-flex flex-column justify-content-center mx-auto col-lg-8 p-4 p-lg-5 m-auto">
-                <h3 class="text-center texto-azul fw-bold fs-1">Lorem ipsum dolor</h3>
+                <h3> Queridos Amantes do Vinho,</h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-                suscipit quos quae itaque id, natus impedit, omnis tenetur nesciunt
-                eligendi animi rerum consequatur! Voluptatibus doloribus nemo numquam
-                iure ex. Sit.
+                    É com orgulho e emoção que compartilhamos a história da nossa vinícola, uma herança de imigrantes
+                italianos que, há mais de um século, trouxeram consigo a paixão pela vinificação para as terras
+                brasileiras.
                 </p>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-                suscipit quos quae itaque id, natus impedit, omnis tenetur nesciunt
-                eligendi animi rerum consequatur! Voluptatibus doloribus nemo numquam
-                iure ex. Sit.
+                    Nossas raízes estão fincadas nas colinas da Itália, mas é no solo brasileiro que cultivamos um legado
+                vinícola único. Cada garrafa que produzimos é mais que uma mistura de uvas; é uma manifestação do amor
+                pela tradição, pela terra e pela arte de criar vinhos excepcionais.
                 </p>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-                suscipit quos quae itaque id, natus impedit, omnis tenetur nesciunt
-                eligendi animi rerum consequatur! Voluptatibus doloribus nemo numquam
-                iure ex. Sit.
+                    Nossa vinícola é um santuário onde a herança familiar e a modernidade se entrelaçam, resultando em
+                vinhos que contam a história de uma jornada única. Ao abrir uma garrafa de nosso vinho, você está se
+                conectando a um legado de amor pela terra, trabalho árduo e respeito pela tradição.
                 </p>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-                suscipit quos quae itaque id, natus impedit, omnis tenetur nesciunt
-                eligendi animi rerum consequatur! Voluptatibus doloribus nemo numquam
-                iure ex. Sit.
+                    Cada gole é uma viagem sensorial pelas colinas da Itália e pelos vinhedos ensolarados do Brasil.
+                Agradecemos por fazer parte desta experiência conosco. Seja parte desta jornada, saboreando não apenas a
+                qualidade excepcional de nossos vinhos, mas também a rica narrativa por trás de cada safra.
                 </p>
+                <p>
+                    Agradecemos por fazer parte desta experiência conosco. Brindemos à tradição, à família e à paixão pela
+                produção de vinhos excepcionais!
+                </p>
+                <p>Com gratidão,</p>
+                <h5>Vinícola Strapasson.</h5>
             </div>
         </section>
         <!--INFORMAÇÕES-->
-        <section class="bg-white d-block d-xxl-flex text-center pb-2">
+        <section class="bg-body-tertiary d-xxl-flex text-center pb-2">
             <div class="d-xxl-flex justify-content-center align-items-center col-xxl-6">
                 <img class="img-section-info" src="img/brinde.png">
             </div>
@@ -244,46 +261,43 @@
                     O que torna o nosso Vinho Especial ?
                 </h4>
                 <div class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                    <img class="icon col-xxl-3 p-3" class src="img/icones/cacho-uva.png">
+                    <img class="icon col-xxl-3 p-3" class src="img/icon/cacho-uva.png">
                     <div class="col-8 col-xxl-9">
                         <h5>COLHEITA</h5>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                        voluptas harum iusto, nam sunt et deleniti labore similique qui
-                        maxime repudiandae adipisci.
+                            Selecionamos uvas meticulosamente no auge da maturidade, preferindo a colheita manual para
+                        garantir a qualidade excepcional.
                         </p>
                     </div>
                 </div>
                 <div class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                    <img class="icon col-xxl-3 p-3" src="img/icones/barril.png">
+                    <img class="icon col-xxl-3 p-3" src="img/icon/barril.png">
                     <div class="col-8 col-xxl-9">
                         <h5>FERMENTAÇÃO</h5>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                        voluptas harum iusto, nam sunt et deleniti labore similique qui
-                        maxime repudiandae adipisci.
+                            Misturamos métodos tradicionais com inovações, transformando o suco fresco das uvas em vinhos
+                        distintos com complexidade e profundidade de sabor.
                         </p>
                     </div>
                 </div>
                 <div class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                    <img class="icon col-xxl-3 p-3" src="img/icones/garrafa.png">
+                    <img class="icon col-xxl-3 p-3" src="img/icon/garrafa.png">
                     <div class="col-8 col-xxl-9">
                         <h5>PREPARO</h5>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                        voluptas harum iusto, nam sunt et deleniti labore similique qui
-                        maxime repudiandae adipisci.
+                            Unimos tradição e inovação em nosso processo. Nossos enólogos combinam técnicas antigas e
+                        avanços
+                        tecnológicos, conferindo riqueza e nuances aos nossos vinhos durante o repouso.
                         </p>
                     </div>
                 </div>
                 <div class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                    <img class="icon col-xxl-3 p-3" src="img/icones/taca-de-vinho.png">
+                    <img class="icon col-xxl-3 p-3" src="img/icon/taca-de-vinho.png">
                     <div class="col-8 col-xxl-9">
                         <h5>SABOR</h5>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
-                        voluptas harum iusto, nam sunt et deleniti labore similique qui
-                        maxime repudiandae adipisci.
+                            Cada garrafa é uma sinfonia de aromas e sabores, contando a história de nossos vinhedos.
+                        Equilibrados e elegantes, nossos vinhos oferecem uma experiência única em cada gole.
                         </p>
                     </div>
                 </div>
@@ -355,13 +369,13 @@
                     <h5 class="card-title">Conecte-se conosco</h5>
                     <p class="card-text">Siga-nos em nossas redes Sociais.</p>
                     <a href="#" class="btn">
-                        <img src="img/icones/facebook.png" alt width="40">
+                        <img src="img/icon/facebook.png" alt width="40">
                     </a>
                     <a href="#" class="btn">
-                        <img src="img/icones/instagram.png" alt width="40">
+                        <img src="img/icon/instagram.png" alt width="40">
                     </a>
                     <a href="#" class="btn">
-                        <img src="img/icones/whatsapp.png" alt width="40">
+                        <img src="img/icon/whatsapp.png" alt width="40">
                     </a>
                 </div>
             </div>
