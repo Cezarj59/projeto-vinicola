@@ -7,14 +7,23 @@ body {
   font-family: "Philosopher", sans-serif;
 }
 
+
+/*------------------------ NAV ----------------------------*/
 nav,
 .cor-primaria {
   background-color: var(--cor-primaria);
 }
 
+.dropdown-item:hover{
+  background-color:  var(--cor-primaria);
+  color: azure;
+ }
+
+
+
 /*------------------------ IMAGEM DE FUNDO INDEX ----------------------------*/
 .fundo-principal {
-  background-image: url(img/fundo-principal.png);
+  background-image: url(../img/fundo-principal.png);
   background-size: cover;
   background-position: center top;
   width: 100vw;
@@ -22,8 +31,8 @@ nav,
   background-repeat: no-repeat;
 }
 
-.fundo-secundario {
-  background-image: url(img/fundo-marron.jpg);
+.fundo-secundario{
+  background-image: url(../img/fundo-marron.jpg);
 }
 
 /*------------------------ TAMANHO ICONES SECTION INFORMAÇÕES ----------------------------*/
@@ -49,7 +58,7 @@ nav,
 }
 
 .section-fac {
-  background-image: url(img/fac-background.png);
+  background-image: url(../img/fac-background.png);
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -99,6 +108,11 @@ nav,
   /* Estilos para telas de 1400px e maiores */
 }
 
+
+
+
+
+
 /*---------------------------------### CAROUSEL ###--------------------------------------------*/
 
 /* Estilo para limitar a altura do carrossel */
@@ -128,10 +142,6 @@ h1 {
 
 
 /* Responsividade para dispositivos móveis */
-.carousel-item img {
-  display: block;
-  margin: auto;
-}
 
 @media (max-width: 768px) {
   .carousel-item div {

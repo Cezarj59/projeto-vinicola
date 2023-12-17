@@ -1,320 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style/reset.css">
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        >
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
+        <style>
+        .nav-link {
+            color: #ad587f;
+        }
+        
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style/reset.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
-    <style>
-       
-    </style>
-</head>
+        .n1 {
+            background-color: #F5F3E5;
+        }
 
-<body>
-    <header>
-        <nav class="navbar p-0">
-            <div class="container-fluid justify-content-center">
-                <a class="navbar-brand p-0" href="#">
-                    <img class src="img/logo.jpeg" alt height="133" width="200">
-                </a>
-            </div>
-        </nav>
-        <nav class="navbar navbar-expand-sm bg-body-tertiary border border-bottom-0">
-            <div class="container-fluid justify-content-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-center p-1" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Loja</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Nossos Vinhos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="#">Sobre Nós</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Revenda</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Contato</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Preços</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Galeria</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Mais
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="#">Sobre Nós</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Revenda</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Contato</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+    .original-navbar {
+      transition: transform 0.3s ease-in-out;
+    }
+        </style>
+    </head>
+    <body>
+        <!--Header-->
+        <header>
+            <nav class="navbar p-0">
+                <div class="container-fluid justify-content-center">
+                    <a class="navbar-brand p-0" href="#">
+                        <img
+                            class
+                            src="img/logo.jpeg"
+                            alt
+                            height="133"
+                            width="200"
+                        >
+                    </a>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <!--FUNDO PRINCIPAL-->
-    <section class="fundo-principal position-fixed top-0 z-n1 d-none d-md-block d-lg-block"></section>
-    <!--CAROUSEL-->
-    <section class="container-fluid p-0">
-        <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="img-1-carousel d-block">
-                        <div class="elemento-vidro-paralelogramo col-10 col-xl-6 p-2 mx-auto d-flex flex-column justify-content-center align-items-center">
-                            <h1 class="text-center">Bem-vindo à nossa Vinicola</h1>
-                            <p class="text-light">
-                                O Sabor da Tradição
-                                <img src="img/bandeira-da-italia.jpg" width="50" alt="">
-                            </p>
+            </nav>
+            <nav class="n1 navbar navbar-expand-sm original-navbar" id="navbar">
+                <div class="container-fluid justify-content-center">
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-center p-1" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Loja</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Nossos Vinhos
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Sobre Nós</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Revenda</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Contato</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Preços</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Galeria</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Mais
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Sobre Nós</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Revenda</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Contato</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!--FUNDO PRINCIPAL-->
+        <section class="fundo-principal position-fixed top-0 z-n1 d-none d-md-block d-lg-block"></section>
+        <!--CAROUSEL-->
+        <section class="container-fluid p-0">
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button
+                        type="button"
+                        data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="Slide 1"
+                    ></button>
+                    <button
+                        type="button"
+                        data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide-to="1"
+                        aria-label="Slide 2"
+                    ></button>
+                    <button
+                        type="button"
+                        data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide-to="2"
+                        aria-label="Slide 3"
+                    ></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="img-1-carousel d-block">
+                            <div class="elemento-vidro-paralelogramo  mx-auto col-10 col-xl-6 p-2 d-flex flex-column justify-content-center align-items-center">
+                                <h1 class="text-center">Bem-vindo à nossa Vinicola</h1>
+                                <p class="text-center text-light">
+                                    O Sabor da Tradição
+                                    <br>
+                                    <img src="img/bandeira-da-italia.jpg" width="50" alt="">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="img-2-carousel d-flex justify-content-end">
+                            <div class="elemento-vidro col-10 col-xl-6 p-5 d-flex flex-column justify-content-center align-items-center">
+                                <h1 class="slogan text-center">Apresentamos a nossos vinhos com rótulos próprios</h1>
+                                <p class="text-center text-light">Exclusividades</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="img-3-carousel d-block">
+                            <div class="text-light elemento-vidro col-10 col-xl-6 p-5 d-flex flex-column justify-content-center align-items-center">
+                                <h1 class="text-center">Sabor autêntico, aroma inconfundível</h1>
+                                <p class="text-center text-light text-center">Os Melhores Vinhos</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <div class="img-2-carousel d-flex justify-content-end">
-                        <div class="elemento-vidro col-10 col-xl-6 p-5 d-flex flex-column justify-content-center align-items-center">
-                            <h1 class="slogan text-center">Apresentamos a nossos vinhos com rótulos próprios</h1>
-                            <p class="text-light">Exclusividades</p>
-                    </div>
-                </div>
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev"
+                >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next"
+                >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-            <div class="carousel-item">
-                <div class="img-3-carousel d-block">
-                    <div class="text-light elemento-vidro col-10 col-xl-6 p-5 d-flex flex-column justify-content-center align-items-center">
-                        <h1 class="text-center">Sabor autêntico, aroma inconfundível</h1>
-                        <p class="text-light text-center">Os Melhores Vinhos</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-        </div>
-    </section>
-    <!--SEÇÃO TEXTO 1-->
-    <section class="container">
-        <div class="d-flex flex-column justify-content-center mx-auto col-lg-8 p-4 p-lg-5 m-auto">
-            <h3> Queridos Amantes do Vinho,</h3>
-            <p>
-                É com orgulho e emoção que compartilhamos a história da nossa vinícola, uma herança de imigrantes
+        </section>
+        <!--SEÇÃO TEXTO 1-->
+        <section class="container">
+            <div class="d-flex flex-column justify-content-center mx-auto col-lg-8 p-4 p-lg-5 m-auto">
+                <h3> Queridos Amantes do Vinho,</h3>
+                <p>
+                    É com orgulho e emoção que compartilhamos a história da nossa vinícola, uma herança de imigrantes
                 italianos que, há mais de um século, trouxeram consigo a paixão pela vinificação para as terras
                 brasileiras.
-            </p>
-            <p>
-                Nossas raízes estão fincadas nas colinas da Itália, mas é no solo brasileiro que cultivamos um legado
+                </p>
+                <p>
+                    Nossas raízes estão fincadas nas colinas da Itália, mas é no solo brasileiro que cultivamos um legado
                 vinícola único. Cada garrafa que produzimos é mais que uma mistura de uvas; é uma manifestação do amor
                 pela tradição, pela terra e pela arte de criar vinhos excepcionais.
-            </p>
-            <p>
-                Nossa vinícola é um santuário onde a herança familiar e a modernidade se entrelaçam, resultando em
+                </p>
+                <p>
+                    Nossa vinícola é um santuário onde a herança familiar e a modernidade se entrelaçam, resultando em
                 vinhos que contam a história de uma jornada única. Ao abrir uma garrafa de nosso vinho, você está se
                 conectando a um legado de amor pela terra, trabalho árduo e respeito pela tradição.
-            </p>
-            <p>
-                Cada gole é uma viagem sensorial pelas colinas da Itália e pelos vinhedos ensolarados do Brasil.
+                </p>
+                <p>
+                    Cada gole é uma viagem sensorial pelas colinas da Itália e pelos vinhedos ensolarados do Brasil.
                 Agradecemos por fazer parte desta experiência conosco. Seja parte desta jornada, saboreando não apenas a
                 qualidade excepcional de nossos vinhos, mas também a rica narrativa por trás de cada safra.
-            </p>
-            <p>
-                Agradecemos por fazer parte desta experiência conosco. Brindemos à tradição, à família e à paixão pela
+                </p>
+                <p>
+                    Agradecemos por fazer parte desta experiência conosco. Brindemos à tradição, à família e à paixão pela
                 produção de vinhos excepcionais!
-            </p>
-            <p>Com gratidão,</p>
-            <h5>Vinícola Strapasson.</h5>
-        </div>
-    </section>
-    <!--INFORMAÇÕES-->
-    <section class="bg-body-tertiary d-xxl-flex text-center pb-2">
-        <div class="d-xxl-flex justify-content-center align-items-center col-xxl-6">
-            <img class="img-section-info" src="img/brinde.png">
-        </div>
-        <div class="d-block mt-4 col-xxl-6 p-xxl-5">
-            <h4 class="mb-4 col-11 mx-auto">
-                O que torna o nosso Vinho Especial ?
-            </h4>
-            <div
-                class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                <img class="icon col-xxl-3 p-3" class src="img/icon/cacho-uva.png">
-                <div class="col-8 col-xxl-9">
-                    <h5>COLHEITA</h5>
-                    <p>
-                        Selecionamos uvas meticulosamente no auge da maturidade, preferindo a colheita manual para
+                </p>
+                <p>Com gratidão,</p>
+                <h5>Vinícola Strapasson.</h5>
+            </div>
+        </section>
+        <!--INFORMAÇÕES-->
+        <section class="bg-body-tertiary d-xxl-flex text-center pb-2">
+            <div class="d-xxl-flex justify-content-center align-items-center col-xxl-6">
+                <img class="img-section-info" src="img/brinde.png">
+            </div>
+            <div class="d-block mt-4 col-xxl-6 p-xxl-5">
+                <h4 class="mb-4 col-11 mx-auto">
+                    O que torna o nosso Vinho Especial ?
+                </h4>
+                <div class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
+                    <img class="icon col-xxl-3 p-3" class src="img/icon/cacho-uva.png">
+                    <div class="col-8 col-xxl-9">
+                        <h5>COLHEITA</h5>
+                        <p>
+                            Selecionamos uvas meticulosamente no auge da maturidade, preferindo a colheita manual para
                         garantir a qualidade excepcional.
-                    </p>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div
-                class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                <img class="icon col-xxl-3 p-3" src="img/icon/barril.png">
-                <div class="col-8 col-xxl-9">
-                    <h5>FERMENTAÇÃO</h5>
-                    <p>
-                        Misturamos métodos tradicionais com inovações, transformando o suco fresco das uvas em vinhos
+                <div class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
+                    <img class="icon col-xxl-3 p-3" src="img/icon/barril.png">
+                    <div class="col-8 col-xxl-9">
+                        <h5>FERMENTAÇÃO</h5>
+                        <p>
+                            Misturamos métodos tradicionais com inovações, transformando o suco fresco das uvas em vinhos
                         distintos com complexidade e profundidade de sabor.
-                    </p>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div
-                class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                <img class="icon col-xxl-3 p-3" src="img/icon/garrafa.png">
-                <div class="col-8 col-xxl-9">
-                    <h5>PREPARO</h5>
-                    <p>
-                        Unimos tradição e inovação em nosso processo. Nossos enólogos combinam técnicas antigas e
+                <div class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
+                    <img class="icon col-xxl-3 p-3" src="img/icon/garrafa.png">
+                    <div class="col-8 col-xxl-9">
+                        <h5>PREPARO</h5>
+                        <p>
+                            Unimos tradição e inovação em nosso processo. Nossos enólogos combinam técnicas antigas e
                         avanços
                         tecnológicos, conferindo riqueza e nuances aos nossos vinhos durante o repouso.
-                    </p>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div
-                class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                <img class="icon col-xxl-3 p-3" src="img/icon/taca-de-vinho.png">
-                <div class="col-8 col-xxl-9">
-                    <h5>SABOR</h5>
-                    <p>
-                        Cada garrafa é uma sinfonia de aromas e sabores, contando a história de nossos vinhedos.
+                <div class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
+                    <img class="icon col-xxl-3 p-3" src="img/icon/taca-de-vinho.png">
+                    <div class="col-8 col-xxl-9">
+                        <h5>SABOR</h5>
+                        <p>
+                            Cada garrafa é uma sinfonia de aromas e sabores, contando a história de nossos vinhedos.
                         Equilibrados e elegantes, nossos vinhos oferecem uma experiência única em cada gole.
-                    </p>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--SEÇÃO TEXTO 2-->
-    <section class="fundo-secundario container-fluid d-flex align-items-center pt-5 pb-5">
-        <div class="row row-cols-10">
-            <div class="col">
-                <h2 class="text-light mx-auto col-10 col-md-8 col-xxl-6 text-center">
-                    Que tal uma Degustação?
-                </h2>
-                <p class="text-light mx-auto col-10 col-md-8 col-xxl-6">
-                    "Descubra o sabor da tradição em cada taça. Na nossa vinícola,
+        </section>
+        <!--SEÇÃO TEXTO 2-->
+        <section class="fundo-secundario container-fluid d-flex align-items-center pt-5 pb-5">
+            <div class="row row-cols-10">
+                <div class="col">
+                    <h2 class="text-light mx-auto col-10 col-md-8 col-xxl-6 text-center">
+                        Que tal uma Degustação?
+                    </h2>
+                    <p class="text-light mx-auto col-10 col-md-8 col-xxl-6">
+                        "Descubra o sabor da tradição em cada taça. Na nossa vinícola,
                     convidamos você a uma experiência única de degustação de vinhos,
                     onde cada gole conta a história do nosso comprometimento com a
                     qualidade e a paixão pela vinificação. Venha desfrutar conosco e
                     deixe que nossos vinhos refinados encantem seu paladar. Prove o que
                     há de melhor em cada garrafa e celebre momentos memoráveis conosco."
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--SEÇÃO FAC-->
+        <section class="section-fac container-fluid p-0 d-block">
+            <div class="container p-5 d-block d-xl-flex justify-content-center">
+                <div class="card-fac card bg-transparent border-0">
+                    <div class="card-header bg-transparent border-0">Ajuda</div>
+                    <div class="card-body" style="width: 18rem">
+                        <p class="card-text">Ajuda</p>
+                        <p class="card-text">Informação</p>
+                        <p class="card-text">Politica de Privacidade</p>
+                    </div>
+                </div>
+                <div class="card-fac card bg-transparent border-0">
+                    <div class="card-header bg-transparent border-0">Suporte</div>
+                    <div class="card-body" style="width: 18rem">
+                        <p class="card-text">Etre em Contato</p>
+                        <p class="card-text">Sobre Nós</p>
+                        <p class="card-text">Reembolsos e Devoluções</p>
+                    </div>
+                </div>
+                <div class="card-fac card bg-transparent border-0">
+                    <div class="card-header bg-transparent border-0">Informação</div>
+                    <div class="card-body" style="width: 18rem">
+                        <p class="card-text">Ajuda e FAQ's</p>
+                        <p class="card-text">Localização da Loja</p>
+                        <p class="card-text">Pedidos e Devoluções</p>
+                    </div>
+                </div>
+                <div class="card-fac card bg-transparent border-0">
+                    <div class="card-header bg-transparent border-0">
+                        Entre em Contato
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">R. Antônio Alberto Strapasson, 35</p>
+                        <p>Sapopema, Colombo - PR</p>
+                        <p>83414-465</p>
+                        <p class="card-text">Telefone: (41) 3656-1457</p>
+                        <p class="card-text">e-mail@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Rodapé-->
+        <section class="container-fluid p-0">
+            <div class="card text-center p-3">
+                <div class="card-body">
+                    <h5 class="card-title">Conecte-se conosco</h5>
+                    <p class="card-text">Siga-nos em nossas redes Sociais.</p>
+                    <a href="#" class="btn">
+                        <img src="img/icon/facebook.png" alt width="40">
+                    </a>
+                    <a href="#" class="btn">
+                        <img src="img/icon/instagram.png" alt width="40">
+                    </a>
+                    <a href="#" class="btn">
+                        <img src="img/icon/whatsapp.png" alt width="40">
+                    </a>
+                </div>
+            </div>
+        </section>
+        <footer class="bg-dark text-light text-center p-3">
+            <div class="container">
+                <p>
+                    &copy; 2023 Vinicola Strapasson.
+                    <br>
+                    Todos os direitos reservados.
                 </p>
             </div>
-        </div>
-    </section>
-    <!--SEÇÃO FAC-->
-    <section class="section-fac container-fluid p-0 d-block">
-        <div class="container p-5 d-block d-xl-flex justify-content-center">
-            <div class="card-fac card bg-transparent border-0">
-                <div class="card-header bg-transparent border-0">Ajuda</div>
-                <div class="card-body" style="width: 18rem">
-                    <p class="card-text">Ajuda</p>
-                    <p class="card-text">Informação</p>
-                    <p class="card-text">Politica de Privacidade</p>
-                </div>
-            </div>
-            <div class="card-fac card bg-transparent border-0">
-                <div class="card-header bg-transparent border-0">Suporte</div>
-                <div class="card-body" style="width: 18rem">
-                    <p class="card-text">Etre em Contato</p>
-                    <p class="card-text">Sobre Nós</p>
-                    <p class="card-text">Reembolsos e Devoluções</p>
-                </div>
-            </div>
-            <div class="card-fac card bg-transparent border-0">
-                <div class="card-header bg-transparent border-0">Informação</div>
-                <div class="card-body" style="width: 18rem">
-                    <p class="card-text">Ajuda e FAQ's</p>
-                    <p class="card-text">Localização da Loja</p>
-                    <p class="card-text">Pedidos e Devoluções</p>
-                </div>
-            </div>
-            <div class="card-fac card bg-transparent border-0">
-                <div class="card-header bg-transparent border-0">
-                    Entre em Contato
-                </div>
-                <div class="card-body">
-                    <p class="card-text">R. Antônio Alberto Strapasson, 35</p>
-                    <p>Sapopema, Colombo - PR</p>
-                    <p>83414-465</p>
-                    <p class="card-text">Telefone: (41) 3656-1457</p>
-                    <p class="card-text">e-mail@example.com</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Rodapé-->
-    <section class="container-fluid p-0">
-        <div class="card text-center p-3">
-            <div class="card-body">
-                <h5 class="card-title">Conecte-se conosco</h5>
-                <p class="card-text">Siga-nos em nossas redes Sociais.</p>
-                <a href="#" class="btn">
-                    <img src="img/icon/facebook.png" alt width="40">
-                </a>
-                <a href="#" class="btn">
-                    <img src="img/icon/instagram.png" alt width="40">
-                </a>
-                <a href="#" class="btn">
-                    <img src="img/icon/whatsapp.png" alt width="40">
-                </a>
-            </div>
-        </div>
-    </section>
-    <footer class="bg-dark text-light text-center p-3">
-        <div class="container">
-            <p>
-                &copy; 2023 Vinicola Strapasson.
-                <br>
-                Todos os direitos reservados.
-            </p>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-</body>
-
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script>
+        //Função para fazer com que a nav fique aparecendo quando der scroll down(apenas descktop)
+            window.onscroll = function() {
+              var navbar = document.getElementById("navbar");
+              
+              // Verifica se a largura da tela é maior ou igual a 992 pixels
+              var isDesktop = window.innerWidth >= 575;
+          
+              // Verifica se a posição de rolagem é maior que 50 pixels e se a tela é de desktop
+              if ((document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) && isDesktop) {
+                navbar.classList.add("fixed-top");
+              } else {
+                navbar.classList.remove("fixed-top");
+              }
+            };
+        </script>
+    </body>
 </html>
