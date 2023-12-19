@@ -47,7 +47,7 @@
                     <div class="collapse navbar-collapse justify-content-center p-1" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Loja</a>
@@ -67,7 +67,7 @@
                                         <a class="dropdown-item" href="#">Sobre Nós</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">Revenda</a>
+                                        <a class="dropdown-item" href="./revenda.html">Revenda</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="#">Contato</a>
@@ -110,144 +110,202 @@
         <!--SEÇÃO REVENDA-->
         <section class="container">
             <div>
-                <form class="form-horizontal">
-                    <fieldset>
-                    
-                    <!-- Form Name -->
-                    <legend>Revenda</legend>
-                    
-                    <!-- Multiple Radios -->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="radiosTipoCliente">Tipo de Cliente</label>
-                      <div class="col-md-4">
-                      <div class="radio">
-                        <label for="radiosTipoCliente-0">
-                          <input type="radio" name="radiosTipoCliente" id="radiosTipoCliente-0" value="1" checked="checked">
-                          Pessoa Física (Individual)
-                        </label>
+                <form class="row g-3">
+                        <!-- Form Name -->
+                        <legend>Revenda</legend>
+                        <!-- Multiple Radios -->
+                        <div class="col-12">
+                            <label class="col-md-12 control-label" for="radiosTipoCliente">Tipo de Cliente</label>
+                            <div class="col-md-4">
+                                <div class="radio">
+                                    <label for="radiosTipoCliente-0">
+                                        <input
+                                            type="radio"
+                                            name="radiosTipoCliente"
+                                            id="radiosTipoCliente-0"
+                                            value="1"
+                                            checked="checked"
+                                        >
+                                        Pessoa Física (Individual)
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="radiosTipoCliente-1">
+                                        <input
+                                            type="radio"
+                                            name="radiosTipoCliente"
+                                            id="radiosTipoCliente-1"
+                                            value="2"
+                                        >
+                                        Pessoa Jurídica (Empresa)
+                                    </label>
+                                </div>
+                            </div>
                         </div>
-                      <div class="radio">
-                        <label for="radiosTipoCliente-1">
-                          <input type="radio" name="radiosTipoCliente" id="radiosTipoCliente-1" value="2">
-                          Pessoa Jurídica (Empresa)
-                        </label>
+                        <!-- Text input-->
+                        <div class="col-6">
+                            <label class="control-label" for="inputNome">Nome</label>
+                            <div class="col-md-4">
+                                <input
+                                    id="inputNome"
+                                    name="inputNome"
+                                    type="text"
+                                    placeholder="Ex: Junior "
+                                    class="form-control input-md"
+                                    required=""
+                                >
+                                <span class="help-block">Digite primeiro nome</span>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="inputNome">Nome </label>  
-                      <div class="col-md-4">
-                      <input id="inputNome" name="inputNome" type="text" placeholder="Ex: Junior " class="form-control input-md" required="">
-                      <span class="help-block">Digite primeiro nome</span>  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textinput">Sobrenome</label>  
-                      <div class="col-md-4">
-                      <input id="textinput" name="textinput" type="text" placeholder="Ex: Cezar Santana" class="form-control input-md" required="">
-                      <span class="help-block">Digite o sobrenome</span>  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="inputEmail">E-mail</label>  
-                      <div class="col-md-4">
-                      <input id="inputEmail" name="inputEmail" type="text" placeholder="seuemail@provedor.com" class="form-control input-md">
-                      <span class="help-block">Digite seu email</span>  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="inputTelefone">Telefone</label>  
-                      <div class="col-md-4">
-                      <input id="inputTelefone" name="inputTelefone" type="text" placeholder="(00) 0000 0000" class="form-control input-md" required="">
-                      <span class="help-block">(DDD) número</span>  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="inputNomeEmpresa">Nome da Empresa</label>  
-                      <div class="col-md-4">
-                      <input id="inputNomeEmpresa" name="inputNomeEmpresa" type="text" placeholder="Ex: Vendas SA" class="form-control input-md">
-                      <span class="help-block">Digite o nome da Empresa (opcional)</span>  
-                      </div>
-                    </div>
-                    
-                    <!-- Text input-->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="inputCNPJ">CNPJ</label>  
-                      <div class="col-md-4">
-                      <input id="inputCNPJ" name="inputCNPJ" type="text" placeholder=" XX. XXX. XXX/0001-XX" class="form-control input-md">
-                      <span class="help-block">Digite o CNPJ</span>  
-                      </div>
-                    </div>
-                    
-                    <!-- Multiple Checkboxes -->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="checkboxesInteresses">Interesses</label>
-                      <div class="col-md-4">
-                      <div class="checkbox">
-                        <label for="checkboxesInteresses-0">
-                          <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-0" value="1">
-                          Vinhos Tintos
-                        </label>
+                        <!-- Text input-->
+                        <div class="col-6">
+                            <label class="control-label" for="textinput">Sobrenome</label>
+                            <div class="col-md-4">
+                                <input
+                                    id="textinput"
+                                    name="textinput"
+                                    type="text"
+                                    placeholder="Ex: Cezar Santana"
+                                    class="form-control input-md"
+                                    required=""
+                                >
+                                <span class="help-block">Digite o sobrenome</span>
+                            </div>
                         </div>
-                      <div class="checkbox">
-                        <label for="checkboxesInteresses-1">
-                          <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-1" value="2">
-                          Vinhos Brancos
-                        </label>
+                        <!-- Text input-->
+                        <div class="row">
+                            <label class="col-md-12 control-label" for="inputEmail">E-mail</label>
+                            <div class="col-md-4">
+                                <input
+                                    id="inputEmail"
+                                    name="inputEmail"
+                                    type="text"
+                                    placeholder="seuemail@provedor.com"
+                                    class="form-control input-md"
+                                >
+                                <span class="help-block">Digite seu email</span>
+                            </div>
                         </div>
-                      <div class="checkbox">
-                        <label for="checkboxesInteresses-2">
-                          <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-2" value="3">
-                          Vinhos Roses
-                        </label>
+                        <!-- Text input-->
+                        <div class="row">
+                            <label class="col-md-12 control-label" for="inputTelefone">Telefone</label>
+                            <div class="col-md-4">
+                                <input
+                                    id="inputTelefone"
+                                    name="inputTelefone"
+                                    type="text"
+                                    placeholder="(00) 0000 0000"
+                                    class="form-control input-md"
+                                    required=""
+                                >
+                                <span class="help-block">(DDD) número</span>
+                            </div>
                         </div>
-                      <div class="checkbox">
-                        <label for="checkboxesInteresses-3">
-                          <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-3" value="4">
-                          Vinhos Secos
-                        </label>
+                        <!-- Text input-->
+                        <div class="row">
+                            <label class="col-md-12 control-label" for="inputNomeEmpresa">Nome da Empresa</label>
+                            <div class="col-md-4">
+                                <input
+                                    id="inputNomeEmpresa"
+                                    name="inputNomeEmpresa"
+                                    type="text"
+                                    placeholder="Ex: Vendas SA"
+                                    class="form-control input-md"
+                                >
+                                <span class="help-block">Digite o nome da Empresa (opcional)</span>
+                            </div>
                         </div>
-                      <div class="checkbox">
-                        <label for="checkboxesInteresses-4">
-                          <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-4" value="5">
-                          Outros (especificar):
-                        </label>
+                        <!-- Text input-->
+                        <div class="row">
+                            <label class="col-md-12 control-label" for="inputCNPJ">CNPJ</label>
+                            <div class="col-md-4">
+                                <input
+                                    id="inputCNPJ"
+                                    name="inputCNPJ"
+                                    type="text"
+                                    placeholder=" XX. XXX. XXX/0001-XX"
+                                    class="form-control input-md"
+                                >
+                                <span class="help-block">Digite o CNPJ</span>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Textarea -->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="textareaOBS">Observações</label>
-                      <div class="col-md-4">                     
-                        <textarea class="form-control" id="textareaOBS" name="textareaOBS">(Espaço para observações ou requisitos adicionais)</textarea>
-                      </div>
-                    </div>
-                    
-                    <!-- Button -->
-                    <div class="form-group">
-                      <label class="col-md-4 control-label" for="singlebutton"></label>
-                      <div class="col-md-4">
-                        <button id="singlebutton" name="singlebutton" class="btn btn-success">Enviar</button>
-                      </div>
-                    </div>
-                    
-                    </fieldset>
-                    </form>
-                    
+                        <!-- Multiple Checkboxes -->
+                        <div class="row">
+                            <label class="col-md-12 control-label" for="checkboxesInteresses">Interesses</label>
+                            <div class="col-md-4">
+                                <div class="checkbox">
+                                    <label for="checkboxesInteresses-0">
+                                        <input
+                                            type="checkbox"
+                                            name="checkboxesInteresses"
+                                            id="checkboxesInteresses-0"
+                                            value="1"
+                                        >
+                                        Vinhos Tintos
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="checkboxesInteresses-1">
+                                        <input
+                                            type="checkbox"
+                                            name="checkboxesInteresses"
+                                            id="checkboxesInteresses-1"
+                                            value="2"
+                                        >
+                                        Vinhos Brancos
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="checkboxesInteresses-2">
+                                        <input
+                                            type="checkbox"
+                                            name="checkboxesInteresses"
+                                            id="checkboxesInteresses-2"
+                                            value="3"
+                                        >
+                                        Vinhos Roses
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="checkboxesInteresses-3">
+                                        <input
+                                            type="checkbox"
+                                            name="checkboxesInteresses"
+                                            id="checkboxesInteresses-3"
+                                            value="4"
+                                        >
+                                        Vinhos Secos
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="checkboxesInteresses-4">
+                                        <input
+                                            type="checkbox"
+                                            name="checkboxesInteresses"
+                                            id="checkboxesInteresses-4"
+                                            value="5"
+                                        >
+                                        Outros (especificar):
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Textarea -->
+                        <div class="row">
+                            <label class="col-md-12 control-label" for="textareaOBS">Observações</label>
+                            <div class="col-md-4">
+                                <textarea class="form-control" id="textareaOBS" name="textareaOBS">(Espaço para observações ou requisitos adicionais)</textarea>
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        <div class="row">
+                            <label class="col-md-12 control-label" for="singlebutton"></label>
+                            <div class="col-md-4">
+                                <button id="singlebutton" name="singlebutton" class="btn btn-success">Enviar</button>
+                            </div>
+                        </div>
+                </form>
             </div>
-
-
         </section>
         <!--SEÇÃO FAC-->
         <section class="section-fac container-fluid p-0 d-block">
