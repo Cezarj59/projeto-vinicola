@@ -86,130 +86,124 @@
     <!--SEÇÃO REVENDA-->
     <section class="container">
         <div>
-            <form class="row g-3">
+            <form class="row g-3 mb-5">
                 <!-- Form Name -->
-                <h2>Revenda</h2>
-                <!-- Tipo de Cliente -->
-                <fieldset>
-                    <div class="col-12">
-                        <label class="control-label" for="radiosTipoCliente">
-                            <h4>Tipo de Cliente</h4>
-                        </label>
-                        <div class="">
-                            <div class="radio">
-                                <label for="radiosTipoCliente-0">
-                                    <input type="radio" name="radiosTipoCliente" id="radiosTipoCliente-0" value="1"
-                                        checked="checked">
-                                    Pessoa Física (Individual)
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label for="radiosTipoCliente-1">
-                                    <input type="radio" name="radiosTipoCliente" id="radiosTipoCliente-1" value="2">
-                                    Pessoa Jurídica (Empresa)
-                                </label>
-                            </div>
+                <h2 class="">Revenda</h2>
+                <!----------------- Tipo de Cliente ----------------->
+                <fieldset class="mt-4">
+                    <legend class="container-fluid bg-body-secondary text-center">Tipo de Cliente</legend>
+                    <div class="row text-center">
+                        <div class="radio col-xl-6">
+                            <label for="radiosTipoCliente-0">
+                                <input type="radio" name="radiosTipoCliente" id="radiosTipoCliente-0" value="1"
+                                    checked="checked">
+                                Pessoa Física (Individual)
+                            </label>
+                        </div>
+                        <div class="radio col-xl-6">
+                            <label for="radiosTipoCliente-1">
+                                <input type="radio" name="radiosTipoCliente" id="radiosTipoCliente-1" value="2">
+                                Pessoa Jurídica (Empresa)
+                            </label>
                         </div>
                     </div>
                 </fieldset>
-
-                <!-- Dados Pessoais-->
-                <fieldset class="col-6">
-                    <legend>Dados Pessoais</legend>
+                <!----------------- Dados Pessoais ----------------->
+                <fieldset class="col-xl-6 mt-4">
+                    <legend class="bg-body-secondary text-center">Dados Pessoais</legend>
                     <div class="row">
-                        <label class="col-form-label col-2" for="inputNome">Nome</label>
-                        <div class="col-md-8">
+                        <label class="col-form-label col-xl-3 text-xl-end" for="inputNome">Nome</label>
+                        <div class="col-xl-9">
                             <input id="inputNome" name="inputNome" type="text" placeholder="Ex: Junior "
-                                class="form-control input-md" required="">
-                            <span class="help-block">Digite primeiro nome</span>
+                                class="form-control input-md " required="">
+                                <small id="nomeHelpBlock" class="form-text text-muted">Digite primeiro nome</small>
                         </div>
                     </div>
                     <!-- Text input-->
                     <div class="row">
-                        <label class="col-form-label col-form col-2" for="textinput">Sobrenome</label>
-                        <div class="col-md-8">
+                        <label class="col-form-label col-form col-xl-3 text-xl-end" for="textinput">Sobrenome</label>
+                        <div class="col-xl-9">
                             <input id="textinput" name="textinput" type="text" placeholder="Ex: Cezar Santana"
                                 class="form-control input-md" required="">
-                            <span class="help-block">Digite o sobrenome</span>
+                                <small id="sobrenomeHelpBlock" class="form-text text-muted">Digite o sobrenome</small>
                         </div>
                     </div>
                     <!-- Text input-->
                     <div class="row">
-                        <label class="col-form-label col-form col-2" for="inputEmail">E-mail</label>
-                        <div class="col-md-8">
+                        <label class="col-form-label col-form col-xl-3 text-xl-end" for="inputEmail">E-mail</label>
+                        <div class="col-xl-9">
                             <input id="inputEmail" name="inputEmail" type="text" placeholder="seuemail@provedor.com"
                                 class="form-control input-md">
-                            <span class="help-block">Digite seu email</span>
+                                <small id="emailHelpBlock" class="form-text text-muted">Digite seu email</small>
                         </div>
                     </div>
                     <!-- Text input-->
                     <div class="row">
-                        <label class="col-form-label col-form col-2" for="inputTelefone">Telefone</label>
-                        <div class="col-md-8">
+                        <label class="col-form-label col-form col-xl-3 text-xl-end" for="inputTelefone">Telefone</label>
+                        <div class="col-xl-9">
                             <input id="inputTelefone" name="inputTelefone" type="text" placeholder="(00) 0000 0000"
                                 class="form-control input-md" required="">
-                            <span class="help-block">(DDD) número</span>
+                                <small id="telefoneHelpBlock" class="form-text text-muted">(DDD) número</small>
                         </div>
                     </div>
                 </fieldset>
-                <!-- Dados Empresariais-->
-                <fieldset class="col-6">
-                    <legend>Dados Empresarias</legend>
+                <!--------------- Dados Empresariais --------------->
+                <fieldset class="col-xl-6 mt-4">
+                    <legend class="bg-body-secondary text-center">Dados Empresariais</legend>
                     <!-- Text input-->
                     <div class="row">
-                        <label class="col-form-label col-form col-4" for="inputNomeEmpresa">Nome da Empresa</label>
-                        <div class="col-md-8">
+                        <label class="col-form-label col-form col-3 text-xl-end" for="inputNomeEmpresa">Nome da Empresa</label>
+                        <div class="col-xl-9">
                             <input id="inputNomeEmpresa" name="inputNomeEmpresa" type="text" placeholder="Ex: Vendas SA"
                                 class="form-control input-md">
-                            <span class="help-block">Digite o nome da Empresa (opcional)</span>
+                            <small id="nomeEmpresaHelpBlock" class="form-text text-muted">Digite o nome da Empresa (opcional)</small>
+                            
                         </div>
                     </div>
                     <!-- Text input-->
                     <div class="row">
-                        <label class="col-form-label col-form col-4" for="inputCNPJ">CNPJ</label>
-                        <div class="col-md-8">
+                        <label class="col-form-label col-form col-3 text-xl-end" for="inputCNPJ">CNPJ</label>
+                        <div class="col-xl-9">
                             <input id="inputCNPJ" name="inputCNPJ" type="text" placeholder=" XX. XXX. XXX/0001-XX"
                                 class="form-control input-md">
-                            <span class="help-block">Digite o CNPJ</span>
+                                <small id="nomeHelpBlock" class="form-text text-muted"> Digite o CNPJ</small>
                         </div>
                     </div>
                 </fieldset>
-                <!-- Interesses-->
-                <fieldset class="row">
-                    <legend>Outros</legend>
+                <!------------------- Interesses ------------------->
+                <fieldset class="col-xl-6 mt-4">
+                    <legend class="bg-body-secondary text-center">Interessess</legend>
                     <!-- Multiple Checkboxes -->
-                    <div class="row col-6">
-                        <label class="col-form-label col-form" for="checkboxesInteresses">Interesses</label>
                         <div class="row">
-                            <div class="checkbox col-6">
+                            <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-0">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-0"
                                         value="1">
                                     Vinhos Tintos
                                 </label>
                             </div>
-                            <div class="checkbox col-6">
+                            <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-1">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-1"
                                         value="2">
                                     Vinhos Brancos
                                 </label>
                             </div>
-                            <div class="checkbox col-6">
+                            <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-2">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-2"
                                         value="3">
                                     Vinhos Roses
                                 </label>
                             </div>
-                            <div class="checkbox col-6">
+                            <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-3">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-3"
                                         value="4">
                                     Vinhos Secos
                                 </label>
                             </div>
-                            <div class="checkbox col-6">
+                            <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-4">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-4"
                                         value="5">
@@ -217,27 +211,28 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
+                </fieldset>
+                <!------------------ Observações ------------------->
+                <fieldset class="col-xl-6 mt-4">
+                    <legend class="bg-body-secondary text-center">Observações</legend>
                     <!-- Textarea -->
-                    <div class="col-6">
-                        <label class="col-form-label col-12" for="textareaOBS">Observações</label>
-                        <div class="col-md-12">
-                            <textarea class="form-control" id="textareaOBS"
+                    <div class="col-xl-12">
+                            <textarea class="form-control col-12" id="textareaOBS"
                                 name="textareaOBS">(Espaço para observações ou requisitos adicionais)</textarea>
-                        </div>
+                       
                     </div>
                 </fieldset>
-                <!-- Button -->
-                <div class="row">
-                    <label class="col-md-12 control-label" for="singlebutton"></label>
-                    <div class="col-md-4">
+                <!------------------- Button ----------------------->
+                <fieldset class="col-xl-12 mt-4 mb-4">
+                    <div class="col-md-12 text-xl-end">
                         <button id="singlebutton" name="singlebutton" class="btn btn-success">Enviar</button>
                     </div>
-                </div>
+                </fieldset>
             </form>
         </div>
     </section>
-    <!--SEÇÃO FAC-->
+
+    <!--------------SEÇÃO FAC-------------->
     <section class="section-fac container-fluid p-0 d-block">
         <div class="container p-5 d-block d-xl-flex justify-content-center">
             <div class="card-fac card bg-transparent border-0">
