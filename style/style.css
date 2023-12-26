@@ -7,7 +7,9 @@ body {
   font-family: "Philosopher", sans-serif;
 }
 
-
+#revenda, #home{
+  display: none;
+}
 /*------------------------ NAV ----------------------------*/
 nav,
 .cor-primaria {
