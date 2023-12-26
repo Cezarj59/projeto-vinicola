@@ -7,21 +7,22 @@ body {
   font-family: "Philosopher", sans-serif;
 }
 
-#section-revenda{
+#section-revenda {
   display: none;
 }
+
 /*------------------------ NAV ----------------------------*/
 nav,
 .cor-primaria {
   background-color: var(--cor-primaria);
 }
 
-.dropdown-item:hover{
-  background-color:  var(--cor-primaria);
+.dropdown-item:hover {
+  background-color: var(--cor-primaria);
   color: azure;
- }
+}
 
- .nav-link {
+.nav-link {
   color: #ad587f;
 }
 
@@ -31,7 +32,7 @@ nav,
 }
 
 .original-navbar {
-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 
@@ -45,7 +46,7 @@ transition: transform 0.3s ease-in-out;
   background-repeat: no-repeat;
 }
 
-.fundo-secundario{
+.fundo-secundario {
   background-image: url(../img/fundo-marron.jpg);
 }
 
@@ -88,7 +89,7 @@ transition: transform 0.3s ease-in-out;
     width: 375px;
   }
 
-  
+
 }
 
 /* Tamanho Pequeno (sm) */
@@ -132,15 +133,18 @@ transition: transform 0.3s ease-in-out;
 /* Estilo para limitar a altura do carrossel */
 #carouselExampleCaptions {
   max-height: 70vh;
-  overflow: hidden;  /* Ocultar qualquer parte do carrossel que ultrapasse a altura máxima */
+  overflow: hidden;
+  /* Ocultar qualquer parte do carrossel que ultrapasse a altura máxima */
 }
 
 #carouselExampleCaptions .carousel-inner {
-  max-height: 100%;  /* Ajustar a altura máxima para o conteúdo interno do carrossel */
+  max-height: 100%;
+  /* Ajustar a altura máxima para o conteúdo interno do carrossel */
 }
 
 #carouselExampleCaptions .carousel-item {
-  height: 100%;  /* Garantir que cada item do carrossel ocupe a altura total do carrossel */
+  height: 100%;
+  /* Garantir que cada item do carrossel ocupe a altura total do carrossel */
 }
 
 /* Textos do Carousel*/
@@ -176,8 +180,9 @@ h1 {
 }
 
 @media (max-width: 768px) {
-  .img-1-carousel, 
-  .img-2-carousel, 
+
+  .img-1-carousel,
+  .img-2-carousel,
   .img-3-carousel {
     height: 60vh;
   }
@@ -191,7 +196,7 @@ h1 {
 
 
 /*----------------------------EFEITO DE VIDRO E PARALELOGRAMA DO CAROUSEL--------------------------------------------------*/
-.elemento-vidro, 
+.elemento-vidro,
 .elemento-vidro-paralelogramo {
   background-color: rgba(0, 0, 0, 0.5);
   /* Cor de fundo com opacidade para criar o efeito de vidro */
@@ -201,23 +206,51 @@ h1 {
   /* Aplica um desfoque ao elemento de fundo, criando o efeito de vidro */
   height: 70vh;
 }
- /* Inclinação*/
+
+/* Inclinação*/
 .elemento-vidro-paralelogramo {
   transform: skew(-10deg);
 }
- /* Inclinação contraria para alinhar o texto*/
+
+/* Inclinação contraria para alinhar o texto*/
 .elemento-vidro-paralelogramo h1,
 .elemento-vidro-paralelogramo p {
   transform: skew(10deg);
 }
 
+
+
+
+
+
+/*------------------- section-contato---------------------------*/
+#contato-section .card:hover{
+  transform: scale(1.05);
+  border: 1px solid #d2aa5c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*------------------- Pagina Revenda---------------------------*/
 
 
-legend{
+legend {
   font-size: 1.2rem;
 }
-small{
+
+small {
   padding-left: 15px;
 }
 
@@ -241,5 +274,6 @@ small{
   bottom: 0;
   left: 0;
   background-color: rgba(255, 255, 255, 0.5);
-  z-index: 1; /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
+  z-index: 1;
+  /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
 }
