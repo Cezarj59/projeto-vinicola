@@ -12,22 +12,18 @@ revenda.style.display = "none";
 function alternaPaginas(x) {
     console.log("chamou a função com x =", x);
 
-    // Verifique se os elementos estão sendo encontrados
-    console.log("home:", home);
-    console.log("revenda:", revenda);
-
-    switch (x) {
-        case 1:
+     switch (x) {
+        case 0:
             home.style.display = "block";
             contato.style.display = "none";
             revenda.style.display = "none"; 
             break;
-        case 7:
+        case 8:
             home.style.display = "none";
             contato.style.display = "block";
             revenda.style.display = "none";
             break;
-        case 8:
+        case 9:
             home.style.display = "none";
             contato.style.display = "none";
             revenda.style.display = "block";
@@ -37,3 +33,17 @@ function alternaPaginas(x) {
 
 
 
+/*------------style Navbar---------------*/
+const navStyle = document.getElementsByClassName("destaca-section-atual");
+function active(x) {
+    // Remover a classe "active" de todos os elementos
+    for (let i = 0; i < navStyle.length; i++) {
+      navStyle[i].classList.remove("active");
+    }
+  
+    // Adicionar a classe "active" ao elemento específico
+    if (x >= 0 && x < navStyle.length) {
+      navStyle[x].classList.add("active");
+    }
+  }
+  
