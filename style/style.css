@@ -27,10 +27,6 @@ nav,
   background-color: #F5F3E5;
 }
 
-.original-navbar {
-  transition: transform 0.3s ease-in-out;
-}
-
 
 /*------------------------ IMAGEM DE FUNDO INDEX ----------------------------*/
 .fundo-principal {
