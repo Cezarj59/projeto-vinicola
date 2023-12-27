@@ -17,128 +17,90 @@
 }
 
 .offcanvas{
-  width: 85vw !important; 
+  width: 100vw !important; 
 }
   </style>
 </head>
 
 
 <body>
-  <!--Header-->
-  <header>
-    <nav class="navbar p-0">
-      <div class="container-fluid justify-content-center">
-        <a class="navbar-brand p-0" href="#">
-          <img class src="img/logo.jpeg" alt height="133" width="200">
-        </a>
-      </div>
-    </nav>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <!-- Conteúdo da Navbar -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">            
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-            <button type="button" class="btn-close text-reset mx-0" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body justify-content-center p-3 p-xl-1">
-            <!-- Adicione aqui os itens do menu -->
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" onclick="alternaPaginas(1)">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Loja</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Nossos Vinhos
-                </a>
-                <ul class="dropdown-menu position-drop">
-                  <div class="d-flex flex-column flex-xl-row">
-                    <li>
-                      <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                      </div>
-                    </li>
-                  </div>
-                </ul>
-    
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Preços</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Galeria</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Mais
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Sobre Nós</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Contato</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#" onclick="alternaPaginas(8)">Revenda</a>
-                  </li>
-                </ul>
-              </li>            
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
 
+ <!--Header-->
+ <header>
+  <nav class="navbar p-0">
+      <div class="container-fluid justify-content-center">
+          <a class="navbar-brand p-0" href="#">
+              <img class src="img/logo.jpeg" alt height="133" width="200">
+          </a>
+      </div>
+  </nav>
+
+
+
+  <nav class="n1 navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+      <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Conteúdo da Navbar -->
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+              aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                  <button type="button" class="btn-close text-reset mx-0" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body justify-content-center p-3 p-xl-1">
+                  <!-- Adicione aqui os itens do menu -->
+                  <ul class="navbar-nav ">
+                      <li class="nav-item">
+                          <a class="nav-link destaca-section-atual" aria-current="page" href="#"
+                              data-bs-dismiss="offcanvas"  onclick="alternaPaginas(0),active(0),fecharOffcanvas()">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link destaca-section-atual" href="#"
+                              data-bs-dismiss="offcanvas"  onclick="alternaPaginas(1),active(1),fecharOffcanvas()">Loja</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link destaca-section-atual" href="#"
+                              data-bs-dismiss="offcanvas"  onclick="alternaPaginas(2),active(2),fecharOffcanvas()">Nossos Vinhos</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link destaca-section-atual" href="#"
+                              data-bs-dismiss="offcanvas"  onclick="alternaPaginas(4),active(4),fecharOffcanvas()">Preços</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link destaca-section-atual" href="#"
+                              data-bs-dismiss="offcanvas"  onclick="alternaPaginas(5),active(5),fecharOffcanvas()">Galeria</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle destaca-section-atual" href="#" role="button"
+                              data-bs-toggle="dropdown" aria-expanded="false"  onclick="alternaPaginas(6)">
+                              Mais
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li>
+                                  <a class="dropdown-item destaca-section-atual" href="#"
+                                      data-bs-dismiss="offcanvas"  onclick="alternaPaginas(7),active(6),fecharOffcanvas()">Sobre Nós</a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item destaca-section-atual" href="#"
+                                      data-bs-dismiss="offcanvas"  onclick="alternaPaginas(8),active(6),fecharOffcanvas()">Contato</a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item destaca-section-atual" href="#"
+                                  data-bs-dismiss="offcanvas"  onclick="alternaPaginas(9),active(6)" >Revenda</a>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </nav>
+</header>
 
 
 
@@ -188,7 +150,7 @@
     <div class="container p-5 d-block d-xl-flex justify-content-center">
       <div class="card-fac card bg-transparent border-0">
         <div class="card-header bg-transparent border-0">Ajuda</div>
-        <div class="card-body" style="width: 18rem">
+        <div class="card-body" >
           <p class="card-text">Ajuda</p>
           <p class="card-text">Informação</p>
           <p class="card-text">Politica de Privacidade</p>
@@ -196,7 +158,7 @@
       </div>
       <div class="card-fac card bg-transparent border-0">
         <div class="card-header bg-transparent border-0">Suporte</div>
-        <div class="card-body" style="width: 18rem">
+        <div class="card-body" >
           <p class="card-text">Etre em Contato</p>
           <p class="card-text">Sobre Nós</p>
           <p class="card-text">Reembolsos e Devoluções</p>
@@ -204,7 +166,7 @@
       </div>
       <div class="card-fac card bg-transparent border-0">
         <div class="card-header bg-transparent border-0">Informação</div>
-        <div class="card-body" style="width: 18rem">
+        <div class="card-body" >
           <p class="card-text">Ajuda e FAQ's</p>
           <p class="card-text">Localização da Loja</p>
           <p class="card-text">Pedidos e Devoluções</p>

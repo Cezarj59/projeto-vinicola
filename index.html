@@ -26,7 +26,7 @@
 
         <nav class="n1 navbar navbar-expand-lg navbar-light bg-light" id="navbar">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -44,41 +44,41 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link destaca-section-atual" aria-current="page" href="#"
-                                    onclick="alternaPaginas(0),active(0)">Home</a>
+                                     data-bs-dismiss="offcanvas"  onclick="alternaPaginas(0),active(0)">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link destaca-section-atual" href="#"
-                                    onclick="alternaPaginas(1),active(1)">Loja</a>
+                                     data-bs-dismiss="offcanvas"  onclick="alternaPaginas(1),active(1)">Loja</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link destaca-section-atual" href="#"
-                                    onclick="alternaPaginas(2),active(2)">Nossos Vinhos</a>
+                                     data-bs-dismiss="offcanvas"  onclick="alternaPaginas(2),active(2)">Nossos Vinhos</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link destaca-section-atual" href="#"
-                                    onclick="alternaPaginas(4),active(4)">Preços</a>
+                                     data-bs-dismiss="offcanvas"  onclick="alternaPaginas(4),active(4)">Preços</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link destaca-section-atual" href="#"
-                                    onclick="alternaPaginas(5),active(5)">Galeria</a>
+                                     data-bs-dismiss="offcanvas"  onclick="alternaPaginas(5),active(5)">Galeria</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle destaca-section-atual" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false" onclick="alternaPaginas(6)">
+                                    data-bs-toggle="dropdown" aria-expanded="false"  onclick="alternaPaginas(6)">
                                     Mais
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a class="dropdown-item destaca-section-atual" href="#"
-                                            onclick="alternaPaginas(7),active(6)">Sobre Nós</a>
+                                             data-bs-dismiss="offcanvas"  onclick="alternaPaginas(7),active(6)">Sobre Nós</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item destaca-section-atual" href="#"
-                                            onclick="alternaPaginas(8),active(6)">Contato</a>
+                                             data-bs-dismiss="offcanvas"  onclick="alternaPaginas(8),active(6)">Contato</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item destaca-section-atual" href="#"
-                                            onclick="alternaPaginas(9),active(6)">Revenda</a>
+                                             data-bs-dismiss="offcanvas"  onclick="alternaPaginas(9),active(6)" data-bs-dismiss="offcanvas">Revenda</a>
                                     </li>
                                 </ul>
                             </li>
@@ -88,6 +88,8 @@
             </div>
         </nav>
     </header>
+
+
     <!--###################################### HOME ###################################### -->
     <section id="home-section">
         <!--FUNDO PRINCIPAL-->
