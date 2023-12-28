@@ -15,17 +15,15 @@
       position: absolute;
       left: 50% !important;
       transform: translate(-50%);
+
     }
 
-
-    .teste {
+    .dropdown-ajuste {
       display: flex !important;
       width: 80vw;
-      text-align: center !important;
       list-style: none !important;
       flex-wrap: wrap !important;
       padding: 0;
-
     }
 
     .scrollable-dropdown {
@@ -80,20 +78,22 @@
               <!--Dropdown-->
               <li class="nav-item dropdown d-none d-md-block">
                 <a class="nav-link dropdown-toggle destaca-section-atual" href="#" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false"
-                  onclick="alternaPaginas(2),active(2)">Mais Vendidos</a>
+                  data-bs-toggle="dropdown" aria-expanded="false" onclick="alternaPaginas(2),active(2)">Mais
+                  Vendidos</a>
 
-                <ul class="dropdown-menu dropdown-position">
-                  <div class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly teste scrollable-dropdown">
+                <ul class="dropdown-menu dropdown-position fade">
+                  <div
+                    class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly dropdown-ajuste scrollable-dropdown">
                     <li>
                       <div class="card border-0" style="width: 18rem;">
                         <img src="img/mais-vendidos/tinto-suave.png" class="card-img-top  bg-body-tertiary" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Vinho Tinto de Mesa Suave </h5>
-
-                          <p class="card-text mb-0">Volume: 750ml</p>
-                          <p class="card-text ">Teor Alcoólico: 11%</p>
-                          <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="card-text mb-0">Volume: 750ml</p>
+                            <p class="card-text ">Teor Alcoólico: 11%</p>
+                            <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                          </div>
                         </div>
                       </div>
                     </li>
@@ -102,9 +102,11 @@
                         <img src="img/mais-vendidos/tinto-seco.png" class="card-img-top bg-body-tertiary" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Vinho Tinto de Mesa Seco</h5>
-                          <p class="card-text mb-0">Volume: 750ml</p>
-                          <p class="card-text ">Teor Alcoólico: 11%</p>
-                          <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="card-text mb-0">Volume: 750ml</p>
+                            <p class="card-text ">Teor Alcoólico: 11%</p>
+                            <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                          </div>
                         </div>
                       </div>
                     </li>
@@ -113,9 +115,11 @@
                         <img src="img/mais-vendidos/branco-seco.png" class="card-img-top bg-body-tertiary" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Vinho Branco de Mesa Seco</h5>
-                          <p class="card-text mb-0">Volume: 750ml</p>
-                          <p class="card-text ">Teor Alcoólico: 11%</p>
-                          <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="card-text mb-0">Volume: 750ml</p>
+                            <p class="card-text ">Teor Alcoólico: 11%</p>
+                            <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                          </div>
                         </div>
                       </div>
                     </li>
@@ -124,16 +128,18 @@
                         <img src="img/mais-vendidos/rose-suave.png" class="card-img-top bg-body-tertiary" alt="...">
                         <div class="card-body">
                           <h5 class="card-title">Vinho Rosé de Mesa Suave</h5>
-                          <p class="card-text mb-0">Volume: 750ml</p>
-                          <p class="card-text ">Teor Alcoólico: 11%</p>
-                          <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                          <div class="d-flex flex-column justify-content-center">
+                            <p class="card-text mb-0">Volume: 750ml</p>
+                            <p class="card-text ">Teor Alcoólico: 11%</p>
+                            <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                          </div>
                         </div>
                       </div>
                     </li>
                   </div>
                 </ul>
               </li>
-              <!--botão para abrir offcanvas em mobile-->
+              <!--botão para abrir offcanvas 2 em mobile-->
               <li class="nav-item dropdown d-md-none">
                 <a href="#" class="nav-link" onclick="abrirOffcanvas2(),active(2)">Mais Vendidos</a>
               </li>
@@ -173,11 +179,11 @@
       <div class="offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvas2" aria-labelledby="offcanvas2Label"
         data-bs-backdrop="false">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvas2Label">Offcanvas 2</h5>
+          <h5 class="offcanvas-title" id="offcanvas2Label">Mais Vendidos</h5>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"
             onclick="fecharOffcanvas2()"></button>
         </div>
-        <div class="offcanvas-body scrollable-dropdown">
+        <div class="offcanvas-body  d-flex flex-column align-items-center scrollable-dropdown ">
 
 
           <div class="card border-0" style="width: 18rem;">
@@ -185,41 +191,49 @@
             <div class="card-body">
               <h5 class="card-title">Vinho Tinto de Mesa Suave </h5>
 
-              <p class="card-text mb-0">Volume: 750ml</p>
-              <p class="card-text ">Teor Alcoólico: 11%</p>
-              <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              <div class="d-flex flex-column justify-content-center">
+                <p class="card-text mb-0">Volume: 750ml</p>
+                <p class="card-text ">Teor Alcoólico: 11%</p>
+                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              </div>
+
             </div>
           </div>
           <div class="card border-0" style="width: 18rem;">
             <img src="img/mais-vendidos/tinto-seco.png" class="card-img-top bg-body-tertiary" alt="...">
             <div class="card-body">
               <h5 class="card-title">Vinho Tinto de Mesa Seco</h5>
-              <p class="card-text mb-0">Volume: 750ml</p>
-              <p class="card-text ">Teor Alcoólico: 11%</p>
-              <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              <div class="d-flex flex-column justify-content-center">
+                <p class="card-text mb-0">Volume: 750ml</p>
+                <p class="card-text ">Teor Alcoólico: 11%</p>
+                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              </div>
             </div>
           </div>
           <div class="card border-0" style="width: 18rem;">
             <img src="img/mais-vendidos/branco-seco.png" class="card-img-top bg-body-tertiary" alt="...">
             <div class="card-body">
               <h5 class="card-title">Vinho Branco de Mesa Seco</h5>
-              <p class="card-text mb-0">Volume: 750ml</p>
-              <p class="card-text ">Teor Alcoólico: 11%</p>
-              <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              <div class="d-flex flex-column justify-content-center">
+                <p class="card-text mb-0">Volume: 750ml</p>
+                <p class="card-text ">Teor Alcoólico: 11%</p>
+                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              </div>
             </div>
           </div>
           <div class="card border-0" style="width: 18rem;">
             <img src="img/mais-vendidos/rose-suave.png" class="card-img-top bg-body-tertiary" alt="...">
             <div class="card-body">
               <h5 class="card-title">Vinho Rosé de Mesa Suave</h5>
-              <p class="card-text mb-0">Volume: 750ml</p>
-              <p class="card-text ">Teor Alcoólico: 11%</p>
-              <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              <div class="d-flex flex-column justify-content-center">
+                <p class="card-text mb-0">Volume: 750ml</p>
+                <p class="card-text ">Teor Alcoólico: 11%</p>
+                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              </div>
             </div>
           </div>
     </section>
   </header>
-
 
 
 

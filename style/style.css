@@ -28,6 +28,27 @@ nav,
 }
 
 
+.dropdown-position {
+  position: absolute;
+  left: 50% !important;
+  transform: translate(-50%);
+
+}
+
+.dropdown-ajuste {
+  display: flex !important;
+  width: 80vw;
+  list-style: none !important;
+  flex-wrap: wrap !important;
+  padding: 0;
+}
+
+.scrollable-dropdown {
+  max-height: 90vh;
+  /* Defina a altura máxima desejada*/
+  overflow-y: auto;
+}
+
 /*------------------------ IMAGEM DE FUNDO INDEX ----------------------------*/
 .fundo-principal {
   background-image: url(../img/fundo-principal.png);
