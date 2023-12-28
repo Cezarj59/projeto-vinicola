@@ -47,4 +47,34 @@ function active(x) {
     }
   }
   
+/*------------offCanvas---------------*/
+  function abrirOffcanvas2() {
+    // Fecha o primeiro offcanvas
+    var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
+    offcanvas1.hide();
 
+    // Abre o segundo offcanvas
+    var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas2'));
+    offcanvas2.show();
+  }
+
+  function fecharOffcanvas2() {
+
+    // Fecha o segundo offcanvas
+    var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas2'));
+    offcanvas2.hide();
+
+    // Abre o primeiro offcanvas
+    var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
+    offcanvas1.show();
+
+
+  }
+
+  function fecharOffcanvas() {
+    // Fecha o primeiro offcanvas
+    var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
+    offcanvas1.hide();
+
+
+  }
