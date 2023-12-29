@@ -12,7 +12,7 @@ contato.style.display = "none";
 revenda.style.display = "none";
 
 function alternaPaginas(x) {
-  console.log("chamou a função com x =", x);
+  console.log("chamou a alternaPaginas com x =", x);
 
   switch (x) {
     case 0:
@@ -45,8 +45,9 @@ function alternaPaginas(x) {
 
 
 /*------------style Navbar---------------*/
-const navStyle = document.getElementsByClassName("destaca-section-atual");
+const navStyle = document.getElementsByClassName("add-active");
 function active(x) {
+  console.log("chamou a active com x =", x);
   // Remover a classe "active" de todos os elementos
   for (let i = 0; i < navStyle.length; i++) {
     navStyle[i].classList.remove("active");
