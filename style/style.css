@@ -9,31 +9,18 @@ body {
 
 /*------------------------ NAV ----------------------------*/
 /*-Nav Primaria*/
-nav,
+nav, 
 .cor-primaria {
   background-color: var(--cor-primaria);
 }
 
 /*-Nav Secundaria com o menu*/
-.nav-color {
+
+.nav-color,
+.offcanvas-color {
   background-color: #62162f;
 }
-
-.destaca-section-atual:hover {
-  color: #ff9fc5;
-}
-
-.dropdown-item:hover {
-  background-color: #62162f;
-}
-
 .nav-link {
-  color: azure;
-}
-
-/*link ativo*/
-.navbar-nav .nav-link.active {
-  background-color: #62162f;
   color: azure;
 }
 
@@ -43,7 +30,15 @@ nav,
 }
 
 
+.nav-link:hover, .dropdown-item:hover,
+.navbar-nav .nav-link.active{
+  background-color: #62162f;
+  color: #e0b0ff;
+}
 
+.dropdown-toggle.show {
+  color: #e0b0ff !important;
+}
 
 
 
