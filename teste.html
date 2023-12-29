@@ -11,71 +11,7 @@
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
   <style>
-.galeria-section {
-        padding: 1px;
-        max-height: 100vh;
-        overflow-y: auto;
-        background-color: #06141d;
-      }
 
-    .galeria img {
-      width: 100%;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .galeria {
-      column-count: 5;
-      column-gap: 10px;
-    }
-
-    /* Tamanho Extra Pequeno (xs) */
-    @media (max-width: 575.98px) {
-      
-
-      .galeria img {
-        margin-bottom: 5px;
-      }
-
-      .galeria {
-        column-count: 3;
-        column-gap: 5px;
-      }
-
-
-    }
-
-
-    /* Tamanho Pequeno (sm) */
-    @media (min-width: 576px) and (max-width: 767.98px) {
-      .img-section-info {
-        width: 576px;
-      }
-    }
-
-    /* Tamanho Médio (md) */
-    @media (min-width: 768px) and (max-width: 991.98px) {
-      .img-section-info {
-        width: 768px;
-      }
-    }
-
-    /* Tamanho Grande (lg) */
-    @media (min-width: 992px) and (max-width: 1199.98px) {
-      .img-section-info {
-        width: 768px;
-      }
-    }
-
-    /* Tamanho Extra Grande (xl) */
-    @media (min-width: 1200px) and (max-width: 1399.98px) {
-      /* Estilos para telas de 1200px até 1399px */
-    }
-
-    /* Tamanho Extra Extra Grande (xxl) */
-    @media (min-width: 1400px) {
-      /* Estilos para telas de 1400px e maiores */
-    }
   </style>
 </head>
 
@@ -194,7 +130,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle destaca-section-atual" href="#" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false" onclick="alternaPaginas(6)">
+                  data-bs-toggle="dropdown" aria-expanded="false" onclick="alternaPaginas(6),active(6)">
                   Mais
                 </a>
                 <ul class="dropdown-menu">
@@ -303,7 +239,6 @@
       <img src="img/galeria/img18.jpg" alt="">
       <img src="img/galeria/img19.jpg" alt="">
     </div>
-
   </section>
 
 
