@@ -11,25 +11,70 @@
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
   <style>
-    .dropdown-position {
-      position: absolute;
-      left: 50% !important;
-      transform: translate(-50%);
+.galeria-section {
+        padding: 1px;
+        max-height: 100vh;
+        overflow-y: auto;
+        background-color: #06141d;
+      }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .galeria {
+      column-count: 5;
+      column-gap: 10px;
+    }
+
+    /* Tamanho Extra Pequeno (xs) */
+    @media (max-width: 575.98px) {
+      
+
+      .galeria img {
+        margin-bottom: 5px;
+      }
+
+      .galeria {
+        column-count: 3;
+        column-gap: 5px;
+      }
+
 
     }
 
-    .dropdown-ajuste {
-      display: flex !important;
-      width: 80vw;
-      list-style: none !important;
-      flex-wrap: wrap !important;
-      padding: 0;
+
+    /* Tamanho Pequeno (sm) */
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      .img-section-info {
+        width: 576px;
+      }
     }
 
-    .scrollable-dropdown {
-      max-height: 90vh;
-      /* Defina a altura máxima desejada*/
-      overflow-y: auto;
+    /* Tamanho Médio (md) */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .img-section-info {
+        width: 768px;
+      }
+    }
+
+    /* Tamanho Grande (lg) */
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      .img-section-info {
+        width: 768px;
+      }
+    }
+
+    /* Tamanho Extra Grande (xl) */
+    @media (min-width: 1200px) and (max-width: 1399.98px) {
+      /* Estilos para telas de 1200px até 1399px */
+    }
+
+    /* Tamanho Extra Extra Grande (xxl) */
+    @media (min-width: 1400px) {
+      /* Estilos para telas de 1400px e maiores */
     }
   </style>
 </head>
@@ -48,7 +93,7 @@
     </nav>
 
 
-    <nav class="n1 navbar navbar-expand-md navbar-light bg-light" id="navbar">
+    <nav class="nav-color navbar navbar-expand-md" id="navbar">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
           aria-controls="offcanvasNavbar">
@@ -237,47 +282,34 @@
 
 
 
+  <section id="galeria-section" class="container-fluid galeria-section">
+    <div class="galeria pt-1">
+      <img src="img/galeria/img01.jpg" alt="">
+      <img src="img/galeria/img02.jpg" alt="">
+      <img src="img/galeria/img03.jpg" alt="">
+      <img src="img/galeria/img04.jpg" alt="">
+      <img src="img/galeria/img05.jpg" alt="">
+      <img src="img/galeria/img06.jpg" alt="">
+      <img src="img/galeria/img07.jpg" alt="">
+      <img src="img/galeria/img08.jpg" alt="">
+      <img src="img/galeria/img09.jpg" alt="">
+      <img src="img/galeria/img10.jpg" alt="">
+      <img src="img/galeria/img12.jpg" alt="">
+      <img src="img/galeria/img12.jpg" alt="">
+      <img src="img/galeria/img14.jpg" alt="">
+      <img src="img/galeria/img15.jpg" alt="">
+      <img src="img/galeria/img16.jpg" alt="">
+      <img src="img/galeria/img17.jpg" alt="">
+      <img src="img/galeria/img18.jpg" alt="">
+      <img src="img/galeria/img19.jpg" alt="">
+    </div>
+
+  </section>
 
 
 
 
 
-
-
-
-  <script>
-    function abrirOffcanvas2() {
-      // Fecha o primeiro offcanvas
-      var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
-      offcanvas1.hide();
-
-      // Abre o segundo offcanvas
-      var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas2'));
-      offcanvas2.show();
-    }
-
-    function fecharOffcanvas2() {
-
-      // Fecha o segundo offcanvas
-      var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas2'));
-      offcanvas2.hide();
-
-      // Abre o primeiro offcanvas
-      var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
-      offcanvas1.show();
-
-
-    }
-
-    function fecharOffcanvas() {
-      // Fecha o primeiro offcanvas
-      var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
-      offcanvas1.hide();
-
-
-    }
-
-  </script>
 
 
 
