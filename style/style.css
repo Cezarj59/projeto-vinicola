@@ -46,7 +46,7 @@ nav,
 /* Tamanho Pequeno (sm) */
 @media (min-width: 0px) and (max-width: 767px) {
   .offcanvas-color{
-    background-image: url(../img/vinho-barril-offcanvas.jpg);
+    background-image: url(../img/fundo/fundo-principal-offcanvas.jpg);
     background-size: cover;
     background-position: center top;
     width: 100vw;
@@ -89,7 +89,7 @@ nav,
 
 /*------------------------ IMAGEM DE FUNDO INDEX ----------------------------*/
 .fundo-principal {
-  background-image: url(../img/fundo-principal.png);
+  background-image: url(../img/fundo/fundo-principal.png);
   background-size: cover;
   background-position: center top;
   width: 100vw;
@@ -98,7 +98,7 @@ nav,
 }
 
 .fundo-secundario {
-  background-image: url(../img/fundo-marron.jpg);
+  background-image: url(../img/fundo/fundo-section-texto-2.jpg);
 }
 
 
@@ -125,7 +125,7 @@ nav,
 }
 
 .section-fac {
-  background-image: url(../img/fac-background.png);
+  background-image: url(../img/fundo/fundo-section-fac.png);
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -220,15 +220,15 @@ h1 {
 }
 
 .img-1-carousel {
-  background-image: url("../img/banner-principal.jpg");
+  background-image: url("../img/carousel/banner-principal.jpg");
 }
 
 .img-2-carousel {
-  background-image: url("../img/banner-2.jpg");
+  background-image: url("../img/carousel/banner-2.jpg");
 }
 
 .img-3-carousel {
-  background-image: url("../img/banner-4.jpg");
+  background-image: url("../img/carousel/banner-4.jpg");
 }
 
 @media (max-width: 768px) {
@@ -382,9 +382,9 @@ small {
 
 
 
-.fundo {
+.fundo-secundario-paginas {
   position: relative;
-  background-image: url(../img/teste.png);
+  background-image: url(../img/fundo/fundo-secundario-paginas.png);
   background-size: cover;
   background-position: center top;
   width: 99.9%;
@@ -392,7 +392,7 @@ small {
   background-repeat: no-repeat;
 }
 
-.fundo::before {
+.fundo-secundario-paginas::before {
   content: "";
   position: absolute;
   top: 0;
