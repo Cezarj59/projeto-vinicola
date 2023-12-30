@@ -40,6 +40,9 @@ function alternaPaginas(x) {
       revenda.style.display = "block";
       break;
   }
+
+
+  window.scrollTo(0, 0);
 }
 
 
