@@ -408,6 +408,10 @@ small {
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
 
-  background-color: #62162f;
+.btn-vidro{
+  background-color:  rgba(98, 22, 47, 0.8);
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
 }
