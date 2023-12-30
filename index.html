@@ -15,7 +15,7 @@
 
 <body>
     <!--Header-->
-    <header>
+    <header id="top">
         <nav class="navbar p-0">
           <div class="container-fluid justify-content-center">
             <a class="navbar-brand p-0" href="#">
@@ -25,20 +25,20 @@
         </nav>
     
     
-        <nav class="nav-color navbar navbar-expand-md" id="navbar">
+        <nav class="nav-color navbar navbar-expand-md navbar-dark" id="navbar">
           <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            <button class="navbar-toggler border border-light border-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
               aria-controls="offcanvasNavbar">
               <span class="navbar-toggler-icon"></span>
             </button>
     
             <!-- Conteúdo da Navbar -->
             <!--OffCanvas 1-->
-            <div class="offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvasNavbar"
+            <div class="offcanvas-color offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvasNavbar"
               aria-labelledby="offcanvasNavbarLabel" data-bs-backdrop="false">
               <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                <button type="button" class="btn-close text-reset mx-0" data-bs-dismiss="offcanvas"
+                <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close text-reset mx-0 bg-light" data-bs-dismiss="offcanvas"
                   aria-label="Close"></button>
               </div>
               <div class="offcanvas-body justify-content-center p-3 p-xl-1">
@@ -126,7 +126,7 @@
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle add-active" href="#" role="button"
-                      data-bs-toggle="dropdown" aria-expanded="false" onclick="">
+                      data-bs-toggle="dropdown" aria-expanded="false">
                       Mais
                     </a>
                     <ul class="dropdown-menu">
@@ -153,11 +153,11 @@
     
         <!-- Offcanvas 2 Mais Vendidos (inicialmente oculto) -->
         <section>
-          <div class="offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvas2" aria-labelledby="offcanvas2Label"
+          <div class="offcanvas-color offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvas2" aria-labelledby="offcanvas2Label"
             data-bs-backdrop="false">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvas2Label">Mais Vendidos</h5>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"
+              <h5 class="offcanvas-title text-white fs" id="offcanvas2Label">Mais Vendidos</h5>
+              <button type="button" class="btn-close text-reset bg-light" data-bs-dismiss="offcanvas" aria-label="Fechar"
                 onclick="fecharOffcanvas2()"></button>
             </div>
             <div class="offcanvas-body  d-flex flex-column align-items-center scrollable-dropdown ">
@@ -819,6 +819,10 @@
             </p>
         </div>
     </footer>
+
+    <!-- Botão Voltar ao Topo -->
+<button id="btnVoltarAoTopo" class="btn border-light" onclick="voltarAoTopo()"><img src="./img/up-arrow.png" alt="Voltar ao topo" width="25px"></button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
@@ -839,6 +843,7 @@
         };
     </script>
     <script src="js/navbar.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
