@@ -42,6 +42,30 @@ nav,
 
 
 
+
+/* Tamanho Pequeno (sm) */
+@media (min-width: 0px) and (max-width: 767px) {
+  .offcanvas-color{
+    background-image: url(../img/vinho-barril-offcanvas.jpg);
+    background-size: cover;
+    background-position: center top;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+  }
+
+
+  }
+  
+  /* Tamanho Médio (md) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+  .img-section-info {
+    width: 768px;
+  }
+  }
+
+
+
 .dropdown-position {
   position: absolute;
   left: 50% !important;
@@ -378,4 +402,12 @@ small {
   background-color: rgba(255, 255, 255, 0.6);
   z-index: 1;
   /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
+}
+
+#btnVoltarAoTopo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  background-color: #62162f;
 }
