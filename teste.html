@@ -213,10 +213,6 @@
     </section>
   </header>
 
-  <section id="paginate">
-    <div class="list"></div>
-    <div class="pagination"></div>
-  </section>
 
 
 
@@ -238,38 +234,22 @@
 
 
 
-
-
-
-
-
-
-
-  <section id="section-loja" class="container d-none">
-    <div class="row">
-      <div class="col-3">dacvdv</div>
-
-
-      <div class="col-9 d-flex flex-wrap justify-content-between">
-
-
-      </div>
-    </div>
-
-
-
-    <div aria-label="Page navigation example" class="d-nonejustify-content-center">
-
-      <ul class="pagination">
-
-      </ul>
-    </div>
-  </section>
 
 
   <section id="section-loja" class="container">
     <div class="row">
-      <!-- ... Seu código existente ... -->
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            <h5 class="card-title">Categoria</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+          </ul>
+        </div>
+      </div>
 
       <div class="col-9 d-flex flex-wrap justify-content-between">
         <div id="product-container" class="row"></div>
@@ -410,7 +390,7 @@
     }
 
 
-   function generatePagination() {
+    function generatePagination() {
       const totalPages = Math.ceil(products.length / productsPerPage);
       const paginationContainer = document.getElementById("pagination");
       paginationContainer.innerHTML = "";
@@ -470,7 +450,7 @@
     }
 
 
- 
+
 
 
 
