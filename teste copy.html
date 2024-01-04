@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste</title>
+  <link rel="stylesheet" href="style/reset.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <!--Header-->
+  <header id="top">
+    <nav class="navbar p-0">
+      <div class="container-fluid justify-content-center">
+        <a class="navbar-brand p-0" href="#">
+          <img class src="img/logo.jpeg" alt height="133" width="200">
+        </a>
+      </div>
+    </nav>
+
+
+    <nav class="nav-color navbar navbar-expand-md navbar-dark" id="navbar">
+      <div class="container-fluid">
+        <button class="navbar-toggler border border-light border-1" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Conteúdo da Navbar -->
+        <!--OffCanvas 1-->
+        <div class="offcanvas-color offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel" data-bs-backdrop="false">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn-close text-reset mx-0 bg-light" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body justify-content-center p-3 p-xl-1">
+            <!-- Adicione aqui os itens do menu -->
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <a class="nav-link add-active" aria-current="page" href="#" data-bs-dismiss="offcanvas"
+                  onclick="alternaPaginas(0),active(0)">Home</a>
+
+              <li class="nav-item">
+                <a class="nav-link add-active" href="#" data-bs-dismiss="offcanvas"
+                  onclick="alternaPaginas(1),active(1)">Loja</a>
+
+                <!--Dropdown-->
+              <li class="nav-item dropdown d-none d-md-block">
+                <a class="nav-link dropdown-toggle add-active" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false" onclick="alternaPaginas(2),active(2)">Mais
+                  Vendidos</a>
+
+                <ul class="dropdown-menu dropdown-position">
+                  <div
+                    class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly dropdown-ajuste scrollable-dropdown">
+
+                    <div class="card border-0" style="width: 15rem;">
+                      <img src="img/mais-vendidos/tinto-suave.png" class="card-img-top  bg-body-tertiary" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Vinho Tinto de Mesa Suave </h5>
+                        <div class="d-flex flex-column justify-content-center">
+                          <p class="card-text mb-0">Volume: 750ml</p>
+                          <p class="card-text ">Teor Alcoólico: 11%</p>
+                          <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="card border-0" style="width: 15rem;">
+                      <img src="img/mais-vendidos/tinto-seco.png" class="card-img-top bg-body-tertiary" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Vinho Tinto de Mesa Seco</h5>
+                        <div class="d-flex flex-column justify-content-center">
+                          <p class="card-text mb-0">Volume: 750ml</p>
+                          <p class="card-text ">Teor Alcoólico: 11%</p>
+                          <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="card border-0" style="width: 15rem;">
+                      <img src="img/mais-vendidos/branco-seco.png" class="card-img-top bg-body-tertiary" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Vinho Branco de Mesa Seco</h5>
+                        <div class="d-flex flex-column justify-content-center">
+                          <p class="card-text mb-0">Volume: 750ml</p>
+                          <p class="card-text ">Teor Alcoólico: 11%</p>
+                          <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="card border-0" style="width: 15rem;">
+                      <img src="img/mais-vendidos/rose-suave.png" class="card-img-top bg-body-tertiary" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Vinho Rosé de Mesa Suave</h5>
+                        <div class="d-flex flex-column justify-content-center">
+                          <p class="card-text mb-0">Volume: 750ml</p>
+                          <p class="card-text ">Teor Alcoólico: 11%</p>
+                          <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </ul>
+
+                <!--botão para abrir offcanvas 2 em mobile-->
+              <li class="nav-item dropdown d-md-none">
+                <a href="#" class="nav-link" onclick="abrirOffcanvas2(),active(2)">Mais Vendidos</a>
+
+              <li class="nav-item">
+                <a class="nav-link add-active" href="#" data-bs-dismiss="offcanvas"
+                  onclick="alternaPaginas(5),active(3)">Galeria</a>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle add-active" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Mais
+                </a>
+                <ul class="dropdown-menu">
+
+                  <a class="dropdown-item add-active" href="#" data-bs-dismiss="offcanvas"
+                    onclick="alternaPaginas(7),active(5)">Sobre Nós</a>
+
+
+                  <a class="dropdown-item add-active" href="#" data-bs-dismiss="offcanvas"
+                    onclick="alternaPaginas(8),active(6)">Contato</a>
+
+
+                  <a class="dropdown-item add-active" href="#" data-bs-dismiss="offcanvas"
+                    onclick="alternaPaginas(9),active(7)">Revenda</a>
+
+                </ul>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Offcanvas 2 Mais Vendidos (inicialmente oculto) -->
+    <section>
+      <div class="offcanvas-color offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvas2"
+        aria-labelledby="offcanvas2Label" data-bs-backdrop="false">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title text-white fs" id="offcanvas2Label">Mais Vendidos</h5>
+          <button type="button" class="btn-close text-reset bg-light" data-bs-dismiss="offcanvas" aria-label="Fechar"
+            onclick="fecharOffcanvas2()"></button>
+        </div>
+        <div class="offcanvas-body  d-flex flex-column align-items-center scrollable-dropdown ">
+
+
+          <div class="card border-0" style="width: 15rem;">
+            <img src="img/mais-vendidos/tinto-suave.png" class="card-img-top  bg-body-tertiary" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Vinho Tinto de Mesa Suave </h5>
+
+              <div class="d-flex flex-column justify-content-center">
+                <p class="card-text mb-0">Volume: 750ml</p>
+                <p class="card-text ">Teor Alcoólico: 11%</p>
+                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              </div>
+            </div>
+          </div>
+          <div class="card border-0" style="width: 15rem;">
+            <img src="img/mais-vendidos/tinto-seco.png" class="card-img-top bg-body-tertiary" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Vinho Tinto de Mesa Seco</h5>
+              <div class="d-flex flex-column justify-content-center">
+                <p class="card-text mb-0">Volume: 750ml</p>
+                <p class="card-text ">Teor Alcoólico: 11%</p>
+                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              </div>
+            </div>
+          </div>
+          <div class="card border-0" style="width: 15rem;">
+            <img src="img/mais-vendidos/branco-seco.png" class="card-img-top bg-body-tertiary" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Vinho Branco de Mesa Seco</h5>
+              <div class="d-flex flex-column justify-content-center">
+                <p class="card-text mb-0">Volume: 750ml</p>
+                <p class="card-text ">Teor Alcoólico: 11%</p>
+                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              </div>
+            </div>
+          </div>
+          <div class="card border-0" style="width: 15rem;">
+            <img src="img/mais-vendidos/rose-suave.png" class="card-img-top bg-body-tertiary" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Vinho Rosé de Mesa Suave</h5>
+              <div class="d-flex flex-column justify-content-center">
+                <p class="card-text mb-0">Volume: 750ml</p>
+                <p class="card-text ">Teor Alcoólico: 11%</p>
+                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+              </div>
+            </div>
+          </div>
+    </section>
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section id="section-loja" class="container">
+    <div id="paginate" class="row">
+      <div class="col-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            <h5 class="card-title">Categoria</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">An item</li>
+            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">A third item</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="list col-9 d-flex flex-wrap justify-content-between">
+
+      </div>
+
+      
+      <div aria-label="Page navigation example">
+        <ul class="pagination controls">
+          <li class="page-item">
+            <a class="page-link first" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link prev" href="#" aria-label="Previous">
+              <span aria-hidden="true">&lt;</span>
+            </a>
+          </li>
+          <li class="page-item numbers d-flex">
+          
+          </li>    
+          <li class="page-item">
+            <a class="page-link next" href="#" aria-label="Next">
+              <span aria-hidden="true">&gt;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link last" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+    
+    
+
+
+  </section>
+  <script>
+    // Cria um array com 100 elementos, onde cada elemento é uma string no formato 'Item N',
+    // onde N é o índice mais 1.
+    const products = [
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+      // Adicione mais produtos conforme necessário
+    ];
+    // Array.from({ length: 100 }).map((_, i) => `Item ${(i + 1)}`);
+
+    //=============================================================================
+    // Função utilitária para criação de elementos HTML
+    function createElement(tag, className, innerHTML) {
+      const element = document.createElement(tag);
+      if (className) element.classList.add(className);
+      if (innerHTML) element.innerHTML = innerHTML;
+      return element;
+    }
+
+    // Função utilitária para adicionar event listener a um elemento
+    function addEventListener(element, event, callback) {
+      element.addEventListener(event, callback);
+    }
+
+    // Função utilitária para obter um elemento do DOM por seletor
+    function getElement(selector) {
+      return document.querySelector(selector);
+    }
+
+    // Função utilitária para atualizar a lista de itens no DOM
+    function updateItemList() {
+      const listContainer = getElement('.list');
+      listContainer.innerHTML = '';
+
+      const page = state.page - 1;
+      const start = page * state.perPage;
+      const end = start + state.perPage;
+
+      const paginateItems = products.slice(start, end);
+      paginateItems.forEach(item => createProductCard(item, listContainer));
+    }
+
+    // Função utilitária para criar um item na lista no DOM
+    function createProductCard(product, container) {
+      const card = document.createElement("div");
+      card.className = "card border-0 col-4";
+      card.style.width = "15rem";
+      card.style.marginBottom = "20px";
+
+      const img = document.createElement("img");
+      img.src = product.image;
+      img.className = "card-img-top bg-body-tertiary";
+      img.alt = "...";
+
+      const cardBody = document.createElement("div");
+      cardBody.className = "card-body";
+
+      const title = document.createElement("h5");
+      title.className = "card-title";
+      title.textContent = product.title;
+
+      const details = document.createElement("div");
+      details.className = "d-flex flex-column justify-content-center";
+
+      const volume = document.createElement("p");
+      volume.className = "card-text mb-0";
+      volume.textContent = `Volume: ${product.volume}`;
+
+      const alcohol = document.createElement("p");
+      alcohol.className = "card-text";
+      alcohol.textContent = `Teor Alcoólico: ${product.alcoholPercentage}%`;
+
+      const addToCartBtn = document.createElement("a");
+      addToCartBtn.href = "#";
+      addToCartBtn.className = "btn btn-danger";
+      addToCartBtn.textContent = "Adicionar ao Carrinho";
+
+      details.appendChild(volume);
+      details.appendChild(alcohol);
+
+      cardBody.appendChild(title);
+      cardBody.appendChild(details);
+      cardBody.appendChild(addToCartBtn);
+
+      card.appendChild(img);
+      card.appendChild(cardBody);
+
+      container.appendChild(card);
+    }
+
+
+
+    // Objeto para controle de navegação
+    const navigation = {
+      next() {
+        state.page = Math.min(state.page + 1, state.totalPage);
+      },
+      prev() {
+        state.page = Math.max(state.page - 1, 1);
+      },
+      goTo(page) {
+        state.page = Math.max(1, Math.min(page, state.totalPage));
+      },
+    };
+
+    // Objeto para controle dos botões de navegação
+    const navigationButtons = {
+      element: getElement('.controls .numbers'),
+      createButton(number) {
+        const button = createElement('a', 'page-link', number);
+
+        // Adiciona a classe 'active' ao botão correspondente à página atual.
+        if (state.page == number) {
+          button.classList.add('active');
+        }
+
+        addEventListener(button, 'click', () => {
+          navigation.goTo(number);
+          update();
+        });
+        this.element.appendChild(button);
+        return button;
+      },
+
+      updateButtons() {
+        this.element.innerHTML = '';
+
+        const { maxLeft, maxRight } = this.calculateMaxVisible();
+        for (let page = maxLeft; page <= maxRight; page++) {
+          this.createButton(page);
+        }
+      },
+      calculateMaxVisible() {
+        const { maxVisibleButtons } = state;
+        let maxLeft = Math.max(1, state.page - Math.floor(maxVisibleButtons / 2));
+        let maxRight = Math.min(maxLeft + maxVisibleButtons - 1, state.totalPage);
+
+        if (maxRight - maxLeft + 1 < maxVisibleButtons) {
+          maxLeft = Math.max(1, maxRight - maxVisibleButtons + 1);
+        }
+
+        return { maxLeft, maxRight };
+      },
+    };
+
+    // Estado inicial da aplicação
+    const state = {
+      page: 1,
+      perPage: 9,
+      totalPage: Math.ceil(products.length / 9),
+      maxVisibleButtons: 3,
+    };
+
+    // Função para atualizar tanto a lista quanto os botões de navegação
+    function update() {
+      updateItemList();
+      navigationButtons.updateButtons();
+    }
+
+    // Função de inicialização
+    function init() {
+      update();
+
+      // Adiciona event listeners aos botões de navegação
+      addEventListener(getElement('.first'), 'click', () => {
+        navigation.goTo(1);
+        update();
+      });
+      addEventListener(getElement('.last'), 'click', () => {
+        navigation.goTo(state.totalPage);
+        update();
+      });
+      addEventListener(getElement('.next'), 'click', () => {
+        navigation.next();
+        update();
+      });
+      addEventListener(getElement('.prev'), 'click', () => {
+        navigation.prev();
+        update();
+      });
+    }
+
+    // Chama a função de inicialização
+    init();
+
+  </script>
+
+
+
+
+  <!-- Botão Voltar ao Topo -->
+  <button id="btnVoltarAoTopo" class="btn btn-vidro border-dark d-none" onclick="voltarAoTopo()"><img
+      src="./img/up-arrow.png" alt="Voltar ao topo" width="20px"></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script>
+    //Função para fazer com que a nav fique aparecendo quando der scroll down(apenas descktop)
+    window.onscroll = function () {
+      var navbar = document.getElementById("navbar");
+
+      // Verifica se a largura da tela é maior ou igual a 992 pixels
+      var isDesktop = window.innerWidth >= 575;
+
+      // Verifica se a posição de rolagem é maior que 50 pixels e se a tela é de desktop
+      if ((document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) && isDesktop) {
+        navbar.classList.add("fixed-top");
+      } else {
+        navbar.classList.remove("fixed-top");
+      }
+    };
+  </script>
+  <script src="js/navbar.js"></script>
+  <script src="js/script.js"></script>
+</body>
