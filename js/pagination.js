@@ -3,107 +3,123 @@
 const data = Array.from({ length: 100 }).map((_, i) => `Item ${(i + 1)}`);
 
 //=============================================================================
+// Função utilitária para criação de elementos HTML
+function createElement(tag, className, innerHTML) {
+    const element = document.createElement(tag);
+    if (className) element.classList.add(className);
+    if (innerHTML) element.innerHTML = innerHTML;
+    return element;
+}
 
-// Configuração inicial do estado da aplicação.
-let perPage = 9;
-const state = {
-    page: 1,
-    perPage,
-    totalPage: Math.ceil(data.length / perPage),
-};
+// Função utilitária para adicionar event listener a um elemento
+function addEventListener(element, event, callback) {
+    element.addEventListener(event, callback);
+}
 
-// Objeto que fornece métodos para manipulação do DOM.
-const html = {
-    get(element) {
-        return document.querySelector(element);
-    },
-};
+// Função utilitária para obter um elemento do DOM por seletor
+function getElement(selector) {
+    return document.querySelector(selector);
+}
 
-// Objeto que contém métodos para controle de navegação.
-const controls = {
+// Função utilitária para atualizar a lista de itens no DOM
+function updateItemList() {
+    const listContainer = getElement('.list');
+    listContainer.innerHTML = '';
+
+    const page = state.page - 1;
+    const start = page * state.perPage;
+    const end = start + state.perPage;
+
+    const paginateItems = data.slice(start, end);
+    paginateItems.forEach(item => createListItem(item, listContainer));
+}
+
+// Função utilitária para criar um item na lista no DOM
+function createListItem(item, container) {
+    const listItem = createElement('div', 'item', item);
+    container.appendChild(listItem);
+}
+
+// Objeto para controle de navegação
+const navigation = {
     next() {
-        state.page++;
-
-        const lastPage = state.page > state.totalPage;
-        if (lastPage) {
-            state.page--;
-        }
+        state.page = Math.min(state.page + 1, state.totalPage);
     },
     prev() {
-        state.page--;
-
-        if (state.page < 1) {
-            state.page++;
-        }
+        state.page = Math.max(state.page - 1, 1);
     },
     goTo(page) {
-        if (page < 1) {
-            page = 1;
-        }
-
-        state.page = page;
-
-        if (page > state.totalPage) {
-            state.page = state.totalPage;
-        }
-    },
-    createListeners() {
-        // Adiciona event listeners aos botões de navegação.
-        html.get('.first').addEventListener('click', () => {
-            controls.goTo(1);
-            update();
-        });
-
-        html.get('.last').addEventListener('click', () => {
-            controls.goTo(state.totalPage);
-            update();
-        });
-        html.get('.next').addEventListener('click', () => {
-            controls.next();
-            update();
-        });
-        html.get('.prev').addEventListener('click', () => {
-            controls.prev();
-            update();
-        });
+        state.page = Math.max(1, Math.min(page, state.totalPage));
     },
 };
 
-// Objeto que contém métodos relacionados à lista de itens.
-const list = {
-    create(item) {
-        // Cria um novo elemento div para o item e o adiciona à lista no DOM.
-        const div = document.createElement('div');
-        div.classList.add('item');
-        div.innerHTML = item;
-
-        html.get('.list').appendChild(div);
+// Objeto para controle dos botões de navegação
+const navigationButtons = {
+    element: getElement('.controls .numbers'),
+    createButton(number) {
+        const button = createElement('div', '', number);
+        addEventListener(button, 'click', () => {
+            navigation.goTo(number);
+            update();
+        });
+        this.element.appendChild(button);
+        return button;
     },
-    update() {
-        // Limpa a lista no DOM.
-        html.get('.list').innerHTML = '';
+    updateButtons() {
+        this.element.innerHTML = '';
 
-        // Calcula o índice inicial e final dos itens a serem exibidos na página atual.
-        let page = state.page - 1;
-        let start = page * state.perPage;
-        let end = start + state.perPage;
+        const { maxLeft, maxRight } = this.calculateMaxVisible();
+        for (let page = maxLeft; page <= maxRight; page++) {
+            this.createButton(page);
+        }
+    },
+    calculateMaxVisible() {
+        const { maxVisibleButtons } = state;
+        let maxLeft = Math.max(1, state.page - Math.floor(maxVisibleButtons / 2));
+        let maxRight = Math.min(maxLeft + maxVisibleButtons - 1, state.totalPage);
 
-        // Obtém os itens a serem exibidos na página atual e os adiciona à lista no DOM.
-        const paginateItems = data.slice(start, end);
-        paginateItems.forEach(list.create);
+        if (maxRight - maxLeft + 1 < maxVisibleButtons) {
+            maxLeft = Math.max(1, maxRight - maxVisibleButtons + 1);
+        }
+
+        return { maxLeft, maxRight };
     },
 };
 
-// Função de atualização geral que chama o método update da lista.
+// Estado inicial da aplicação
+const state = {
+    page: 1,
+    perPage: 9,
+    totalPage: Math.ceil(data.length / 9),
+    maxVisibleButtons: 3,
+};
+
+// Função para atualizar tanto a lista quanto os botões de navegação
 function update() {
-    list.update();
+    updateItemList();
+    navigationButtons.updateButtons();
 }
 
-// Função de inicialização que chama a atualização da lista e cria os event listeners.
+// Função de inicialização
 function init() {
-    list.update();
-    controls.createListeners();
+    update();
+    addEventListener(getElement('.first'), 'click', () => {
+        navigation.goTo(1);
+        update();
+    });
+    addEventListener(getElement('.last'), 'click', () => {
+        navigation.goTo(state.totalPage);
+        update();
+    });
+    addEventListener(getElement('.next'), 'click', () => {
+        navigation.next();
+        update();
+    });
+    addEventListener(getElement('.prev'), 'click', () => {
+        navigation.prev();
+        update();
+    });
 }
 
-// Chama a função de inicialização.
+// Chama a função de inicialização
 init();
