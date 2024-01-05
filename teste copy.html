@@ -236,296 +236,116 @@
 
 
 
-  <section id="section-loja" class="container">
+  <section id="section-loja" class="container-fluid container-xl">
     <div id="paginate" class="row">
-      <div class="col-3">
-        <div class="card" style="width: 18rem;">
+      <div class="col-md-4 col-xl-3">
+        <div class="card" style="width: 14rem;">
           <div class="card-header">
             <h5 class="card-title">Categoria</h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
+            <li class="list-group-item">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Tipos de Vinho
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                          <ul class="list-group">
+                            <li class="list-group-item">Branco</li>
+                            <li class="list-group-item">Rosé</li>
+                            <li class="list-group-item">Tinto</li>
+                            <li class="list-group-item">Seco</li>
+                            <li class="list-group-item">Suave</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Volume
+                      </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                      data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                          aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                          <div class="accordion-body">
+                            <ul class="list-group">
+                              <li class="list-group-item">700ml</li>
+                              <li class="list-group-item">1L</li>
+                              <li class="list-group-item">2L</li>
+                              <li class="list-group-item">3.5L</li>
+                              <li class="list-group-item">5L</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                 
+                </div>
+
+            </li>
+            <li class="list-group-item">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+            </li>
             <li class="list-group-item">A third item</li>
           </ul>
         </div>
       </div>
 
-      <div class="list col-9 d-flex flex-wrap justify-content-between">
+      <div class="col-md-8 col-xl-9">
+        <!-- div que exibe a lista de produtos-->
+        <div class="list  d-flex flex-wrap justify-content-around">
 
+
+        </div>
+
+
+        <div aria-label="Page navigation example" class="col-12">
+          <ul class="pagination controls">
+            <li class="page-item">
+              <a class="page-link first" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link prev" href="#" aria-label="Previous">
+                <span aria-hidden="true">&lt;</span>
+              </a>
+            </li>
+            <li class="page-item numbers d-flex" onclick="voltarAoTopo()">
+
+            </li>
+            <li class="page-item">
+              <a class="page-link next" href="#" aria-label="Next">
+                <span aria-hidden="true">&gt;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link last" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
       </div>
 
-      
-      <div aria-label="Page navigation example">
-        <ul class="pagination controls">
-          <li class="page-item">
-            <a class="page-link first" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link prev" href="#" aria-label="Previous">
-              <span aria-hidden="true">&lt;</span>
-            </a>
-          </li>
-          <li class="page-item numbers d-flex">
-          
-          </li>    
-          <li class="page-item">
-            <a class="page-link next" href="#" aria-label="Next">
-              <span aria-hidden="true">&gt;</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link last" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-        
-      </div>
     </div>
-    
-    
-
-
   </section>
-  <script>
-    // Cria um array com 100 elementos, onde cada elemento é uma string no formato 'Item N',
-    // onde N é o índice mais 1.
-    const products = [
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      // Adicione mais produtos conforme necessário
-    ];
-    // Array.from({ length: 100 }).map((_, i) => `Item ${(i + 1)}`);
-
-    //=============================================================================
-    // Função utilitária para criação de elementos HTML
-    function createElement(tag, className, innerHTML) {
-      const element = document.createElement(tag);
-      if (className) element.classList.add(className);
-      if (innerHTML) element.innerHTML = innerHTML;
-      return element;
-    }
-
-    // Função utilitária para adicionar event listener a um elemento
-    function addEventListener(element, event, callback) {
-      element.addEventListener(event, callback);
-    }
-
-    // Função utilitária para obter um elemento do DOM por seletor
-    function getElement(selector) {
-      return document.querySelector(selector);
-    }
-
-    // Função utilitária para atualizar a lista de itens no DOM
-    function updateItemList() {
-      const listContainer = getElement('.list');
-      listContainer.innerHTML = '';
-
-      const page = state.page - 1;
-      const start = page * state.perPage;
-      const end = start + state.perPage;
-
-      const paginateItems = products.slice(start, end);
-      paginateItems.forEach(item => createProductCard(item, listContainer));
-    }
-
-    // Função utilitária para criar um item na lista no DOM
-    function createProductCard(product, container) {
-      const card = document.createElement("div");
-      card.className = "card border-0 col-4";
-      card.style.width = "15rem";
-      card.style.marginBottom = "20px";
-
-      const img = document.createElement("img");
-      img.src = product.image;
-      img.className = "card-img-top bg-body-tertiary";
-      img.alt = "...";
-
-      const cardBody = document.createElement("div");
-      cardBody.className = "card-body";
-
-      const title = document.createElement("h5");
-      title.className = "card-title";
-      title.textContent = product.title;
-
-      const details = document.createElement("div");
-      details.className = "d-flex flex-column justify-content-center";
-
-      const volume = document.createElement("p");
-      volume.className = "card-text mb-0";
-      volume.textContent = `Volume: ${product.volume}`;
-
-      const alcohol = document.createElement("p");
-      alcohol.className = "card-text";
-      alcohol.textContent = `Teor Alcoólico: ${product.alcoholPercentage}%`;
-
-      const addToCartBtn = document.createElement("a");
-      addToCartBtn.href = "#";
-      addToCartBtn.className = "btn btn-danger";
-      addToCartBtn.textContent = "Adicionar ao Carrinho";
-
-      details.appendChild(volume);
-      details.appendChild(alcohol);
-
-      cardBody.appendChild(title);
-      cardBody.appendChild(details);
-      cardBody.appendChild(addToCartBtn);
-
-      card.appendChild(img);
-      card.appendChild(cardBody);
-
-      container.appendChild(card);
-    }
-
-
-
-    // Objeto para controle de navegação
-    const navigation = {
-      next() {
-        state.page = Math.min(state.page + 1, state.totalPage);
-      },
-      prev() {
-        state.page = Math.max(state.page - 1, 1);
-      },
-      goTo(page) {
-        state.page = Math.max(1, Math.min(page, state.totalPage));
-      },
-    };
-
-    // Objeto para controle dos botões de navegação
-    const navigationButtons = {
-      element: getElement('.controls .numbers'),
-      createButton(number) {
-        const button = createElement('a', 'page-link', number);
-
-        // Adiciona a classe 'active' ao botão correspondente à página atual.
-        if (state.page == number) {
-          button.classList.add('active');
-        }
-
-        addEventListener(button, 'click', () => {
-          navigation.goTo(number);
-          update();
-        });
-        this.element.appendChild(button);
-        return button;
-      },
-
-      updateButtons() {
-        this.element.innerHTML = '';
-
-        const { maxLeft, maxRight } = this.calculateMaxVisible();
-        for (let page = maxLeft; page <= maxRight; page++) {
-          this.createButton(page);
-        }
-      },
-      calculateMaxVisible() {
-        const { maxVisibleButtons } = state;
-        let maxLeft = Math.max(1, state.page - Math.floor(maxVisibleButtons / 2));
-        let maxRight = Math.min(maxLeft + maxVisibleButtons - 1, state.totalPage);
-
-        if (maxRight - maxLeft + 1 < maxVisibleButtons) {
-          maxLeft = Math.max(1, maxRight - maxVisibleButtons + 1);
-        }
-
-        return { maxLeft, maxRight };
-      },
-    };
-
-    // Estado inicial da aplicação
-    const state = {
-      page: 1,
-      perPage: 9,
-      totalPage: Math.ceil(products.length / 9),
-      maxVisibleButtons: 3,
-    };
-
-    // Função para atualizar tanto a lista quanto os botões de navegação
-    function update() {
-      updateItemList();
-      navigationButtons.updateButtons();
-    }
-
-    // Função de inicialização
-    function init() {
-      update();
-
-      // Adiciona event listeners aos botões de navegação
-      addEventListener(getElement('.first'), 'click', () => {
-        navigation.goTo(1);
-        update();
-      });
-      addEventListener(getElement('.last'), 'click', () => {
-        navigation.goTo(state.totalPage);
-        update();
-      });
-      addEventListener(getElement('.next'), 'click', () => {
-        navigation.next();
-        update();
-      });
-      addEventListener(getElement('.prev'), 'click', () => {
-        navigation.prev();
-        update();
-      });
-    }
-
-    // Chama a função de inicialização
-    init();
-
-  </script>
-
-
 
 
   <!-- Botão Voltar ao Topo -->
@@ -552,5 +372,6 @@
     };
   </script>
   <script src="js/navbar.js"></script>
+  <script src="js/pagination.js"></script>
   <script src="js/script.js"></script>
 </body>
