@@ -106,7 +106,7 @@ function createProductCard(product, container) {
                     <p class="card-text mb-0">Volume: ${product.volume}</p>
                     <p class="card-text">Teor Alcoólico: ${product.alcoholPercentage}%</p>
                 </div>
-                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
+                <a href="#" class="btn btn-danger col-12">Adicionar ao Carrinho</a>
             </div>
         </div>
     `;
