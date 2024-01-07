@@ -31,25 +31,32 @@
     }
 
     /*quando o botão não está aberto*/
-    .accordion-button.collapsed{
+    .accordion-button.collapsed {
       background-color: white;
       color: black;
       border: none;
-     
+
     }
 
-    .pagination .page-link{
+    .pagination .page-link {
       color: #bb0b0b;
       cursor: pointer;
     }
-    .pagination .active{
-      color:  white;
+
+    .pagination .active {
+      color: white;
       background-color: #dc3545;
       border: #dc3545 1px solid;
       transform: scale(1.1);
     }
 
+    .list-group .btn{
+      color: black;
+    }
 
+    .list-group .btn:hover {
+      color: white;
+    }
   </style>
 </head>
 
@@ -325,7 +332,24 @@
             <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$80 - R$100</button>
           </div>
         </div>
+
+        <div class="list-group mt-4 ">
+          <h5
+            class="list-group-item bg-body-tertiary border border-5 border-danger border-end-0  border-bottom-0 border-top-0">
+            Busca por Volume
+          </h5>
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">700ml</button>
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">1L</button>
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">2L</button>
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">3L</button>
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">5L</button>
+          </div>
+        </div>
       </div>
+
+
+
       <!--Coluna 2-->
       <div class="col-md-8 col-xl-9">
         <!-- div que exibe a lista de produtos-->
