@@ -12,23 +12,30 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
   <style>
     .list-group-item-action:hover {
-      color: #ee5f4b;
+      color: #bb0b0b;
       transform: scale(1.1);
       background-color: white;
     }
 
-    .accordion-button {
-      box-shadow: none;
-      outline: none;
-      /* Remover a borda de seleção padrão ao clicar ou focar */
+    .accordion-button:not(:focus) {
+      color: black;
+      background-color: white;
+      /* Cor de fundo padrão */
     }
 
-    .accordion-button:focus,
-    .accordion-button:active,
-    .accordion-button:not(.collapsed):focus {
-      background-color: #f7babb;
+
+    .accordion-button:focus {
+      background-color: rgba(255, 0, 0, 0.1);
       box-shadow: none;
       /* Remover a sombra quando o botão está aberto e recebe foco */
+    }
+
+    /*quando o botão não está aberto*/
+    .accordion-button.collapsed{
+      background-color: white;
+      color: black;
+      border: none;
+     
     }
   </style>
 </head>
@@ -263,8 +270,8 @@
           <h5
             class="list-group-item bg-body-tertiary border border-5 border-danger border-end-0  border-bottom-0 border-top-0">
             Categorias</h5>
-          <div class="accordion accordion-flush list-group-item p-0 border-0" id="accordionFlushExample">
-            <div class="accordion-item ">
+          <div class="accordion  list-group-item p-0 border-0" id="accordionFlushExample">
+            <div class="accordion-item border-0">
               <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed px-3 py-2" type="button" data-bs-toggle="collapse"
                   data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -293,15 +300,16 @@
           <a href="#" class="list-group-item list-group-item-action border-0">Queijos</a>
         </div>
         <!--Preço-->
-        <div class="list-group mt-4">
+        <div class="list-group mt-4 ">
           <h5
             class="list-group-item bg-body-tertiary border border-5 border-danger border-end-0  border-bottom-0 border-top-0">
             Busca por Preços
           </h5>
-          <div class="row">
-            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-5">R$0 - R$25</button>
-            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-5">R$25 - R$50</button>
-            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-5">R$50 - R$100</button>
+          <div class="row px-3">
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$0 - R$20</button>
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$20 - R$40</button>
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$40 - R$80</button>
+            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$80 - R$100</button>
           </div>
         </div>
       </div>
