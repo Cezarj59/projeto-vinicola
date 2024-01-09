@@ -3,18 +3,18 @@
 // onde N é o índice mais 1.
 const products = [
     { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
 
     { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
@@ -22,10 +22,10 @@ const products = [
     { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
 
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
     { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
@@ -61,6 +61,15 @@ const products = [
 // Array.from({ length: 100 }).map((_, i) => `Item ${(i + 1)}`);
 
 //=============================================================================
+// Estado inicial da aplicação
+const state = {
+    page: 1,
+    quantidadePorPagina: 9,
+    totalPage: Math.ceil(products.length / 9),
+    maxVisibleButtons: 3,
+};
+
+
 // Função utilitária para criação de elementos HTML
 function createElement(tag, className, innerHTML) {
     const element = document.createElement(tag);
@@ -70,7 +79,7 @@ function createElement(tag, className, innerHTML) {
 }
 
 // Função utilitária para adicionar event listener a um elemento
-function addEventListener(element, event, callback) {
+function adicionaEventListener(element, event, callback) {
     element.addEventListener(event, callback);
 }
 
@@ -84,9 +93,9 @@ function updateItemList() {
     const listContainer = getElement('.list');
     listContainer.innerHTML = '';
 
-    const page = state.page - 1;
-    const start = page * state.perPage;
-    const end = start + state.perPage;
+    const page = state.page - 1; 
+    const start = page * state.quantidadePorPagina;  
+    const end = start + state.quantidadePorPagina; 
 
     const paginateItems = products.slice(start, end);
     paginateItems.forEach(item => createProductCard(item, listContainer));
@@ -143,10 +152,13 @@ const navigationButtons = {
             button.classList.add('active');
         }
 
-        addEventListener(button, 'click', () => {
+        adicionaEventListener(button, 'click', () => {
             navigation.goTo(number);
             update();
         });
+
+        console.log(this.element);
+
         this.element.appendChild(button);
         return button;
     },
@@ -172,13 +184,6 @@ const navigationButtons = {
     },
 };
 
-// Estado inicial da aplicação
-const state = {
-    page: 1,
-    perPage: 9,
-    totalPage: Math.ceil(products.length / 9),
-    maxVisibleButtons: 3,
-};
 
 // Função para atualizar tanto a lista quanto os botões de navegação
 function update() {
@@ -191,19 +196,19 @@ function init() {
     update();
 
     // Adiciona event listeners aos botões de navegação
-    addEventListener(getElement('.first'), 'click', () => {
+    adicionaEventListener(getElement('.first'), 'click', () => {
         navigation.goTo(1);
         update();
     });
-    addEventListener(getElement('.last'), 'click', () => {
+    adicionaEventListener(getElement('.last'), 'click', () => {
         navigation.goTo(state.totalPage);
         update();
     });
-    addEventListener(getElement('.next'), 'click', () => {
+    adicionaEventListener(getElement('.next'), 'click', () => {
         navigation.next();
         update();
     });
-    addEventListener(getElement('.prev'), 'click', () => {
+    adicionaEventListener(getElement('.prev'), 'click', () => {
         navigation.prev();
         update();
     });
