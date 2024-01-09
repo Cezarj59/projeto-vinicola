@@ -384,9 +384,9 @@ small {
 
 .fundo-secundario-paginas {
   position: relative;
-  background-image: url(../img/fundo/fundo-secundario-paginas.png);
+  background-image: url(../img/fundo/fundo-secundario-paginas.jpg);
   background-size: cover;
-  background-position: center top;
+  background-position: center 30%;
   width: 99.9%;
   height: 25vh;
   background-repeat: no-repeat;
@@ -419,16 +419,81 @@ small {
 
 
 
+/*------------------- Pagina Loja ---------------------------*/
+
+
+.fundo-loja{
+  position: relative;
+  background-image: url(../img/fundo/fundo-loja.jpeg);
+  background-size: cover;
+  background-position: center 30%;
+  width: 99.9%;
+  height: 25vh;
+  background-repeat: no-repeat;
+}
+
+.fundo-loja::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 1;
+  /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
+}
 
 
 
 
 
+.list-group-item-action:hover {
+  color: #bb0b0b;
+  transform: scale(1.1);
+  background-color: white;
+}
+
+.accordion-button:not(:focus) {
+  color: black;
+  background-color: white;
+  /* Cor de fundo padrão */
+}
 
 
+.accordion-button:focus {
+  background-color: rgba(255, 0, 0, 0.1);
+  box-shadow: none;
+  /* Remover a sombra quando o botão está aberto e recebe foco */
+}
 
+/*quando o botão não está aberto*/
+.accordion-button.collapsed {
+  background-color: white;
+  color: black;
+  border: none;
 
+}
 
+.pagination .page-link {
+  color: #bb0b0b;
+  cursor: pointer;
+}
+
+.pagination .active {
+  color: white;
+  background-color: #dc3545;
+  border: #dc3545 1px solid;
+  transform: scale(1.1);
+}
+
+.list-group .btn {
+  color: black;
+}
+
+.list-group .btn:hover {
+  color: white;
+}
 
 
 
