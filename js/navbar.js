@@ -1,12 +1,14 @@
 
 // Variáveis Html
 const home = document.getElementById("home-section");
+const loja = document.getElementById("loja-section");
 const galeria = document.getElementById("galeria-section");
 const contato = document.getElementById("contato-section");
 const revenda = document.getElementById("revenda-section");
 
 // Configuração inicial
 home.style.display = "block";
+loja.style.display = "none";
 galeria.style.display = "none";
 contato.style.display = "none";
 revenda.style.display = "none";
@@ -17,24 +19,36 @@ function alternaPaginas(x) {
   switch (x) {
     case 0:
       home.style.display = "block";
+      loja.style.display = "none";
+      galeria.style.display = "none";
+      contato.style.display = "none";
+      revenda.style.display = "none";
+      break;
+
+    case 1:
+      home.style.display = "none";
+      loja.style.display = "block";
       galeria.style.display = "none";
       contato.style.display = "none";
       revenda.style.display = "none";
       break;
     case 5:
       home.style.display = "none";
+      loja.style.display = "none";
       galeria.style.display = "block";
       contato.style.display = "none";
       revenda.style.display = "none";
       break;
     case 8:
       home.style.display = "none";
+      loja.style.display = "none";
       galeria.style.display = "none";
       contato.style.display = "block";
       revenda.style.display = "none";
       break;
     case 9:
       home.style.display = "none";
+      loja.style.display = "none";
       galeria.style.display = "none";
       contato.style.display = "none";
       revenda.style.display = "block";
