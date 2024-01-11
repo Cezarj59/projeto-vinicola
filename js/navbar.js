@@ -18,6 +18,7 @@ function alternaPaginas(x) {
 
   switch (x) {
     case 0:
+      document.title =  "Home";
       home.style.display = "block";
       loja.style.display = "none";
       galeria.style.display = "none";
@@ -26,6 +27,7 @@ function alternaPaginas(x) {
       break;
 
     case 1:
+      document.title =  "Loja";
       home.style.display = "none";
       loja.style.display = "block";
       galeria.style.display = "none";
@@ -33,6 +35,7 @@ function alternaPaginas(x) {
       revenda.style.display = "none";
       break;
     case 5:
+      document.title =  "Galeria";
       home.style.display = "none";
       loja.style.display = "none";
       galeria.style.display = "block";
@@ -40,6 +43,7 @@ function alternaPaginas(x) {
       revenda.style.display = "none";
       break;
     case 8:
+      document.title =  "Contato";
       home.style.display = "none";
       loja.style.display = "none";
       galeria.style.display = "none";
@@ -47,6 +51,7 @@ function alternaPaginas(x) {
       revenda.style.display = "none";
       break;
     case 9:
+      document.title =  "Revenda";
       home.style.display = "none";
       loja.style.display = "none";
       galeria.style.display = "none";
