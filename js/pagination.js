@@ -1,63 +1,67 @@
 //----------------Pagination-------------------------
 // Cria um array com 100 elementos, onde cada elemento é uma string no formato 'Item N',
 // onde N é o índice mais 1.
+
 const products = [
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+    { id: 1, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 2, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 3, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 4, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 5, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 6, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 7, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 8, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 9, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 10, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
 
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
+    { id: 11, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 12, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 13, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 14, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 15, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 16, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 17, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 18, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 19, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 20, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
 
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+    { id: 21, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 22, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 23, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 24, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 25, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 26, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 27, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 28, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 29, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 30, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
 
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
+    { id: 31, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 32, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 33, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 34, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 35, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 36, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 37, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 38, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 39, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 40, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
 
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-    { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
+    { id: 41, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 42, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 43, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 44, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 45, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 46, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 47, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 48, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 49, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 50, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
     // Adicione mais produtos conforme necessário
 ];
+
+
+
 // Array.from({ length: 100 }).map((_, i) => `Item ${(i + 1)}`);
 
 //=============================================================================
@@ -93,9 +97,9 @@ function updateItemList() {
     const listContainer = getElement('.list');
     listContainer.innerHTML = '';
 
-    const page = state.page - 1; 
-    const start = page * state.quantidadePorPagina;  
-    const end = start + state.quantidadePorPagina; 
+    const page = state.page - 1;
+    const start = page * state.quantidadePorPagina;
+    const end = start + state.quantidadePorPagina;
 
     const paginateItems = products.slice(start, end);
     paginateItems.forEach(item => createProductCard(item, listContainer));
@@ -112,10 +116,12 @@ function createProductCard(product, container) {
             <div class="card-body">
                 <h5 class="card-title">${product.title}</h5>
                 <div class="d-flex flex-column justify-content-center">
+
+                    <p class="card-text fs-5">R$${product.preco}</p>
                     <p class="card-text mb-0">Volume: ${product.volume}</p>
                     <p class="card-text">Teor Alcoólico: ${product.alcoholPercentage}%</p>
                 </div>
-                <a href="#" class="btn btn-danger col-12">Adicionar ao Carrinho</a>
+                <a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco}, )">Adicionar ao Carrinho</a>
             </div>
         </div>
     `;
@@ -125,6 +131,36 @@ function createProductCard(product, container) {
     tempDiv.innerHTML = card;
     container.appendChild(tempDiv.firstElementChild);
 }
+
+const carrinho = [];
+function adicionarAoCarrinho(id, image, title, preco) {
+    const newItem = { id, image, title, preco };
+    carrinho.push(newItem);
+
+    alert(`Produto ${title} adicionado ao carrinho!`);
+    console.log('Itens no carrinho:', carrinho);
+
+    // Atualiza o total do carrinho
+    updateTotal();
+}
+
+
+function updateTotal() {
+    const cartProducts = document.getElementsByClassName("cart-product");
+    let totalAmount = 0;
+
+    for (let i = 0; i < cartProducts.length; i++) {
+        const productPrice = parseFloat(cartProducts[i].getElementsByClassName("cart-product-price")[0].innerText.replace("R$", "").replace(",", "."));
+        const productQuantity = parseFloat(cartProducts[i].getElementsByClassName("product-qtd-input")[0].value);
+
+        totalAmount += productPrice * productQuantity;
+    }
+
+    totalAmount = totalAmount.toFixed(2);
+    totalAmount = totalAmount.replace(".", ",");
+    document.querySelector(".cart-total-container span").innerText = "R$" + totalAmount;
+}
+
 
 
 

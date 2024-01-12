@@ -10,9 +10,7 @@
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
-  <style>
-
-  </style>
+ <script async src="js/loja.js"></script>
 </head>
 
 <body>
@@ -236,218 +234,59 @@
 
 
 
-  <section id="section-loja" class="container">
-    <div class="row">
-      <div class="col-3">
-        <div class="card" style="width: 18rem;">
-          <div class="card-header">
-            <h5 class="card-title">Categoria</h5>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
-          </ul>
-        </div>
-      </div>
+  <section id="section-carinho" class="container normal-section">
+    <h2 class="section-title">Carrinho</h2>
 
-      <div class="col-9 d-flex flex-wrap justify-content-between">
-        <div id="product-container" class="row"></div>
-      </div>
-    </div>
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th class="table-head-item first-col">Item</th>
+          <th class="table-head-item second-col">Preço</th>
+          <th class="table-head-item third-col">Quantidade</th>
+        </tr>
+      </thead>
 
-    <div aria-label="Page navigation example" class="d-flex justify-content-center">
-      <div aria-label="Page navigation">
-        <ul id="pagination" class="pagination">
-          <!-- Os números da página serão adicionados dinamicamente aqui -->
-        </ul>
-      </div>
-    </div>
+      <tbody>
+        <tr class="cart-product">
+          <td class="product-identification">
+            <img src="img/mais-vendidos/rose-suave.png" width="150px" alt="Miniatura" class="cart-product-image">
+            <strong class="cart-product-title">Miniatura</strong>
+          </td>
+          <td>
+            <span class="cart-product-price">R$69,90</span>
+          </td>
+          <td>
+            <input type="number" value="2" min="0" class="product-qtd-input">
+            <button type="button" class="remove-product-button">Remover</button>
+          </td>
+        </tr>
+        <tr class="cart-product">
+          <td class="product-identification">
+            <img src="img/mais-vendidos/branco-seco.png" width="150px" alt="Poster 3" class="cart-product-image">
+            <strong class="cart-product-title">Poster 3</strong>
+          </td>
+          <td>
+            <span class="cart-product-price">R$19,99</span>
+          </td>
+          <td>
+            <input type="number" value="1" min="0" class="product-qtd-input">
+            <button type="button" class="remove-product-button">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="3" class="cart-total-container">
+            <strong>Total</strong>
+            <span>R$89,89</span>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <button type="button" class="purchase-button">Finalizar Compra</button>
   </section>
-  <script>
-    // Dados de exemplo para os produtos
-    const products = [
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11 },
-      { image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11 },
-      // Adicione mais produtos conforme necessário
-    ];
-
-    const productsPerPage = 9;
-    let currentPage = 0;
-
-    function showProducts(page) {
-      const startIndex = page * productsPerPage;
-      const endIndex = startIndex + productsPerPage;
-
-      const productContainer = document.getElementById("product-container");
-      productContainer.innerHTML = "";
-
-      for (let i = startIndex; i < endIndex && i < products.length; i++) {
-        const productDiv = createProductCard(products[i]);
-        productContainer.appendChild(productDiv);
-      }
-    }
-
-    function createProductCard(product) {
-      const card = document.createElement("div");
-      card.className = "card border-0 col-4";
-      card.style = "width: 15rem; margin-bottom: 20px;";
-
-      const img = document.createElement("img");
-      img.src = product.image;
-      img.className = "card-img-top bg-body-tertiary";
-      img.alt = "...";
-
-      const cardBody = document.createElement("div");
-      cardBody.className = "card-body";
-
-      const title = document.createElement("h5");
-      title.className = "card-title";
-      title.textContent = product.title;
-
-      const details = document.createElement("div");
-      details.className = "d-flex flex-column justify-content-center";
-
-      const volume = document.createElement("p");
-      volume.className = "card-text mb-0";
-      volume.textContent = `Volume: ${product.volume}`;
-
-      const alcohol = document.createElement("p");
-      alcohol.className = "card-text";
-      alcohol.textContent = `Teor Alcoólico: ${product.alcoholPercentage}%`;
-
-      const addToCartBtn = document.createElement("a");
-      addToCartBtn.href = "#";
-      addToCartBtn.className = "btn btn-danger";
-      addToCartBtn.textContent = "Adicionar ao Carrinho";
-
-      details.appendChild(volume);
-      details.appendChild(alcohol);
-
-      cardBody.appendChild(title);
-      cardBody.appendChild(details);
-      cardBody.appendChild(addToCartBtn);
-
-      card.appendChild(img);
-      card.appendChild(cardBody);
-
-      return card;
-    }
-
-
-    function changePage(page) {
-      currentPage = page;
-      showProducts(currentPage);
-      generatePagination();
-    }
-
-
-    function generatePagination() {
-      const totalPages = Math.ceil(products.length / productsPerPage);
-      const paginationContainer = document.getElementById("pagination");
-      paginationContainer.innerHTML = "";
-
-      const prevLi = document.createElement("li");
-      prevLi.className = "page-item";
-      const prevA = document.createElement("a");
-      prevA.className = "page-link";
-      prevA.href = "#";
-      prevA.textContent = "Previous";
-      prevLi.appendChild(prevA);
-      paginationContainer.appendChild(prevLi);
-
-      const maxPageButtons = 3; // Defina o número máximo de botões da página
-      const startPage = Math.max(1, currentPage - Math.floor(maxPageButtons / 2));
-      const endPage = Math.min(totalPages, startPage + maxPageButtons - 1);
-
-      for (let i = startPage; i <= endPage; i++) {
-        const li = document.createElement("li");
-        li.className = "page-item";
-        const a = document.createElement("a");
-        a.className = "page-link";
-        a.href = "#";
-        a.textContent = i;
-        li.appendChild(a);
-
-        // Adiciona um ouvinte de evento para mudar a página quando clicar
-        a.addEventListener("click", function () {
-          changePage(i - 1);
-        });
-
-        paginationContainer.appendChild(li);
-      }
-
-      const nextLi = document.createElement("li");
-      nextLi.className = "page-item";
-      const nextA = document.createElement("a");
-      nextA.className = "page-link";
-      nextA.href = "#";
-      nextA.textContent = "Next";
-      nextLi.appendChild(nextA);
-      paginationContainer.appendChild(nextLi);
-
-      // Adiciona um ouvinte de evento para o botão "Previous"
-      prevA.addEventListener("click", function () {
-        if (currentPage > 0) {
-          changePage(currentPage - 1);
-        }
-      });
-
-      // Adiciona um ouvinte de evento para o botão "Next"
-      nextA.addEventListener("click", function () {
-        if (currentPage < totalPages - 1) {
-          changePage(currentPage + 1);
-        }
-      });
-    }
 
 
 
@@ -457,13 +296,36 @@
 
 
 
-    // Mostrar os produtos e a paginação na inicialização
-    document.addEventListener("DOMContentLoaded", function () {
-      showProducts(currentPage);
-      generatePagination();
-    });
 
-  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -491,6 +353,5 @@
       }
     };
   </script>
-  <script src="js/navbar.js"></script>
   <script src="js/script.js"></script>
 </body>
