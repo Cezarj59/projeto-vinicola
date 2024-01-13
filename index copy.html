@@ -46,7 +46,8 @@
                         <!-- Adicione aqui os itens do menu -->
                         <ul class="navbar-nav ">
                             <li class="nav-item">
-                                <a class="nav-link add-active" aria-current="page" href="#home" data-toggle="tooltip" data-placement="bottom" title="Ir para a seção Home"  data-bs-dismiss="offcanvas"
+                                <a class="nav-link add-active" aria-current="page" href="#home" data-toggle="tooltip"
+                                    data-placement="bottom" title="Ir para a seção Home" data-bs-dismiss="offcanvas"
                                     onclick="alternaPaginas(0),active(0)">Home</a>
                             </li>
                             <li class="nav-item">
@@ -137,8 +138,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item add-active" href="#sobre-nos" data-bs-dismiss="offcanvas"
-                                            onclick="alternaPaginas(7),active(5)">Sobre Nós</a>
+                                        <a class="dropdown-item add-active" href="#sobre-nos"
+                                            data-bs-dismiss="offcanvas" onclick="alternaPaginas(7),active(5)">Sobre
+                                            Nós</a>
                                     </li>
                                     <li>
                                         <a class="dropdown-item add-active" href="#contato" data-bs-dismiss="offcanvas"
@@ -156,10 +158,10 @@
             </div>
         </nav>
         <script>
-             $(document).ready(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
-          </script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
 
         <!-- Offcanvas 2 Mais Vendidos (inicialmente oculto) -->
         <section>
@@ -541,59 +543,20 @@
         </section>
 
 
-  <section id="section-carinho" class="container normal-section">
-    <h2 class="section-title">Carrinho</h2>
+        <section id="section-carinho" class="container normal-section">
+            <!-- Adicione esta seção na sua página para exibir o carrinho -->
+            <div id="carrinho" class="col-4">
+                <h2>Carrinho de Compras</h2>
+                <ul id="lista-carrinho" class="list-group">
+                    <!-- Aqui serão exibidos os itens do carrinho -->
+                </ul>
+                <p>Total: R$<span id="total-carrinho">0.00</span></p>
+            </div>
 
-    <table class="cart-table">
-      <thead>
-        <tr>
-          <th class="table-head-item first-col">Item</th>
-          <th class="table-head-item second-col">Preço</th>
-          <th class="table-head-item third-col">Quantidade</th>
-        </tr>
-      </thead>
+        </section>
 
-      <tbody>
-        <tr class="cart-product">
-          <td class="product-identification">
-            <img src="img/mais-vendidos/rose-suave.png" width="150px" alt="Miniatura" class="cart-product-image">
-            <strong class="cart-product-title">Miniatura</strong>
-          </td>
-          <td>
-            <span class="cart-product-price">R$69,90</span>
-          </td>
-          <td>
-            <input type="number" value="2" min="0" class="product-qtd-input">
-            <button type="button" class="remove-product-button">Remover</button>
-          </td>
-        </tr>
-        <tr class="cart-product">
-          <td class="product-identification">
-            <img src="img/mais-vendidos/branco-seco.png" width="150px" alt="Poster 3" class="cart-product-image">
-            <strong class="cart-product-title">Poster 3</strong>
-          </td>
-          <td>
-            <span class="cart-product-price">R$19,99</span>
-          </td>
-          <td>
-            <input type="number" value="1" min="0" class="product-qtd-input">
-            <button type="button" class="remove-product-button">Remover</button>
-          </td>
-        </tr>
-      </tbody>
 
-      <tfoot>
-        <tr>
-          <td colspan="3" class="cart-total-container">
-            <strong>Total</strong>
-            <span>R$89,89</span>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
 
-    <button type="button" class="purchase-button">Finalizar Compra</button>
-  </section>
 
 
     </section>
@@ -976,7 +939,7 @@
             src="./img/up-arrow.png" alt="Voltar ao topo" width="20px"></button>
 
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
