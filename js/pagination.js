@@ -121,7 +121,7 @@ function createProductCard(product, container) {
                     <p class="card-text mb-0">Volume: ${product.volume}</p>
                     <p class="card-text">Teor Alcoólico: ${product.alcoholPercentage}%</p>
                 </div>
-                <a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco}, )">Adicionar ao Carrinho</a>
+                <a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho</a>
             </div>
         </div>
     `;
@@ -132,17 +132,7 @@ function createProductCard(product, container) {
     container.appendChild(tempDiv.firstElementChild);
 }
 
-const carrinho = [];
-function adicionarAoCarrinho(id, image, title, preco) {
-    const newItem = { id, image, title, preco };
-    carrinho.push(newItem);
 
-    alert(`Produto ${title} adicionado ao carrinho!`);
-    console.log('Itens no carrinho:', carrinho);
-
-    // Atualiza o total do carrinho
-    updateTotal();
-}
 
 
 function updateTotal() {
@@ -252,3 +242,54 @@ function init() {
 
 // Chama a função de inicialização
 init();
+
+
+
+const carrinho = [];
+let totalCarrinho = 0;
+
+
+// Adicione a função adicionarAoCarrinho
+function adicionarAoCarrinho(id, image, title, preco) {
+    const itemCarrinho = {
+        id: id,
+        image: image,
+        title: title,
+        preco: preco
+    };
+
+    carrinho.push(itemCarrinho);
+    totalCarrinho += preco;
+
+    atualizarCarrinho();
+}
+
+// Adicione a função removerDoCarrinho
+function removerDoCarrinho(index) {
+    const itemRemovido = carrinho.splice(index, 1)[0];
+    totalCarrinho -= itemRemovido.preco;
+
+    atualizarCarrinho();
+}
+
+// Adicione a função atualizarCarrinho para atualizar a exibição do carrinho
+function atualizarCarrinho() {
+    const listaCarrinho = document.getElementById('lista-carrinho');
+    const totalCarrinhoElement = document.getElementById('total-carrinho');
+
+    // Limpa a lista antes de adicionar os itens atualizados
+    listaCarrinho.innerHTML = '';
+
+    carrinho.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+        listItem.innerHTML = `
+            <img src="${item.image}" class="img-thumbnail" alt="${item.title}" style="width: 50px;">
+            ${item.title} - R$${item.preco.toFixed(2)}
+            <button class="btn btn-danger btn-sm" onclick="removerDoCarrinho(${index})">Remover</button>
+        `;
+        listaCarrinho.appendChild(listItem);
+    });
+
+    totalCarrinhoElement.textContent = totalCarrinho.toFixed(2);
+}
