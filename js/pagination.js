@@ -249,47 +249,71 @@ const carrinho = [];
 let totalCarrinho = 0;
 
 
-// Adicione a função adicionarAoCarrinho
 function adicionarAoCarrinho(id, image, title, preco) {
-    const itemCarrinho = {
-        id: id,
-        image: image,
-        title: title,
-        preco: preco
-    };
+    const itemExistente = carrinho.find(item => item.id === id);
 
-    carrinho.push(itemCarrinho);
+    if (itemExistente) {
+        // Se o produto já está no carrinho, apenas atualize a quantidade
+        itemExistente.quantidade += 1;
+    } else {
+        // Se o produto ainda não está no carrinho, adicione-o com quantidade 1
+        const novoItemCarrinho = {
+            id: id,
+            image: image,
+            title: title,
+            preco: preco,
+            quantidade: 1
+        };
+
+        carrinho.push(novoItemCarrinho);
+    }
+
     totalCarrinho += preco;
 
     atualizarCarrinho();
 }
 
-// Adicione a função removerDoCarrinho
 function removerDoCarrinho(index) {
     const itemRemovido = carrinho.splice(index, 1)[0];
-    totalCarrinho -= itemRemovido.preco;
+    totalCarrinho -= itemRemovido.preco * itemRemovido.quantidade;
 
     atualizarCarrinho();
 }
+function atualizarQuantidade(index, novaQuantidade) {
+    const item = carrinho[index];
 
-// Adicione a função atualizarCarrinho para atualizar a exibição do carrinho
+    // Atualizar a quantidade do item
+    item.quantidade = parseInt(novaQuantidade, 10);
+
+    // Atualizar o total do carrinho
+    totalCarrinho = carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+
+    // Atualizar a exibição do carrinho
+    atualizarCarrinho();
+}
+
 function atualizarCarrinho() {
-    const listaCarrinho = document.getElementById('lista-carrinho');
-    const totalCarrinhoElement = document.getElementById('total-carrinho');
+    const listaCarrinhoSection = document.getElementById('lista-carrinho-section');
+    const totalCarrinhoSectionElement = document.getElementById('total-carrinho-section');
 
-    // Limpa a lista antes de adicionar os itens atualizados
-    listaCarrinho.innerHTML = '';
+    listaCarrinhoSection.innerHTML = '';
 
     carrinho.forEach((item, index) => {
         const listItem = document.createElement('li');
         listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
-        listItem.innerHTML = `
-            <img src="${item.image}" class="img-thumbnail" alt="${item.title}" style="width: 50px;">
-            ${item.title} - R$${item.preco.toFixed(2)}
-            <button class="btn btn-danger btn-sm" onclick="removerDoCarrinho(${index})">Remover</button>
+
+        const itemHTML = `
+            <img src="${item.image}" class="img-thumbnail" alt="${item.title}" style="width: 70px;">
+            <div>
+            ${item.title} - R$${item.preco.toFixed(2)} x 
+            <input style="width: 50px;" type="number" min="1" value="${item.quantidade}" onchange="atualizarQuantidade(${index}, this.value)">
+            </div>
+            <button class="btn btn-outline-primary btn-sm" onclick="removerDoCarrinho(${index})">Excluir</button>
         `;
-        listaCarrinho.appendChild(listItem);
+
+        listItem.innerHTML = itemHTML;
+        listaCarrinhoSection.appendChild(listItem);
     });
 
-    totalCarrinhoElement.textContent = totalCarrinho.toFixed(2);
+    totalCarrinhoSectionElement.textContent = totalCarrinho.toFixed(2);
 }
