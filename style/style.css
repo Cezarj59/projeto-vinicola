@@ -494,8 +494,11 @@ small {
 .list-group .btn:hover {
   color: white;
 }
-
-
+/*------------------- Carrinho de compras---------------------------*/
+.btn-carrinho a{
+  color: blue;
+  text-decoration-line: none;
+}
 
 
 
