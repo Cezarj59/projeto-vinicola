@@ -302,13 +302,39 @@ function atualizarCarrinho() {
         const listItem = document.createElement('li');
         listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
 
-        const itemHTML = `
-            <img src="${item.image}" class="img-thumbnail" alt="${item.title}" style="width: 70px;">
-            <div>
-            ${item.title} - R$${item.preco.toFixed(2)} x 
-            <input style="width: 50px;" type="number" min="1" value="${item.quantidade}" onchange="atualizarQuantidade(${index}, this.value)">
-            </div>
-            <button class="btn btn-outline-primary btn-sm" onclick="removerDoCarrinho(${index})">Excluir</button>
+        const itemHTML = `  
+                    <section class="row col-12 mx-auto pb-1">
+                    <article class="col-12 col-lg-6 d-flex">
+                        <img src="${item.image}" class="img-thumbnail" alt="${item.title}" style="width: 70px;">
+                        <div>
+                            <span class="p-1"> ${item.title}</span>
+                            <div class="btn-carrinho">
+                                <span>
+                                    <a href="javascript:void(0);" class="p-1"
+                                    onclick="removerDoCarrinho(${index})">Excluir</a>
+                                </span>
+                                <span>
+                                    <a href="javascript:void(0);" class="p-1">Salvar</a>
+                                </span>
+                                <span>
+                                    <a href="javascript:void(0);" class="p-1">Comprar</a>
+                                </span>
+                            </div>
+                        
+                        </div>
+                    </article>
+                    <div class="col-12 col-lg-6 d-flex justify-content-between justify-content-lg-end">
+                        <div class="me-4">
+                            <span>Quantidade:</span>
+                            <input style="width: 50px;" type="number" min="1" value="${item.quantidade}"
+                                onchange="atualizarQuantidade(${index}, this.value)">
+                        </div>
+                        <div>
+                            <span>R$${item.preco.toFixed(2)}</span>
+                        </div>
+                    </div>
+                    </section>
+
         `;
 
         listItem.innerHTML = itemHTML;
