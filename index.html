@@ -62,64 +62,9 @@
                                         Vendidos</a>
 
                                     <ul class="dropdown-menu dropdown-position">
-                                        <div
-                                            class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly dropdown-ajuste scrollable-dropdown">
-                                            <li>
-                                                <div class="card border-0" style="width: 18rem;">
-                                                    <img src="img/mais-vendidos/tinto-suave.png"
-                                                        class="card-img-top  bg-body-tertiary" alt="...">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Vinho Tinto de Mesa Suave </h5>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="card-text mb-0">Volume: 750ml</p>
-                                                            <p class="card-text ">Teor Alcoólico: 11%</p>
-                                                            <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="card border-0" style="width: 18rem;">
-                                                    <img src="img/mais-vendidos/tinto-seco.png"
-                                                        class="card-img-top bg-body-tertiary" alt="...">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Vinho Tinto de Mesa Seco</h5>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="card-text mb-0">Volume: 750ml</p>
-                                                            <p class="card-text ">Teor Alcoólico: 11%</p>
-                                                            <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="card border-0" style="width: 18rem;">
-                                                    <img src="img/mais-vendidos/branco-seco.png"
-                                                        class="card-img-top bg-body-tertiary" alt="...">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Vinho Branco de Mesa Seco</h5>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="card-text mb-0">Volume: 750ml</p>
-                                                            <p class="card-text ">Teor Alcoólico: 11%</p>
-                                                            <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="card border-0" style="width: 18rem;">
-                                                    <img src="img/mais-vendidos/rose-suave.png"
-                                                        class="card-img-top bg-body-tertiary" alt="...">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Vinho Rosé de Mesa Suave</h5>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <p class="card-text mb-0">Volume: 750ml</p>
-                                                            <p class="card-text ">Teor Alcoólico: 11%</p>
-                                                            <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                        <div class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly dropdown-ajuste scrollable-dropdown" id="produtos-container">
+                                            <!-- Aqui serão adicionados os produtos dinamicamente -->
+                                            
                                         </div>
                                     </ul>
                                 </li>
@@ -549,13 +494,13 @@
     </section>
 
     <!--###################################### CARRINHO ###################################### -->
-    <section id="carrinho-section" class="container normal-section">
+    <section id="carrinho-section" class="container-fluid container-lg px-1 normal-section">
         <div>
-            <h2 class="text-center">Carrinho de Compras</h2>
+            <h2 class="text-center m-4">Carrinho de Compras</h2>
             <ul id="lista-carrinho-section" class="list-group col-12">
                 <!-- Aqui serão exibidos os itens do carrinho na seção separada -->
             </ul>
-            <p class="text-end px-4">Total: R$<span id="total-carrinho-section">0.00</span></p>
+            <p class="text-end px-3 fs-5">Total: R$<span id="total-carrinho-section">0.00</span></p>
         </div>
     </section>
 
