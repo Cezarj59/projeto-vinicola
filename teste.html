@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
   <script async src="js/pagination.js"></script>
+  <style>
+    .btn-carrinho a{
+      color: blue;
+      text-decoration-line: none;
+    }
+  
+  </style>
 </head>
 
 <body>
@@ -150,8 +157,7 @@
 
             <div>
               <!-- Adicione este botão em um local conveniente em seu HTML -->
-              <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#carrinhoOffcanvas"
-                aria-controls="carrinhoOffcanvas">
+              <button class="btn" type="button"  onclick="alternaPaginas(2)">
                 <img src="img/icon/carrinho-icon.png" width="20px" alt="">
               </button>
             </div>
@@ -383,29 +389,7 @@
     </section>
 
 
-    <section id="section-carinho" class="container normal-section">
-      <div id="carrinhoSection">
-        <h2>Carrinho de Compras</h2>
-        <ul id="lista-carrinho-section" class="list-group">
-          <!-- Aqui serão exibidos os itens do carrinho na seção separada -->
-        </ul>
-        <p>Total: R$<span id="total-carrinho-section">0.00</span></p>
-      </div>
-
-    </section>
-
-
-
-
-
   </section>
-
-
-
-
-
-
-
 
 
 
