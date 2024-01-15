@@ -300,14 +300,14 @@ function atualizarCarrinho() {
 
     carrinho.forEach((item, index) => {
         const listItem = document.createElement('li');
-        listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+        listItem.className = 'list-group-item d-flex justify-content-between align-items-center px-0';
 
         const itemHTML = `  
                     <section class="row col-12 mx-auto pb-1">
                     <article class="col-12 col-lg-6 d-flex">
-                        <img src="${item.image}" class="img-thumbnail" alt="${item.title}" style="width: 70px;">
+                        <img src="${item.image}" class="img-thumbnail" alt="${item.title}" style="width: 100px;">
                         <div>
-                            <span class="p-1"> ${item.title}</span>
+                            <span class="p-1 fs-5">${item.title}</span>
                             <div class="btn-carrinho">
                                 <span>
                                     <a href="javascript:void(0);" class="p-1"
@@ -323,7 +323,7 @@ function atualizarCarrinho() {
                         
                         </div>
                     </article>
-                    <div class="col-12 col-lg-6 d-flex justify-content-between justify-content-lg-end">
+                    <div class="col-12 col-lg-6 d-flex justify-content-between justify-content-lg-end  mt-3 mt-lg-0">
                         <div class="me-4">
                             <span>Quantidade:</span>
                             <input style="width: 50px;" type="number" min="1" value="${item.quantidade}"
@@ -343,3 +343,37 @@ function atualizarCarrinho() {
 
     totalCarrinhoSectionElement.textContent = totalCarrinho.toFixed(2);
 }
+
+/*Adicona os 4 primeiros produtos do array ao dropdown Mais Vendidos da navabar*/
+function adicionarProdutosAoHTML() {
+    const container = document.getElementById('produtos-container');
+
+    // Pega os 4 primeiros produtos
+    const produtosParaExibir = products.slice(0, 4);
+
+    // Itera sobre os produtos e cria elementos HTML para cada um
+    produtosParaExibir.forEach(product => {
+        const card = `
+                <li>
+                    <div class="card border-0" style="width: 18rem;">
+                        <img src="${product.image}" class="card-img-top  bg-body-tertiary" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.title}</h5>
+                            <div class="d-flex flex-column justify-content-center">
+                                <p class="card-text mb-0">Volume: ${product.volume}</p>
+                                <p class="card-text ">Teor Alcoólico: ${product.alcoholPercentage}%</p>
+                                <a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            `;
+
+        // Converter a string HTML em elementos DOM e anexá-los ao container
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = card;
+        container.appendChild(tempDiv.firstElementChild);
+    });
+}
+
+window.onload = adicionarProdutosAoHTML;
