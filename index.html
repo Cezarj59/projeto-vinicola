@@ -62,9 +62,10 @@
                                         Vendidos</a>
 
                                     <ul class="dropdown-menu dropdown-position">
-                                        <div class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly dropdown-ajuste scrollable-dropdown" id="produtos-container">
+                                        <div class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly dropdown-ajuste scrollable-dropdown"
+                                            id="produtos-container">
                                             <!-- Aqui serão adicionados os produtos dinamicamente -->
-                                            
+
                                         </div>
                                     </ul>
                                 </li>
@@ -112,7 +113,7 @@
                 </div>
             </div>
         </nav>
-       
+
 
         <!-- Offcanvas 2 Mais Vendidos (inicialmente oculto) -->
         <section>
@@ -494,14 +495,38 @@
     </section>
 
     <!--###################################### CARRINHO ###################################### -->
-    <section id="carrinho-section" class="container-fluid container-lg px-1 normal-section">
-        <div>
-            <h2 class="text-center m-4">Carrinho de Compras</h2>
-            <ul id="lista-carrinho-section" class="list-group col-12">
-                <!-- Aqui serão exibidos os itens do carrinho na seção separada -->
-            </ul>
-            <p class="text-end px-3 fs-5">Total: R$<span id="total-carrinho-section">0.00</span></p>
+    <section id="carrinho-section">
+
+        <section class="container-fluid px-0">
+            <div class="fundo-carrinho d-flex align-items-center justify-content-center">
+                <h4 class="text-center text-black position-relative z-2">Carrinho</h4>
+            </div>
+        </section>
+        <div class="container-fluid container-lg px-1 normal-section my-4 row col-12 mx-auto pb-1">
+            <div class="col-xl-8">
+                <ul id="lista-carrinho-section" class="list-group">
+                    <!-- Aqui serão exibidos os itens do carrinho na seção separada -->
+                </ul>
+            </div>
+
+            <div class="col-xl-4 mt-3 mt-xl-0">
+                <div class="border border-1 border-dark-subtle p-3 ">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span id="quantidade-de-produtos" class="fs-6"></span>
+                        <span id="total-produtos" class="fs-6"></span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="fs-5">Total</span>
+                        <span id="total-carrinho-section" class="fs-5">0.00</span>
+                    </div>
+
+
+                    <button class="btn btn-primary col-12">Continuar a Compra</button>
+                </div>
+
+            </div>
         </div>
+
     </section>
 
     <!--###################################### GALERIA ###################################### -->
@@ -888,7 +913,7 @@
         crossorigin="anonymous"></script>
 
     <script src="js/navbar.js"></script>
-    <script src="js/pagination.js"></script>
+    <script src="js/loja.js"></script>
     <script src="js/script.js"></script>
 
 </body>
