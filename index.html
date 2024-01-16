@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <!--Header-->
+    <!---------------------------------------- Header ---------------------------------------->
     <header id="top">
         <nav class="navbar p-0">
             <div class="container-fluid justify-content-center">
@@ -58,13 +58,14 @@
                                 <li class="nav-item dropdown d-none d-md-block">
                                     <a class="nav-link dropdown-toggle add-active" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false"
-                                        onclick="alternaPaginas(2),active(2)">Mais
+                                        onclick="active(2)">Mais
                                         Vendidos</a>
 
                                     <ul class="dropdown-menu dropdown-position">
                                         <div class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly dropdown-ajuste scrollable-dropdown"
                                             id="produtos-container">
-                                            <!-- Aqui serão adicionados os produtos dinamicamente -->
+                                            <!-- Aqui serão adicionados os produtos Mais
+                                        Vendidos dinamicamente -->
 
                                         </div>
                                     </ul>
@@ -77,24 +78,24 @@
                                     <a class="nav-link add-active" href="#galeria" data-bs-dismiss="offcanvas"
                                         onclick="alternaPaginas(5),active(3)">Galeria</a>
                                 </li>
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle add-active" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Mais
                                     </a>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" style="background-color: #06141d;">
                                         <li>
-                                            <a class="dropdown-item add-active" href="#sobre-nos"
+                                            <a class="dropdown-item add-active text-white" href="#sobre-nos"
                                                 data-bs-dismiss="offcanvas" onclick="alternaPaginas(7),active(5)">Sobre
                                                 Nós</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item add-active" href="#contato"
+                                            <a class="dropdown-item add-active text-white" href="#contato"
                                                 data-bs-dismiss="offcanvas"
                                                 onclick="alternaPaginas(8),active(6)">Contato</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item add-active" href="#revenda"
+                                            <a class="dropdown-item add-active text-white" href="#revenda"
                                                 data-bs-dismiss="offcanvas"
                                                 onclick="alternaPaginas(9),active(7)">Revenda</a>
                                         </li>
@@ -104,10 +105,10 @@
                         </div>
 
                         <div>
-                            <!-- Adicione este botão em um local conveniente em seu HTML -->
+                            <!-- BTN Carrinho de Compras -->
                             <a class="nav-link add-active" href="#loja" data-bs-dismiss="offcanvas"
                                 onclick="alternaPaginas(2),active(8)">
-                                <img src="img/icon/carrinho-icon.png" width="20px" alt=""></a>
+                                <img src="img/icon/carrinho-icon.png" width="25px" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +118,7 @@
 
         <!-- Offcanvas 2 Mais Vendidos (inicialmente oculto) -->
         <section>
-            <div class="offcanvas-color offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvas2"
+            <div class="offcanvas-color offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvas-mais-vendidos"
                 aria-labelledby="offcanvas2Label" data-bs-backdrop="false">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title text-white fs" id="offcanvas2Label">Mais Vendidos</h5>
@@ -125,62 +126,20 @@
                         aria-label="Fechar" onclick="fecharOffcanvas2()"></button>
                 </div>
                 <div class="offcanvas-body  d-flex flex-column align-items-center scrollable-dropdown ">
+                       <!-- Aqui serão adicionados os produtos Mais
+                                        Vendidos dinamicamente -->
+                </div>
 
 
-                    <div class="card border-0" style="width: 18rem;">
-                        <img src="img/mais-vendidos/tinto-suave.png" class="card-img-top  bg-body-tertiary" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Vinho Tinto de Mesa Suave </h5>
-
-                            <div class="d-flex flex-column justify-content-center">
-                                <p class="card-text mb-0">Volume: 750ml</p>
-                                <p class="card-text ">Teor Alcoólico: 11%</p>
-                                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="card border-0" style="width: 18rem;">
-                        <img src="img/mais-vendidos/tinto-seco.png" class="card-img-top bg-body-tertiary" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Vinho Tinto de Mesa Seco</h5>
-                            <div class="d-flex flex-column justify-content-center">
-                                <p class="card-text mb-0">Volume: 750ml</p>
-                                <p class="card-text ">Teor Alcoólico: 11%</p>
-                                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card border-0" style="width: 18rem;">
-                        <img src="img/mais-vendidos/branco-seco.png" class="card-img-top bg-body-tertiary" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Vinho Branco de Mesa Seco</h5>
-                            <div class="d-flex flex-column justify-content-center">
-                                <p class="card-text mb-0">Volume: 750ml</p>
-                                <p class="card-text ">Teor Alcoólico: 11%</p>
-                                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card border-0" style="width: 18rem;">
-                        <img src="img/mais-vendidos/rose-suave.png" class="card-img-top bg-body-tertiary" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Vinho Rosé de Mesa Suave</h5>
-                            <div class="d-flex flex-column justify-content-center">
-                                <p class="card-text mb-0">Volume: 750ml</p>
-                                <p class="card-text ">Teor Alcoólico: 11%</p>
-                                <a href="#" class="btn btn-danger">Adicionar ao Carrinho</a>
-                            </div>
-                        </div>
-                    </div>
+                
         </section>
     </header>
 
     <!--###################################### HOME ###################################### -->
     <section id="home-section">
-        <!--FUNDO PRINCIPAL-->
+        <!---------------------------------------- FUNDO PRINCIPAL ---------------------------------------->
         <section class="fundo-principal position-fixed top-0 z-n1 d-none d-md-block d-lg-block"></section>
-        <!--CAROUSEL-->
+        <!---------------------------------------- CAROUSEL ---------------------------------------->
         <section class="container-fluid p-0">
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
@@ -236,7 +195,7 @@
                 </button>
             </div>
         </section>
-        <!--SEÇÃO TEXTO 1-->
+        <!----------------------------------------  HOME/SEÇÃO TEXTO 1 -------------------------------------- -->
         <section class="container">
             <div class="d-flex flex-column justify-content-center mx-auto col-lg-8 p-4 p-lg-5 m-auto">
                 <h3> Queridos Amantes do Vinho,</h3>
@@ -272,7 +231,7 @@
                 <h5>Vinícola Strapasson.</h5>
             </div>
         </section>
-        <!--INFORMAÇÕES-->
+        <!---------------------------------------- HOME/INFORMAÇÕES ---------------------------------------->
         <section class="bg-body-secondary d-xxl-flex text-center pb-2">
             <div class="d-xxl-flex justify-content-center align-items-center col-xxl-6">
                 <img class="img-section-info" src="img/brinde.png">
@@ -329,7 +288,7 @@
                 </div>
             </div>
         </section>
-        <!--SEÇÃO TEXTO 2-->
+        <!----------------------------------------  HOME/SEÇÃO TEXTO 2 -------------------------------------- -->
         <section class="fundo-secundario container-fluid d-flex align-items-center pt-5 pb-5">
             <div class="row row-cols-10">
                 <div class="col">
@@ -509,7 +468,7 @@
                 </ul>
             </div>
 
-            <div class="col-xl-4 mt-3 mt-xl-0">
+            <div id="div-total" class="col-xl-4 mt-3 mt-xl-0 d-none">
                 <div class="border border-1 border-dark-subtle p-3 ">
                     <div class="d-flex justify-content-between mb-4">
                         <span id="quantidade-de-produtos" class="fs-6"></span>
@@ -526,11 +485,15 @@
 
             </div>
         </div>
-
     </section>
 
     <!--###################################### GALERIA ###################################### -->
     <section id="galeria-section" class="container-fluid galeria-section">
+        <section class="container-fluid px-0">
+            <div class="fundo-galeria d-flex align-items-center justify-content-center">
+                <h4 class="text-center text-black position-relative z-2">Galeria</h4>
+            </div>
+        </section>
         <div class="galeria pt-1">
             <img src="img/galeria/img01.jpg" alt="">
             <img src="img/galeria/img02.jpg" alt="">
@@ -553,6 +516,58 @@
             <img src="img/galeria/img19.jpg" alt="">
             <img src="img/galeria/img20.png" alt="">
         </div>
+    </section>
+    <!--###################################### Sobre-Nós ###################################### -->
+    <section id="sobre-nos-section">
+        <section>
+            <div class="fundo-loja d-flex align-items-center justify-content-center">
+                <h4 class="text-center text-black position-relative z-2">Sobre-nós</h4>
+            </div>
+            <section>
+                <div class="container my-5 d-flex flex-column-reverse flex-lg-row align-items-center ">
+
+                    <div class="d-flex  justify-content-center align-items-center col-lg-6 ">
+                        <img class="img-sobre-nos " src="img/bem-vindo.jpeg" >
+                    </div>
+                    <div class="d-block mt-4 col-lg-6">
+                        <h2 class="p-2 ms-md-4 mb-4 col-12">
+                            Bem-vindo nossa Vínicola.
+                        </h2>
+                        <div class="p-2 ms-md-4 col-12 col-lg-8">
+                            <p>
+                                "Descubra o sabor da tradição em cada taça. Na nossa vinícola,
+                                convidamos você a uma experiência única de degustação de vinhos,
+                                onde cada gole conta a história do nosso comprometimento com a
+                                qualidade e a paixão pela vinificação. Venha desfrutar conosco e
+                                deixe que nossos vinhos refinados encantem seu paladar. Prove o que
+                                há de melhor em cada garrafa e celebre momentos memoráveis conosco."
+                            </p>
+                            <button class="btn btn-outline-danger btn-sm"
+                                onclick="alternaPaginas(1),active(1)">Loja</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fundo-terciario container-fluid d-flex align-items-center pt-5 pb-5">
+                <div class="row row-cols-10">
+                    <div class="col">
+                        <h2 class="text-light mx-auto col-10 col-md-8 col-xxl-6 text-center">
+                            Vinhos Orgânicos e Naturais
+                        </h2>
+                        <h3 class="text-danger text-center">Nossas Novidades</h3>
+                        <p class="text-light mx-auto col-10 col-md-8 col-xxl-6">
+                            "Descubra o sabor da tradição em cada taça. Na nossa vinícola,
+                            convidamos você a uma experiência única de degustação de vinhos,
+                            onde cada gole conta a história do nosso comprometimento com a
+                            qualidade e a paixão pela vinificação. Venha desfrutar conosco e
+                            deixe que nossos vinhos refinados encantem seu paladar. Prove o que
+                            há de melhor em cada garrafa e celebre momentos memoráveis conosco."
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </section>
     </section>
 
     <!--###################################### Contato ###################################### -->
@@ -833,7 +848,7 @@
 
 
 
-    <!--SEÇÃO FAC-->
+    <!-------------------------------------- SEÇÃO FAC -------------------------------------->
     <section class="section-fac container-fluid p-0 d-block">
         <div class="container p-5 d-block d-xl-flex justify-content-center">
             <div class="card-fac card bg-transparent border-0">
@@ -874,7 +889,7 @@
             </div>
         </div>
     </section>
-    <!--Rodapé-->
+    <!---------------------------------------- Rodapé --------------------------------------->
     <section class="container-fluid p-0">
         <div class="card text-center p-3">
             <div class="card-body">
@@ -902,7 +917,7 @@
         </div>
     </footer>
 
-    <!-- Botão Voltar ao Topo -->
+    <!----------------------------------------  Botão Voltar ao Topo ---------------------------------------->
     <button id="btnVoltarAoTopo" class="btn btn-vidro border-dark d-none" onclick="voltarAoTopo()"><img
             src="./img/up-arrow.png" alt="Voltar ao topo" width="20px"></button>
 
