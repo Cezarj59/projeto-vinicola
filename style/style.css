@@ -446,8 +446,6 @@ small {
 
 
 
-
-
 .list-group-item-action:hover {
   color: #bb0b0b;
   transform: scale(1.1);
@@ -498,6 +496,76 @@ small {
 .btn-carrinho a{
   color: blue;
   text-decoration-line: none;
+}
+
+
+
+.fundo-carrinho{
+  position: relative;
+  background-image: url(../img/fundo/fundo-carrinho.jpeg);
+  background-size: cover;
+  background-position: center 50%;
+  width: 99.9%;
+  height: 25vh;
+  background-repeat: no-repeat;
+}
+
+.fundo-carrinho::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 1;
+  /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
+}
+
+.img-thumbnail {
+  border: none;
+  width: 64px;
+  height: 64px;
+}
+
+/* Tamanho Pequeno (sm) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .img-thumbnail {
+    width: 100px;
+    height: 80px;
+  }
+}
+
+/* Tamanho Médio (md) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .img-thumbnail {
+    width: 112px;
+    height: 100px;
+  }
+}
+
+/* Tamanho Grande (lg) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .img-thumbnail {
+    width: 112px;
+    height: 100px;
+  }
+}
+
+/* Tamanho Extra Grande (xl) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .img-thumbnail {
+    width: 112px;
+    height: 100px;
+  }
+}
+
+/* Tamanho Extra Extra Grande (xxl) */
+@media (min-width: 1400px) {
+  .img-thumbnail {
+    width: 112px;
+    height: 100px;
+  }
 }
 
 
