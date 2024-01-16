@@ -12,11 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Philosopher&display=swap">
   <script async src="js/pagination.js"></script>
   <style>
-    .btn-carrinho a{
-      color: blue;
-      text-decoration-line: none;
-    }
-  
+ 
   </style>
 </head>
 
@@ -246,148 +242,14 @@
 
 
   <!--###################################### LOJA ###################################### -->
-  <section id="loja-section">
-    <section class="container-fluid px-0">
+  <section id="sobre-section">
+    <section>
       <div class="fundo-loja d-flex align-items-center justify-content-center">
-        <h4 class="text-center text-black position-relative z-2">Loja</h4>
+          <h4 class="text-center text-black position-relative z-2">Sobre-nós</h4>
       </div>
-    </section>
-
-    <section class="container-fluid container-xl">
-      <div id="paginate" class="row">
-        <!--Coluna 1-->
-        <div class="col-md-4 col-xl-3">
-          <!--Categorias-->
-          <div class="list-group">
-            <h5
-              class="list-group-item bg-body-tertiary border border-5 border-danger border-end-0  border-bottom-0 border-top-0">
-              Categorias</h5>
-            <div class="accordion  list-group-item p-0 border-0" id="accordionFlushExample">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed px-3 py-2" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    Tipos de Vinho
-                  </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne"
-                  data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body p-0 ">
-                    <div class="list-group">
-                      <a href="#" class="list-group-item list-group-item-action border-0">Tinto
-                        Seco</a>
-                      <a href="#" class="list-group-item list-group-item-action border-0">Tinto
-                        Suave</a>
-                      <a href="#" class="list-group-item list-group-item-action border-0">Branco
-                        Seco</a>
-                      <a href="#" class="list-group-item list-group-item-action border-0">Branco
-                        Suave</a>
-                      <a href="#" class="list-group-item list-group-item-action border-0">Rosé
-                        Suave</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a href="#" class="list-group-item list-group-item-action border-0">Espumante</a>
-            <a href="#" class="list-group-item list-group-item-action border-0">Suco de Uva</a>
-            <a href="#" class="list-group-item list-group-item-action border-0">Quentão</a>
-            <a href="#" class="list-group-item list-group-item-action border-0">Doces Artesanais</a>
-            <a href="#" class="list-group-item list-group-item-action border-0">Salame Italiano</a>
-            <a href="#" class="list-group-item list-group-item-action border-0">Queijos</a>
-          </div>
-          <!-- Busca por Preços-->
-          <div class="list-group mt-4 ">
-            <h5
-              class="list-group-item bg-body-tertiary border border-5 border-danger border-end-0  border-bottom-0 border-top-0">
-              Busca por Preços
-            </h5>
-            <div class="row px-3">
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$0 -
-                R$20</button>
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$20 -
-                R$40</button>
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$40 -
-                R$80</button>
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$80 -
-                R$100</button>
-            </div>
-          </div>
-          <!-- Busca por Volume-->
-          <div class="list-group mt-4 ">
-            <h5
-              class="list-group-item bg-body-tertiary border border-5 border-danger border-end-0  border-bottom-0 border-top-0">
-              Busca por Volume
-            </h5>
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">700ml</button>
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">1L</button>
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">2L</button>
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">3L</button>
-              <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">5L</button>
-            </div>
-          </div>
-          <!-- Mais Vendido-->
-          <div class="list-group mt-4 d-none d-md-block">
-            <h5
-              class="list-group-item bg-body-tertiary border border-5 border-danger border-end-0  border-bottom-0 border-top-0">
-              Popular
-            </h5>
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-              <div class="card border-0 col-4" style="width: 15rem; margin-bottom: 20px;">
-                <img src="img/mais-vendidos/tinto-suave.png" class="card-img-top bg-body-tertiary" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Vinho Tinto Suave</h5>
-                  <div class="d-flex flex-column justify-content-center">
-                    <p class="card-text mb-0">Volume: 1L</p>
-                  </div>
-                  <a href="#" class="btn btn-danger text-white col-12">Adicionar ao Carrinho</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-
-
-        <!--Coluna 2-->
-        <div class="col-md-8 col-xl-9 mt-5 mt-md-0">
-          <!-- div que exibe a lista de produtos-->
-          <div class="list  d-flex flex-wrap justify-content-around"></div>
-          <div aria-label="Page navigation example" class="col-12">
-            <ul class="pagination controls">
-              <li class="page-item">
-                <a class="page-link first" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item">
-                <a class="page-link prev" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&lt;</span>
-                </a>
-              </li>
-              <li class="page-item numbers d-flex" onclick="voltarAoTopo()">
-
-              </li>
-              <li class="page-item">
-                <a class="page-link next" href="#" aria-label="Next">
-                  <span aria-hidden="true">&gt;</span>
-                </a>
-              </li>
-              <li class="page-item">
-                <a class="page-link last" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
+      
+  </section>
+    
 
   </section>
 
