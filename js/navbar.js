@@ -2,8 +2,9 @@
 // Variáveis Html
 const home = document.getElementById("home-section");
 const loja = document.getElementById("loja-section");
-const  carrinhoCompras = document.getElementById("carrinho-section");
+const carrinhoCompras = document.getElementById("carrinho-section");
 const galeria = document.getElementById("galeria-section");
+const sobreNos = document.getElementById("sobre-nos-section");
 const contato = document.getElementById("contato-section");
 const revenda = document.getElementById("revenda-section");
 
@@ -11,8 +12,10 @@ const revenda = document.getElementById("revenda-section");
 // Configuração inicial
 home.style.display = "block";
 loja.style.display = "none";
- carrinhoCompras.style.display = "none";
+carrinhoCompras.style.display = "none";
+sobreNos.style.display = "none";
 galeria.style.display = "none";
+sobreNos.style.display = "none";
 contato.style.display = "none";
 revenda.style.display = "none";
 
@@ -24,8 +27,8 @@ function alternaPaginas(x) {
       document.title = "Home";
       home.style.display = "block";
       loja.style.display = "none";
-       carrinhoCompras.style.display = "none";
-      galeria.style.display = "none";
+      carrinhoCompras.style.display = "none";
+      sobreNos.style.display = "none";
       contato.style.display = "none";
       revenda.style.display = "none";
       break;
@@ -34,8 +37,9 @@ function alternaPaginas(x) {
       document.title = "Loja";
       home.style.display = "none";
       loja.style.display = "block";
-       carrinhoCompras.style.display = "none";
+      carrinhoCompras.style.display = "none";
       galeria.style.display = "none";
+      sobreNos.style.display = "none";
       contato.style.display = "none";
       revenda.style.display = "none";
       break;
@@ -43,8 +47,9 @@ function alternaPaginas(x) {
       document.title = " Carrinho";
       home.style.display = "none";
       loja.style.display = "none";
-       carrinhoCompras.style.display = "block";
+      carrinhoCompras.style.display = "block";
       galeria.style.display = "none";
+      sobreNos.style.display = "none";
       contato.style.display = "none";
       revenda.style.display = "none";
       break;
@@ -52,8 +57,19 @@ function alternaPaginas(x) {
       document.title = "Galeria";
       home.style.display = "none";
       loja.style.display = "none";
-       carrinhoCompras.style.display = "none";
+      carrinhoCompras.style.display = "none";
       galeria.style.display = "block";
+      sobreNos.style.display = "none";
+      contato.style.display = "none";
+      revenda.style.display = "none";
+      break;
+    case 7:
+      document.title = "Sobre Nós";
+      home.style.display = "none";
+      loja.style.display = "none";
+      carrinhoCompras.style.display = "none";
+      galeria.style.display = "none";
+      sobreNos.style.display = "block";
       contato.style.display = "none";
       revenda.style.display = "none";
       break;
@@ -61,8 +77,9 @@ function alternaPaginas(x) {
       document.title = "Contato";
       home.style.display = "none";
       loja.style.display = "none";
-       carrinhoCompras.style.display = "none";
+      carrinhoCompras.style.display = "none";
       galeria.style.display = "none";
+      sobreNos.style.display = "none";
       contato.style.display = "block";
       revenda.style.display = "none";
       break;
@@ -70,8 +87,9 @@ function alternaPaginas(x) {
       document.title = "Revenda";
       home.style.display = "none";
       loja.style.display = "none";
-       carrinhoCompras.style.display = "none";
+      carrinhoCompras.style.display = "none";
       galeria.style.display = "none";
+      sobreNos.style.display = "none";
       contato.style.display = "none";
       revenda.style.display = "block";
       break;
@@ -105,14 +123,14 @@ function abrirOffcanvas2() {
   offcanvas1.hide();
 
   // Abre o segundo offcanvas
-  var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas2'));
+  var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas-mais-vendidos'));
   offcanvas2.show();
 }
 
 function fecharOffcanvas2() {
 
   // Fecha o segundo offcanvas
-  var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas2'));
+  var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas-mais-vendidos'));
   offcanvas2.hide();
 
   // Abre o primeiro offcanvas
