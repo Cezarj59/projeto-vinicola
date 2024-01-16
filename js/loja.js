@@ -291,64 +291,132 @@ function atualizarQuantidade(index, novaQuantidade) {
     // Atualizar a exibição do carrinho
     atualizarCarrinho();
 }
-function atualizarCarrinho() {
-    const listaCarrinhoSection = document.getElementById('lista-carrinho-section');
-    const totalProdutosElement = document.getElementById('total-produtos');
-    const totalCarrinhoSectionElement = document.getElementById('total-carrinho-section');
-    const quantidadeTotalProdutosSpan = document.getElementById('quantidade-de-produtos');
 
+// Função para exibir ou ocultar a div total com base no número de itens no carrinho
+function exibirOcultarDivTotal() {
+    const divTotal = document.getElementById('div-total');
+
+    if (carrinho.length > 0) {
+        divTotal.classList.remove('d-none');
+    } else {
+        divTotal.classList.add('d-none');
+    }
+}
+
+function criarItemHTML(item, index) {
+    return `
+        <section class="row col-12 mx-auto pb-1">
+            <article class="col-12 col-md-6 d-flex">
+                <img src="${item.image}" class="img-thumbnail" alt="${item.title}" ">
+                <div>
+                    <span class="p-1 fs-5">${item.title}</span>
+                    <div class="btn-carrinho">
+                        <span>
+                            <a href="javascript:void(0);" class="p-1"
+                                onclick="removerDoCarrinho(${index})">Excluir</a>
+                        </span>
+                        <span>
+                            <a href="javascript:void(0);" class="p-1">Salvar</a>
+                        </span>
+                        <span>
+                            <a href="javascript:void(0);" class="p-1">Comprar</a>
+                        </span>
+                    </div>
+                </div>
+            </article>
+            <div class="col-12 col-md-6 d-flex justify-content-between justify-content-md-end  mt-3 mt-lg-0">
+                <div class="me-4">
+                    <span>Quantidade:</span>
+                    <input style="width: 50px;" type="number" min="1" value="${item.quantidade}"
+                        onchange="atualizarQuantidade(${index}, this.value)">
+                </div>
+                <div>
+                    <span>R$${(item.preco * item.quantidade).toFixed(2)}</span>
+                </div>
+            </div>
+        </section>
+    `;
+}
+// Função para renderizar a lista de carrinho na página
+function renderizarListaCarrinho() {
+    const listaCarrinhoSection = document.getElementById('lista-carrinho-section');
     listaCarrinhoSection.innerHTML = '';
 
     carrinho.forEach((item, index) => {
         const listItem = document.createElement('li');
         listItem.className = 'list-group-item d-flex justify-content-between align-items-center px-0';
 
-        const itemHTML = `  
-                    <section class="row col-12 mx-auto pb-1">
-                    <article class="col-12 col-md-6 d-flex">
-                        <img src="${item.image}" class="img-thumbnail" alt="${item.title}" ">
-                        <div>
-                            <span class="p-1 fs-5">${item.title}</span>
-                            <div class="btn-carrinho">
-                                <span>
-                                    <a href="javascript:void(0);" class="p-1"
-                                    onclick="removerDoCarrinho(${index})">Excluir</a>
-                                </span>
-                                <span>
-                                    <a href="javascript:void(0);" class="p-1">Salvar</a>
-                                </span>
-                                <span>
-                                    <a href="javascript:void(0);" class="p-1">Comprar</a>
-                                </span>
-                            </div>
-                        
-                        </div>
-                    </article>
-                    <div class="col-12 col-md-6 d-flex justify-content-between justify-content-md-end  mt-3 mt-lg-0">
-                        <div class="me-4">
-                            <span>Quantidade:</span>
-                            <input style="width: 50px;" type="number" min="1" value="${item.quantidade}"
-                                onchange="atualizarQuantidade(${index}, this.value)">
-                        </div>
-                        <div>
-                            <span>R$${item.preco.toFixed(2)}</span>
-                        </div>
-                    </div>
-                    </section>
-
-        `;
+        const itemHTML = criarItemHTML(item, index);
 
         listItem.innerHTML = itemHTML;
         listaCarrinhoSection.appendChild(listItem);
     });
-    totalProdutosElement.textContent = `R$${totalCarrinho.toFixed(2)}`;
-    totalCarrinhoSectionElement.textContent = `R$${totalCarrinho.toFixed(2)}`;
-    quantidadeTotalProdutosSpan.textContent = `Produtos (${carrinho.reduce((total, item) => total + item.quantidade, 0)})`;
+}
+// Função para atualizar os totais exibidos na página
+function atualizarTotais() {
+    const totalCarrinho = carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+
+    document.getElementById('total-produtos').textContent = `R$${totalCarrinho.toFixed(2)}`;
+    document.getElementById('total-carrinho-section').textContent = `R$${totalCarrinho.toFixed(2)}`;
+    document.getElementById('quantidade-de-produtos').textContent = `Produtos (${carrinho.reduce((total, item) => total + item.quantidade, 0)})`;
+}
+// Função principal para atualizar a exibição do carrinho na página
+function atualizarCarrinho() {
+    exibirOcultarDivTotal();// Chama a função para exibir ou ocultar a div total
+    renderizarListaCarrinho();// Chama a função para renderizar a lista de carrinho
+    atualizarTotais();// Chama a função para atualizar os totais exibidos
 }
 
 
+
+
+
+
+
+
+
+
+
+
+function exibirProdutosNoOffcanvasMaisVendidos() {
+    const offcanvasBody = document.querySelector('#offcanvas-mais-vendidos .offcanvas-body');
+
+    // Limpa o conteúdo atual do offcanvas
+    offcanvasBody.innerHTML = '';
+
+    // Pega os 4 primeiros produtos do array
+    const produtosMaisVendidos = products.slice(0, 4);
+
+    // Cria elementos HTML para cada produto e adiciona ao offcanvas
+    produtosMaisVendidos.forEach((produto) => {
+        const cardHTML = `
+            <div class="card border-0 mb-3" style="width: 18rem;">
+                <img src="${produto.image}" class="card-img-top bg-body-tertiary" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${produto.title}</h5>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="card-text mb-0">Volume: ${produto.volume}</p>
+                        <p class="card-text fs-5">Preço: R$${produto.preco}</p>
+                        <a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${produto.id},'${produto.image}', '${produto.title}', ${produto.preco})">Adicionar ao Carrinho</a>
+
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Adiciona o card ao corpo do offcanvas
+        offcanvasBody.innerHTML += cardHTML;
+    });
+}
+
+// Chama a função quando o offcanvas é aberto
+document.getElementById('offcanvas-mais-vendidos').addEventListener('shown.bs.offcanvas', function () {
+    exibirProdutosNoOffcanvasMaisVendidos();
+});
+
+
 /*Adicona os 4 primeiros produtos do array ao dropdown Mais Vendidos da navabar*/
-function adicionarProdutosAoHTML() {
+function adicionarProdutosMaisVendidos() {
     const container = document.getElementById('produtos-container');
 
     // Pega os 4 primeiros produtos
@@ -364,7 +432,7 @@ function adicionarProdutosAoHTML() {
                             <h5 class="card-title">${product.title}</h5>
                             <div class="d-flex flex-column justify-content-center">
                                 <p class="card-text mb-0">Volume: ${product.volume}</p>
-                                <p class="card-text ">Teor Alcoólico: ${product.alcoholPercentage}%</p>
+                                <p class="card-text fs-5">Preço: R$${product.preco}</p>
                                 <a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho</a>
                             </div>
                         </div>
@@ -379,4 +447,4 @@ function adicionarProdutosAoHTML() {
     });
 }
 
-window.onload = adicionarProdutosAoHTML;
+window.onload = adicionarProdutosMaisVendidos;
