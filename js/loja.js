@@ -121,7 +121,7 @@ function createProductCard(product, container) {
                     <p class="card-text mb-0">Volume: ${product.volume}</p>
                     <p class="card-text">Teor Alcoólico: ${product.alcoholPercentage}%</p>
                 </div>
-                <a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho</a>
+                <a href="#adicionar-ao-carrinho" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho</a>
             </div>
         </div>
     `;
@@ -433,7 +433,7 @@ function adicionarProdutosMaisVendidos() {
                             <div class="d-flex flex-column justify-content-center">
                                 <p class="card-text mb-0">Volume: ${product.volume}</p>
                                 <p class="card-text fs-5">Preço: R$${product.preco}</p>
-                                <a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho</a>
+                                <a href="#adicionar-ao-carrinho" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho</a>
                             </div>
                         </div>
                     </div>
