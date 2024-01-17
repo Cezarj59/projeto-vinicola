@@ -43,6 +43,7 @@ function alternaPaginas(x) {
       contato.style.display = "none";
       revenda.style.display = "none";
       break;
+      
     case 2:
       document.title = " Carrinho";
       home.style.display = "none";
