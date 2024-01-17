@@ -1,25 +1,28 @@
+/*------------------------ CORES ----------------------------*/
 :root {
   --cor-primaria: #06141d;
 }
 
+/*------------------------ ESTILOS GERAIS ---------------------*/
 body {
   font-size: 62, 5%;
   font-family: "Philosopher", sans-serif;
 }
 
-/*------------------------ NAV ----------------------------*/
-/*-Nav Primaria*/
-nav, 
+/*------------------------ NAVBAR ----------------------------*/
+/* Navbar Primária */
+nav,
 .cor-primaria {
   background-color: var(--cor-primaria);
 }
 
-/*-Nav Secundaria com o menu*/
+/* Navbar Secundária e Menu */
 
 .nav-color,
 .offcanvas-color {
   background-color: #62162f;
 }
+
 .nav-link {
   color: azure;
 }
@@ -29,9 +32,9 @@ nav,
   color: azure;
 }
 
-
-.nav-link:hover, .dropdown-item:hover,
-.navbar-nav .nav-link.active{
+.nav-link:hover,
+.dropdown-item:hover,
+.navbar-nav .nav-link.active {
   background-color: #62162f;
   color: #f1e27d;
 }
@@ -40,12 +43,9 @@ nav,
   color: #f1e27d !important;
 }
 
-
-
-
 /* Tamanho Pequeno (sm) */
 @media (min-width: 0px) and (max-width: 767px) {
-  .offcanvas-color{
+  .offcanvas-color {
     background-image: url(../img/fundo/fundo-principal-offcanvas.jpg);
     background-size: cover;
     background-position: center top;
@@ -53,18 +53,14 @@ nav,
     height: 100vh;
     background-repeat: no-repeat;
   }
+}
 
-
-  }
-  
-  /* Tamanho Médio (md) */
-  @media (min-width: 768px) and (max-width: 991.98px) {
+/* Tamanho Médio (md) */
+@media (min-width: 768px) and (max-width: 991.98px) {
   .img-section-info {
     width: 768px;
   }
-  }
-
-
+}
 
 .dropdown-position {
   position: absolute;
@@ -87,7 +83,7 @@ nav,
   overflow-y: auto;
 }
 
-/*------------------------ IMAGEM DE FUNDO INDEX ----------------------------*/
+/*------------------------ IMAGENS DE FUNDO -------------------*/
 .fundo-principal {
   background-image: url(../img/fundo/fundo-principal.png);
   background-size: cover;
@@ -105,15 +101,11 @@ nav,
   background-image: url(../img/fundo/banner-escuro.jpg);
 }
 
-
-/*------------------------ TAMANHO ICONES SECTION INFORMAÇÕES ----------------------------*/
+/*------------------------ TAMANHO ÍCONES SECTION INFORMAÇÕES ----------------------------*/
 .icon {
   width: 110px;
   height: 110px;
 }
-
-
-
 
 /*------------------------ CARDS SECTION FAC ----------------------------*/
 .card-fac>div:first-child {
@@ -135,10 +127,7 @@ nav,
   background-repeat: no-repeat;
 }
 
-
-
-
-/*---------------------------------------- section-info -------------------------------------*/
+/*------------------------ SECTION INFO ----------------------------*/
 /* Tamanho Extra Pequeno (xs) */
 @media (max-width: 575.98px) {
   .img-section-info {
@@ -179,12 +168,8 @@ nav,
   /* Estilos para telas de 1400px e maiores */
 }
 
+/*---------------------------------------- CAROUSEL -------------------------------------*/
 
-
-
-
-
-/*---------------------------------### CAROUSEL ###--------------------------------------------*/
 
 /* Estilo para limitar a altura do carrossel */
 #carouselExampleCaptions {
@@ -208,12 +193,10 @@ h1 {
   color: #e81737;
 }
 
-.elemento-vidro, .elemento-vidro-paralelogramo p {
+.elemento-vidro,
+.elemento-vidro-paralelogramo p {
   font-size: x-large;
 }
-
-
-
 
 /* Responsividade para dispositivos móveis */
 
@@ -244,13 +227,6 @@ h1 {
   }
 }
 
-
-
-
-
-
-
-
 /*----------------------------EFEITO DE VIDRO E PARALELOGRAMA DO CAROUSEL--------------------------------------------------*/
 .elemento-vidro,
 .elemento-vidro-paralelogramo {
@@ -274,17 +250,7 @@ h1 {
   transform: skew(10deg);
 }
 
-
-
-
-
-
-
-
-
-
-/*------------------- Pagina Galeria---------------------------*/
-
+/*------------------- PÁGINA GALERIA ---------------------------*/
 
 .galeria-section {
   padding: 1px;
@@ -294,72 +260,66 @@ h1 {
 }
 
 .galeria img {
-width: 100%;
-border-radius: 5px;
-margin-bottom: 10px;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .galeria {
-column-count: 5;
-column-gap: 10px;
+  column-count: 5;
+  column-gap: 10px;
 }
 
 /* Tamanho Extra Pequeno (xs) */
 @media (max-width: 575.98px) {
 
 
-.galeria img {
-  margin-bottom: 5px;
+  .galeria img {
+    margin-bottom: 5px;
+  }
+
+  .galeria {
+    column-count: 3;
+    column-gap: 5px;
+  }
 }
-
-.galeria {
-  column-count: 3;
-  column-gap: 5px;
-}
-
-
-}
-
 
 /* Tamanho Pequeno (sm) */
 @media (min-width: 576px) and (max-width: 767.98px) {
-.img-section-info {
-  width: 576px;
-}
+  .img-section-info {
+    width: 576px;
+  }
 }
 
 /* Tamanho Médio (md) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-.img-section-info {
-  width: 768px;
-}
+  .img-section-info {
+    width: 768px;
+  }
 }
 
 /* Tamanho Grande (lg) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-.img-section-info {
-  width: 768px;
-}
+  .img-section-info {
+    width: 768px;
+  }
 }
 
 /* Tamanho Extra Grande (xl) */
 @media (min-width: 1200px) and (max-width: 1399.98px) {
-/* Estilos para telas de 1200px até 1399px */
+  /* Estilos para telas de 1200px até 1399px */
 }
 
 /* Tamanho Extra Extra Grande (xxl) */
 @media (min-width: 1400px) {
-/* Estilos para telas de 1400px e maiores */
+  /* Estilos para telas de 1400px e maiores */
 }
-
-
-
 
 .fundo-galeria {
   position: relative;
-  background-image: url(../img/fundo/galeria-img.jpg);
+  background-image: url(../img/fundo/banner-escuro.jpg);
   background-size: cover;
-  background-position: center 50%;
+  background-position: center 30%;
   width: 99.9%;
   height: 25vh;
   background-repeat: no-repeat;
@@ -372,34 +332,18 @@ column-gap: 10px;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
   z-index: 1;
   /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/*------------------- section-contato---------------------------*/
-#contato-section .card:hover{
+/*------------------- SECTION CONTATO ---------------------------*/
+#contato-section .card:hover {
   transform: scale(1.05);
   border: 1px solid #d2aa5c;
 }
 
-
-
-
-
-/*------------------- Pagina Sobre nos---------------------------*/
-
+/*------------------- PÁGINA SOBRE NÓS ---------------------------*/
 .img-sobre-nos {
   width: 568px;
 }
@@ -408,8 +352,6 @@ column-gap: 10px;
   .img-sobre-nos {
     width: 90vw;
   }
-
-
 }
 
 /* Tamanho Pequeno (sm) */
@@ -422,7 +364,7 @@ column-gap: 10px;
 /* Tamanho Médio (md) */
 @media (min-width: 768px) and (max-width: 991.98px) {
   .img-sobre-nos {
-    width: 300px; 
+    width: 300px;
   }
 }
 
@@ -443,15 +385,7 @@ column-gap: 10px;
   /* Estilos para telas de 1400px e maiores */
 }
 
-
-
-
-
-
-
-
-/*------------------- Pagina Revenda---------------------------*/
-
+/*------------------- PÁGINA REVENDA ---------------------------*/
 
 legend {
   font-size: 1.2rem;
@@ -461,11 +395,9 @@ small {
   padding-left: 15px;
 }
 
-
-
 .fundo-secundario-paginas {
   position: relative;
-  background-image: url(../img/fundo/banner-escuro.jpg);
+  background-image: url(../img/fundo/fundo-secundario-paginas.jpg);
   background-size: cover;
   background-position: center 30%;
   width: 99.9%;
@@ -480,7 +412,7 @@ small {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.6);
   z-index: 1;
   /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
 }
@@ -491,19 +423,15 @@ small {
   right: 20px;
 }
 
-.btn-vidro{
-  background-color:  rgba(98, 22, 47, 0.8);
+.btn-vidro {
+  background-color: rgba(98, 22, 47, 0.8);
   border-radius: 5px;
   backdrop-filter: blur(10px);
 }
 
+/*------------------- PÁGINA LOJA ---------------------------*/
 
-
-
-/*------------------- Pagina Loja ---------------------------*/
-
-
-.fundo-loja{
+.fundo-loja {
   position: relative;
   background-image: url(../img/fundo/fundo-loja.jpeg);
   background-size: cover;
@@ -524,7 +452,6 @@ small {
   z-index: 1;
   /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
 }
-
 
 
 .list-group-item-action:hover {
@@ -573,15 +500,14 @@ small {
 .list-group .btn:hover {
   color: white;
 }
-/*------------------- Carrinho de compras---------------------------*/
-.btn-carrinho a{
+
+/*------------------- CARRINHO DE COMPRAS ---------------------------*/
+.btn-carrinho a {
   color: blue;
   text-decoration-line: none;
 }
 
-
-
-.fundo-carrinho{
+.fundo-carrinho {
   position: relative;
   background-image: url(../img/fundo/fundo-carrinho.jpeg);
   background-size: cover;
@@ -649,10 +575,7 @@ small {
   }
 }
 
-
-
-/*------------------- Pagination---------------------------*/
-
+/*------------------- PAGINAÇÃO ---------------------------*/
 
 #paginate {
   width: 100%;
