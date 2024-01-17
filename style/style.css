@@ -357,9 +357,9 @@ column-gap: 10px;
 
 .fundo-galeria {
   position: relative;
-  background-image: url(../img/fundo/banner-escuro.jpg);
+  background-image: url(../img/fundo/galeria-img.jpg);
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 50%;
   width: 99.9%;
   height: 25vh;
   background-repeat: no-repeat;
@@ -372,7 +372,7 @@ column-gap: 10px;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.6);
   z-index: 1;
   /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
 }
@@ -465,7 +465,7 @@ small {
 
 .fundo-secundario-paginas {
   position: relative;
-  background-image: url(../img/fundo/fundo-secundario-paginas.jpg);
+  background-image: url(../img/fundo/banner-escuro.jpg);
   background-size: cover;
   background-position: center 30%;
   width: 99.9%;
@@ -480,7 +480,7 @@ small {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.1);
   z-index: 1;
   /* Garante que o pseudo-elemento esteja sobre a imagem de fundo */
 }
