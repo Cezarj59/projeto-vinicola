@@ -1,19 +1,18 @@
 
 // Variáveis Html
-const home = document.getElementById("home-section");
-const loja = document.getElementById("loja-section");
-const carrinhoCompras = document.getElementById("carrinho-section");
-const galeria = document.getElementById("galeria-section");
-const sobreNos = document.getElementById("sobre-nos-section");
-const contato = document.getElementById("contato-section");
-const revenda = document.getElementById("revenda-section");
+const home = document.getElementById("home");
+const loja = document.getElementById("loja");
+const carrinhoCompras = document.getElementById("carrinho");
+const galeria = document.getElementById("galeria");
+const sobreNos = document.getElementById("sobre-nos");
+const contato = document.getElementById("contato");
+const revenda = document.getElementById("revenda");
 
 
 // Configuração inicial
 home.style.display = "block";
 loja.style.display = "none";
 carrinhoCompras.style.display = "none";
-sobreNos.style.display = "none";
 galeria.style.display = "none";
 sobreNos.style.display = "none";
 contato.style.display = "none";
@@ -28,6 +27,7 @@ function alternaPaginas(x) {
       home.style.display = "block";
       loja.style.display = "none";
       carrinhoCompras.style.display = "none";
+      galeria.style.display = "none";
       sobreNos.style.display = "none";
       contato.style.display = "none";
       revenda.style.display = "none";
