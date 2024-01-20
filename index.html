@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça a história da Vinícola Strapasson e descubra nossos vinhos excepcionais.">
     <title>Home</title>
     <link rel="stylesheet" href="style/reset.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,16 +24,13 @@
                 </a>
             </div>
         </nav>
-
-
         <nav class="nav-color navbar navbar-expand-md navbar-dark" id="navbar">
             <div class="container-fluid">
                 <button class="navbar-toggler border border-light border-1" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <!-- Conteúdo da Navbar -->
+                <!--Conteúdo da Navbar-->
                 <!--OffCanvas 1-->
                 <div class="offcanvas-color offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel" data-bs-backdrop="false">
@@ -57,9 +55,10 @@
                                 <!--Dropdown-->
                                 <li class="nav-item dropdown d-none d-md-block">
                                     <a class="nav-link dropdown-toggle add-active" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false" onclick="active(2)">Mais
-                                        Vendidos</a>
-
+                                        data-bs-toggle="dropdown" aria-expanded="false" onclick="active(2)">
+                                        Mais
+                                        Vendidos
+                                    </a>
                                     <ul class="dropdown-menu dropdown-position">
                                         <li>
                                             <div class="d-flex p-2 gap-2 flex-wrap flex-xl-nowrap justify-content-evenly dropdown-ajuste scrollable-dropdown"
@@ -68,7 +67,6 @@
                                             </div>
                                         </li>
                                     </ul>
-
                                 </li>
                                 <!--botão para abrir offcanvas 2 em mobile-->
                                 <li class="nav-item dropdown d-md-none">
@@ -103,19 +101,17 @@
                                 </li>
                             </ul>
                         </div>
-
                         <div>
                             <!-- BTN Carrinho de Compras -->
                             <a class="nav-link add-active" href="#loja" data-bs-dismiss="offcanvas"
                                 onclick="alternaPaginas(2),active(8)">
-                                <img src="img/icon/carrinho-icon.png" width="25" alt=""></a>
+                                <img src="img/icon/carrinho-icon.png" width="25" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-
-
         <!-- Offcanvas 2 Mais Vendidos (inicialmente oculto) -->
         <section>
             <div class="offcanvas-color offcanvas offcanvas-start w-100" tabindex="-1" id="offcanvas-mais-vendidos"
@@ -132,11 +128,11 @@
             </div>
         </section>
     </header>
-
-    <!--###################################### HOME ###################################### -->
-    <div id="home-section">
+    <!-- Início da Seção HOME -->
+    <div id="home">
+        <!-- ... conteúdo da seção home ... -->
         <!-- FUNDO PRINCIPAL -->
-        <section class="fundo-principal position-fixed top-0 z-n1 d-none d-md-block d-lg-block"></section>
+        <div class="fundo-principal position-fixed top-0 z-n1 d-none d-md-block d-lg-block"></div>
         <!-- CAROUSEL -->
         <section class="container-fluid p-0">
             <div id="carouselExampleCaptions" class="carousel slide">
@@ -157,7 +153,7 @@
                                 <p class="text-center text-light">
                                     O Sabor da Tradição
                                     <br>
-                                    <img src="img/carousel/bandeira-da-italia.jpg" width="50" alt="">
+                                    <img src="img/carousel/bandeira-da-italia.jpg" width="50" alt="Bandeira da Itália">
                                 </p>
                             </div>
                         </div>
@@ -192,7 +188,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-        </div>
+        </section>
         <!--  HOME/SEÇÃO TEXTO 1  -->
         <section class="container">
             <div class="d-flex flex-column justify-content-center mx-auto col-lg-8 p-4 p-lg-5 m-auto">
@@ -229,6 +225,7 @@
                 <h5>Vinícola Strapasson.</h5>
             </div>
         </section>
+
         <!-- HOME/INFORMAÇÕES -->
         <section class="bg-body-secondary d-xxl-flex text-center pb-2">
             <div class="d-xxl-flex justify-content-center align-items-center col-xxl-6">
@@ -240,7 +237,7 @@
                 </h4>
                 <div
                     class="d-flex flex-column justify-content-center justify-content-xxl-start align-items-center flex-xxl-row">
-                    <img class="icon col-xxl-3 p-3"  src="img/icon/cacho-uva.png" alt="">
+                    <img class="icon col-xxl-3 p-3" src="img/icon/cacho-uva.png" alt="">
                     <div class="col-8 col-xxl-9">
                         <h5>COLHEITA</h5>
                         <p>
@@ -304,16 +301,17 @@
                 </div>
             </div>
         </section>
-    </section>
+    </div>
+    <!-- Fim da Seção HOME -->
 
-    <!--###################################### LOJA ###################################### -->
-    <section id="loja-section">
+    <!-- Início da Seção LOJA -->
+    <div id="loja">
+        <!-- ... conteúdo da seção loja ... -->
         <section class="container-fluid px-0">
             <div class="fundo-loja d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-black position-relative z-2">Loja</h4>
             </div>
         </section>
-
         <section class="container-fluid container-xl">
             <div id="paginate" class="row">
                 <!--Coluna 1-->
@@ -322,7 +320,8 @@
                     <div class="list-group">
                         <h5
                             class="list-group-item bg-body-tertiary border border-5 border-danger border-end-0  border-bottom-0 border-top-0">
-                            Categorias</h5>
+                            Categorias
+                        </h5>
                         <div class="accordion  list-group-item p-0 border-0" id="accordionFlushExample">
                             <div class="accordion-item border-0">
                                 <h2 class="accordion-header" id="flush-headingOne">
@@ -336,16 +335,26 @@
                                     aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                     <div class="accordion-body p-0 ">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action border-0">Tinto
-                                                Seco</a>
-                                            <a href="#" class="list-group-item list-group-item-action border-0">Tinto
-                                                Suave</a>
-                                            <a href="#" class="list-group-item list-group-item-action border-0">Branco
-                                                Seco</a>
-                                            <a href="#" class="list-group-item list-group-item-action border-0">Branco
-                                                Suave</a>
-                                            <a href="#" class="list-group-item list-group-item-action border-0">Rosé
-                                                Suave</a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                                Tinto
+                                                Seco
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                                Tinto
+                                                Suave
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                                Branco
+                                                Seco
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                                Branco
+                                                Suave
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0">
+                                                Rosé
+                                                Suave
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -365,14 +374,22 @@
                             Busca por Preços
                         </h5>
                         <div class="row px-3">
-                            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$0 -
-                                R$20</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$20 -
-                                R$40</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$40 -
-                                R$80</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">R$80 -
-                                R$100</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">
+                                R$0 -
+                                R$20
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">
+                                R$20 -
+                                R$40
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">
+                                R$40 -
+                                R$80
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-sm border-0 col-6">
+                                R$80 -
+                                R$100
+                            </button>
                         </div>
                     </div>
                     <!-- Busca por Volume-->
@@ -410,9 +427,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
                 <!--Coluna 2-->
                 <div class="col-md-8 col-xl-9 mt-5 mt-md-0">
                     <!--############# div que exibe a lista de produtos ############# -->
@@ -429,9 +443,7 @@
                                     <span aria-hidden="true">&lt;</span>
                                 </a>
                             </li>
-                            <li class="page-item numbers d-flex" onclick="voltarAoTopo()">
-
-                            </li>
+                            <li class="page-item numbers d-flex" onclick="voltarAoTopo()"></li>
                             <li class="page-item">
                                 <a class="page-link next" href="#" aria-label="Next">
                                     <span aria-hidden="true">&gt;</span>
@@ -443,17 +455,15 @@
                                 </a>
                             </li>
                         </ul>
-
                     </div>
                 </div>
-
             </div>
         </section>
-    </section>
+    </div>
+    <!-- Fim da Seção LOJA -->
 
-    <!--###################################### CARRINHO ###################################### -->
-    <section id="carrinho-section">
-
+    <!-- Início da Seção CARRINHO -->
+    <div id="carrinho">
         <section class="container-fluid px-0">
             <div class="fundo-carrinho d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-black position-relative z-2">Carrinho</h4>
@@ -465,7 +475,6 @@
                     <!-- Aqui serão exibidos os itens do carrinho na seção separada -->
                 </ul>
             </div>
-
             <div id="div-total" class="col-xl-4 mt-3 mt-xl-0 d-none">
                 <div class="border border-1 border-dark-subtle p-3 ">
                     <div class="d-flex justify-content-between mb-4">
@@ -476,17 +485,15 @@
                         <span class="fs-5">Total</span>
                         <span id="total-carrinho-section" class="fs-5">0.00</span>
                     </div>
-
-
                     <button class="btn btn-primary col-12">Continuar a Compra</button>
                 </div>
-
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Fim da Seção CARRINHO -->
 
-    <!--###################################### GALERIA ###################################### -->
-    <section id="galeria-section" class="container-fluid galeria-section">
+    <!-- Início da Seção GALERIA -->
+    <div id="galeria" class="container-fluid galeria-section">
         <section class="container-fluid px-0">
             <div class="fundo-galeria d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-black position-relative z-2">Galeria</h4>
@@ -514,17 +521,17 @@
             <img src="img/galeria/img19.jpg" alt="">
             <img src="img/galeria/img20.png" alt="">
         </div>
-    </section>
+    </div>
+    <!-- Fim da Seção GALERIA -->
 
-    <!--###################################### Sobre-Nós ###################################### -->
-    <section id="sobre-nos-section">
+    <!-- Início da Seção Sobre-nós -->
+    <div id="sobre-nos">
         <section>
             <div class="fundo-loja d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-black position-relative z-2">Sobre-nós</h4>
             </div>
             <section>
                 <div class="container my-5 d-flex flex-column-reverse flex-lg-row align-items-center ">
-
                     <div class="d-flex  justify-content-center align-items-center col-lg-6 ">
                         <img class="img-sobre-nos " src="img/bem-vindo.jpeg" alt="">
                     </div>
@@ -547,7 +554,6 @@
                     </div>
                 </div>
             </section>
-
             <section class="fundo-terciario container-fluid d-flex align-items-center pt-5 pb-5">
                 <div class="row row-cols-10">
                     <div class="col">
@@ -567,16 +573,17 @@
                 </div>
             </section>
         </section>
-    </section>
+    </div>
+    <!-- Fim da Seção Sobre-nós -->
 
-    <!--###################################### Contato ###################################### -->
-    <section id="contato-section">
+    <!-- Início da Seção Contato -->
+    <div id="contato">
         <section>
             <div class="fundo-secundario-paginas d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-white position-relative z-2">Contato</h4>
             </div>
         </section>
-        <section class="container">
+        <div class="container">
             <section class="d-flex  align-items-center flex-column flex-lg-row justify-content-md-between flex-wrap">
                 <div class="card mt-4" style="width: 18rem;">
                     <img src="img/icon/telephone-icon.png" style="width: 50px;" class="card-img-top m-3" alt="...">
@@ -584,44 +591,56 @@
                         <h5 class="card-title ">Telefone</h5>
                     </div>
                     <ul class="list-group list-group-flush border-0">
-                        <li class="list-group-item  border-0 pb-0"><small class="p-0">(41) 3656-1457</small></li>
-                        <li class="list-group-item  border-0 pt-0"><small class="p-0">(41) 3656-1457</small></li>
+                        <li class="list-group-item  border-0 pb-0">
+                            <small class="p-0">(41) 3656-1457</small>
+                        </li>
+                        <li class="list-group-item  border-0 pt-0">
+                            <small class="p-0">(41) 3656-1457</small>
+                        </li>
                     </ul>
                 </div>
-
                 <div class="card mt-4" style="width: 18rem;">
                     <img src="img/icon/email-icon.png" style="width: 50px;" class="card-img-top m-3" alt="...">
                     <div class="card-body  pb-0">
                         <h5 class="card-title">Email</h5>
                     </div>
                     <ul class="list-group list-group-flush border-0">
-                        <li class="list-group-item border-0 pb-0"><small class="p-0">email@email.com </small></li>
-                        <li class="list-group-item border-0 pt-0"><small class="p-0">email@email.com </small></li>
+                        <li class="list-group-item border-0 pb-0">
+                            <small class="p-0">email@email.com</small>
+                        </li>
+                        <li class="list-group-item border-0 pt-0">
+                            <small class="p-0">email@email.com</small>
+                        </li>
                     </ul>
                 </div>
-
                 <div class="card mt-4" style="width: 18rem;">
                     <img src="img/icon/address-icon.png" style="width: 50px;" class="card-img-top m-3" alt="...">
                     <div class="card-body  pb-0">
                         <h5 class="card-title">Endereço</h5>
                     </div>
                     <ul class="list-group list-group-flush border-0">
-                        <li class="list-group-item border-0 pb-0"><small class="p-0">Antônio Alberto Strapasson,
-                                35</small> </li>
-                        <li class="list-group-item border-0 pt-0"><small class="p-0">Sapopema, Colombo - PR,
-                                83414-465</small></li>
+                        <li class="list-group-item border-0 pb-0">
+                            <small class="p-0">
+                                Antônio Alberto Strapasson,
+                                35
+                            </small>
+                        </li>
+                        <li class="list-group-item border-0 pt-0">
+                            <small class="p-0">
+                                Sapopema, Colombo - PR,
+                                83414-465
+                            </small>
+                        </li>
                     </ul>
                 </div>
             </section>
-
-
-
-            <section class="row mt-5">
+            <div class="row mt-5">
                 <div class="col-xl-6">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14431.058058011136!2d-49.2282563!3d-25.2785059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dcdce18afa0627%3A0xd821b03fb0e7f2f2!2sVin%C3%ADcola%20Pedrinho%20Strapasson!5e0!3m2!1spt-BR!2sbr!4v1703612712514!5m2!1spt-BR!2sbr"
-                        style="width: 100%; height:90%; border:0;" allowfullscreen="" loading="lazy"
+                        style="width: 100%; height:90%; border:0;" allowfullscreen=""
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                 </div>
                 <div class="col-xl-6">
                     <form class="row g-3 mb-5">
@@ -647,7 +666,6 @@
                                     class="form-control border border-1 border-dark-subtle" required="">
                                 <label for="inputTelefone" class="text-black-50">Telefone</label>
                             </div>
-
                             <!-- Textarea -->
                             <div class="form-floating mb-4">
                                 <textarea class="form-control border border-1 border-dark-subtle"
@@ -658,26 +676,21 @@
                                 <button id="singlebutton" name="singlebutton"
                                     class="btn btn-outline-success">Enviar</button>
                             </div>
-
                         </fieldset>
-
-
-
                     </form>
                 </div>
-            </section>
-        </section>
+            </div>
+        </div>
+    </div>
+    <!-- Fim da Seção Contato -->
 
-    </section>
-
-    <!--######################################  Revenda ###################################### -->
-    <section id="revenda-section">
+    <!-- Início da Seção Revenda -->
+    <div id="revenda">
         <section>
             <div class="fundo-secundario-paginas d-flex align-items-center justify-content-center">
                 <h4 class="text-center text-white position-relative z-2">Revenda</h4>
             </div>
         </section>
-
         <!--SEÇÃO REVENDA-->
         <section class="container bg-body-tertiary px-xl-5">
             <div>
@@ -708,8 +721,9 @@
                         <legend class="bg-body-secondary text-center">Dados Pessoais</legend>
                         <!--Input Nome-->
                         <div class="form-floating mb-4">
-                            <input type="text" class="form-control border border-1 border-dark-subtle" id="inputNomeRevendedor"
-                                name="inputNomeRevendedor" placeholder="Ex: Junior" required="">
+                            <input type="text" class="form-control border border-1 border-dark-subtle"
+                                id="inputNomeRevendedor" name="inputNomeRevendedor" placeholder="Ex: Junior"
+                                required="">
                             <label for="inputNomeRevendedor" class="text-black-50">Nome</label>
                             <small id="nomeHelpBlock" class="form-text text-muted">Ex: Junior</small>
                         </div>
@@ -722,15 +736,17 @@
                         </div>
                         <!--Input email-->
                         <div class="form-floating mb-4">
-                            <input id="inputEmailRevendedor" name="inputEmailRevendedor" type="email" placeholder="seuemail@provedor.com"
+                            <input id="inputEmailRevendedor" name="inputEmailRevendedor" type="email"
+                                placeholder="seuemail@provedor.com"
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="inputEmailRevendedor" class="text-black-50">Email</label>
                             <small id="emailHelpBlock" class="form-text text-muted">Ex: seuemail@provedor.com</small>
                         </div>
                         <!--Input Telefone-->
                         <div class="form-floating mb-4">
-                            <input id="inputTelefoneRevendedor" name="inputTelefoneRevendedor" type="text" placeholder="(00) 0000 0000"
-                                class="form-control border border-1 border-dark-subtle" required="">
+                            <input id="inputTelefoneRevendedor" name="inputTelefoneRevendedor" type="text"
+                                placeholder="(00) 0000 0000" class="form-control border border-1 border-dark-subtle"
+                                required="">
                             <label for="inputTelefoneRevendedor" class="text-black-50">Telefone</label>
                             <small id="telefoneHelpBlock" class="form-text text-muted">Ex: (DDD) 0 0000 0000</small>
                         </div>
@@ -742,8 +758,10 @@
                         <div class="form-floating mb-4">
                             <input id="inputNomeEmpresa" name="inputNomeEmpresa" type="text" placeholder=""
                                 class="form-control border border-1 border-dark-subtle">
-                            <label for="inputNomeEmpresa" class="text-black-50">Digite o nome da Empresa
-                                (opcional)</label>
+                            <label for="inputNomeEmpresa" class="text-black-50">
+                                Digite o nome da Empresa
+                                (opcional)
+                            </label>
                             <small id="nomeEmpresaHelpBlock" class="form-text text-muted">Ex: Vendas SA</small>
                         </div>
                         <!--Input CNPJ-->
@@ -777,7 +795,10 @@
                             <input id="inputCNPJ2" name="inputCNPJ2" type="text" placeholder=" XX. XXX. XXX/0001-XX"
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="inputCNPJ2" class="text-black-50">Digite o CNPJ</label>
-                            <small id="enderecoEmpresaHelpBlock" class="form-text text-muted">Ex: XX. XXX. XXX/0001-XX</small>
+                            <small id="enderecoEmpresaHelpBlock" class="form-text text-muted">
+                                Ex: XX. XXX.
+                                XXX/0001-XX
+                            </small>
                         </div>
                     </fieldset>
                     <!-- Interesses -->
@@ -832,7 +853,6 @@
                             <label for="textareaOBS" class="text-black-50">Espaço para informações adicionais</label>
                         </div>
                     </fieldset>
-
                     <!-- Button -->
                     <fieldset class="col-xl-12 mt-4 mb-4">
                         <div class="col-md-12 text-xl-end">
@@ -843,12 +863,11 @@
                 </form>
             </div>
         </section>
-    </section>
+    </div>
+    <!-- Fim da Seção Revenda -->
 
-
-
-    <!--############################## SEÇÃO FAC ############################## -->
-    <section class="section-fac container-fluid p-0 d-block">
+    <!--Início da Seção FAC  -->
+    <div class="section-fac container-fluid p-0 d-block">
         <div class="container p-5 d-block d-xl-flex justify-content-center">
             <div class="card-fac card bg-transparent border-0">
                 <div class="card-header bg-transparent border-0">Ajuda</div>
@@ -887,9 +906,11 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!--##############################  Rodapé ############################## -->
-    <section class="container-fluid p-0">
+    </div>
+    <!-- Fim da Seção FAC -->
+
+    <!-- Início da Seção Rodapé -->
+    <div class="container-fluid p-0">
         <div class="card text-center p-3">
             <div class="card-body">
                 <h5 class="card-title">Conecte-se conosco</h5>
@@ -905,7 +926,10 @@
                 </a>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Fim da Seção Rodapé -->
+
+    <!-- Início do Footer -->
     <footer class="bg-dark text-light text-center p-3">
         <div class="container">
             <p>
@@ -915,21 +939,18 @@
             </p>
         </div>
     </footer>
+    <!-- Fim da Seção Footer-->
 
     <!--  Botão Voltar ao Topo -->
-    <button id="btnVoltarAoTopo" class="btn btn-vidro border-dark d-none" onclick="voltarAoTopo()"><img
-            src="./img/up-arrow.png" alt="Voltar ao topo" width="20"></button>
-
-
-
+    <button id="btnVoltarAoTopo" class="btn btn-vidro border-dark d-none" onclick="voltarAoTopo()">
+        <img src="./img/up-arrow.png" alt="Voltar ao topo" width="20">
+    </button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-
     <script src="js/navbar.js"></script>
     <script src="js/loja.js"></script>
     <script src="js/script.js"></script>
-
 </body>
 
 </html>
