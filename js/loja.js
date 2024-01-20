@@ -264,8 +264,8 @@ function adicionarAoCarrinho(id, image, title, preco) {
             preco: preco,
             quantidade: 1
         };
-
         carrinho.push(novoItemCarrinho);
+        alert("Produto Adicionado ao Carrinho!!!")
     }
 
     totalCarrinho += preco;
