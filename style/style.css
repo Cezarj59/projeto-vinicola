@@ -338,7 +338,7 @@ h1 {
 }
 
 /*------------------- SECTION CONTATO ---------------------------*/
-#contato-section .card:hover {
+#contato .card:hover {
   transform: scale(1.05);
   border: 1px solid #d2aa5c;
 }
