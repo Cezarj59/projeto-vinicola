@@ -46,12 +46,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link add-active" aria-current="page" href="#home"
                                         data-toggle="tooltip" data-placement="bottom" title="Ir para a Pagina Inicial"
-                                        data-bs-dismiss="offcanvas" onclick="alternaPaginas(0),active(0)">Home</a>
+                                        data-bs-dismiss="offcanvas" onclick="alternaPaginas(0),active(0), fecharOffcanvas()">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link add-active" href="#loja" data-bs-dismiss="offcanvas"
                                         data-toggle="tooltip" data-placement="bottom" title="Ir para a Loja"
-                                        onclick="alternaPaginas(1),active(1)">Loja</a>
+                                        onclick="alternaPaginas(1),active(1),fecharOffcanvas()">Loja</a>
                                 </li>
                                 <!--Dropdown-->
                                 <li class="nav-item dropdown d-none d-md-block">
@@ -71,39 +71,43 @@
                                         </li>
                                     </ul>
                                 </li>
+
                                 <!--botão para abrir offcanvas 2 em mobile-->
                                 <li class="nav-item dropdown d-md-none">
                                     <a href="#" class="nav-link" onclick="abrirOffcanvas2(),active(2)">Mais Vendidos</a>
                                 </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link add-active" href="#galeria" data-bs-dismiss="offcanvas"
-                                    data-toggle="tooltip" data-placement="bottom" title="Ir para a Galeria de Imagens"
-                                        onclick="alternaPaginas(5),active(3)">Galeria</a>
+                                        data-toggle="tooltip" data-placement="bottom"
+                                        title="Ir para a Galeria de Imagens"
+                                        onclick="alternaPaginas(5),active(3),fecharOffcanvas()">Galeria</a>
                                 </li>
                                 <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle add-active" href="#" role="button"
-                                    data-toggle="tooltip" data-placement="bottom" title="Mais Opções"
+                                        data-toggle="tooltip" data-placement="bottom" title="Mais Opções"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Mais
                                     </a>
                                     <ul class="dropdown-menu" style="background-color: #06141d;">
                                         <li>
                                             <a class="dropdown-item add-active text-white" href="#sobre-nos"
-                                            data-toggle="tooltip" data-placement="bottom" title="Ir para a página Sobre Nós"
-                                                data-bs-dismiss="offcanvas" onclick="alternaPaginas(7),active(5)">Sobre
+                                                data-toggle="tooltip" data-placement="bottom"
+                                                title="Ir para a página Sobre Nós" data-bs-dismiss="offcanvas"
+                                                onclick="alternaPaginas(7),active(5),fecharOffcanvas()">Sobre
                                                 Nós</a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item add-active text-white" href="#contato"
-                                            data-toggle="tooltip" data-placement="bottom" title="Ir para a página Contato"
-                                                data-bs-dismiss="offcanvas"
-                                                onclick="alternaPaginas(8),active(6)">Contato</a>
+                                                data-toggle="tooltip" data-placement="bottom"
+                                                title="Ir para a página Contato" data-bs-dismiss="offcanvas"
+                                                onclick="alternaPaginas(8),active(6),fecharOffcanvas()">Contato</a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item add-active text-white" href="#revenda"
-                                            data-toggle="tooltip" data-placement="bottom" title="Ir para a página Revenda"
-                                                data-bs-dismiss="offcanvas"
-                                                onclick="alternaPaginas(9),active(7)">Revenda</a>
+                                                data-toggle="tooltip" data-placement="bottom"
+                                                title="Ir para a página Revenda" data-bs-dismiss="offcanvas"
+                                                onclick="alternaPaginas(9),active(7),fecharOffcanvas()">Revenda</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -112,8 +116,8 @@
                         <div>
                             <!-- BTN Carrinho de Compras -->
                             <a class="nav-link add-active" href="#loja" data-bs-dismiss="offcanvas"
-                            data-toggle="tooltip" data-placement="bottom" title="Ir para o Carrinho de Compras"
-                                onclick="alternaPaginas(2),active(8)">
+                                data-toggle="tooltip" data-placement="bottom" title="Ir para o Carrinho de Compras"
+                                onclick="alternaPaginas(2),active(8),fecharOffcanvas()">
                                 <img src="img/icon/carrinho-icon.png" width="25" alt="">
                             </a>
                         </div>
@@ -147,13 +151,13 @@
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    data-toggle="tooltip" data-placement="bottom" title="Ir para 1° Slide"
-                        aria-current="true" aria-label="Slide 1"></button>
+                        data-toggle="tooltip" data-placement="bottom" title="Ir para 1° Slide" aria-current="true"
+                        aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    data-toggle="tooltip" data-placement="bottom" title="Ir para 2° Slide"
+                        data-toggle="tooltip" data-placement="bottom" title="Ir para 2° Slide"
                         aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    data-toggle="tooltip" data-placement="bottom" title="Ir para 3° Slide"
+                        data-toggle="tooltip" data-placement="bottom" title="Ir para 3° Slide"
                         aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
@@ -190,14 +194,12 @@
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-toggle="tooltip" data-placement="bottom" title="Ir para Slide Anterior"
-                    data-bs-slide="prev">
+                    data-toggle="tooltip" data-placement="bottom" title="Ir para Slide Anterior" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-toggle="tooltip" data-placement="bottom" title="Ir para Próximo Slide"
-                    data-bs-slide="next">
+                    data-toggle="tooltip" data-placement="bottom" title="Ir para Próximo Slide" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -562,8 +564,8 @@
                                 deixe que nossos vinhos refinados encantem seu paladar. Prove o que
                                 há de melhor em cada garrafa e celebre momentos memoráveis conosco."
                             </p>
-                            <button class="btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Ir para Loja"
-                                onclick="alternaPaginas(1),active(1)">Loja</button>
+                            <button class="btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="bottom"
+                                title="Ir para Loja" onclick="alternaPaginas(1),active(1)">Loja</button>
                         </div>
                     </div>
                 </div>
@@ -687,7 +689,8 @@
                                 <label for="textareaMsg" class="text-black-50">Menssagem</label>
                             </div>
                             <div class="col-md-12">
-                                <button id="singlebutton" name="singlebutton" data-toggle="tooltip" data-placement="bottom" title="Enviar Formulário"
+                                <button id="singlebutton" name="singlebutton" data-toggle="tooltip"
+                                    data-placement="bottom" title="Enviar Formulário"
                                     class="btn btn-outline-success">Enviar</button>
                             </div>
                         </fieldset>
@@ -870,7 +873,8 @@
                     <!-- Button -->
                     <fieldset class="col-xl-12 mt-4 mb-4">
                         <div class="col-md-12 text-xl-end">
-                            <button id="enviarFormRevendedor" name="singlebutton" data-toggle="tooltip" data-placement="bottom" title="Enviar Formulário"
+                            <button id="enviarFormRevendedor" name="singlebutton" data-toggle="tooltip"
+                                data-placement="bottom" title="Enviar Formulário"
                                 class="btn btn-outline-success">Enviar</button>
                         </div>
                     </fieldset>
@@ -955,10 +959,21 @@
     </footer>
     <!-- Fim da Seção Footer-->
 
-    <!--  Botão Voltar ao Topo -->
-    <button id="btnVoltarAoTopo" class="btn btn-vidro border-dark d-none" data-toggle="tooltip" data-placement="bottom" title="Voltar ao topo" onclick="voltarAoTopo()">
+    <!-- Inicio Botão Voltar ao Topo -->
+    <button id="btnVoltarAoTopo" class="btn btn-vidro border-dark d-none" data-toggle="tooltip" data-placement="bottom"
+        title="Voltar ao topo" onclick="voltarAoTopo()">
         <img src="./img/up-arrow.png" alt="Voltar ao topo" width="20">
     </button>
+    <!-- Fim Botão Voltar ao Topo -->
+
+    <!--  Inicio Spinner -->
+    <div id="spinner" class="spinner-container glass-container d-flex justify-content-center align-items-center d-none">
+        <div class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <!--  Fim Spinner -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
