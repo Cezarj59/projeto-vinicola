@@ -21,83 +21,89 @@ revenda.style.display = "none";
 function alternaPaginas(x) {
   console.log("chamou a alternaPaginas com x =", x);
 
-  switch (x) {
-    case 0:
-      document.title = "Home";
-      home.style.display = "block";
-      loja.style.display = "none";
-      carrinhoCompras.style.display = "none";
-      galeria.style.display = "none";
-      sobreNos.style.display = "none";
-      contato.style.display = "none";
-      revenda.style.display = "none";
-      break;
+  // Exibe o spinner
+  document.getElementById("spinner").classList.remove("d-none");
 
-    case 1:
-      document.title = "Loja";
-      home.style.display = "none";
-      loja.style.display = "block";
-      carrinhoCompras.style.display = "none";
-      galeria.style.display = "none";
-      sobreNos.style.display = "none";
-      contato.style.display = "none";
-      revenda.style.display = "none";
-      break;
-      
-    case 2:
-      document.title = " Carrinho";
-      home.style.display = "none";
-      loja.style.display = "none";
-      carrinhoCompras.style.display = "block";
-      galeria.style.display = "none";
-      sobreNos.style.display = "none";
-      contato.style.display = "none";
-      revenda.style.display = "none";
-      break;
-    case 5:
-      document.title = "Galeria";
-      home.style.display = "none";
-      loja.style.display = "none";
-      carrinhoCompras.style.display = "none";
-      galeria.style.display = "block";
-      sobreNos.style.display = "none";
-      contato.style.display = "none";
-      revenda.style.display = "none";
-      break;
-    case 7:
-      document.title = "Sobre Nós";
-      home.style.display = "none";
-      loja.style.display = "none";
-      carrinhoCompras.style.display = "none";
-      galeria.style.display = "none";
-      sobreNos.style.display = "block";
-      contato.style.display = "none";
-      revenda.style.display = "none";
-      break;
-    case 8:
-      document.title = "Contato";
-      home.style.display = "none";
-      loja.style.display = "none";
-      carrinhoCompras.style.display = "none";
-      galeria.style.display = "none";
-      sobreNos.style.display = "none";
-      contato.style.display = "block";
-      revenda.style.display = "none";
-      break;
-    case 9:
-      document.title = "Revenda";
-      home.style.display = "none";
-      loja.style.display = "none";
-      carrinhoCompras.style.display = "none";
-      galeria.style.display = "none";
-      sobreNos.style.display = "none";
-      contato.style.display = "none";
-      revenda.style.display = "block";
-      break;
-  }
+  // Simula um atraso (2 segundos) antes de navegar para a próxima página
+  setTimeout(function () {
+    switch (x) {
+      case 0:
+        document.title = "Home";
+        home.style.display = "block";
+        loja.style.display = "none";
+        carrinhoCompras.style.display = "none";
+        galeria.style.display = "none";
+        sobreNos.style.display = "none";
+        contato.style.display = "none";
+        revenda.style.display = "none";
+        break;
 
+      case 1:
+        document.title = "Loja";
+        home.style.display = "none";
+        loja.style.display = "block";
+        carrinhoCompras.style.display = "none";
+        galeria.style.display = "none";
+        sobreNos.style.display = "none";
+        contato.style.display = "none";
+        revenda.style.display = "none";
+        break;
 
-  window.scrollTo(0, 0);
+      case 2:
+        document.title = " Carrinho";
+        home.style.display = "none";
+        loja.style.display = "none";
+        carrinhoCompras.style.display = "block";
+        galeria.style.display = "none";
+        sobreNos.style.display = "none";
+        contato.style.display = "none";
+        revenda.style.display = "none";
+        break;
+      case 5:
+        document.title = "Galeria";
+        home.style.display = "none";
+        loja.style.display = "none";
+        carrinhoCompras.style.display = "none";
+        galeria.style.display = "block";
+        sobreNos.style.display = "none";
+        contato.style.display = "none";
+        revenda.style.display = "none";
+        break;
+      case 7:
+        document.title = "Sobre Nós";
+        home.style.display = "none";
+        loja.style.display = "none";
+        carrinhoCompras.style.display = "none";
+        galeria.style.display = "none";
+        sobreNos.style.display = "block";
+        contato.style.display = "none";
+        revenda.style.display = "none";
+        break;
+      case 8:
+        document.title = "Contato";
+        home.style.display = "none";
+        loja.style.display = "none";
+        carrinhoCompras.style.display = "none";
+        galeria.style.display = "none";
+        sobreNos.style.display = "none";
+        contato.style.display = "block";
+        revenda.style.display = "none";
+        break;
+      case 9:
+        document.title = "Revenda";
+        home.style.display = "none";
+        loja.style.display = "none";
+        carrinhoCompras.style.display = "none";
+        galeria.style.display = "none";
+        sobreNos.style.display = "none";
+        contato.style.display = "none";
+        revenda.style.display = "block";
+        break;
+    }
+    document.getElementById("spinner").classList.add("d-none");
+
+    window.scrollTo(0, 0);
+  }, 500);
 }
 
 
@@ -143,8 +149,10 @@ function fecharOffcanvas2() {
 
 function fecharOffcanvas() {
   // Fecha o primeiro offcanvas
-  var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
-  offcanvas1.hide();
-
-
+  var offcanvasElement = document.getElementById('offcanvasNavbar');
+  var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+  
+  if (offcanvas) {
+    offcanvas.hide();
+  }
 }
