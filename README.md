@@ -13,7 +13,7 @@ Este projeto consiste em um site responsivo que simula uma loja de vinhos online
 ## Tecnologias Utilizadas
 
 - HTML/CSS (Responsivo)
-- Bootstrap 5.1.0
+- Bootstrap 5.1.3
 - JavaScript
 - Simulação de Single Page Application (SPA)
 
