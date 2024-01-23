@@ -18,6 +18,7 @@ sobreNos.style.display = "none";
 contato.style.display = "none";
 revenda.style.display = "none";
 
+
 function alternaPaginas(x) {
   console.log("chamou a alternaPaginas com x =", x);
 
