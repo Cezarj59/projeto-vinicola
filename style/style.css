@@ -133,8 +133,6 @@ nav,
   .img-section-info {
     width: 375px;
   }
-
-
 }
 
 /* Tamanho Pequeno (sm) */
@@ -219,7 +217,6 @@ h1 {
 }
 
 @media (max-width: 768px) {
-
   .img-1-carousel,
   .img-2-carousel,
   .img-3-carousel {
