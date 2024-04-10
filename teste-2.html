@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function validarCEP(cep) {
+            // Verifica se o CEP possui exatamente 8 caracteres
+            if (cep.length !== 8) {
+                return false;
+            }
+
+            // Verifica se todos os caracteres do CEP são dígitos
+            for (var i = 0; i < cep.length; i++) {
+                if (isNaN(parseInt(cep[i]))) {
+                    return false;
+                }
+            }
+
+           
+            return true;
+        }
+
+        // Exemplo de uso da função
+        var cep = "12345676"; // Exemplo de CEP com letra
+        if (validarCEP(cep)) {
+            console.log("CEP válido");
+        } else {
+            console.log("CEP inválido");
+        }
+
+    </script>
+</body>
+
+</html>
