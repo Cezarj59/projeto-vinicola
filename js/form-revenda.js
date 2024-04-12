@@ -12,7 +12,7 @@ $(document).ready(function () {
         if (nome.length == 0) {
             exibirErro("Digite o Nome!!!");
         } else {
-            exibirSucessoNome("Ok!")
+            exibirSucessoNome("Nome Valido!")
 
             nome = formatarNome(nome);
 
@@ -49,6 +49,12 @@ $(document).ready(function () {
         $("#inputNomeRevendedor").removeClass("border-danger border-dark-subtle"); // Remove a borda de cor vermelha do campo de nome
         $("#inputNomeRevendedor").addClass("border-success"); // Adiciona a borda de cor verde ao campo de nome
     }
+
+
+    /**
+     * Faz a formatação do nome.
+     * @param {string} nome - O nome completo a ser formatado.
+     */
 
 
     function formatarNome(nome) {
@@ -192,27 +198,52 @@ $(document).ready(function () {
         validarCpf();
     });
 
-    /**
-     * Valida o CPF inserido no campo de entrada "#inputCpfRevendedor".
-     * Exibe mensagens de erro ou sucesso com base no comprimento do CPF.
-     */
-
     function validarCpf() {
         let cpf = $("#inputCpfRevendedor").val();
 
         if (cpf.length != 14) {
-            // Se o comprimento do CPF for diferente de 14, exibe uma mensagem de erro
             exibirErroCpf("CPF inválido! Precisa ter 11 números.");
-
+        } else if (!verificaCPF(cpf)) {
+            exibirErroCpf("CPF inválido!");
         } else {
-            // Se o comprimento do CPF for igual a 14, exibe uma mensagem de sucesso
-            exibirSucessoCpf("Ok!")
+            exibirSucessoCpf("CPF válido!");
         }
 
         if (cpf.length == 0) {
-            // Se o campo de CPF estiver vazio, exibe uma mensagem de erro
             exibirErroCpf("Digite o CPF!!!");
         }
+    }
+
+    function verificaCPF(cpf) {
+        cpf = removerNaoNumericos(cpf) // Remove todos os caracteres que não são dígitos
+
+        // Verifica se todos os dígitos do CPF são iguais; se sim, CPF inválido
+        if (/^(\d)\1{10}$/.test(cpf)) {
+            return false;
+        }
+
+        // Calcula o primeiro dígito verificador
+        let soma = 0;
+        for (let i = 0; i < 9; i++) {
+            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        }
+        let digito1 = 11 - (soma % 11);
+        if (digito1 > 9) {
+            digito1 = 0;
+        }
+
+        // Calcula o segundo dígito verificador
+        soma = 0;
+        for (let i = 0; i < 10; i++) {
+            soma += parseInt(cpf.charAt(i)) * (11 - i);
+        }
+        let digito2 = 11 - (soma % 11);
+        if (digito2 > 9) {
+            digito2 = 0;
+        }
+
+        // Verifica se os dígitos calculados são iguais aos dígitos do CPF
+        return cpf.substr(-2) === digito1.toString() + digito2.toString();
     }
 
     /**
@@ -265,6 +296,13 @@ $(document).ready(function () {
         let input = $("#inputCpfRevendedor").val();
         let cpf = removerNaoNumericos(input);
         let cpfFormatado = '';
+
+        // Verifica se o CPF tem mais de 11 dígitos
+        if (cpf.length > 11) {
+            cpf = cpf.substring(0, 11); // Limita o CPF aos 11 primeiros dígitos
+        }
+
+        // Formata o CPF com pontos e traço
         for (let i = 0; i < cpf.length; i++) {
             if (i == 3 || i == 6) {
                 cpfFormatado += '.';
@@ -273,12 +311,11 @@ $(document).ready(function () {
             }
             cpfFormatado += cpf[i];
         }
-        if (cpf.length > 11) {
-            $("#inputCpfRevendedor").val(cpfFormatado.substring(0, 14));
-        } else {
-            $("#inputCpfRevendedor").val(cpfFormatado);
-        }
+
+        // Define o CPF formatado no campo de entrada
+        $("#inputCpfRevendedor").val(cpfFormatado);
     }
+
 
     // Registra o evento "input" no campo de entrada do CPF e chama a função alterarInput quando o evento é acionado
     $("#inputCpfRevendedor").on("input", alterarInput);
@@ -288,7 +325,197 @@ $(document).ready(function () {
 
     //------------------------------------ FIM Validar CPF -----------------------------------------
 
+    //################################ INÍCIO Validar Email ########################################
 
+    $("#inputEmailRevendedor").blur(function () {
+        let email = $("#inputEmailRevendedor").val().trim();
+        validarEmail(email);
+    });
+
+    /**
+     * Exibe uma mensagem de erro relacionada ao campo de Email.
+     * @param {string} mensagem - A mensagem de erro a ser exibida.
+     */
+    function exibirErroEmail(mensagem) {
+        $("#emailHelpBlock").html(mensagem);
+        $("#emailHelpBlock").removeClass("text-muted");
+        $("#emailHelpBlock").addClass("text-danger");
+        $("#inputEmailRevendedor").removeClass("border-dark-subtle");
+        $("#inputEmailRevendedor").addClass("border-danger");
+    }
+
+    /**
+     * Exibe uma mensagem de sucesso relacionada ao campo de Email.
+     * @param {string} mensagem - A mensagem de sucesso a ser exibida.
+     */
+    function exibirSucessoEmail(mensagem) {
+        $("#emailHelpBlock").html(mensagem);
+        $("#emailHelpBlock").removeClass("text-danger text-muted");
+        $("#emailHelpBlock").addClass("text-success");
+        $("#inputEmailRevendedor").removeClass("border-danger border-dark-subtle");
+        $("#inputEmailRevendedor").addClass("border-success");
+    }
+
+    // Função para verificar se o e-mail não possui espaços em branco
+    function naoPossuiEspacos(email) {
+        return !email.includes(' ');
+    }
+
+    // Função para verificar se o e-mail possui o símbolo @
+    function possuiArroba(email) {
+        return email.indexOf('@') !== -1;
+    }
+
+    // Função para verificar se há algum caracter antes do @
+    function possuiCaracteresAntesArroba(email) {
+        let partes = email.split('@');
+        return partes[0].length > 0;
+    }
+
+    // Função para verificar se há algum caracter após o @
+    function possuiCaracteresAposArroba(email) {
+        let partes = email.split('@');
+        return partes[1].length > 0;
+    }
+
+    // Função para verificar se há pelo menos um ponto após o caracter depois do @
+    function possuiPontoAposCaracterDepoisArroba(email) {
+        let partes = email.split('@');
+        let parteDepoisDoArroba = partes[1];
+        return parteDepoisDoArroba.indexOf('.') !== -1;
+    }
+
+    // Função para verificar se há pelo menos um caractere após o último ponto
+    function possuiCaractereAposUltimoPonto(email) {
+        let partes = email.split('@');
+        let parteDepoisDoArroba = partes[1];
+        let partesDepoisDoPonto = parteDepoisDoArroba.split('.');
+        let parteDepoisDoUltimoPonto = partesDepoisDoPonto[1];
+        return parteDepoisDoUltimoPonto && parteDepoisDoUltimoPonto.length > 0;
+    }
+
+    // Função para verificar se o e-mail contém apenas caracteres permitidos
+    function possuiApenasCaracteresPermitidos(email) {
+        let caracteresPermitidos = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!#$%&\'*+/=?^_`{|}~-@';
+        for (let char of email) {
+            if (caracteresPermitidos.indexOf(char) === -1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Função para verificar se o e-mail possui apenas um símbolo @
+    function possuiApenasUmArroba(email) {
+        let count = 0;
+        for (let char of email) {
+            if (char === '@') {
+                count++;
+            }
+        }
+        return count === 1;
+    }
+
+    // Função para verificar se a parte do domínio não contém pontos no meio
+    function naoPossuiPontosNoDominio(email) {
+        let partes = email.split('@');
+        if (partes.length !== 2) {
+            return false; // O e-mail não possui um "@" válido
+        }
+
+        let dominio = partes[1];
+        return dominio.indexOf('.') === dominio.lastIndexOf('.');
+    }
+
+    // Função para verificar se a parte do domínio não contém caracteres inválidos
+    function naoPossuiCaracteresInvalidosNoDominio(email) {
+        let partes = email.split('@');
+        if (partes.length !== 2) {
+            return false; // O e-mail não possui um "@" válido
+        }
+
+        let dominio = partes[1];
+
+        // Caracteres permitidos: letras, números, hífens e sublinhados
+        let caracteresPermitidos = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.';
+
+        for (let i = 0; i < dominio.length; i++) {
+            let caractere = dominio.charAt(i);
+            if (caracteresPermitidos.indexOf(caractere) === -1) {
+                return false; // Caractere inválido encontrado
+            }
+        }
+
+        return true; // Todos os caracteres são válidos
+    }
+
+
+    // Função para verificar se o tamanho do e-mail está dentro do limite máximo
+    function tamanhoDentroDoLimite(email) {
+        return email.length <= 254;
+    }
+
+    // Função principal de validação de e-mail
+    function validarEmail(email) {
+        if (!naoPossuiEspacos(email)) {
+            exibirErroEmail("E-mail não deve conter espaços.");
+            return false;
+        }
+
+        if (!possuiArroba(email)) {
+            exibirErroEmail("E-mail deve conter o símbolo @.");
+            return false;
+        }
+
+        if (!possuiApenasUmArroba(email)) {
+            exibirErroEmail("E-mail deve conter apenas um símbolo @.");
+            return false;
+        }
+
+        if (!possuiCaracteresAntesArroba(email)) {
+            exibirErroEmail("E-mail deve conter caracteres antes do @.");
+            return false;
+        }
+
+        if (!possuiCaracteresAposArroba(email)) {
+            exibirErroEmail("E-mail deve conter caracteres após o @.");
+            return false;
+        }
+
+        if (!possuiPontoAposCaracterDepoisArroba(email)) {
+            exibirErroEmail("E-mail deve conter pelo menos um ponto após o @.");
+            return false;
+        }
+        if (!naoPossuiPontosNoDominio(email)) {
+            exibirErroEmail("A parte do domínio do e-mail não deve conter pontos no meio.");
+            return false;
+        }
+
+        if (!possuiCaractereAposUltimoPonto(email)) {
+            exibirErroEmail("E-mail deve conter pelo menos um caractere após o último ponto.");
+            return false;
+        }
+
+        if (!possuiApenasCaracteresPermitidos(email)) {
+            exibirErroEmail("E-mail contém caracteres inválidos.");
+            return false;
+        }
+
+        if (!tamanhoDentroDoLimite(email)) {
+            exibirErroEmail("E-mail excede o limite máximo de caracteres.");
+            return false;
+        }
+
+        if (!naoPossuiCaracteresInvalidosNoDominio(email)) {
+            exibirErroEmail("A parte do domínio do e-mail contém caracteres inválidos.");
+            return false;
+        }
+        exibirSucessoEmail("E-mail válido!");
+        return true;
+    }
+
+
+    //------------------------------------ FIM Validar Email -----------------------------------------
 
     //############################## INÍCIO Consumo API Viacep ######################################
 
