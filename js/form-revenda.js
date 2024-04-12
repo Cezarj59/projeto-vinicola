@@ -77,7 +77,7 @@ $(document).ready(function () {
 
         if (vetorNomes.length == 1) {
             // Se houver apenas uma parte no nome, exibe uma mensagem de erro
-            exibirErro("Digite o nome completo!!!");
+            exibirErro("Digite o nome completo!");
 
         } else if (vetorNomes.length == 2 || vetorNomes.length == 3) {
             // Se houver duas ou três partes no nome, captura o primeiro e o último nome
@@ -210,7 +210,7 @@ $(document).ready(function () {
         }
 
         if (cpf.length == 0) {
-            exibirErroCpf("Digite o CPF!!!");
+            exibirErroCpf("Digite o CPF!");
         }
     }
 
@@ -330,6 +330,8 @@ $(document).ready(function () {
     $("#inputEmailRevendedor").blur(function () {
         let email = $("#inputEmailRevendedor").val().trim();
         validarEmail(email);
+
+
     });
 
     /**
@@ -457,6 +459,11 @@ $(document).ready(function () {
 
     // Função principal de validação de e-mail
     function validarEmail(email) {
+        if (email == "") {
+            exibirErroEmail("Digite o Email!");
+            return false;
+        }
+
         if (!naoPossuiEspacos(email)) {
             exibirErroEmail("E-mail não deve conter espaços.");
             return false;
