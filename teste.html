@@ -127,17 +127,24 @@
                         <div class="row">
                             <!--inputCepEmpresa-->
                             <div class="form-floating mb-4">
-                                <input id="inputCepEmpresa" name="inputCepEmpresa" type="text" placeholder="00000-000" maxlength="9"
-                                    class="form-control border border-1 border-dark-subtle">
+                                <input id="inputCepEmpresa" name="inputCepEmpresa" type="text" placeholder="00000-000"
+                                    maxlength="9" class="form-control border border-1 border-dark-subtle">
                                 <label for="inputCepEmpresa" class="ms-2 text-black-50">CEP</label>
-                                <small id="inputCepEmpresaHelpBlock" class="form-text text-muted">
-                                    Ex: 00000-000
-                                </small>
+                                <div class="d-flex justify-content-between">
+                                    <small id="inputCepEmpresaHelpBlock" class="form-text text-muted">
+                                        Ex: 00000-000
+                                    </small>
+                                    <small id="inputCepEmpresaHelpBlock" class="form-text text-muted me-2">
+                                       <a style="text-decoration: none;" target="blank" href="https://www2.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm"> Não sabe o CEP? Procure aqui.
+                                    </a>                                       
+                                    </small>
+                                </div>
+
                             </div>
                             <!--inputRuaEmpresa-->
                             <div class="form-floating col-xl-8 mb-4">
                                 <input id="inputRuaEmpresa" name="inputRuaEmpresa" type="text"
-                                    class="form-control border border-1 border-dark-subtle"                                    
+                                    class="form-control border border-1 border-dark-subtle"
                                     placeholder="00.000. 000/0001-00">
                                 <label class="ms-2 text-black-50" for="inputRuaEmpresa">Endereço</label>
                                 <small id="inputRuaEmpresaHelpBlock" class="form-text text-muted">
