@@ -110,7 +110,7 @@ function contemNumero(str) {
 
 function contemCaracteresInvalidos(str) {
     // Lista de caracteres válidos
-    let alfabeto = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁáÀàÃãÉéÈèÍíÌìÓóÒòÕõÚúÙùÜüÇç'";
+    let alfabeto = " ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁáÀàÃãÉéÈèÍíÌìÓóÒòÕõÚúÙùÜüÇç'0123456789";
 
     // Itera sobre cada caractere na string
     for (let i = 0; i < str.length; i++) {
@@ -124,20 +124,29 @@ function contemCaracteresInvalidos(str) {
 
     return false;
 }
+/**
+ * Verifica se uma string contém mais de duas letras repetidas consecutivas.
+ * @param {string} str - A string a ser verificada.
+ * @returns {boolean} - true se a string contiver mais de duas letras repetidas consecutivas, false caso contrário.
+ */
+function contemLetrasRepetidas(str) {
+    // Define a expressão regular para verificar letras repetidas consecutivas
+    let regexRepetidas = /([a-zA-ZÀ-ú])\1{2,}/;
+
+    // Verifica se a string contém letras repetidas consecutivas usando a expressão regular
+    return regexRepetidas.test(str);
+}
+
 
 /**
-    * Faz a formatação de um nome.
-    * @param {string} nome - O nome completo a ser formatado.
-    */
-
+ * Faz a formatação de um nome e atualiza o campo correspondente.
+ * @param {string} nome - O nome completo a ser formatado.
+ */
 function formatarNome(nome) {
     nome = removerEspacosExtras(nome);
     nome = capitalizarPrimeiraLetra(nome);
-    $("#inputNome").val(nome);
     return nome;
 }
-
-// Restante do código relacionado ao formulário...
 
 
 $(document).ready(function () {
@@ -145,19 +154,20 @@ $(document).ready(function () {
     //############################## INÍCIO Validar Nome ######################################
 
     /**
-     * Valida o comprimento dos nomes e sobrenomes.
-     * @param {string} nome - O nome completo a ser validado.
-     */
-
-    function validarComprimentoNomes(nome) {
+  * Valida o comprimento dos nomes e sobrenomes.
+  * @param {string} nome - O nome completo a ser validado.
+  * @param {string} nomeCampo - O ID do campo do formulário associado ao nome, usado para exibir mensagens de erro.
+  * @param {string} mensagemErro - A mensagem de erro a ser exibida se o nome não atender aos critérios de validação.
+  * @returns {boolean} - true se o nome atender aos critérios de validação, false caso contrário.
+  */
+    function validarComprimentoNomes(nome, nomeCampo, mensagemErro) {
         // Divide o nome em um vetor de partes separadas por espaços
         let vetorNomes = nome.split(" ");
 
-
         if (vetorNomes.length == 1) {
-            // Se houver apenas uma parte no nome, exibe uma mensagem de erro
-            exibirErro("inputNome", "Digite o nome completo!");
-
+            // Se houver apenas uma parte no nome, exibe uma mensagem de erro e retorna false
+            exibirErro(nomeCampo, mensagemErro || "Digite o nome completo!");
+            return false;
         } else if (vetorNomes.length == 2 || vetorNomes.length == 3) {
             // Se houver duas ou três partes no nome, captura o primeiro e o último nome
             let primeiroNome = vetorNomes[0];
@@ -165,9 +175,9 @@ $(document).ready(function () {
 
             // Verifica se o primeiro ou o último nome têm menos de 3 caracteres e exibe uma mensagem de erro, se aplicável
             if (primeiroNome.length < 3 || ultimoNome.length < 3) {
-                exibirErro("inputNome", "O nome e sobrenome devem ter no mínimo 3 caracteres!!!");
+                exibirErro(nomeCampo, "O primeiro e ultimo nome devem ter no mínimo 3 caracteres!");
+                return false;
             }
-
         } else if (vetorNomes.length > 3) {
             // Se houver mais de três partes no nome
             // Captura o primeiro, os nomes do meio e o último nome
@@ -177,35 +187,85 @@ $(document).ready(function () {
 
             // Verifica se o primeiro ou o último nome têm menos de 3 caracteres e exibe uma mensagem de erro, se aplicável
             if (primeiroNome.length < 3 || ultimoNome.length < 3) {
-                exibirErro("inputNome", "O nome e sobrenome devem ter no mínimo 3 caracteres!!!");
+                exibirErro(nomeCampo, "O primeiro e ultimo nome devem ter no mínimo 3 caracteres!");
+                return false;
             }
         }
+        // Se nenhum erro for encontrado, retorna true
+        return true;
     }
 
-    function validaNome() {
-        let nome = $("#inputNome").val().trim();
 
+    /**
+  * Valida um nome digitado em um campo do formulário.
+  * @param {string} nomeCampo - O ID do campo do formulário que contém o nome a ser validado.
+  * @param {boolean} permiteNumeros - Indica se números são permitidos no nome.
+  * @param {string} mensagemErro - A mensagem de erro a ser exibida se o campo estiver vazio.
+  * @returns {boolean} - true se o nome for válido, false caso contrário.
+  */
+    function validaNome(nomeCampo, permiteNumeros, mensagemErro) {
+        let nome = $(`#${nomeCampo}`).val().trim();
+
+        // Verifica se o campo está vazio
         if (nome.length == 0) {
-            exibirErro("inputNome", "Digite o Nome!!!");
-        } else {
-            exibirSucesso("inputNome", "Nome Valido!")
-
-            nome = formatarNome(nome);
-
-            if (contemCaracteresInvalidos(nome)) {
-                exibirErro("inputNome", "Não deve conter caracteres inválidos!!!");
-            } else {
-                validarComprimentoNomes(nome);
-            }
+            exibirErro(nomeCampo, mensagemErro || "Digite o Nome!"); // Usa a mensagem personalizada se fornecida, senão usa a mensagem padrão
+            return false; // Retorna false indicando erro
+        } else if (contemCaracteresInvalidos(nome)) {
+            // Verifica se o nome contém caracteres inválidos
+            exibirErro(nomeCampo, "Não deve conter caracteres inválidos!");
+            return false; // Retorna false indicando erro
+        } else if (!permiteNumeros && contemNumero(nome)) {
+            // Verifica se números não são permitidos e o nome contém números
+            exibirErro(nomeCampo, "Números não são permitidos neste campo!");
+            return false; // Retorna false indicando erro
+        } else if (contemLetrasRepetidas(nome)) {
+            // Verifica se números não são permitidos e o nome contém letras repetidas
+            exibirErro(nomeCampo, "Não deve conter letras repetidas neste campo!");
+            return false; // Retorna false indicando erro
+        } else if (!validarComprimentoNomes(nome, nomeCampo)) {
+            // Valida o comprimento dos nomes e sobrenomes
+            return false; // Retorna false indicando erro
         }
+
+        // Formata o nome e exibe mensagem de sucesso
+        $(`#${nomeCampo}`).val(formatarNome(nome)); // Define o valor do campo com o nome formatado
+        exibirSucesso(nomeCampo, "Nome Válido!"); // Exibe a mensagem de sucesso se a validação de comprimento for bem-sucedida
+
+        return true; // Retorna true indicando sucesso
     }
 
 
 
 
+
+
+    // - CAMPO DADOS PESSOAIS - Chama a função para validar o nome ao perder o foco 
     $("#inputNome").blur(function () {
-        validaNome();
+        validaNome("inputNome", false); // Validação para nome pessoal, sem números
     });
+
+    // - CAMPO DADOS EMPRESARIAIS - Chama a função para validar o nome da empresa ao perder o foco
+    $("#inputNomeEmpresa").blur(function () {
+        validaNome("inputNomeEmpresa", true, "Digite o Nome da Empresa!"); // Mensagem personalizada para o campo de nome da empresa
+    });
+
+    // - CAMPO DADOS EMPRESARIAIS - Chama a função para validar o nome da rua ao perder o foco
+    $("#inputRuaEmpresa").blur(function () {
+        validaNome("inputRuaEmpresa", true, "Digite o Nome da Rua!"); // Mensagem personalizada para o campo de nome da rua
+    });
+
+
+    // - CAMPO DADOS PARA ENTREGA - Chama a função para validar o nome ao perder o foco 
+    $("#inputNomeEntrega").blur(function () {
+        validaNome("inputNomeEntrega", false, "Digite o Nome de que receberá a Entrega!");// Validação para nome pessoal, sem números
+    });
+
+    // - CAMPO DADOS PARA ENTREGA - Chama a função para validar o nome da rua ao perder o foco
+    $("#rua").blur(function () {
+        validaNome("rua", true, "Digite o Nome da Rua para Entrega!"); // Validação para nome de rua, permitindo números
+    });
+
+
     //------------------------------------ FIM Validar Nome -----------------------------------------
     /**
      * Verifica se um CPF é válido.
@@ -271,6 +331,12 @@ $(document).ready(function () {
         // Define o CPF formatado no campo de entrada
         $("#" + cpfId).val(cpfFormatado);
     }
+
+    // Registra o evento "input" no campo de entrada do CPF e chama a função formatarCPFAoDigitar quando o evento é acionado
+    $("#inputCpf").on("input", function () {
+        formatarCPFAoDigitar("inputCpf");
+    });
+
 
     /**
      * Valida um CPF inserido em um campo de entrada.
@@ -456,10 +522,10 @@ $(document).ready(function () {
     }
 
     /**
- * Valida um endereço de e-mail.
- * @param {string} emailId - O ID do campo de entrada de e-mail.
- * @returns {boolean} Retorna verdadeiro se o e-mail for válido, caso contrário, retorna falso.
- */
+    * Valida um endereço de e-mail.
+    * @param {string} emailId - O ID do campo de entrada de e-mail.
+    * @returns {boolean} Retorna verdadeiro se o e-mail for válido, caso contrário, retorna falso.
+    */
     function validarEmail(emailId) {
         let email = $("#" + emailId).val().trim(); // Obtém o valor do campo de e-mail com o ID fornecido
 
@@ -538,6 +604,7 @@ $(document).ready(function () {
 
 
     adicionarEventoValidacaoEmail("inputEmail"); //  Chamando
+
     adicionarEventoValidacaoEmail("inputEmailEmpresa"); //  Chamando
 
     //------------------------------------ FIM Validar Email -----------------------------------------
@@ -621,28 +688,47 @@ $(document).ready(function () {
         });
     }
 
-    // Chama a função para adicionar o evento de validação de telefone ao campo de telefone
+    // Adiciona validação de telefone ao campo de telefone pessoal
     adicionarEventoValidacaoTelefone("inputTelefone");
+
+    // Adiciona validação de telefone ao campo de telefone da empresa
+    adicionarEventoValidacaoTelefone("inputTelefoneEmpresa");
 
     //------------------------------------ FIM Validar Telefone -----------------------------------------
 
+    //####################### Validações dos campos Dados Empresariais ###############################
     //################################ INÍCIO Validar CNPJ ########################################
 
-
-
     /**
-  * Valida um número de CNPJ inserido em um campo de entrada.
-  * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
-  */
+     * Valida um número de CNPJ inserido em um campo de entrada.
+     * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
+     */
     function validarCNPJ(cnpjId) {
         let input = $("#" + cnpjId).val();
         let cnpj = removerNaoNumericos(input);
 
         if (cnpj.length == 0) {
             exibirErro(cnpjId, "Digite o número do CNPJ!");
+        } else if (todosDigitosCnpjIguais(cnpj)) {
+            exibirErro(cnpjId, "CNPJ inválido! Todos os dígitos são iguais.");
         } else {
             exibirSucesso(cnpjId, "CNPJ válido!");
         }
+    }
+
+    /**
+     * Verifica se todos os dígitos de um CNPJ são iguais.
+     * @param {string} cnpj - O CNPJ a ser verificado.
+     * @returns {boolean} - true se todos os dígitos forem iguais, false caso contrário.
+     */
+    function todosDigitosCnpjIguais(cnpj) {
+        const primeiroDigito = cnpj[0];
+        for (let i = 1; i < cnpj.length; i++) {
+            if (cnpj[i] !== primeiroDigito) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -687,9 +773,9 @@ $(document).ready(function () {
     });
 
     /**
-  * Adiciona um evento de validação de CNPJ ao campo especificado.
-  * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
-  */
+     * Adiciona um evento de validação de CNPJ ao campo especificado.
+     * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
+     */
     function adicionarEventoValidacaoCNPJ(cnpjId) {
         $("#" + cnpjId).blur(function () {
             validarCNPJ(cnpjId); // Chama a função de validação de CNPJ com o ID do campo como argumento
@@ -701,11 +787,17 @@ $(document).ready(function () {
 
     //------------------------------------ FIM Validar CNPJ -----------------------------------------
 
+    //################################## INÍCIO Validar Rua #########################################
+
+
+
+    //------------------------------------ FIM Validar Rua -----------------------------------------
+
     //############################## INÍCIO Formata CEP ######################################
     /**
- * Formata o número de CEP em um campo de entrada enquanto o usuário digita.
- * @param {string} cepId - O ID do campo de entrada de CEP.
- */
+    * Formata o número de CEP em um campo de entrada enquanto o usuário digita.
+    * @param {string} cepId - O ID do campo de entrada de CEP.
+    */
     function formatarCepAoDigitar(cepId) {
         $("#" + cepId).on("input", function () {
             let cep = $("#" + cepId).val().replace(/\D/g, ''); // Remove todos os caracteres não numéricos
@@ -731,9 +823,12 @@ $(document).ready(function () {
         });
     }
 
-    // Chama a função para formatar o CEP ao digitar no campo de CEP
+    // Formata o CEP enquanto o usuário digita no campo de CEP Entrega
     formatarCepAoDigitar("cep");
+
+    // Formata o CEP enquanto o usuário digita no campo de CEP da empresa
     formatarCepAoDigitar("inputCepEmpresa");
+
 
     //------------------------------------ FIM Validar CEP -----------------------------------------
 
@@ -749,7 +844,8 @@ $(document).ready(function () {
      */
     function buscarEnderecoPorCEP(cepId, ruaId, bairroId, cidadeId, ufId) {
         // Obtém o valor do CEP e remove caracteres não numéricos
-        var cep = $("#" + cepId).val().replace(/\D/g, '');
+        let input = $("#" + cepId).val();
+        let cep = removerNaoNumericos(input);
 
         // Verifica se o campo de CEP possui um valor informado
         if (cep != "") {
@@ -789,6 +885,7 @@ $(document).ready(function () {
         } else {
             // CEP sem valor, limpa os campos de endereço
             limparCamposEndereco(ruaId, bairroId, cidadeId, ufId);
+            exibirErro(cepId, "Digite o CEP!")
         }
     }
 
