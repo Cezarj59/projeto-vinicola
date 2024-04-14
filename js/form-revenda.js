@@ -772,16 +772,19 @@ $(document).ready(function () {
                         $("#" + bairroId).val(dados.bairro);
                         $("#" + cidadeId).val(dados.localidade);
                         $("#" + ufId).val(dados.uf);
+                        exibirSucesso(cepId, "CEP válido!")
                     } else {
                         // CEP pesquisado não foi encontrado
                         limparCamposEndereco(ruaId, bairroId, cidadeId, ufId);
                         alert("CEP não encontrado.");
+                        exibirErro(cepId, "CEP não encontrado.")
                     }
                 });
             } else {
                 // CEP inválido
                 limparCamposEndereco(ruaId, bairroId, cidadeId, ufId);
                 alert("Formato de CEP inválido.");
+                exibirErro(cepId, "Formato de CEP inválido.");
             }
         } else {
             // CEP sem valor, limpa os campos de endereço
