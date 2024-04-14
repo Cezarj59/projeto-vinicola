@@ -97,14 +97,14 @@
                                 Digite o nome da Empresa
                                 (opcional)
                             </label>
-                            <small id="nomeEmpresaHelpBlock" class="form-text text-muted">Ex: Vendas SA</small>
+                            <small id="inputNomeEmpresaHelpBlock" class="form-text text-muted">Ex: Vendas SA</small>
                         </div>
                         <!--Input CNPJ-->
                         <div class="form-floating mb-4">
-                            <input id="inputCNPJ" name="inputCNPJ" type="text" placeholder=" XX. XXX. XXX/0001-XX"
+                            <input id="inputCNPJ" name="inputCNPJ" type="text" placeholder=" 00.000. 000/0001-XX"
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="inputCNPJ" class="text-black-50">CNPJ</label>
-                            <small id="inputCNPJHelpBlock" class="form-text text-muted">Ex: XX. XXX. XXX/0001-XX</small>
+                            <small id="inputCNPJHelpBlock" class="form-text text-muted">Ex: 00.000. 000/0001-XX</small>
                         </div>
                         <!--inputEmailEmpresa-->
                         <div class="form-floating mb-4">
@@ -127,14 +127,14 @@
                         <div class="row">
                             <!--inputCepEmpresa-->
                             <div class="form-floating mb-4">
-                                <input id="inputCepEmpresa" name="inputCepEmpresa" type="text" placeholder="00000-000"
+                                <input id="inputCepEmpresa" name="inputCepEmpresa" type="text" placeholder="00000-000" title="Digite o CEP!"
                                     maxlength="9" class="form-control border border-1 border-dark-subtle">
                                 <label for="inputCepEmpresa" class="ms-2 text-black-50">CEP</label>
                                 <div class="d-flex justify-content-between">
                                     <small id="inputCepEmpresaHelpBlock" class="form-text text-muted">
                                         Ex: 00000-000
                                     </small>
-                                    <small id="inputCepEmpresaHelpBlock" class="form-text text-muted me-2">
+                                    <small id="inputCepEmpresaHelpBlock" class="form-text text-muted me-2" title="Pesquise o CEP no site dos Correios!">
                                        <a style="text-decoration: none;" target="blank" href="https://www2.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm"> Não sabe o CEP? Procure aqui.
                                     </a>                                       
                                     </small>
@@ -171,12 +171,12 @@
                     <fieldset class="col-xl-12 mt-4">
                         <legend class="bg-body-secondary text-center">Dados para Entrega</legend>
                         <div class="row">
-                            <!-- Input Nome Completo -->
+                            <!-- inputNomeEntrega -->
                             <div class="form-floating col-xl-6 mb-4">
-                                <input id="inputNomeCompleto" name="inputNomeCompleto" type="text"
+                                <input id="inputNomeEntrega" name="inputNomeEntrega" type="text"
                                     placeholder="Nome Completo" class="form-control border border-1 border-dark-subtle">
-                                <label for="inputNomeCompleto" class="ms-2 text-black-50">Nome Completo</label>
-                                <small id="nomeCompletoHelpBlock" class="form-text text-muted">Digite seu nome
+                                <label for="inputNomeEntrega" class="ms-2 text-black-50">Nome Completo</label>
+                                <small id="inputNomeEntregaHelpBlock" class="form-text text-muted">Digite seu nome
                                     completo</small>
                             </div>
 
@@ -196,11 +196,20 @@
                             </div>
                         </div>
                         <!-- Input CEP -->
+                       
                         <div class="form-floating col-xl-6 mb-4">
                             <input id="cep" name="cep" type="text" placeholder="CEP"
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="cep" class="text-black-50">CEP</label>
-                            <small id="cepHelpBlock" class="form-text text-muted">Ex: 00000-000</small>
+                            <div class="d-flex justify-content-between">
+                                <small id="cepHelpBlock" class="form-text text-muted">
+                                    Ex: 00000-000
+                                </small>
+                                <small class="form-text text-muted me-2" title="Pesquise o CEP no site dos Correios!">
+                                   <a style="text-decoration: none;" target="blank" href="https://www2.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm"> Não sabe o CEP? Procure aqui.
+                                </a>                                       
+                                </small>
+                            </div>
                         </div>
                         <div class="row">
                             <!-- Input Endereço -->
@@ -208,7 +217,7 @@
                                 <input id="rua" name="rua" type="text" placeholder="Endereço"
                                     class="form-control border border-1 border-dark-subtle">
                                 <label for="rua" class="ms-2 text-black-50">Endereço</label>
-                                <small id="enderecoHelpBlock" class="form-text text-muted">Ex: Rua Marechal
+                                <small id="ruaHelpBlock" class="form-text text-muted">Ex: Rua Marechal
                                     Floriano</small>
                             </div>
                             <!-- Input Número -->
