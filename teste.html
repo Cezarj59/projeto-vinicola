@@ -107,7 +107,7 @@
                             <input id="inputCNPJ" name="inputCNPJ" type="text" placeholder=" XX. XXX. XXX/0001-XX"
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="inputCNPJ" class="text-black-50">CNPJ</label>
-                            <small id="cnpjHelpBlock" class="form-text text-muted">Ex: XX. XXX. XXX/0001-XX</small>
+                            <small id="inputCNPJHelpBlock" class="form-text text-muted">Ex: XX. XXX. XXX/0001-XX</small>
                         </div>
                          <!--inputEmailEmpresa-->
                          <div class="form-floating mb-4">
@@ -127,34 +127,30 @@
                             <small id="inputTelefoneEmpresaHelpBlock" class="form-text text-muted">Ex: (xx) 0 0000-0000</small>
                         </div>
                         <div class="row">
-                            <!--Input Endereço-->
-                            <div class="form-floating col-xl-8 mb-4">
-                                <input id="inputEndereco" name="inputEndereco" type="text"
-                                    placeholder=" XX. XXX. XXX/0001-XX"
-                                    class="form-control border border-1 border-dark-subtle">
-                                <label class="ms-2 text-black-50" for="inputEndereco">Endereço</label>
-                                <small id="enderecoHelpBlock" class="form-text text-muted">
-                                    Ex: Rua Marechal Floriano
-                                </small>
-                            </div>
-                            <!--Input Numero-->
-                            <div class="form-floating col-xl-4 mb-4">
-                                <input id="inputNumero" name="inputNumero" type="number" placeholder="Ex: 1024"
-                                    class="form-control border border-1 border-dark-subtle">
-                                <label class="ms-2 text-black-50" for="inputNumero">Numero</label>
-                                <small id="numeroHelpBlock" class="form-text text-muted">Ex: 1024</small>
-                            </div>
-                        </div>
-                        <!--Input Endereço-->
-                        <div class="form-floating mb-4">
-                            <input id="inputCNPJ2" name="inputCNPJ2" type="text" placeholder=" XX. XXX. XXX/0001-XX"
-                                class="form-control border border-1 border-dark-subtle">
-                            <label for="inputCNPJ2" class="text-black-50">Digite o CNPJ</label>
-                            <small id="enderecoEmpresaHelpBlock" class="form-text text-muted">
-                                Ex: XX. XXX.
-                                XXX/0001-XX
-                            </small>
-                        </div>
+                           <!--Input Endereço-->
+<div class="form-floating col-xl-8 mb-4">
+    <input id="inputEndereco" name="inputEndereco" type="text" class="cep-input form-control border border-1 border-dark-subtle" data-campos-endereco="rua, bairro, cidade, uf, ibge" placeholder="XX. XXX. XXX/0001-XX">
+    <label class="ms-2 text-black-50" for="inputEndereco">Endereço</label>
+    <small id="enderecoHelpBlock" class="form-text text-muted">
+        Ex: Rua Marechal Floriano
+    </small>
+</div>
+<!--Input Numero-->
+<div class="form-floating col-xl-4 mb-4">
+    <input id="inputNumero" name="inputNumero" type="number" placeholder="Ex: 1024" class="form-control border border-1 border-dark-subtle">
+    <label class="ms-2 text-black-50" for="inputNumero">Numero</label>
+    <small id="numeroHelpBlock" class="form-text text-muted">Ex: 1024</small>
+</div>
+</div>
+<!--Input CEP-->
+<div class="form-floating mb-4">
+    <input id="cep" name="cep" type="text" placeholder="XXXXX-XXX" class="cep-input form-control border border-1 border-dark-subtle">
+    <label for="cep" class="text-black-50">CEP</label>
+    <small id="cepHelpBlock" class="form-text text-muted">
+        Ex: 12345-678
+    </small>
+</div>
+
                     </fieldset>
 
 
