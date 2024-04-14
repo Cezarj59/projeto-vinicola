@@ -303,6 +303,8 @@ $(document).ready(function () {
         });
     }
 
+
+
     adicionarEventoValidacaoCPF("inputCpf"); // Chamando
 
 
@@ -540,38 +542,35 @@ $(document).ready(function () {
 
     //------------------------------------ FIM Validar Email -----------------------------------------
 
-
-    //################################## INÍCIO Validar Telefone #########################################
+    //################################ INÍCIO Validar Telefone ########################################
 
     /**
-     * Valida o número de telefone inserido no campo de entrada "#inputTelefone" ao perder o foco.
+     * Valida um número de telefone inserido em um campo de entrada.
+     * @param {string} telefoneId - O ID do campo de entrada de telefone.
      */
-    $("#inputTelefone").blur(function () {
-        validarTelefone();
-    });
-
-    function validarTelefone() {
-        let input = $("#inputTelefone").val();
-        telefone = removerNaoNumericos(input);
+    function validarTelefone(telefoneId) {
+        let input = $("#" + telefoneId).val();
+        let telefone = removerNaoNumericos(input);
 
         if (telefone.length == 0) {
-            exibirErro("inputTelefone", "Digite o número de telefone!");
+            exibirErro(telefoneId, "Digite o número de telefone!");
         } else if (telefone.length < 11) {
-            exibirErro("inputTelefone", "Telefone inválido, menor que o permitido. Use o formato (xx) 9 xxxx-xxxx.");
+            exibirErro(telefoneId, "Telefone inválido, menor que o permitido. Use o formato (xx) 9 xxxx-xxxx.");
         } else if (telefone.length > 11) {
-            exibirErro("inputTelefone", "Telefone inválido, maior que o permitido. Use o formato (xx) 9 xxxx-xxxx.");
+            exibirErro(telefoneId, "Telefone inválido, maior que o permitido. Use o formato (xx) 9 xxxx-xxxx.");
         } else {
-            exibirSucesso("inputTelefone", "Telefone válido!");
+            exibirSucesso(telefoneId, "Telefone válido!");
         }
     }
 
-
-
-    // Função para formatar o número de telefone enquanto o usuário digita
-    function formatarTelefoneAoDigitar() {
-        let input = $("#inputTelefone").val(); // Obtém o valor do campo de entrada
-        let telefone = removerNaoNumericos(input); // Remove caracteres não numéricos do telefone
-        let telefoneFormatado = ''; // Inicializa a variável para armazenar o telefone formatado
+    /**
+     * Formata o número de telefone em um campo de entrada enquanto o usuário digita.
+     * @param {string} telefoneId - O ID do campo de entrada de telefone.
+     */
+    function formatarTelefoneAoDigitar(telefoneId) {
+        let input = $("#" + telefoneId).val();
+        let telefone = removerNaoNumericos(input);
+        let telefoneFormatado = '';
 
         // Limita o telefone a 11 dígitos se for maior
         if (telefone.length > 11) {
@@ -604,37 +603,52 @@ $(document).ready(function () {
         }
 
         // Define o telefone formatado no campo de entrada
-        $("#inputTelefone").val(telefoneFormatado);
+        $("#" + telefoneId).val(telefoneFormatado);
     }
 
     // Registra o evento "input" no campo de entrada do telefone e chama a função formatarTelefoneAoDigitar quando o evento é acionado
-    $("#inputTelefone").on("input", formatarTelefoneAoDigitar);
-
-
-
-    //------------------------------------ FIM Validar Telefone -----------------------------------------
-    //############################## INÍCIO Validar CNPJ ################################################
-    /**
-        * Valida o número de telefone inserido no campo de entrada "#inputTelefone" ao perder o foco.
-        */
-    $("#inputCNPJ").blur(function () {
-        validarCNPJ();
+    $("#inputTelefone").on("input", function () {
+        formatarTelefoneAoDigitar("inputTelefone");
     });
 
-    function validarCNPJ() {
-        let input = $("#inputTelefone").val();
-        cnpj = removerNaoNumericos(input);
+    /**
+     * Adiciona um evento de validação de telefone quando o campo perde o foco.
+     * @param {string} telefoneId - O ID do campo de entrada de telefone.
+     */
+    function adicionarEventoValidacaoTelefone(telefoneId) {
+        $("#" + telefoneId).blur(function () {
+            validarTelefone(telefoneId); // Chama a função de validação de Telefone com o ID do campo como argumento
+        });
+    }
+
+    // Chama a função para adicionar o evento de validação de telefone ao campo de telefone
+    adicionarEventoValidacaoTelefone("inputTelefone");
+
+    //################################ INÍCIO Validar CNPJ ########################################
+
+
+
+    /**
+  * Valida um número de CNPJ inserido em um campo de entrada.
+  * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
+  */
+    function validarCNPJ(cnpjId) {
+        let input = $("#" + cnpjId).val();
+        let cnpj = removerNaoNumericos(input);
 
         if (cnpj.length == 0) {
-            exibirErro("inputCnpj", "Digite o número do CNPJ!");
+            exibirErro(cnpjId, "Digite o número do CNPJ!");
         } else {
-            exibirSucesso("inputCnpj", "CNPJ válido!");
+            exibirSucesso(cnpjId, "CNPJ válido!");
         }
     }
 
-    // Função para formatar o número de CNPJ enquanto o usuário digita
-    function formatarCnpjAoDigitar() {
-        let input = $("#inputCNPJ").val(); // Obtém o valor do campo de entrada
+    /**
+     * Formata o número de CNPJ em um campo de entrada enquanto o usuário digita.
+     * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
+     */
+    function formatarCnpjAoDigitar(cnpjId) {
+        let input = $("#" + cnpjId).val(); // Obtém o valor do campo de entrada
         let cnpj = removerNaoNumericos(input); // Remove caracteres não numéricos do CNPJ
         let cnpjFormatado = ''; // Inicializa a variável para armazenar o CNPJ formatado
 
@@ -662,73 +676,75 @@ $(document).ready(function () {
         }
 
         // Define o CNPJ formatado no campo de entrada
-        $("#inputCNPJ").val(cnpjFormatado);
+        $("#" + cnpjId).val(cnpjFormatado);
     }
 
     // Registra o evento "input" no campo de entrada do CNPJ e chama a função formatarCnpjAoDigitar quando o evento é acionado
-    $("#inputCNPJ").on("input", formatarCnpjAoDigitar);
+    $("#inputCNPJ").on("input", function () {
+        formatarCnpjAoDigitar("inputCNPJ");
+    });
 
+    /**
+  * Adiciona um evento de validação de CNPJ ao campo especificado.
+  * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
+  */
+    function adicionarEventoValidacaoCNPJ(cnpjId) {
+        $("#" + cnpjId).blur(function () {
+            validarCNPJ(cnpjId); // Chama a função de validação de CNPJ com o ID do campo como argumento
+        });
+    }
 
-    //------------------------------------ FIM Validar CNPJ -----------------------------------------
+    // Chama a função para adicionar o evento de validação de CNPJ ao campo de CNPJ
+    adicionarEventoValidacaoCNPJ("inputCNPJ");
+
 
     //############################## INÍCIO Consumo API Viacep ######################################
 
-    /* Limpa os campos do formulário relacionados ao endereço (rua, bairro, cidade, UF, IBGE).*/
+    /**
+     * Preenche automaticamente os campos de endereço (rua, bairro, cidade, UF, IBGE) ao inserir um CEP válido.
+     * @param {string} cepId - O ID do campo de entrada de CEP.
+     * @param {string} camposEndereco - Uma string contendo os IDs dos campos de endereço separados por vírgula.
+     */
+    function preencherEnderecoPorCEP(cepId, camposEndereco) {
+        function limparCamposEndereco() {
+            camposEndereco.split(",").forEach(function (campoId) {
+                $("#" + campoId.trim()).val("");
+            });
+        }
 
-    function limpa_formulário_cep() {
-        $("#rua").val("");
-        $("#bairro").val("");
-        $("#cidade").val("");
-        $("#uf").val("");
-        $("#ibge").val("");
+        $("#" + cepId).blur(function () {
+            var cep = $(this).val().replace(/\D/g, '');
+
+            if (cep != "") {
+                var validacep = /^[0-9]{8}$/;
+
+                if (validacep.test(cep)) {
+                    camposEndereco.split(",").forEach(function (campoId) {
+                        $("#" + campoId.trim()).val("...");
+                    });
+
+                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                        if (!("erro" in dados)) {
+                            camposEndereco.split(",").forEach(function (campoId) {
+                                $("#" + campoId.trim()).val(dados[campoId.trim().replace("input", "")]);
+                            });
+                        } else {
+                            limparCamposEndereco();
+                            alert("CEP não encontrado.");
+                        }
+                    });
+                } else {
+                    limparCamposEndereco();
+                    alert("Formato de CEP inválido.");
+                }
+            } else {
+                limparCamposEndereco();
+            }
+        });
     }
 
-    // Quando o campo de CEP perde o foco.
-    $("#cep").blur(function () {
-        // Obtém o valor do CEP e remove todos os caracteres não numéricos.
-        var cep = $(this).val().replace(/\D/g, '');
-
-        // Verifica se o campo de CEP possui um valor informado.
-        if (cep != "") {
-            // Expressão regular para validar o CEP.
-            var validacep = /^[0-9]{8}$/;
-
-            // Valida o formato do CEP.
-            if (validacep.test(cep)) {
-                // Preenche os campos com "..." enquanto consulta o webservice.
-                $("#rua").val("...");
-                $("#bairro").val("...");
-                $("#complemento").val("...");
-                $("#cidade").val("...");
-                $("#uf").val("...");
-                $("#ddd").val("...");
-
-                // Consulta o webservice viacep.com.br.
-                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
-                    if (!("erro" in dados)) {
-                        // Atualiza os campos com os valores da consulta.
-                        $("#rua").val(dados.logradouro);
-                        $("#bairro").val(dados.bairro);
-                        $("#complemento").val(dados.complemento);
-                        $("#cidade").val(dados.localidade);
-                        $("#uf").val(dados.uf);
-                        $("#ddd").val(dados.ddd);
-                    } else {
-                        // CEP pesquisado não foi encontrado.
-                        limpa_formulário_cep();
-                        alert("CEP não encontrado.");
-                    }
-                });
-            } else {
-                // CEP inválido.
-                limpa_formulário_cep();
-                alert("Formato de CEP inválido.");
-            }
-        } else {
-            // CEP sem valor, limpa o formulário.
-            limpa_formulário_cep();
-        }
-    });
+    // Chama a função para preencher o endereço automaticamente ao inserir um CEP válido
+    preencherEnderecoPorCEP("inputCEP", "inputRua, inputBairro, inputCidade, inputUF");
 
     //-------------------------------------- FIM Consumo API Viacep -----------------------------------------------
 });
