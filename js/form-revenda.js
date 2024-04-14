@@ -624,6 +624,8 @@ $(document).ready(function () {
     // Chama a função para adicionar o evento de validação de telefone ao campo de telefone
     adicionarEventoValidacaoTelefone("inputTelefone");
 
+    //------------------------------------ FIM Validar Telefone -----------------------------------------
+
     //################################ INÍCIO Validar CNPJ ########################################
 
 
@@ -697,54 +699,124 @@ $(document).ready(function () {
     // Chama a função para adicionar o evento de validação de CNPJ ao campo de CNPJ
     adicionarEventoValidacaoCNPJ("inputCNPJ");
 
+    //------------------------------------ FIM Validar CNPJ -----------------------------------------
+
+    //############################## INÍCIO Formata CEP ######################################
+    /**
+ * Formata o número de CEP em um campo de entrada enquanto o usuário digita.
+ * @param {string} cepId - O ID do campo de entrada de CEP.
+ */
+    function formatarCepAoDigitar(cepId) {
+        $("#" + cepId).on("input", function () {
+            let cep = $("#" + cepId).val().replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+            let cepFormatado = '';
+
+            // Limita o CEP a 8 dígitos se for maior
+            if (cep.length > 8) {
+                cep = cep.substring(0, 8);
+            }
+
+            // Formata o CEP com traço
+            for (let i = 0; i < cep.length; i++) {
+                // Adiciona o traço após o quinto dígito
+                if (i == 5) {
+                    cepFormatado += '-';
+                }
+                // Adiciona o dígito atual ao CEP formatado
+                cepFormatado += cep[i];
+            }
+
+            // Define o CEP formatado no campo de entrada
+            $("#" + cepId).val(cepFormatado);
+        });
+    }
+
+    // Chama a função para formatar o CEP ao digitar no campo de CEP
+    formatarCepAoDigitar("cep");
+    formatarCepAoDigitar("inputCepEmpresa");
+
+    //------------------------------------ FIM Validar CEP -----------------------------------------
 
     //############################## INÍCIO Consumo API Viacep ######################################
 
     /**
-     * Preenche automaticamente os campos de endereço (rua, bairro, cidade, UF, IBGE) ao inserir um CEP válido.
+     * Função para buscar o endereço a partir de um CEP e preencher campos de endereço correspondentes.
      * @param {string} cepId - O ID do campo de entrada de CEP.
-     * @param {string} camposEndereco - Uma string contendo os IDs dos campos de endereço separados por vírgula.
+     * @param {string} ruaId - O ID do campo de entrada de rua.
+     * @param {string} bairroId - O ID do campo de entrada de bairro.
+     * @param {string} cidadeId - O ID do campo de entrada de cidade.
+     * @param {string} ufId - O ID do campo de entrada de UF.
      */
-    function preencherEnderecoPorCEP(cepId, camposEndereco) {
-        function limparCamposEndereco() {
-            camposEndereco.split(",").forEach(function (campoId) {
-                $("#" + campoId.trim()).val("");
-            });
-        }
+    function buscarEnderecoPorCEP(cepId, ruaId, bairroId, cidadeId, ufId) {
+        // Obtém o valor do CEP e remove caracteres não numéricos
+        var cep = $("#" + cepId).val().replace(/\D/g, '');
 
-        $("#" + cepId).blur(function () {
-            var cep = $(this).val().replace(/\D/g, '');
+        // Verifica se o campo de CEP possui um valor informado
+        if (cep != "") {
+            // Expressão regular para validar o CEP
+            var validacep = /^[0-9]{8}$/;
 
-            if (cep != "") {
-                var validacep = /^[0-9]{8}$/;
+            // Valida o formato do CEP
+            if (validacep.test(cep)) {
+                // Preenche os campos com "..." enquanto consulta o webservice
+                $("#" + ruaId).val("...");
+                $("#" + bairroId).val("...");
+                $("#" + cidadeId).val("...");
+                $("#" + ufId).val("...");
 
-                if (validacep.test(cep)) {
-                    camposEndereco.split(",").forEach(function (campoId) {
-                        $("#" + campoId.trim()).val("...");
-                    });
-
-                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
-                        if (!("erro" in dados)) {
-                            camposEndereco.split(",").forEach(function (campoId) {
-                                $("#" + campoId.trim()).val(dados[campoId.trim().replace("input", "")]);
-                            });
-                        } else {
-                            limparCamposEndereco();
-                            alert("CEP não encontrado.");
-                        }
-                    });
-                } else {
-                    limparCamposEndereco();
-                    alert("Formato de CEP inválido.");
-                }
+                // Consulta o webservice viacep.com.br
+                $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
+                    if (!("erro" in dados)) {
+                        // Atualiza os campos com os valores da consulta
+                        $("#" + ruaId).val(dados.logradouro);
+                        $("#" + bairroId).val(dados.bairro);
+                        $("#" + cidadeId).val(dados.localidade);
+                        $("#" + ufId).val(dados.uf);
+                    } else {
+                        // CEP pesquisado não foi encontrado
+                        limparCamposEndereco(ruaId, bairroId, cidadeId, ufId);
+                        alert("CEP não encontrado.");
+                    }
+                });
             } else {
-                limparCamposEndereco();
+                // CEP inválido
+                limparCamposEndereco(ruaId, bairroId, cidadeId, ufId);
+                alert("Formato de CEP inválido.");
             }
-        });
+        } else {
+            // CEP sem valor, limpa os campos de endereço
+            limparCamposEndereco(ruaId, bairroId, cidadeId, ufId);
+        }
     }
 
-    // Chama a função para preencher o endereço automaticamente ao inserir um CEP válido
-    preencherEnderecoPorCEP("inputCEP", "inputRua, inputBairro, inputCidade, inputUF");
+    /**
+     * Limpa os campos de endereço.
+     * @param {string} ruaId - O ID do campo de entrada de rua.
+     * @param {string} bairroId - O ID do campo de entrada de bairro.
+     * @param {string} cidadeId - O ID do campo de entrada de cidade.
+     * @param {string} ufId - O ID do campo de entrada de UF.
+     */
+    function limparCamposEndereco(ruaId, bairroId, cidadeId, ufId) {
+        $("#" + ruaId).val("");
+        $("#" + bairroId).val("");
+        $("#" + cidadeId).val("");
+        $("#" + ufId).val("");
+    }
+
+
+    // Quando o campo de CEP perde o foco, chama a função para buscar o endereço
+    $("#cep").blur(function () {
+        buscarEnderecoPorCEP("cep", "rua", "bairro", "cidade", "uf");
+    });
+
+    // Quando o campo de CEP da empresa perde o foco, chama a função para buscar o endereço da empresa
+    $("#inputCepEmpresa").blur(function () {
+        buscarEnderecoPorCEP("inputCepEmpresa", "inputRuaEmpresa", "inputBairroEmpresa", "inputCidadeEmpresa", "inputUfEmpresa");
+    });
+
+
+
+
 
     //-------------------------------------- FIM Consumo API Viacep -----------------------------------------------
 });
