@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resultado do Formulário</title>
+    </head>
+    
+    <body>
+        <h1>Resultado do Formulário</h1>
+        <div id="resultado"></div>
+    
+        <script src="exibir_dados.js"></script>
+    </body>
+
+
+    <script>
+
+
+// Função para obter parâmetros da URL
+function obterParametroDaUrl(nome) {
+    nome = nome.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + nome + "(=([^&#]*)|&|#|$)");
+    var resultados = regex.exec(window.location.href);
+    if (!resultados) return null;
+    if (!resultados[2]) return '';
+    return decodeURIComponent(resultados[2].replace(/\+/g, " "));
+}
+
+// Função para exibir dados na página HTML
+function exibirDados() {
+    var radiosTipoCliente = obterParametroDaUrl('radiosTipoCliente');
+    var inputNome = obterParametroDaUrl('inputNome');
+    var inputCpf = obterParametroDaUrl('inputCpf');
+    var inputEmail = obterParametroDaUrl('inputEmail');
+    var inputTelefone = obterParametroDaUrl('inputTelefone');
+    var inputNomeEmpresa = obterParametroDaUrl('inputNomeEmpresa');
+    var inputCNPJ = obterParametroDaUrl('inputCNPJ');
+    var inputEmailEmpresa = obterParametroDaUrl('inputEmailEmpresa');
+    var inputTelefoneEmpresa = obterParametroDaUrl('inputTelefoneEmpresa');
+    var inputCepEmpresa = obterParametroDaUrl('inputCepEmpresa');
+    var inputRuaEmpresa = obterParametroDaUrl('inputRuaEmpresa');
+    var inputNumero = obterParametroDaUrl('inputNumero');
+    var inputNomeEntrega = obterParametroDaUrl('inputNomeEntrega');
+    var inputTelefoneEntrega = obterParametroDaUrl('inputTelefoneEntrega');
+    var cep = obterParametroDaUrl('cep');
+    var rua = obterParametroDaUrl('rua');
+    var inputNumeroEntrega = obterParametroDaUrl('inputNumeroEntrega');
+    var bairro = obterParametroDaUrl('bairro');
+    var cidade = obterParametroDaUrl('cidade');
+    var complemento = obterParametroDaUrl('complemento');
+
+    var resultadoHtml = `
+        <p><strong>Tipo de Cliente:</strong> ${radiosTipoCliente}</p>
+        <p><strong>Nome:</strong> ${inputNome}</p>
+        <p><strong>CPF:</strong> ${inputCpf}</p>
+        <p><strong>Email:</strong> ${inputEmail}</p>
+        <p><strong>Telefone:</strong> ${inputTelefone}</p>
+        <p><strong>Nome da Empresa:</strong> ${inputNomeEmpresa}</p>
+        <p><strong>CNPJ:</strong> ${inputCNPJ}</p>
+        <p><strong>Email da Empresa:</strong> ${inputEmailEmpresa}</p>
+        <p><strong>Telefone da Empresa:</strong> ${inputTelefoneEmpresa}</p>
+        <p><strong>CEP da Empresa:</strong> ${inputCepEmpresa}</p>
+        <p><strong>Rua da Empresa:</strong> ${inputRuaEmpresa}</p>
+        <p><strong>Número:</strong> ${inputNumero}</p>
+        <p><strong>Nome para Entrega:</strong> ${inputNomeEntrega}</p>
+        <p><strong>Telefone para Entrega:</strong> ${inputTelefoneEntrega}</p>
+        <p><strong>CEP para Entrega:</strong> ${cep}</p>
+        <p><strong>Rua para Entrega:</strong> ${rua}</p>
+        <p><strong>Número para Entrega:</strong> ${inputNumeroEntrega}</p>
+        <p><strong>Bairro:</strong> ${bairro}</p>
+        <p><strong>Cidade:</strong> ${cidade}</p>
+        <p><strong>Complemento:</strong> ${complemento}</p>
+    `;
+
+    document.getElementById('resultado').innerHTML = resultadoHtml;
+}
+
+// Chama a função para exibir os dados quando a página for carregada
+window.onload = exibirDados;
+
+    </script>
+</body>
+</html>

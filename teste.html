@@ -29,7 +29,7 @@
         <!--SEÇÃO REVENDA-->
         <section class="container bg-body-tertiary px-xl-5">
             <div>
-                <form class="row g-3 mb-5">
+                <form class="row g-3 mb-5" action="resultado-form.html" method="get">
                     <!-- Form Name -->
                     <h6 class="mt-5">Formulario para es</h6>
                     <!-- Tipo de Cliente -->
@@ -127,16 +127,20 @@
                         <div class="row">
                             <!--inputCepEmpresa-->
                             <div class="form-floating mb-4">
-                                <input id="inputCepEmpresa" name="inputCepEmpresa" type="text" placeholder="00000-000" title="Digite o CEP!"
-                                    maxlength="9" class="form-control border border-1 border-dark-subtle">
+                                <input id="inputCepEmpresa" name="inputCepEmpresa" type="text" placeholder="00000-000"
+                                    title="Digite o CEP!" maxlength="9"
+                                    class="form-control border border-1 border-dark-subtle">
                                 <label for="inputCepEmpresa" class="ms-2 text-black-50">CEP</label>
                                 <div class="d-flex justify-content-between">
                                     <small id="inputCepEmpresaHelpBlock" class="form-text text-muted">
                                         Ex: 00000-000
                                     </small>
-                                    <small id="inputCepEmpresaHelpBlock" class="form-text text-muted me-2" title="Pesquise o CEP no site dos Correios!">
-                                       <a style="text-decoration: none;" target="blank" href="https://www2.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm"> Não sabe o CEP? Procure aqui.
-                                    </a>                                       
+                                    <small id="inputCepEmpresaHelpBlock" class="form-text text-muted me-2"
+                                        title="Pesquise o CEP no site dos Correios!">
+                                        <a style="text-decoration: none;" target="blank"
+                                            href="https://www2.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm">
+                                            Não sabe o CEP? Procure aqui.
+                                        </a>
                                     </small>
                                 </div>
 
@@ -153,10 +157,10 @@
                             </div>
                             <!--Input Numero-->
                             <div class="form-floating col-xl-4 mb-4">
-                                <input id="inputNumero" name="inputNumero" type="number" placeholder="Ex: 1024"
-                                    class="form-control border border-1 border-dark-subtle">
+                                <input id="inputNumero" name="inputNumero" type="text" maxlength="5"
+                                    placeholder="Ex: 1024" class="form-control border border-1 border-dark-subtle">
                                 <label class="ms-2 text-black-50" for="inputNumero">Numero</label>
-                                <small id="numeroHelpBlock" class="form-text text-muted">Ex: 1024</small>
+                                <small id="inputNumeroHelpBlock" class="form-text text-muted">Ex: 1024</small>
                             </div>
                         </div>
 
@@ -180,23 +184,19 @@
                                     completo</small>
                             </div>
 
-                            <!--Input DDD-->
-                            <div class="form-floating col-xl-1 mb-4">
-                                <input id="ddd" name="ddd" type="text" placeholder="(xx)"
-                                    class="form-control border border-1 border-dark-subtle" required="">
-                                <label for="ddd" class="ms-2 text-black-50">DDD</label>
-                                <small id="dddHelpBlock" class="form-text text-muted">(XX)</small>
-                            </div>
+
                             <!--Input Telefone-->
-                            <div class="form-floating col-xl-5 mb-4">
-                                <input id="inputTelefone" name="inputTelefone" type="text" placeholder="(00) 0000 0000"
-                                    class="form-control border border-1 border-dark-subtle" required="">
-                                <label for="inputTelefone" class="ms-2 text-black-50">Telefone</label>
-                                <small id="telefoneHelpBlock" class="form-text text-muted">Ex: 0 0000 0000</small>
+                            <div class="form-floating col-xl-6 mb-4">
+                                <input id="inputTelefoneEntrega" name="inputTelefoneEntrega" type="tel"
+                                    placeholder="(00) 0000 0000" class="form-control border border-1 border-dark-subtle"
+                                    required="">
+                                <label for="inputTelefoneEntrega" class="ms-2 text-black-50">Telefone</label>
+                                <small id="inputTelefoneEntregaHelpBlock" class="form-text text-muted">Ex: 0 0000
+                                    0000</small>
                             </div>
                         </div>
                         <!-- Input CEP -->
-                       
+
                         <div class="form-floating col-xl-6 mb-4">
                             <input id="cep" name="cep" type="text" placeholder="CEP"
                                 class="form-control border border-1 border-dark-subtle">
@@ -206,8 +206,10 @@
                                     Ex: 00000-000
                                 </small>
                                 <small class="form-text text-muted me-2" title="Pesquise o CEP no site dos Correios!">
-                                   <a style="text-decoration: none;" target="blank" href="https://www2.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm"> Não sabe o CEP? Procure aqui.
-                                </a>                                       
+                                    <a style="text-decoration: none;" target="blank"
+                                        href="https://www2.correios.com.br/sistemas/buscacep/buscaCepEndereco.cfm"> Não
+                                        sabe o CEP? Procure aqui.
+                                    </a>
                                 </small>
                             </div>
                         </div>
@@ -222,14 +224,14 @@
                             </div>
                             <!-- Input Número -->
                             <div class="form-floating col-xl-2 mb-4">
-                                <input id="inputNumero" name="inputNumero" type="number" placeholder="Número"
-                                    class="form-control border border-1 border-dark-subtle">
-                                <label for="inputNumero" class="ms-2 text-black-50">Número</label>
-                                <small id="numeroHelpBlock" class="form-text text-muted">Ex: 1024</small>
+                                <input id="inputNumeroEntrega" name="inputNumeroEntrega" type="text" maxlength="5"
+                                    placeholder="Número" class="form-control border border-1 border-dark-subtle">
+                                <label for="inputNumeroEntrega" class="ms-2 text-black-50">Número</label>
+                                <small id="inputNumeroEntregaHelpBlock" class="form-text text-muted">Ex: 1024</small>
                             </div>
                             <!-- Input Bairro -->
                             <div class="form-floating col-xl-4 mb-4">
-                                <input id="bairro" name="bairro" type="text" placeholder="Bairro"
+                                <input id="bairro" name="bairro" type="text" placeholder="Bairro" maxlength="15"
                                     class="form-control border border-1 border-dark-subtle">
                                 <label for="bairro" class="ms-2 text-black-50">Bairro</label>
                                 <small id="bairroHelpBlock" class="form-text text-muted">Digite o Bairro</small>
@@ -241,22 +243,50 @@
 
                             <!-- Input Cidade -->
                             <div class="form-floating col-xl-6 mb-4">
-                                <input id="cidade" name="cidade" type="text" placeholder="Cidade"
+                                <input id="cidade" name="cidade" type="text" placeholder="Cidade" maxlength="30"
                                     class="form-control border border-1 border-dark-subtle">
                                 <label for="cidade" class="ms-2 text-black-50">Cidade</label>
                                 <small id="cidadeHelpBlock" class="form-text text-muted">Digite a cidade</small>
                             </div>
                             <!-- Input Estado -->
-                            <div class="form-floating col-xl-2 mb-4">
-                                <input id="uf" name="uf" type="text" placeholder="Estado"
-                                    class="form-control border border-1 border-dark-subtle">
-                                <label for="uf" class="ms-2 text-black-50">UF</label>
-                                <small id="estadoHelpBlock" class="form-text text-muted">Ex: PR</small>
+                            <div class="form-floating col-xl-3 mb-4">
+                                <select id="uf" name="uf" class="form-select border border-1 border-dark-subtle">
+                                    <option value="" selected disabled>Selecione</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                                <label for="cidade" class="ms-2 text-black-50">Estado</label>
+                                <small id="ufHelpBlock" class="form-text text-muted">Escolha o Estado.</small>
                             </div>
                             <!-- Input Complemento -->
-                            <div class="form-floating col-xl-4 mb-4">
-                                <input id="complemento" name="complemento" type="text" placeholder="Complemento"
-                                    class="form-control border border-1 border-dark-subtle">
+                            <div class="form-floating col-xl-3 mb-4">
+                                <input id="complemento" name="complemento" type="text" maxlength="50"
+                                    placeholder="Complemento" class="form-control border border-1 border-dark-subtle">
                                 <label for="complemento" class="ms-2 text-black-50">Complemento</label>
                                 <small id="complementoHelpBlock" class="form-text text-muted">Digite o
                                     Complemento</small>
@@ -331,6 +361,7 @@
             </div>
         </section>
     </div>
+   
     <!-- Fim da Seção Revenda -->
 
 

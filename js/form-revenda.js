@@ -206,6 +206,7 @@ $(document).ready(function () {
     function validaNome(nomeCampo, permiteNumeros, mensagemErro) {
         let nome = $(`#${nomeCampo}`).val().trim();
 
+
         // Verifica se o campo está vazio
         if (nome.length == 0) {
             exibirErro(nomeCampo, mensagemErro || "Digite o Nome!"); // Usa a mensagem personalizada se fornecida, senão usa a mensagem padrão
@@ -226,7 +227,7 @@ $(document).ready(function () {
             // Valida o comprimento dos nomes e sobrenomes
             return false; // Retorna false indicando erro
         }
-
+        
         // Formata o nome e exibe mensagem de sucesso
         $(`#${nomeCampo}`).val(formatarNome(nome)); // Define o valor do campo com o nome formatado
         exibirSucesso(nomeCampo, "Nome Válido!"); // Exibe a mensagem de sucesso se a validação de comprimento for bem-sucedida
@@ -266,7 +267,10 @@ $(document).ready(function () {
     });
 
 
+
     //------------------------------------ FIM Validar Nome -----------------------------------------
+    //############################## INÍCIO Validar CPF ######################################
+    
     /**
      * Verifica se um CPF é válido.
      * @param {string} cpf - O CPF a ser verificado.
@@ -678,6 +682,16 @@ $(document).ready(function () {
         formatarTelefoneAoDigitar("inputTelefone");
     });
 
+    // Registra o evento "input" no campo de entrada do telefone da empresa e chama a função formatarTelefoneAoDigitar quando o evento é acionado
+    $("#inputTelefoneEmpresa").on("input", function () {
+        formatarTelefoneAoDigitar("inputTelefoneEmpresa");
+    });
+
+    // Registra o evento "input" no campo de entrada do telefone para entrega e chama a função formatarTelefoneAoDigitar quando o evento é acionado
+    $("#inputTelefoneEntrega").on("input", function () {
+        formatarTelefoneAoDigitar("inputTelefoneEntrega");
+    });
+
     /**
      * Adiciona um evento de validação de telefone quando o campo perde o foco.
      * @param {string} telefoneId - O ID do campo de entrada de telefone.
@@ -693,6 +707,9 @@ $(document).ready(function () {
 
     // Adiciona validação de telefone ao campo de telefone da empresa
     adicionarEventoValidacaoTelefone("inputTelefoneEmpresa");
+
+    // Adiciona validação de telefone ao campo de telefone da entrega
+    adicionarEventoValidacaoTelefone("inputTelefoneEntrega");
 
     //------------------------------------ FIM Validar Telefone -----------------------------------------
 
@@ -787,12 +804,126 @@ $(document).ready(function () {
 
     //------------------------------------ FIM Validar CNPJ -----------------------------------------
 
-    //################################## INÍCIO Validar Rua #########################################
+    //################################## INÍCIO Validar Cidade e Bairro #########################################
+
+    /**
+     * Valida um nome simples digitado em um campo do formulário.
+     * @param {string} nomeCampo - O ID do campo do formulário que contém o nome a ser validado.
+     * @param {string} mensagemErro - A mensagem de erro a ser exibida se o campo estiver vazio.
+     * @returns {boolean} - true se o nome for válido, false caso contrário.
+     */
+    function validaNomeSimples(nomeCampo, mensagemErro) {
+        let nome = $(`#${nomeCampo}`).val().trim();
+
+        // Verifica se o campo está vazio
+        if (nome.length == 0) {
+            exibirErro(nomeCampo, mensagemErro || "Digite o Nome!"); // Usa a mensagem personalizada se fornecida, senão usa a mensagem padrão
+            return false; // Retorna false indicando erro
+        } else if (nome.length < 3) {
+            exibirErro(nomeCampo, "O nome deve ter no mínimo 3 caracteres!"); // Exibe mensagem de erro se o nome tiver menos de 3 caracteres
+            return false; // Retorna false indicando erro
+        } else if (contemNumero(nome)) {
+            exibirErro(nomeCampo, "Números não são permitidos neste campo!"); // Exibe mensagem de erro se o nome contiver números
+            return false; // Retorna false indicando erro
+        } else if (contemCaracteresInvalidos(nome)) {
+            exibirErro(nomeCampo, "Caracteres especiais não são permitidos neste campo!"); // Exibe mensagem de erro se o nome contiver caracteres especiais
+            return false; // Retorna false indicando erro
+        }
+        // Formata o nome e exibe mensagem de sucesso
+        $(`#${nomeCampo}`).val(formatarNome(nome)); // Define o valor do campo com o nome formatado
+        exibirSucesso(nomeCampo, "Ok!"); // Exibe a mensagem de sucesso se a validação for bem-sucedida
+
+        return true; // Retorna true indicando sucesso
+    }
+    // Registra o evento "input" no campo de entrada do bairro para entrega e chama a função validaNomeSimples enquanto o usuário digita
+    $("#bairro").on("input", function () {
+        validaNomeSimples("bairro", "Digite o Nome do Bairro para Entrega!");
+    });
+
+    // Registra o evento "input" no campo de entrada da cidade para entrega e chama a função validaNomeSimples enquanto o usuário digita
+    $("#cidade").on("input", function () {
+        validaNomeSimples("cidade", "Digite o Nome da Cidade para Entrega!");
+    });
+
+    // Registra o evento "blur" no campo de entrada do bairro para entrega e chama a função validaNomeSimples quando o usuário sair do campo
+    $("#bairro").blur(function () {
+        validaNomeSimples("bairro", "Digite o Nome do Bairro para Entrega!");
+    });
+
+    // Registra o evento "blur" no campo de entrada da cidade para entrega e chama a função validaNomeSimples quando o usuário sair do campo
+    $("#cidade").blur(function () {
+        validaNomeSimples("cidade", "Digite o Nome da Cidade para Entrega!");
+    });
+
+    //------------------------------------ FIM Validar Cidade e Bairro -----------------------------------------
+
+    //################################## INÍCIO Validar Numero #########################################
+    /**
+     * Verifica se um campo de entrada contém um valor válido de acordo com o padrão especificado.
+     * @param {string} campoId - O ID do campo de entrada.
+     * @param {string} valorCampo - O valor do campo de entrada a ser verificado.
+     * @returns {boolean} - true se o campo estiver no formato válido, false caso contrário.
+     */
+    function verificarCampoGenerico(campoId, valorCampo) {
+        // Verifica se o campo está vazio
+        if (valorCampo.trim() === "") {
+            exibirErro(campoId, "Digite o número!");
+            return false;
+        }
+
+        // Define a expressão regular para validar o campo
+        const padrao = /^\d{1,4}[a-zA-Z]?$/;
+
+        // Explicação da expressão regular:
+        // ^ : Indica o início da string. Qualquer correspondência deve começar do início do valor do campo.
+        // \d{1,4} : Corresponde a qualquer sequência de 1 a 4 dígitos de 0 a 9.
+        // [a-zA-Z]? : Corresponde a uma letra do alfabeto, seja minúscula (a-z) ou maiúscula (A-Z). O ? indica que a letra é opcional.
+        // $ : Indica o final da string. Qualquer correspondência deve terminar no final do valor do campo.
+
+
+        // Verifica se o valor do campo corresponde ao padrão
+        if (!padrao.test(valorCampo)) {
+            exibirErro(campoId, "O campo deve conter até 4 dígitos seguidos de uma letra opcional.");
+            return false;
+        } else {
+            exibirSucesso(campoId, "Número válido.");
+            return true;
+        }
+    }
+
+
+    // Adiciona um evento de validação de número ao campo especificado.
+    function adicionarEventoValidacaoNumero(campoId) {
+        $("#" + campoId).on("blur input", function () {
+            let numeroValido = verificarCampoGenerico(campoId, $(this).val().trim());
+            if (numeroValido) {
+                exibirSucesso("#" + campoId, "Número Válido!");
+            } else {
+                // Ação se o número for inválido
+            }
+        });
+    }
+
+
+    // Adiciona evento de validação de número ao campo de número Empresa
+    adicionarEventoValidacaoNumero("inputNumero");
+    // Adiciona evento de validação de número ao campo de número de Entrega
+    adicionarEventoValidacaoNumero("inputNumeroEntrega");
 
 
 
-    //------------------------------------ FIM Validar Rua -----------------------------------------
+    //------------------------------------ FIM Validar Numero -----------------------------------------
+    //############################## INÍCIO Validar UF ######################################
 
+    // Adiciona um evento de validação ao campo UF
+    $("#uf").blur(function () {
+        let uf = $(this).val(); // Obtém o valor do campo UF
+        if (uf != "") {
+            exibirSucesso("uf", "UF Válida!");
+        }
+    });
+
+    //------------------------------------ FIM Validar UF -----------------------------------------
     //############################## INÍCIO Formata CEP ######################################
     /**
     * Formata o número de CEP em um campo de entrada enquanto o usuário digita.
@@ -864,10 +995,10 @@ $(document).ready(function () {
                 $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
                     if (!("erro" in dados)) {
                         // Atualiza os campos com os valores da consulta
-                        $("#" + ruaId).val(dados.logradouro);
-                        $("#" + bairroId).val(dados.bairro);
-                        $("#" + cidadeId).val(dados.localidade);
-                        $("#" + ufId).val(dados.uf);
+                        $("#" + ruaId).val(dados.logradouro).trigger("blur");//trigger aciona manualmente o evento "blur" para verificar o campo
+                        $("#" + bairroId).val(dados.bairro).trigger("blur");
+                        $("#" + cidadeId).val(dados.localidade).trigger("blur");
+                        $("#" + ufId).val(dados.uf).trigger("blur");
                         exibirSucesso(cepId, "CEP válido!")
                     } else {
                         // CEP pesquisado não foi encontrado
@@ -897,10 +1028,10 @@ $(document).ready(function () {
      * @param {string} ufId - O ID do campo de entrada de UF.
      */
     function limparCamposEndereco(ruaId, bairroId, cidadeId, ufId) {
-        $("#" + ruaId).val("");
-        $("#" + bairroId).val("");
-        $("#" + cidadeId).val("");
-        $("#" + ufId).val("");
+        $("#" + ruaId).val("").trigger("blur");
+        $("#" + bairroId).val("").trigger("blur");
+        $("#" + cidadeId).val("").trigger("blur");
+        $("#" + ufId).val("").trigger("blur");
     }
 
 
