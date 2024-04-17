@@ -29,7 +29,7 @@
         <!--SEÇÃO REVENDA-->
         <section class="container bg-body-tertiary px-xl-5">
             <div>
-                <form class="row g-3 mb-5" action="resultado-form.html" method="get">
+                <form id="formularioRevenda" class="row g-3 mb-5" action="resultado-form.html" method="get">
                     <!-- Form Name -->
                     <h6 class="mt-5">Formulario para es</h6>
                     <!-- Tipo de Cliente -->
@@ -64,14 +64,14 @@
 
                         <!--Input cpf-->
                         <div class="form-floating mb-4">
-                            <input id="inputCpf" name="inputCpf" type="text" placeholder="000.000.000-00" maxlength="14"
+                            <input id="inputCpf" name="inputCpf" type="text" placeholder="000.000.000-00" maxlength="14" required=""
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="inputCpf" class="text-black-50">CPF</label>
                             <small id="inputCpfHelpBlock" class="form-text text-muted">Ex: 000.000.000-00</small>
                         </div>
                         <!--Input email-->
                         <div class="form-floating mb-4">
-                            <input id="inputEmail" name="inputEmail" type="email" placeholder="seuemail@provedor.com"
+                            <input id="inputEmail" name="inputEmail" type="email" placeholder="seuemail@provedor.com"  title="Digite o Email"  required=""
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="inputEmail" class="text-black-50">Email</label>
                             <small id="inputEmailHelpBlock" class="form-text text-muted">Ex:
@@ -79,9 +79,9 @@
                         </div>
                         <!--Input Telefone-->
                         <div class="form-floating mb-4">
-                            <input id="inputTelefone" name="inputTelefone" type="text" maxlength="16"
+                            <input id="inputTelefone" name="inputTelefone" type="text" maxlength="16" required=""
                                 placeholder="(00) 0 0000 0000" class="form-control border border-1 border-dark-subtle"
-                                required="">
+                                >
                             <label for="inputTelefone" class="text-black-50">Telefone</label>
                             <small id="inputTelefoneHelpBlock" class="form-text text-muted">Ex: (xx) 0 0000-0000</small>
                         </div>
@@ -119,7 +119,7 @@
                         <div class="form-floating mb-4">
                             <input id="inputTelefoneEmpresa" name="inputTelefoneEmpresa" type="text" maxlength="16"
                                 placeholder="(00) 0 0000 0000" class="form-control border border-1 border-dark-subtle"
-                                required="">
+                                >
                             <label for="inputTelefoneEmpresa" class="text-black-50">Telefone</label>
                             <small id="inputTelefoneEmpresaHelpBlock" class="form-text text-muted">Ex: (xx) 0
                                 0000-0000</small>
@@ -177,7 +177,7 @@
                         <div class="row">
                             <!-- inputNomeEntrega -->
                             <div class="form-floating col-xl-6 mb-4">
-                                <input id="inputNomeEntrega" name="inputNomeEntrega" type="text"
+                                <input id="inputNomeEntrega" name="inputNomeEntrega" type="text" required=""
                                     placeholder="Nome Completo" class="form-control border border-1 border-dark-subtle">
                                 <label for="inputNomeEntrega" class="ms-2 text-black-50">Nome Completo</label>
                                 <small id="inputNomeEntregaHelpBlock" class="form-text text-muted">Digite seu nome
@@ -187,9 +187,9 @@
 
                             <!--Input Telefone-->
                             <div class="form-floating col-xl-6 mb-4">
-                                <input id="inputTelefoneEntrega" name="inputTelefoneEntrega" type="tel"
+                                <input id="inputTelefoneEntrega" name="inputTelefoneEntrega" type="tel" required=""
                                     placeholder="(00) 0000 0000" class="form-control border border-1 border-dark-subtle"
-                                    required="">
+                                    >
                                 <label for="inputTelefoneEntrega" class="ms-2 text-black-50">Telefone</label>
                                 <small id="inputTelefoneEntregaHelpBlock" class="form-text text-muted">Ex: 0 0000
                                     0000</small>
@@ -198,7 +198,7 @@
                         <!-- Input CEP -->
 
                         <div class="form-floating col-xl-6 mb-4">
-                            <input id="cep" name="cep" type="text" placeholder="CEP"
+                            <input id="cep" name="cep" type="text" placeholder="CEP" required=""
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="cep" class="text-black-50">CEP</label>
                             <div class="d-flex justify-content-between">
@@ -224,7 +224,7 @@
                             </div>
                             <!-- Input Número -->
                             <div class="form-floating col-xl-2 mb-4">
-                                <input id="inputNumeroEntrega" name="inputNumeroEntrega" type="text" maxlength="5"
+                                <input id="inputNumeroEntrega" name="inputNumeroEntrega" type="text" maxlength="5" required=""
                                     placeholder="Número" class="form-control border border-1 border-dark-subtle">
                                 <label for="inputNumeroEntrega" class="ms-2 text-black-50">Número</label>
                                 <small id="inputNumeroEntregaHelpBlock" class="form-text text-muted">Ex: 1024</small>
@@ -416,6 +416,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+        
+
 </body>
 
 </html>

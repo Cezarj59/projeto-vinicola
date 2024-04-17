@@ -1,5 +1,6 @@
 // Funções genéricas para manipulação de formulários
 
+
 /**
  * Exibe uma mensagem de erro relacionada a um campo do formulário.
  * @param {string} campoId - O ID do campo do formulário.
@@ -197,6 +198,41 @@ $(document).ready(function () {
 
 
     /**
+  * Valida um nome simples digitado em um campo do formulário.
+  * @param {string} nomeCampo - O ID do campo do formulário que contém o nome a ser validado.
+  * @param {boolean} permiteNumeros - Indica se números são permitidos no nome.
+  * @param {string} mensagemErro - A mensagem de erro a ser exibida se o campo estiver vazio.
+  * @returns {boolean} - true se o nome for válido, false caso contrário.
+  */
+    function validaNomeSimples(nomeCampo, permiteNumeros, mensagemErro) {
+        let nome = $(`#${nomeCampo}`).val().trim();
+
+        // Verifica se o campo está vazio
+        if (nome.length == 0) {
+            exibirErro(nomeCampo, mensagemErro || "Digite o Nome!"); // Usa a mensagem personalizada se fornecida, senão usa a mensagem padrão
+            return false; // Retorna false indicando erro
+        } else if (nome.length < 3) {
+            exibirErro(nomeCampo, "O nome deve ter no mínimo 3 caracteres!"); // Exibe mensagem de erro se o nome tiver menos de 3 caracteres
+            return false; // Retorna false indicando erro
+        } else if (!permiteNumeros && contemNumero(nome)) {
+            exibirErro(nomeCampo, "Números não são permitidos neste campo!"); // Exibe mensagem de erro se números não forem permitidos e o nome contiver números
+            return false; // Retorna false indicando erro
+        } else if (contemLetrasRepetidas(nome)) {
+            // Verifica se números não são permitidos e o nome contém letras repetidas
+            exibirErro(nomeCampo, "Não deve conter letras repetidas neste campo!");
+            return false; // Retorna false indicando erro
+        } else if (contemCaracteresInvalidos(nome)) {
+            exibirErro(nomeCampo, "Caracteres especiais não são permitidos neste campo!"); // Exibe mensagem de erro se o nome contiver caracteres especiais
+            return false; // Retorna false indicando erro
+        }
+        // Formata o nome e exibe mensagem de sucesso
+        $(`#${nomeCampo}`).val(formatarNome(nome)); // Define o valor do campo com o nome formatado
+        exibirSucesso(nomeCampo, "Ok!"); // Exibe a mensagem de sucesso se a validação for bem-sucedida
+
+        return true; // Retorna true indicando sucesso
+    }
+
+    /**
   * Valida um nome digitado em um campo do formulário.
   * @param {string} nomeCampo - O ID do campo do formulário que contém o nome a ser validado.
   * @param {boolean} permiteNumeros - Indica se números são permitidos no nome.
@@ -227,7 +263,7 @@ $(document).ready(function () {
             // Valida o comprimento dos nomes e sobrenomes
             return false; // Retorna false indicando erro
         }
-        
+
         // Formata o nome e exibe mensagem de sucesso
         $(`#${nomeCampo}`).val(formatarNome(nome)); // Define o valor do campo com o nome formatado
         exibirSucesso(nomeCampo, "Nome Válido!"); // Exibe a mensagem de sucesso se a validação de comprimento for bem-sucedida
@@ -247,7 +283,7 @@ $(document).ready(function () {
 
     // - CAMPO DADOS EMPRESARIAIS - Chama a função para validar o nome da empresa ao perder o foco
     $("#inputNomeEmpresa").blur(function () {
-        validaNome("inputNomeEmpresa", true, "Digite o Nome da Empresa!"); // Mensagem personalizada para o campo de nome da empresa
+        validaNomeSimples("inputNomeEmpresa", true, "Digite o Nome da Empresa!"); // Mensagem personalizada para o campo de nome da empresa
     });
 
     // - CAMPO DADOS EMPRESARIAIS - Chama a função para validar o nome da rua ao perder o foco
@@ -267,10 +303,38 @@ $(document).ready(function () {
     });
 
 
+    // Evento de submissão do formulário
+    $("#formularioRevenda").submit(function (event) {
+        // Define uma variável para controlar se o formulário pode ser enviado
+        let formValido = true;
+
+        // Verifica qual opção do rádio está selecionada
+        const tipoCliente = $("input[name='radiosTipoCliente']:checked").val();
+
+        // Se o tipo de cliente for Pessoa Jurídica (valor '2'), valida todos os campos
+        if (tipoCliente === '2') {
+            // Validação dos campos de dados pessoais
+            formValido = validaNome("inputNome", false) && formValido;
+            formValido = validaNomeSimples("inputNomeEmpresa", true, "Digite o Nome da Empresa!") && formValido;
+
+            // Validação dos campos de dados empresariais
+            formValido = validaNome("inputRuaEmpresa", true, "Digite o Nome da Rua!") && formValido;
+            formValido = validaNome("inputNomeEntrega", false, "Digite o Nome de que receberá a Entrega!") && formValido;
+            formValido = validaNome("rua", true, "Digite o Nome da Rua para Entrega!") && formValido;
+        } else {
+            // Se o tipo de cliente for Pessoa Física, apenas valida os campos pessoais
+            formValido = validaNome("inputNome", false) && formValido;
+        }
+
+        // Se o formulário não for válido, impede o envio
+        if (!formValido) {
+            event.preventDefault(); // Impede o envio do formulário
+            alert("Existem campos inválidos. Por favor, verifique novamente."); // Alerta o usuário sobre campos inválidos
+        }
+    });
+
 
     //------------------------------------ FIM Validar Nome -----------------------------------------
-    //############################## INÍCIO Validar CPF ######################################
-    
     /**
      * Verifica se um CPF é válido.
      * @param {string} cpf - O CPF a ser verificado.
@@ -806,53 +870,15 @@ $(document).ready(function () {
 
     //################################## INÍCIO Validar Cidade e Bairro #########################################
 
-    /**
-     * Valida um nome simples digitado em um campo do formulário.
-     * @param {string} nomeCampo - O ID do campo do formulário que contém o nome a ser validado.
-     * @param {string} mensagemErro - A mensagem de erro a ser exibida se o campo estiver vazio.
-     * @returns {boolean} - true se o nome for válido, false caso contrário.
-     */
-    function validaNomeSimples(nomeCampo, mensagemErro) {
-        let nome = $(`#${nomeCampo}`).val().trim();
-
-        // Verifica se o campo está vazio
-        if (nome.length == 0) {
-            exibirErro(nomeCampo, mensagemErro || "Digite o Nome!"); // Usa a mensagem personalizada se fornecida, senão usa a mensagem padrão
-            return false; // Retorna false indicando erro
-        } else if (nome.length < 3) {
-            exibirErro(nomeCampo, "O nome deve ter no mínimo 3 caracteres!"); // Exibe mensagem de erro se o nome tiver menos de 3 caracteres
-            return false; // Retorna false indicando erro
-        } else if (contemNumero(nome)) {
-            exibirErro(nomeCampo, "Números não são permitidos neste campo!"); // Exibe mensagem de erro se o nome contiver números
-            return false; // Retorna false indicando erro
-        } else if (contemCaracteresInvalidos(nome)) {
-            exibirErro(nomeCampo, "Caracteres especiais não são permitidos neste campo!"); // Exibe mensagem de erro se o nome contiver caracteres especiais
-            return false; // Retorna false indicando erro
-        }
-        // Formata o nome e exibe mensagem de sucesso
-        $(`#${nomeCampo}`).val(formatarNome(nome)); // Define o valor do campo com o nome formatado
-        exibirSucesso(nomeCampo, "Ok!"); // Exibe a mensagem de sucesso se a validação for bem-sucedida
-
-        return true; // Retorna true indicando sucesso
-    }
-    // Registra o evento "input" no campo de entrada do bairro para entrega e chama a função validaNomeSimples enquanto o usuário digita
-    $("#bairro").on("input", function () {
-        validaNomeSimples("bairro", "Digite o Nome do Bairro para Entrega!");
-    });
-
-    // Registra o evento "input" no campo de entrada da cidade para entrega e chama a função validaNomeSimples enquanto o usuário digita
-    $("#cidade").on("input", function () {
-        validaNomeSimples("cidade", "Digite o Nome da Cidade para Entrega!");
-    });
 
     // Registra o evento "blur" no campo de entrada do bairro para entrega e chama a função validaNomeSimples quando o usuário sair do campo
     $("#bairro").blur(function () {
-        validaNomeSimples("bairro", "Digite o Nome do Bairro para Entrega!");
+        validaNomeSimples("bairro", false, "Digite o Nome do Bairro para Entrega!");
     });
 
     // Registra o evento "blur" no campo de entrada da cidade para entrega e chama a função validaNomeSimples quando o usuário sair do campo
     $("#cidade").blur(function () {
-        validaNomeSimples("cidade", "Digite o Nome da Cidade para Entrega!");
+        validaNomeSimples("cidade", false, "Digite o Nome da Cidade para Entrega!");
     });
 
     //------------------------------------ FIM Validar Cidade e Bairro -----------------------------------------
@@ -1050,5 +1076,107 @@ $(document).ready(function () {
 
 
     //-------------------------------------- FIM Consumo API Viacep -----------------------------------------------
+
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    /**
+     * Esta função define mensagens de erro personalizadas para campos de formulário inválidos.
+     * Cada campo é identificado pelo seu ID e recebe uma mensagem de erro específica.
+     */
+
+    // Função para redefinir a validade do campo quando preenchido corretamente
+    function resetValidity(event) {
+        event.target.setCustomValidity("");
+    }
+
+    // Event listener para o botão de enviar
+    document.getElementById("enviarForm").addEventListener("click", function(event) {
+        // Verifica se algum campo não está preenchido corretamente
+        let camposInvalidos = false;
+        let mensagensErro = "";
+
+        // Input Nome
+        let inputNome = document.getElementById("inputNome");
+        if (!inputNome.checkValidity()) {
+            inputNome.setCustomValidity("Campo Nome é obrigatório!");
+            mensagensErro += "Campo Nome é obrigatório!<br>";
+            camposInvalidos = true;
+        }
+        inputNome.addEventListener("input", resetValidity);
+
+        // Input CPF
+        let inputCpf = document.getElementById("inputCpf");
+        if (!inputCpf.checkValidity()) {
+            inputCpf.setCustomValidity("Campo CPF é obrigatório!");
+            mensagensErro += "Campo CPF é obrigatório!<br>";
+            camposInvalidos = true;
+        }
+        inputCpf.addEventListener("input", resetValidity);
+
+        // Input Email
+        let inputEmail = document.getElementById("inputEmail");
+        if (!inputEmail.checkValidity()) {
+            inputEmail.setCustomValidity("Campo Email é obrigatório!");
+            mensagensErro += "Campo Email é obrigatório!<br>";
+            camposInvalidos = true;
+        }
+        inputEmail.addEventListener("input", resetValidity);
+
+        // Input Telefone
+        let inputTelefone = document.getElementById("inputTelefone");
+        if (!inputTelefone.checkValidity()) {
+            inputTelefone.setCustomValidity("Campo Telefone é obrigatório!");
+            mensagensErro += "Campo Telefone é obrigatório!<br>";
+            camposInvalidos = true;
+        }
+        inputTelefone.addEventListener("input", resetValidity);
+
+        // Input Nome Entrega
+        let inputNomeEntrega = document.getElementById("inputNomeEntrega");
+        if (!inputNomeEntrega.checkValidity()) {
+            inputNomeEntrega.setCustomValidity("Campo Nome para Entrega é obrigatório!");
+            mensagensErro += "Campo Nome para Entrega é obrigatório!<br>";
+            camposInvalidos = true;
+        }
+        inputNomeEntrega.addEventListener("input", resetValidity);
+
+        // Input Telefone Entrega
+        let inputTelefoneEntrega = document.getElementById("inputTelefoneEntrega");
+        if (!inputTelefoneEntrega.checkValidity()) {
+            inputTelefoneEntrega.setCustomValidity("Campo Telefone para Entrega é obrigatório!");
+            mensagensErro += "Campo Telefone para Entrega é obrigatório!<br>";
+            camposInvalidos = true;
+        }
+        inputTelefoneEntrega.addEventListener("input", resetValidity);
+
+        // Input Número Entrega
+        let inputNumeroEntrega = document.getElementById("inputNumeroEntrega");
+        if (!inputNumeroEntrega.checkValidity()) {
+            inputNumeroEntrega.setCustomValidity("Campo Número para Entrega é obrigatório!");
+            mensagensErro += "Campo Número para Entrega é obrigatório!<br>";
+            camposInvalidos = true;
+        }
+        inputNumeroEntrega.addEventListener("input", resetValidity);
+
+        // Input CEP
+        let inputCep = document.getElementById("cep");
+        if (!inputCep.checkValidity()) {
+            inputCep.setCustomValidity("Campo CEP é obrigatório!");
+            mensagensErro += "Campo CEP é obrigatório!<br>";
+            camposInvalidos = true;
+        }
+        inputCep.addEventListener("input", resetValidity);
+
+        // Exibe mensagens de erro
+        let divMensagensErro = document.getElementById("mensagensErro");
+        divMensagensErro.innerHTML = mensagensErro;
+
+        // Se houver campos inválidos, impede o envio do formulário
+        if (camposInvalidos) {
+            event.preventDefault();
+        }
+    });
 });
 
