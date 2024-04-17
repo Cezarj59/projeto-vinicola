@@ -1079,10 +1079,11 @@ $(document).ready(function () {
 
 
 });
-
+ //################################ INÍCIO msg erro de campos obrigatórios ########################################
 document.addEventListener("DOMContentLoaded", function () {
     /**
-     * Esta função define mensagens de erro personalizadas para campos de formulário inválidos.
+     * Esta função define mensagens de erro personalizadas para campos de formulário inválidos
+     * e impede o envio do formulário se houver campos inválidos.
      * Cada campo é identificado pelo seu ID e recebe uma mensagem de erro específica.
      */
 
@@ -1091,12 +1092,13 @@ document.addEventListener("DOMContentLoaded", function () {
         event.target.setCustomValidity("");
     }
 
-    // Event listener para o botão de enviar
+    // Event listener para o botão de enviar do formulário
     document.getElementById("enviarForm").addEventListener("click", function(event) {
-        // Verifica se algum campo não está preenchido corretamente
+        // Variáveis para rastrear campos inválidos e mensagens de erro
         let camposInvalidos = false;
         let mensagensErro = "";
 
+        // Verifica a validade de cada campo e adiciona mensagens de erro personalizadas
         // Input Nome
         let inputNome = document.getElementById("inputNome");
         if (!inputNome.checkValidity()) {
@@ -1169,14 +1171,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         inputCep.addEventListener("input", resetValidity);
 
-        // Exibe mensagens de erro
+        // Exibe mensagens de erro no formulário
         let divMensagensErro = document.getElementById("mensagensErro");
         divMensagensErro.innerHTML = mensagensErro;
 
-        // Se houver campos inválidos, impede o envio do formulário
+        // Impede o envio do formulário se houver campos inválidos
         if (camposInvalidos) {
             event.preventDefault();
         }
     });
 });
 
+ //-------------------------------------- FIM msg erro de campos obrigatórios -----------------------------------------------
