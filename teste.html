@@ -29,22 +29,25 @@
         <!--SEÇÃO REVENDA-->
         <section class="container bg-body-tertiary px-xl-5">
             <div>
-                <form id="formularioRevenda" class="row g-3 mb-5" action="resultado-form.html" method="get">
+
+                <form id="formularioRevenda" class="row g-3 mb-5" action="resultado-form.html" target="_blank" method="get">
                     <!-- Form Name -->
-                    <h6 class="mt-5">Formulario para es</h6>
+                    <h6 class="mt-5">Formulario para Revendedores</h6>
+
                     <!-- Tipo de Cliente -->
                     <fieldset class="col-xl-12 mt-2">
                         <legend class="container-fluid bg-body-secondary text-center">Tipo de Cliente</legend>
                         <div class="row text-center">
                             <div class="radio row">
-                                <label for="radiosTipoCliente-0">
+                                <label for="radiosTipoCliente-0"
+                                    title="Os campos de dados empresariais não são necessarios nessa opção!">
                                     <input type="radio" name="radiosTipoCliente" id="radiosTipoCliente-0" value="1"
                                         checked="checked">
                                     Pessoa Física (Individual)
                                 </label>
                             </div>
                             <div class="radio row">
-                                <label for="radiosTipoCliente-1">
+                                <label for="radiosTipoCliente-1" title="Preencha o formulário Completo!">
                                     <input type="radio" name="radiosTipoCliente" id="radiosTipoCliente-1" value="2">
                                     Pessoa Jurídica (Empresa)
                                 </label>
@@ -57,31 +60,39 @@
                         <!--Input Nome-->
                         <div class="form-floating mb-4">
                             <input type="text" class="form-control border border-1 border-dark-subtle" id="inputNome"
-                                name="inputNome" placeholder="Ex: Junior" required="">
+                                name="inputNome" placeholder="Ex: Junior" title="Digite o Nome Completo!" required
+                                oninvalid="this.setCustomValidity('Campo Nome é Obrigatório')"
+                                onchange="try{setCustomValidity('')}catch(e){}">
                             <label for="inputNome" class="text-black-50">Nome Completo</label>
                             <small id="inputNomeHelpBlock" class="form-text text-muted">Ex: Paulo de Oliveira</small>
                         </div>
 
                         <!--Input cpf-->
                         <div class="form-floating mb-4">
-                            <input id="inputCpf" name="inputCpf" type="text" placeholder="000.000.000-00" maxlength="14" required=""
-                                class="form-control border border-1 border-dark-subtle">
+                            <input id="inputCpf" name="inputCpf" type="text" placeholder="000.000.000-00" maxlength="14"
+                                required oninvalid="this.setCustomValidity('Campo CPF é Obrigatório')"
+                                onchange="try{setCustomValidity('')}catch(e){}"
+                                class="form-control border border-1 border-dark-subtle" title="Digite o CPF!">
                             <label for="inputCpf" class="text-black-50">CPF</label>
                             <small id="inputCpfHelpBlock" class="form-text text-muted">Ex: 000.000.000-00</small>
                         </div>
                         <!--Input email-->
                         <div class="form-floating mb-4">
-                            <input id="inputEmail" name="inputEmail" type="email" placeholder="seuemail@provedor.com"  title="Digite o Email"  required=""
-                                class="form-control border border-1 border-dark-subtle">
+                            <input id="inputEmail" name="inputEmail" type="email" placeholder="seuemail@provedor.com"
+                                title="Digite o Email" required
+                                oninvalid="this.setCustomValidity('Campo Email é Obrigatório')"
+                                onchange="try{setCustomValidity('')}catch(e){}"
+                                class="form-control border border-1 border-dark-subtle" title="Digite o Email!">
                             <label for="inputEmail" class="text-black-50">Email</label>
                             <small id="inputEmailHelpBlock" class="form-text text-muted">Ex:
                                 seuemail@provedor.com</small>
                         </div>
                         <!--Input Telefone-->
                         <div class="form-floating mb-4">
-                            <input id="inputTelefone" name="inputTelefone" type="text" maxlength="16" required=""
-                                placeholder="(00) 0 0000 0000" class="form-control border border-1 border-dark-subtle"
-                                >
+                            <input id="inputTelefone" name="inputTelefone" type="text" maxlength="16" required
+                                oninvalid="this.setCustomValidity('Campo Telefone é Obrigatório')"
+                                onchange="try{setCustomValidity('')}catch(e){}" placeholder="(00) 0 0000 0000"
+                                class="form-control border border-1 border-dark-subtle" title="Digite o Telefone!">
                             <label for="inputTelefone" class="text-black-50">Telefone</label>
                             <small id="inputTelefoneHelpBlock" class="form-text text-muted">Ex: (xx) 0 0000-0000</small>
                         </div>
@@ -92,7 +103,8 @@
                         <!--Input Nome Empresa-->
                         <div class="form-floating mb-4">
                             <input id="inputNomeEmpresa" name="inputNomeEmpresa" type="text" placeholder=""
-                                class="form-control border border-1 border-dark-subtle">
+                                class="form-control border border-1 border-dark-subtle"
+                                title="Digite o nome da Empresa!">
                             <label for="inputNomeEmpresa" class="text-black-50">
                                 Digite o nome da Empresa
                                 (opcional)
@@ -102,7 +114,7 @@
                         <!--Input CNPJ-->
                         <div class="form-floating mb-4">
                             <input id="inputCNPJ" name="inputCNPJ" type="text" placeholder=" 00.000. 000/0001-XX"
-                                class="form-control border border-1 border-dark-subtle">
+                                class="form-control border border-1 border-dark-subtle" title="Digite o CNPJ!">
                             <label for="inputCNPJ" class="text-black-50">CNPJ</label>
                             <small id="inputCNPJHelpBlock" class="form-text text-muted">Ex: 00.000. 000/0001-XX</small>
                         </div>
@@ -110,7 +122,7 @@
                         <div class="form-floating mb-4">
                             <input id="inputEmailEmpresa" name="inputEmailEmpresa" type="email"
                                 placeholder="seuemail@provedor.com"
-                                class="form-control border border-1 border-dark-subtle">
+                                class="form-control border border-1 border-dark-subtle" title="Digite o Email!">
                             <label for="inputEmailEmpresa" class="text-black-50">Email</label>
                             <small id="inputEmailEmpresaHelpBlock" class="form-text text-muted">Ex:
                                 seuemail@provedor.com</small>
@@ -119,7 +131,7 @@
                         <div class="form-floating mb-4">
                             <input id="inputTelefoneEmpresa" name="inputTelefoneEmpresa" type="text" maxlength="16"
                                 placeholder="(00) 0 0000 0000" class="form-control border border-1 border-dark-subtle"
-                                >
+                                title="Digite o Telefone!">
                             <label for="inputTelefoneEmpresa" class="text-black-50">Telefone</label>
                             <small id="inputTelefoneEmpresaHelpBlock" class="form-text text-muted">Ex: (xx) 0
                                 0000-0000</small>
@@ -129,7 +141,7 @@
                             <div class="form-floating mb-4">
                                 <input id="inputCepEmpresa" name="inputCepEmpresa" type="text" placeholder="00000-000"
                                     title="Digite o CEP!" maxlength="9"
-                                    class="form-control border border-1 border-dark-subtle">
+                                    class="form-control border border-1 border-dark-subtle" title="Digite o CEP!">
                                 <label for="inputCepEmpresa" class="ms-2 text-black-50">CEP</label>
                                 <div class="d-flex justify-content-between">
                                     <small id="inputCepEmpresaHelpBlock" class="form-text text-muted">
@@ -149,7 +161,7 @@
                             <div class="form-floating col-xl-8 mb-4">
                                 <input id="inputRuaEmpresa" name="inputRuaEmpresa" type="text"
                                     class="form-control border border-1 border-dark-subtle"
-                                    placeholder="00.000. 000/0001-00">
+                                    placeholder="00.000. 000/0001-00" title="Digite o endereço da empresa!">
                                 <label class="ms-2 text-black-50" for="inputRuaEmpresa">Endereço</label>
                                 <small id="inputRuaEmpresaHelpBlock" class="form-text text-muted">
                                     Ex: Rua Marechal Floriano
@@ -158,7 +170,8 @@
                             <!--Input Numero-->
                             <div class="form-floating col-xl-4 mb-4">
                                 <input id="inputNumero" name="inputNumero" type="text" maxlength="5"
-                                    placeholder="Ex: 1024" class="form-control border border-1 border-dark-subtle">
+                                    placeholder="Ex: 1024" class="form-control border border-1 border-dark-subtle"
+                                    title="Digite o Número!">
                                 <label class="ms-2 text-black-50" for="inputNumero">Numero</label>
                                 <small id="inputNumeroHelpBlock" class="form-text text-muted">Ex: 1024</small>
                             </div>
@@ -177,8 +190,11 @@
                         <div class="row">
                             <!-- inputNomeEntrega -->
                             <div class="form-floating col-xl-6 mb-4">
-                                <input id="inputNomeEntrega" name="inputNomeEntrega" type="text" required=""
-                                    placeholder="Nome Completo" class="form-control border border-1 border-dark-subtle">
+                                <input id="inputNomeEntrega" name="inputNomeEntrega" type="text"
+                                    title="Digite o Nome Completo para entrega!" required
+                                    oninvalid="this.setCustomValidity('Campo Nome é Obrigatório')"
+                                    onchange="try{setCustomValidity('')}catch(e){}" placeholder="Nome Completo"
+                                    class="form-control border border-1 border-dark-subtle">
                                 <label for="inputNomeEntrega" class="ms-2 text-black-50">Nome Completo</label>
                                 <small id="inputNomeEntregaHelpBlock" class="form-text text-muted">Digite seu nome
                                     completo</small>
@@ -187,9 +203,11 @@
 
                             <!--Input Telefone-->
                             <div class="form-floating col-xl-6 mb-4">
-                                <input id="inputTelefoneEntrega" name="inputTelefoneEntrega" type="tel" required=""
-                                    placeholder="(00) 0000 0000" class="form-control border border-1 border-dark-subtle"
-                                    >
+                                <input id="inputTelefoneEntrega" name="inputTelefoneEntrega" type="tel"
+                                    title="Digite o Telefone!" required
+                                    oninvalid="this.setCustomValidity('Campo Telefone é Obrigatório')"
+                                    onchange="try{setCustomValidity('')}catch(e){}" placeholder="(00) 0000 0000"
+                                    class="form-control border border-1 border-dark-subtle">
                                 <label for="inputTelefoneEntrega" class="ms-2 text-black-50">Telefone</label>
                                 <small id="inputTelefoneEntregaHelpBlock" class="form-text text-muted">Ex: 0 0000
                                     0000</small>
@@ -198,7 +216,9 @@
                         <!-- Input CEP -->
 
                         <div class="form-floating col-xl-6 mb-4">
-                            <input id="cep" name="cep" type="text" placeholder="CEP" required=""
+                            <input id="cep" name="cep" type="text" placeholder="CEP" title="Digite o CEP!" required
+                                oninvalid="this.setCustomValidity('Campo CEP é Obrigatório')"
+                                onchange="try{setCustomValidity('')}catch(e){}"
                                 class="form-control border border-1 border-dark-subtle">
                             <label for="cep" class="text-black-50">CEP</label>
                             <div class="d-flex justify-content-between">
@@ -216,7 +236,7 @@
                         <div class="row">
                             <!-- Input Endereço -->
                             <div class="form-floating col-xl-6 mb-4">
-                                <input id="rua" name="rua" type="text" placeholder="Endereço"
+                                <input id="rua" name="rua" type="text" placeholder="Endereço" title="Digite o Endereço!"
                                     class="form-control border border-1 border-dark-subtle">
                                 <label for="rua" class="ms-2 text-black-50">Endereço</label>
                                 <small id="ruaHelpBlock" class="form-text text-muted">Ex: Rua Marechal
@@ -224,15 +244,18 @@
                             </div>
                             <!-- Input Número -->
                             <div class="form-floating col-xl-2 mb-4">
-                                <input id="inputNumeroEntrega" name="inputNumeroEntrega" type="text" maxlength="5" required=""
-                                    placeholder="Número" class="form-control border border-1 border-dark-subtle">
+                                <input id="inputNumeroEntrega" name="inputNumeroEntrega" type="text" maxlength="5"
+                                    title="Digite o Número!" required
+                                    oninvalid="this.setCustomValidity('Campo Número é Obrigatório')"
+                                    onchange="try{setCustomValidity('')}catch(e){}" placeholder="Número"
+                                    class="form-control border border-1 border-dark-subtle">
                                 <label for="inputNumeroEntrega" class="ms-2 text-black-50">Número</label>
                                 <small id="inputNumeroEntregaHelpBlock" class="form-text text-muted">Ex: 1024</small>
                             </div>
                             <!-- Input Bairro -->
                             <div class="form-floating col-xl-4 mb-4">
                                 <input id="bairro" name="bairro" type="text" placeholder="Bairro" maxlength="15"
-                                    class="form-control border border-1 border-dark-subtle">
+                                    title="Digite o Bairro!" class="form-control border border-1 border-dark-subtle">
                                 <label for="bairro" class="ms-2 text-black-50">Bairro</label>
                                 <small id="bairroHelpBlock" class="form-text text-muted">Digite o Bairro</small>
                             </div>
@@ -244,13 +267,14 @@
                             <!-- Input Cidade -->
                             <div class="form-floating col-xl-6 mb-4">
                                 <input id="cidade" name="cidade" type="text" placeholder="Cidade" maxlength="30"
-                                    class="form-control border border-1 border-dark-subtle">
+                                    title="Digite a Cidade!" class="form-control border border-1 border-dark-subtle">
                                 <label for="cidade" class="ms-2 text-black-50">Cidade</label>
                                 <small id="cidadeHelpBlock" class="form-text text-muted">Digite a cidade</small>
                             </div>
                             <!-- Input Estado -->
                             <div class="form-floating col-xl-3 mb-4">
-                                <select id="uf" name="uf" class="form-select border border-1 border-dark-subtle">
+                                <select id="uf" name="uf" class="form-select border border-1 border-dark-subtle"
+                                    title="Selecione a Unidade Federativa!">
                                     <option value="" selected disabled>Selecione</option>
                                     <option value="AC">Acre</option>
                                     <option value="AL">Alagoas</option>
@@ -286,7 +310,8 @@
                             <!-- Input Complemento -->
                             <div class="form-floating col-xl-3 mb-4">
                                 <input id="complemento" name="complemento" type="text" maxlength="50"
-                                    placeholder="Complemento" class="form-control border border-1 border-dark-subtle">
+                                    title="Digite o Complemento!" placeholder="Complemento"
+                                    class="form-control border border-1 border-dark-subtle">
                                 <label for="complemento" class="ms-2 text-black-50">Complemento</label>
                                 <small id="complementoHelpBlock" class="form-text text-muted">Digite o
                                     Complemento</small>
@@ -306,35 +331,35 @@
                             <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-0">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-0"
-                                        value="1">
+                                        value="Vinhos Tintos">
                                     Vinhos Tintos
                                 </label>
                             </div>
                             <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-1">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-1"
-                                        value="2">
+                                        value="Vinhos Brancos">
                                     Vinhos Brancos
                                 </label>
                             </div>
                             <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-2">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-2"
-                                        value="3">
+                                        value="Vinhos Roses">
                                     Vinhos Roses
                                 </label>
                             </div>
                             <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-3">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-3"
-                                        value="4">
+                                        value="Vinhos Secos">
                                     Vinhos Secos
                                 </label>
                             </div>
                             <div class="checkbox col-xl-6">
                                 <label for="checkboxesInteresses-4">
                                     <input type="checkbox" name="checkboxesInteresses" id="checkboxesInteresses-4"
-                                        value="5">
+                                        value="Outros">
                                     Outros (especificar):
                                 </label>
                             </div>
@@ -346,22 +371,24 @@
                         <!-- Textarea -->
                         <div class="form-floating mb-4">
                             <textarea class="form-control border border-1 border-dark-subtle"
-                                placeholder="Leave a comment here" id="textareaOBS"></textarea>
+                                title="Espaço para informações adicionais!" placeholder="Leave a comment here"
+                                id="textareaOBS"></textarea>
                             <label for="textareaOBS" class="text-black-50">Espaço para informações adicionais</label>
                         </div>
                     </fieldset>
                     <!-- Button -->
                     <fieldset class="col-xl-12 mt-4 mb-4">
                         <div class="col-md-12 text-xl-end">
-                            <button id="enviarForm" name="singlebutton" data-toggle="tooltip" data-placement="bottom"
+                            <button id="enviarForm" type="submit" name="singlebutton" data-toggle="tooltip" data-placement="bottom"
                                 title="Enviar Formulário" class="btn btn-outline-success">Enviar</button>
                         </div>
                     </fieldset>
                 </form>
+
             </div>
         </section>
     </div>
-   
+
     <!-- Fim da Seção Revenda -->
 
 
@@ -416,7 +443,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        
+
 
 </body>
 

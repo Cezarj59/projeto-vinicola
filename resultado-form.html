@@ -50,6 +50,8 @@ function exibirDados() {
     var bairro = obterParametroDaUrl('bairro');
     var cidade = obterParametroDaUrl('cidade');
     var complemento = obterParametroDaUrl('complemento');
+    var interesses = obterParametroDaUrl('checkboxesInteresses');
+    var observacoes = obterParametroDaUrl('observacoes');
 
     var resultadoHtml = `
         <p><strong>Tipo de Cliente:</strong> ${radiosTipoCliente}</p>
@@ -72,10 +74,15 @@ function exibirDados() {
         <p><strong>Bairro:</strong> ${bairro}</p>
         <p><strong>Cidade:</strong> ${cidade}</p>
         <p><strong>Complemento:</strong> ${complemento}</p>
+        <p><strong>Interesses:</strong> ${interesses}</p>
+        <p><strong>Observações:</strong> ${observacoes}</p>
     `;
 
     document.getElementById('resultado').innerHTML = resultadoHtml;
 }
+
+// Chama a função para exibir os dados quando a página for carregada
+window.onload = exibirDados;
 
 // Chama a função para exibir os dados quando a página for carregada
 window.onload = exibirDados;
