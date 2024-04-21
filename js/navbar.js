@@ -1,159 +1,119 @@
-
-// Variáveis Html
-const home = document.getElementById("home");
-const loja = document.getElementById("loja");
-const carrinhoCompras = document.getElementById("carrinho");
-const galeria = document.getElementById("galeria");
-const sobreNos = document.getElementById("sobre-nos");
-const contato = document.getElementById("contato");
-const revenda = document.getElementById("revenda");
+// Quando o documento estiver pronto, configura a exibição inicial dos elementos
+$(document).ready(function () {
+  // Exibe a página inicial e oculta as demais
+  $("#home").show();
+  $("#loja, #carrinho, #galeria, #sobre-nos, #contato, #revenda").hide();
+});
 
 
-// Configuração inicial
-home.style.display = "block";
-loja.style.display = "none";
-carrinhoCompras.style.display = "none";
-galeria.style.display = "none";
-sobreNos.style.display = "none";
-contato.style.display = "none";
-revenda.style.display = "none";
-
-
+/**
+ * Função para alternar entre as páginas do site.
+ * @param {number} x - O índice da página a ser exibida.
+ */
 function alternaPaginas(x) {
   console.log("chamou a alternaPaginas com x =", x);
 
   // Exibe o spinner
-  document.getElementById("spinner").classList.remove("d-none");
+  $("#spinner").removeClass("d-none");
 
   // Simula um atraso (2 segundos) antes de navegar para a próxima página
   setTimeout(function () {
     switch (x) {
       case 0:
         document.title = "Home";
-        home.style.display = "block";
-        loja.style.display = "none";
-        carrinhoCompras.style.display = "none";
-        galeria.style.display = "none";
-        sobreNos.style.display = "none";
-        contato.style.display = "none";
-        revenda.style.display = "none";
+        $("#home").show();
+        $("#loja, #carrinho, #galeria, #sobre-nos, #contato, #revenda").hide();
         break;
 
       case 1:
         document.title = "Loja";
-        home.style.display = "none";
-        loja.style.display = "block";
-        carrinhoCompras.style.display = "none";
-        galeria.style.display = "none";
-        sobreNos.style.display = "none";
-        contato.style.display = "none";
-        revenda.style.display = "none";
+        $("#loja").show();
+        $("#home, #carrinho, #galeria, #sobre-nos, #contato, #revenda").hide();
         break;
 
       case 2:
-        document.title = " Carrinho";
-        home.style.display = "none";
-        loja.style.display = "none";
-        carrinhoCompras.style.display = "block";
-        galeria.style.display = "none";
-        sobreNos.style.display = "none";
-        contato.style.display = "none";
-        revenda.style.display = "none";
+        document.title = "Carrinho";
+        $("#carrinho").show();
+        $("#home, #loja, #galeria, #sobre-nos, #contato, #revenda").hide();
         break;
+
       case 5:
         document.title = "Galeria";
-        home.style.display = "none";
-        loja.style.display = "none";
-        carrinhoCompras.style.display = "none";
-        galeria.style.display = "block";
-        sobreNos.style.display = "none";
-        contato.style.display = "none";
-        revenda.style.display = "none";
+        $("#galeria").show();
+        $("#home, #loja, #carrinho, #sobre-nos, #contato, #revenda").hide();
         break;
+
       case 7:
         document.title = "Sobre Nós";
-        home.style.display = "none";
-        loja.style.display = "none";
-        carrinhoCompras.style.display = "none";
-        galeria.style.display = "none";
-        sobreNos.style.display = "block";
-        contato.style.display = "none";
-        revenda.style.display = "none";
+        $("#sobre-nos").show();
+        $("#home, #loja, #carrinho, #galeria, #contato, #revenda").hide();
         break;
+
       case 8:
         document.title = "Contato";
-        home.style.display = "none";
-        loja.style.display = "none";
-        carrinhoCompras.style.display = "none";
-        galeria.style.display = "none";
-        sobreNos.style.display = "none";
-        contato.style.display = "block";
-        revenda.style.display = "none";
+        $("#contato").show();
+        $("#home, #loja, #carrinho, #galeria, #sobre-nos, #revenda").hide();
         break;
+
       case 9:
         document.title = "Revenda";
-        home.style.display = "none";
-        loja.style.display = "none";
-        carrinhoCompras.style.display = "none";
-        galeria.style.display = "none";
-        sobreNos.style.display = "none";
-        contato.style.display = "none";
-        revenda.style.display = "block";
+        $("#revenda").show();
+        $("#home, #loja, #carrinho, #galeria, #sobre-nos, #contato").hide();
         break;
     }
-    document.getElementById("spinner").classList.add("d-none");
+    $("#spinner").addClass("d-none");
 
     window.scrollTo(0, 0);
   }, 500);
 }
 
+/**
+ * Função para ativar um item na barra de navegação.
+ * @param {number} index - O índice do item a ser ativado.
+ */
+function active(index) {
+  console.log("chamou a active com x =", index);
 
-
-/*------------style Navbar---------------*/
-const navStyle = document.getElementsByClassName("add-active");
-function active(x) {
-  console.log("chamou a active com x =", x);
   // Remover a classe "active" de todos os elementos
-  for (let i = 0; i < navStyle.length; i++) {
-    navStyle[i].classList.remove("active");
-  }
+  $(".add-active").removeClass("active");
 
   // Adicionar a classe "active" ao elemento específico
-  if (x >= 0 && x < navStyle.length) {
-    navStyle[x].classList.add("active");
+  if (index >= 0 && index < $(".add-active").length) {
+    $(".add-active").eq(index).addClass("active");
   }
 }
 
-/*------------offCanvas---------------*/
+/**
+ * Função para abrir o segundo offcanvas.
+ */
 function abrirOffcanvas2() {
   // Fecha o primeiro offcanvas
-  var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
+  let offcanvas1 = new bootstrap.Offcanvas($("#offcanvasNavbar"));
   offcanvas1.hide();
 
   // Abre o segundo offcanvas
-  var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas-mais-vendidos'));
+  let offcanvas2 = new bootstrap.Offcanvas($("#offcanvas-mais-vendidos"));
   offcanvas2.show();
 }
 
+/**
+ * Função para fechar o segundo offcanvas e abrir o primeiro.
+ */
 function fecharOffcanvas2() {
-
   // Fecha o segundo offcanvas
-  var offcanvas2 = new bootstrap.Offcanvas(document.getElementById('offcanvas-mais-vendidos'));
+  let offcanvas2 = new bootstrap.Offcanvas($("#offcanvas-mais-vendidos"));
   offcanvas2.hide();
 
   // Abre o primeiro offcanvas
-  var offcanvas1 = new bootstrap.Offcanvas(document.getElementById('offcanvasNavbar'));
+  let offcanvas1 = new bootstrap.Offcanvas($("#offcanvasNavbar"));
   offcanvas1.show();
-
-
 }
 
+/**
+ * Função para fechar o offcanvas.
+ */
 function fecharOffcanvas() {
-  // Fecha o primeiro offcanvas
-  var offcanvasElement = document.getElementById('offcanvasNavbar');
-  var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
-  
-  if (offcanvas) {
-    offcanvas.hide();
-  }
+  // Fecha o offcanvas
+  let offcanvas = new bootstrap.Offcanvas($("#offcanvasNavbar"));
+  offcanvas.hide();
 }
