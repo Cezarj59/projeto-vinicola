@@ -1,5 +1,4 @@
-// Funções genéricas para manipulação de formulários
-
+//################################## INÍCIO Funções Utilitárias ##################################
 
 /**
  * Exibe uma mensagem de erro relacionada a um campo do formulário.
@@ -149,10 +148,41 @@ function formatarNome(nome) {
     return nome;
 }
 
+/**
+* Função genérica para atribuir validação ao perder foco em um elemento.
+* @param {string} elementoId - O ID do elemento ao qual será atribuída a validação.
+* @param {Function} validacaoFunction - A função de validação a ser chamada quando o elemento perde o foco.
+*/
+function atribuirValidacaoAoPerderFoco(elementoId, validacaoFunction) {
+    // Atribui um evento de perda de foco ao elemento com o ID fornecido
+    $("#" + elementoId).blur(() => {
+        // Quando o elemento perde o foco, chama a função de validação correspondente
+        validacaoFunction();
+    });
+}
+/**
+ * Função genérica para atribuir validação a cada entrada de texto em um elemento.
+ * @param {string} elementoId - O ID do elemento ao qual será atribuída a validação.
+ * @param {Function} validacaoFunction - A função de validação a ser chamada a cada entrada de texto no elemento.
+ */
+function atribuirValidacaoAEntradaDeTexto(elementoId, validacaoFunction) {
+    // Atribui um evento de entrada de texto ao elemento com o ID fornecido
+    $("#" + elementoId).on("input", () => {
+        // Quando o elemento recebe uma entrada de texto, chama a função de validação correspondente
+        validacaoFunction();
+    });
+}
 
+
+//================================== FIM funções Utilitárias ==================================
+
+
+/**
+ * função em jQuery que é executada quando o documento HTML foi completamente carregado e pronto para ser manipulado.
+ */
 $(document).ready(function () {
 
-    //############################## INÍCIO Validar Nome ######################################
+    //################################## INÍCIO Validar Nome ##################################
 
     /**
   * Valida o comprimento dos nomes e sobrenomes.
@@ -271,40 +301,8 @@ $(document).ready(function () {
         return true; // Retorna true indicando sucesso
     }
 
-
-
-
-
-
-    // - CAMPO DADOS PESSOAIS - Chama a função para validar o nome ao perder o foco 
-    $("#inputNome").blur(function () {
-        validaNome("inputNome", false); // Validação para nome pessoal, sem números
-    });
-
-    // - CAMPO DADOS EMPRESARIAIS - Chama a função para validar o nome da empresa ao perder o foco
-    $("#inputNomeEmpresa").blur(function () {
-        validaNomeSimples("inputNomeEmpresa", true, "Digite o Nome da Empresa!"); // Mensagem personalizada para o campo de nome da empresa
-    });
-
-    // - CAMPO DADOS EMPRESARIAIS - Chama a função para validar o nome da rua ao perder o foco
-    $("#inputRuaEmpresa").blur(function () {
-        validaNome("inputRuaEmpresa", true, "Digite o Nome da Rua!"); // Mensagem personalizada para o campo de nome da rua
-    });
-
-
-    // - CAMPO DADOS PARA ENTREGA - Chama a função para validar o nome ao perder o foco 
-    $("#inputNomeEntrega").blur(function () {
-        validaNome("inputNomeEntrega", false, "Digite o Nome de que receberá a Entrega!");// Validação para nome pessoal, sem números
-    });
-
-    // - CAMPO DADOS PARA ENTREGA - Chama a função para validar o nome da rua ao perder o foco
-    $("#rua").blur(function () {
-        validaNome("rua", true, "Digite o Nome da Rua para Entrega!"); // Validação para nome de rua, permitindo números
-    });
-
-
-    //------------------------------------ FIM Validar Nome -----------------------------------------
-      //################################ INÍCIO Validar CPF ########################################
+    //================================== FIM Validar Nome ==================================
+    //################################## INÍCIO Validar CPF ##################################
     /**
      * Verifica se um CPF é válido.
      * @param {string} cpf - O CPF a ser verificado.
@@ -369,11 +367,7 @@ $(document).ready(function () {
         // Define o CPF formatado no campo de entrada
         $("#" + cpfId).val(cpfFormatado);
     }
-
-    // Registra o evento "input" no campo de entrada do CPF e chama a função formatarCPFAoDigitar quando o evento é acionado
-    $("#inputCpf").on("input", function () {
-        formatarCPFAoDigitar("inputCpf");
-    });
+    atribuirValidacaoAEntradaDeTexto("inputCpf", () => formatarCPFAoDigitar("inputCpf"));
 
 
     /**
@@ -397,31 +391,14 @@ $(document).ready(function () {
             exibirSucesso(cpfId, "CPF válido!");
             return true;
         }
-
-
-    }
-
-
-    /**
-     * Valida o CPF inserido em um campo de entrada ao perder o foco.
-     * @param {string} cpfId - O ID do campo de entrada de CPF.
-     */
-    function adicionarEventoValidacaoCPF(cpfId) {
-        // Adiciona um evento de validação quando o campo perde o foco
-        $("#" + cpfId).blur(function () {
-            validarCPF(cpfId);
-        });
     }
 
 
 
-    adicionarEventoValidacaoCPF("inputCpf"); // Chamando
+    //================================== FIM Validar CPF ==================================
 
 
-    //------------------------------------ FIM Validar CPF -----------------------------------------
-
-
-    //################################ INÍCIO Validar Email ########################################
+    //################################## INÍCIO Validar Email ##################################
 
     /**
      * Verifica se o e-mail não possui espaços em branco.
@@ -635,25 +612,11 @@ $(document).ready(function () {
         return true;
     }
 
-    /**
-     * Adiciona um evento de validação de e-mail a um campo de entrada de e-mail.
-     * @param {string} emailId - O ID do campo de entrada de e-mail.
-     */
-    function adicionarEventoValidacaoEmail(emailId) {
-        // Adiciona um evento de validação quando o campo perde o foco
-        $("#" + emailId).blur(function () {
-            validarEmail(emailId); // Chama a função de validação de e-mail com o ID do campo como argumento
-        });
-    }
 
 
-    adicionarEventoValidacaoEmail("inputEmail"); //  Chamando
+    //================================== FIM Validar Email ==================================
 
-    adicionarEventoValidacaoEmail("inputEmailEmpresa"); //  Chamando
-
-    //------------------------------------ FIM Validar Email -----------------------------------------
-
-    //################################ INÍCIO Validar Telefone ########################################
+    //################################## INÍCIO Validar Telefone ##################################
 
     /**
   * Valida um número de telefone inserido em um campo de entrada.
@@ -723,44 +686,15 @@ $(document).ready(function () {
         $("#" + telefoneId).val(telefoneFormatado);
     }
 
-    // Registra o evento "input" no campo de entrada do telefone e chama a função formatarTelefoneAoDigitar quando o evento é acionado
-    $("#inputTelefone").on("input", function () {
-        formatarTelefoneAoDigitar("inputTelefone");
-    });
+    // Chama a função formatarTelefoneAoDigitar a cada entrada de texto
+    atribuirValidacaoAEntradaDeTexto("inputTelefone", () => formatarTelefoneAoDigitar("inputTelefone"));
+    atribuirValidacaoAEntradaDeTexto("inputTelefoneEmpresa", () => formatarTelefoneAoDigitar("inputTelefoneEmpresa"));
+    atribuirValidacaoAEntradaDeTexto("inputTelefoneEntrega", () => formatarTelefoneAoDigitar("inputTelefoneEntrega"));
 
-    // Registra o evento "input" no campo de entrada do telefone da empresa e chama a função formatarTelefoneAoDigitar quando o evento é acionado
-    $("#inputTelefoneEmpresa").on("input", function () {
-        formatarTelefoneAoDigitar("inputTelefoneEmpresa");
-    });
+    //================================== FIM Validar Telefone ==================================
 
-    // Registra o evento "input" no campo de entrada do telefone para entrega e chama a função formatarTelefoneAoDigitar quando o evento é acionado
-    $("#inputTelefoneEntrega").on("input", function () {
-        formatarTelefoneAoDigitar("inputTelefoneEntrega");
-    });
-
-    /**
-     * Adiciona um evento de validação de telefone quando o campo perde o foco.
-     * @param {string} telefoneId - O ID do campo de entrada de telefone.
-     */
-    function adicionarEventoValidacaoTelefone(telefoneId) {
-        $("#" + telefoneId).blur(function () {
-            validarTelefone(telefoneId); // Chama a função de validação de Telefone com o ID do campo como argumento
-        });
-    }
-
-    // Adiciona validação de telefone ao campo de telefone pessoal
-    adicionarEventoValidacaoTelefone("inputTelefone");
-
-    // Adiciona validação de telefone ao campo de telefone da empresa
-    adicionarEventoValidacaoTelefone("inputTelefoneEmpresa");
-
-    // Adiciona validação de telefone ao campo de telefone da entrega
-    adicionarEventoValidacaoTelefone("inputTelefoneEntrega");
-
-    //------------------------------------ FIM Validar Telefone -----------------------------------------
-
-    //####################### Validações dos campos Dados Empresariais ###############################
-    //################################ INÍCIO Validar CNPJ ########################################
+    //---------------------------------- 2. Validações dos campos Dados Empresariais ----------------------------------
+    //################################## INÍCIO Validar CNPJ ##################################
 
     /**
      * Valida um número de CNPJ inserido em um campo de entrada.
@@ -835,48 +769,19 @@ $(document).ready(function () {
         $("#" + cnpjId).val(cnpjFormatado);
     }
 
-    // Registra o evento "input" no campo de entrada do CNPJ e chama a função formatarCnpjAoDigitar quando o evento é acionado
-    $("#inputCNPJ").on("input", function () {
-        formatarCnpjAoDigitar("inputCNPJ");
-    });
+    // Chama a função formatarCnpjAoDigitar a cada entrada de texto
+    atribuirValidacaoAEntradaDeTexto("inputCNPJ", () => formatarCnpjAoDigitar("inputCNPJ"));
+
+    //================================== FIM Validar CNPJ ===================================
+
+
+    //################################## INÍCIO Validar Numero ##################################
 
     /**
-     * Adiciona um evento de validação de CNPJ ao campo especificado.
-     * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
-     */
-    function adicionarEventoValidacaoCNPJ(cnpjId) {
-        $("#" + cnpjId).blur(function () {
-            validarCNPJ(cnpjId); // Chama a função de validação de CNPJ com o ID do campo como argumento
-        });
-    }
-
-    // Chama a função para adicionar o evento de validação de CNPJ ao campo de CNPJ
-    adicionarEventoValidacaoCNPJ("inputCNPJ");
-
-    //------------------------------------ FIM Validar CNPJ -----------------------------------------
-
-    //################################## INÍCIO Validar Cidade e Bairro #########################################
-
-
-    // Registra o evento "blur" no campo de entrada do bairro para entrega e chama a função validaNomeSimples quando o usuário sair do campo
-    $("#bairro").blur(function () {
-        validaNomeSimples("bairro", false, "Digite o Nome do Bairro para Entrega!");
-    });
-
-    // Registra o evento "blur" no campo de entrada da cidade para entrega e chama a função validaNomeSimples quando o usuário sair do campo
-    $("#cidade").blur(function () {
-        validaNomeSimples("cidade", false, "Digite o Nome da Cidade para Entrega!");
-    });
-
-    //------------------------------------ FIM Validar Cidade e Bairro -----------------------------------------
-
-    //################################## INÍCIO Validar Numero #########################################
-
-    /**
- * Verifica se um campo de entrada contém um valor válido de acordo com o padrão especificado.
- * @param {string} campoId - O ID do campo de entrada.
- * @returns {boolean} - true se o campo estiver no formato válido, false caso contrário.
- */
+    * Verifica se um campo de entrada contém um valor válido de acordo com o padrão especificado.
+    * @param {string} campoId - O ID do campo de entrada.
+    * @returns {boolean} - true se o campo estiver no formato válido, false caso contrário.
+    */
     function validarNumero(campoId) {
         // Obtém o valor do campo de entrada
         const valorCampo = $("#" + campoId).val().trim();
@@ -900,29 +805,10 @@ $(document).ready(function () {
         }
     }
 
-    /**
-     * Adiciona um evento de validação de número ao campo especificado.
-     * @param {string} campoId - O ID do campo de entrada.
-     */
-    function adicionarEventoValidacaoNumero(campoId) {
-        $("#" + campoId).on("blur input", function () {
-            validarNumero(campoId);
-        });
-    }
 
-    // Adiciona evento de validação de número ao campo de número Empresa
-    adicionarEventoValidacaoNumero("inputNumero");
-    // Adiciona evento de validação de número ao campo de número de Entrega
-    adicionarEventoValidacaoNumero("inputNumeroEntrega");
+    //================================== FIM Validar Numero ==================================
 
-
-    //################################## FIM Validar Numero #########################################
-
-
-
-
-    //------------------------------------ FIM Validar Numero -----------------------------------------
-    //############################## INÍCIO Validar UF ######################################
+    //################################## INÍCIO Validar UF ##################################
 
     // Adiciona um evento de validação ao campo UF
     $("#uf").blur(function () {
@@ -932,9 +818,9 @@ $(document).ready(function () {
         }
     });
 
-    //------------------------------------ FIM Validar UF -----------------------------------------
+    //================================== FIM Validar UF ==================================
 
-    //############################## INÍCIO Formata CEP ######################################
+    //################################## INÍCIO Formata CEP ##################################
     /**
     * Formata o número de CEP em um campo de entrada enquanto o usuário digita.
     * @param {string} cepId - O ID do campo de entrada de CEP.
@@ -971,9 +857,9 @@ $(document).ready(function () {
     formatarCepAoDigitar("inputCepEmpresa");
 
 
-    //------------------------------------ FIM Validar CEP -----------------------------------------
+    //================================== FIM Validar CEP ==================================
 
-    //############################## INÍCIO Consumo API Viacep ######################################
+    //################################## INÍCIO Consumo API Viacep ##################################
 
     /**
      * Função para buscar o endereço a partir de um CEP e preencher campos de endereço correspondentes.
@@ -1045,18 +931,39 @@ $(document).ready(function () {
     }
 
 
-    // Quando o campo de CEP perde o foco, chama a função para buscar o endereço
-    $("#cep").blur(function () {
-        buscarEnderecoPorCEP("cep", "rua", "bairro", "cidade", "uf");
-    });
+    //================================== FIM Consumo API Viacep ==================================
 
-    // Quando o campo de CEP da empresa perde o foco, chama a função para buscar o endereço da empresa
-    $("#inputCepEmpresa").blur(function () {
-        buscarEnderecoPorCEP("inputCepEmpresa", "inputRuaEmpresa", "inputBairroEmpresa", "inputCidadeEmpresa", "inputUfEmpresa");
-    });
+    //################################## INÍCIO Chamada das Validações ##################################
 
-    //-------------------------------------- FIM Consumo API Viacep -----------------------------------------------
-    //################################ INÍCIO Evento de submissão do formulário ########################################
+    // Seção: Validação de dados pessoais
+    atribuirValidacaoAoPerderFoco("inputNome", () => validaNome("inputNome", false));// Validação para nome pessoal, sem números
+    atribuirValidacaoAoPerderFoco("inputCpf", () => validarCPF("inputCpf"));
+    atribuirValidacaoAoPerderFoco("inputEmail", () => validarEmail("inputEmail"));
+    atribuirValidacaoAoPerderFoco("inputTelefone", () => validarTelefone("inputTelefone"));
+
+    // Seção: Validação de dados empresariais
+    atribuirValidacaoAoPerderFoco("inputNomeEmpresa", () => validaNomeSimples("inputNomeEmpresa", true, "Digite o Nome da Empresa!")); // Mensagem personalizada para o campo de nome da empresa
+    atribuirValidacaoAoPerderFoco("inputCNPJ", () => validarCNPJ("inputCNPJ"));
+    atribuirValidacaoAoPerderFoco("inputEmailEmpresa", () => validarEmail("inputEmailEmpresa"));
+    atribuirValidacaoAoPerderFoco("inputTelefoneEmpresa", () => validarTelefone("inputTelefoneEmpresa"));
+    atribuirValidacaoAoPerderFoco("inputCepEmpresa", () => buscarEnderecoPorCEP("inputCepEmpresa", "inputRuaEmpresa", "inputBairroEmpresa", "inputCidadeEmpresa", "inputUfEmpresa"));
+    atribuirValidacaoAoPerderFoco("inputRuaEmpresa", () => validaNome("inputRuaEmpresa", true, "Digite o Nome da Rua para Entrega!"));// Validação para nome de rua, permitindo números    
+    atribuirValidacaoAoPerderFoco("inputNumero", () => validarNumero("inputNumero"));
+
+    // Seção: Validação de dados para entrega
+    atribuirValidacaoAoPerderFoco("inputNomeEntrega", () => validaNome("inputNomeEntrega", false, "Digite o Nome de quem receberá a Entrega!")); // Validação para nome pessoal, sem números
+    atribuirValidacaoAoPerderFoco("rua", () => validaNome("rua", true, "Digite o Nome da Rua para Entrega!"));// Validação para nome de rua, permitindo números
+    atribuirValidacaoAoPerderFoco("inputTelefoneEntrega", () => validarTelefone("inputTelefoneEntrega"));
+    atribuirValidacaoAoPerderFoco("inputTelefoneEntrega", () => formatarTelefoneAoDigitar("inputTelefoneEntrega"));
+    atribuirValidacaoAoPerderFoco("cidade", () => validaNomeSimples("cidade", false, "Digite o Nome da Cidade!"));
+    atribuirValidacaoAoPerderFoco("bairro", () => validaNomeSimples("bairro", false, "Digite o Nome da Bairro!"));
+    atribuirValidacaoAoPerderFoco("inputNumeroEntrega", () => validarNumero("inputNumeroEntrega"));
+    atribuirValidacaoAoPerderFoco("cep", () => buscarEnderecoPorCEP("cep", "rua", "bairro", "cidade", "uf"));
+
+    //================================== FIM Chamada das  Validações ==================================
+
+
+    //################################## INÍCIO Evento de submissão do formulário ##################################
     $("#formularioRevenda").submit(function (event) {
         // Define uma variável para controlar se o formulário pode ser enviado
         let formValido = true;
@@ -1151,7 +1058,7 @@ $(document).ready(function () {
             alert("Existem campos inválidos. Por favor, verifique novamente."); // Alerta o usuário sobre campos inválidos
         }
     });
-    //-------------------------------------- FIM Evento de submissão do formulário -----------------------------------------------
+    //================================== FIM Evento de submissão do formulário ==================================
 
 });
 
@@ -1258,23 +1165,23 @@ function limparDadosFormularioLocalStorage() {
 
 
 // Evento quando o formulário é enviado
-$("#formularioRevenda").submit(function(event) {
+$("#formularioRevenda").submit(function (event) {
     // Limpar os dados do localStorage
     limparDadosFormularioLocalStorage();
 });
 
 // Limpar os dados do localStorage quando o botão de enviar for clicado
-$("#enviarForm").click(function() {
+$("#enviarForm").click(function () {
     // Limpar os dados do localStorage
     limparDadosFormularioLocalStorage();
 });
 // Evento antes de descarregar a página
-window.addEventListener('beforeunload', function(event) {
+window.addEventListener('beforeunload', function (event) {
     // Salvar os dados do formulário no localStorage
     salvarDadosNoLocalStorage();
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     // Recuperar os dados do localStorage
     const dadosJSON = localStorage.getItem('dadosFormulario');
 
@@ -1306,7 +1213,7 @@ $(document).ready(function() {
         $('#complemento').val(dadosFormulario.complemento);
 
         // Preencher os checkboxes de interesses
-        $('input[name="checkboxesInteresses"]').each(function() {
+        $('input[name="checkboxesInteresses"]').each(function () {
             if (dadosFormulario.interesses.includes($(this).val())) {
                 $(this).prop('checked', true);
             }
