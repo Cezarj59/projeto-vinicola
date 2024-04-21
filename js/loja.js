@@ -388,21 +388,49 @@ window.addEventListener('load', init);
 
 //################################## 4. Manipulação do Carrinho ##################################
 
-// Objeto para controle
 // Array para armazenar os itens no carrinho
-const carrinho = [];
+let carrinho = [];
 // Variável para armazenar o total do carrinho
 let totalCarrinho = 0;
 
 /**
- * Adiciona um item ao carrinho de compras.
- * @param {number} id - O ID do produto.
- * @param {string} image - O caminho da imagem do produto.
- * @param {string} title - O título do produto.
- * @param {number} preco - O preço do produto.
+ * Salva o carrinho no localStorage.
  */
-function adicionarAoCarrinho(id, image, title, preco) {
-    const itemExistente = carrinho.find(item => item.id === id);
+function salvarCarrinhoNoLocalStorage() {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+
+/**
+ * Carrega o carrinho do localStorage, se existir.
+ */
+function carregarCarrinhoDoLocalStorage() {
+    const carrinhoSalvo = localStorage.getItem('carrinho');
+    if (carrinhoSalvo) {
+        carrinho = JSON.parse(carrinhoSalvo);
+        // Atualiza o carrinho após carregar os itens salvos
+        atualizarCarrinho();
+    }
+}
+
+// Chama a função para carregar o carrinho do localStorage quando a página é carregada
+window.addEventListener('load', carregarCarrinhoDoLocalStorage);
+
+/// Definição do objeto Produto
+class Produto {
+    constructor(id, image, title, preco) {
+        this.id = id;
+        this.image = image;
+        this.title = title;
+        this.preco = preco;
+    }
+}
+
+/**
+ * Adiciona um item ao carrinho de compras.
+ * @param {Produto} produto - O objeto Produto a ser adicionado ao carrinho.
+ */
+function adicionarAoCarrinho(produto) {
+    const itemExistente = carrinho.find(item => item.id === produto.id);
 
     if (itemExistente) {
         // Se o produto já está no carrinho, apenas atualize a quantidade
@@ -410,21 +438,29 @@ function adicionarAoCarrinho(id, image, title, preco) {
     } else {
         // Se o produto ainda não está no carrinho, adicione-o com quantidade 1
         const novoItemCarrinho = {
-            id: id,
-            image: image,
-            title: title,
-            preco: preco,
+            id: produto.id,
+            image: produto.image,
+            title: produto.title,
+            preco: produto.preco,
             quantidade: 1
         };
         carrinho.push(novoItemCarrinho);
         alert("Produto Adicionado ao Carrinho!!!");
     }
 
-    totalCarrinho += preco;
+    totalCarrinho += produto.preco;
 
     // Atualiza o carrinho após a adição do item
     atualizarCarrinho();
+
+    // Salva o carrinho no localStorage após a modificação
+    salvarCarrinhoNoLocalStorage();
 }
+
+// Exemplo de uso da função adicionarAoCarrinho com um objeto Produto
+const produto1 = new Produto(1, 'caminho/da/imagem1.jpg', 'Produto 1', 10.99);
+adicionarAoCarrinho(produto1);
+
 
 /**
  * Remove um item do carrinho de compras.
@@ -436,6 +472,9 @@ function removerDoCarrinho(index) {
 
     // Atualiza o carrinho após a remoção do item
     atualizarCarrinho();
+
+    // Salva o carrinho no localStorage após a modificação
+    salvarCarrinhoNoLocalStorage();
 }
 
 /**
@@ -454,6 +493,9 @@ function atualizarQuantidade(index, novaQuantidade) {
 
     // Atualiza o carrinho após a atualização da quantidade do item
     atualizarCarrinho();
+
+    // Salva o carrinho no localStorage após a modificação
+    salvarCarrinhoNoLocalStorage();
 }
 
 /**
@@ -468,6 +510,48 @@ function exibirOcultarDivTotal() {
         divTotal.classList.add('d-none');
     }
 }
+
+/**
+ * Função para renderizar a lista de carrinho na página.
+ */
+function renderizarListaCarrinho() {
+    const listaCarrinhoSection = document.getElementById('lista-carrinho-section');
+    listaCarrinhoSection.innerHTML = '';
+
+    // Itera sobre os itens do carrinho e cria elementos HTML para cada um
+    carrinho.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item d-flex justify-content-between align-items-center px-0';
+
+        const itemHTML = criarItemHTML(item, index);
+
+        listItem.innerHTML = itemHTML;
+        listaCarrinhoSection.appendChild(listItem);
+    });
+}
+
+/**
+ * Função para atualizar os totais exibidos na página.
+ */
+function atualizarTotais() {
+    // Calcula o total do carrinho somando o preço de cada item multiplicado pela sua quantidade
+    const totalCarrinho = carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+
+    // Atualiza os elementos no DOM com os totais calculados
+    document.getElementById('total-produtos').textContent = `R$${totalCarrinho.toFixed(2)}`;
+    document.getElementById('total-carrinho-section').textContent = `R$${totalCarrinho.toFixed(2)}`;
+    document.getElementById('quantidade-de-produtos').textContent = `Produtos (${carrinho.reduce((total, item) => total + item.quantidade, 0)})`;
+}
+
+/**
+ * Função principal para atualizar a exibição do carrinho na página.
+ */
+function atualizarCarrinho() {
+    exibirOcultarDivTotal(); // Chama a função para exibir ou ocultar a div total
+    renderizarListaCarrinho(); // Chama a função para renderizar a lista de carrinho
+    atualizarTotais(); // Chama a função para atualizar os totais exibidos
+}
+
 
 /**
  * Cria o HTML para exibir um item no carrinho.
@@ -510,24 +594,6 @@ function criarItemHTML(item, index) {
     `;
 }
 
-/**
- * Função para renderizar a lista de carrinho na página.
- */
-function renderizarListaCarrinho() {
-    const listaCarrinhoSection = document.getElementById('lista-carrinho-section');
-    listaCarrinhoSection.innerHTML = '';
-
-    // Itera sobre os itens do carrinho e cria elementos HTML para cada um
-    carrinho.forEach((item, index) => {
-        const listItem = document.createElement('li');
-        listItem.className = 'list-group-item d-flex justify-content-between align-items-center px-0';
-
-        const itemHTML = criarItemHTML(item, index);
-
-        listItem.innerHTML = itemHTML;
-        listaCarrinhoSection.appendChild(listItem);
-    });
-}
 
 /**
  * Função para atualizar os totais exibidos na página.
