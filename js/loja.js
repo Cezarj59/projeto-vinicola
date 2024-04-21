@@ -101,38 +101,6 @@ function updateTotal() {
     document.querySelector(".cart-total-container span").innerText = "R$" + totalAmount;
 }
 
-/**
- * Função utilitária para criação de elementos HTML.
- * @param {string} tag - A tag do elemento HTML.
- * @param {string} className - A classe do elemento HTML.
- * @param {string} innerHTML - O conteúdo interno do elemento HTML.
- * @returns {HTMLElement} - O elemento HTML criado.
- */
-function createElement(tag, className, innerHTML) {
-    const element = document.createElement(tag);
-    if (className) element.classList.add(className);
-    if (innerHTML) element.innerHTML = innerHTML;
-    return element;
-}
-
-/**
- * Função utilitária para adicionar event listener a um elemento.
- * @param {HTMLElement} element - O elemento HTML ao qual o event listener será adicionado.
- * @param {string} event - O tipo de evento a ser ouvido.
- * @param {Function} callback - A função de retorno de chamada a ser executada quando o evento ocorrer.
- */
-function adicionaEventListener(element, event, callback) {
-    element.addEventListener(event, callback);
-}
-
-/**
- * Função utilitária para obter um elemento do DOM por seletor.
- * @param {string} selector - O seletor do elemento HTML.
- * @returns {HTMLElement} - O elemento HTML selecionado.
- */
-function getElement(selector) {
-    return document.querySelector(selector);
-}
 
 //================================== FIM funções Utilitárias ==================================
 //################################## INÍCIO Dados dos Produtos ##################################
@@ -416,24 +384,18 @@ function carregarCarrinhoDoLocalStorage() {
 // Chama a função para carregar o carrinho do localStorage quando a página é carregada
 window.addEventListener('load', carregarCarrinhoDoLocalStorage);
 
-//- Fim localStorage ----------------------------------------------------------------
+//- Fim Local Storage ----------------------------------------------------------------
 
-/// Definição do objeto Produto
-class Produto {
-    constructor(id, image, title, preco) {
-        this.id = id;
-        this.image = image;
-        this.title = title;
-        this.preco = preco;
-    }
-}
-
+//################################## 4. Manipulação do Carrinho ##################################
 /**
- * Adiciona um item ao carrinho de compras.
- * @param {Produto} produto - O objeto Produto a ser adicionado ao carrinho.
- */
-function adicionarAoCarrinho(produto) {
-    const itemExistente = carrinho.find(item => item.id === produto.id);
+* Adiciona um item ao carrinho de compras.
+* @param {number} id - O ID do produto.
+* @param {string} image - O caminho da imagem do produto.
+* @param {string} title - O título do produto.
+* @param {number} preco - O preço do produto.
+*/
+function adicionarAoCarrinho(id, image, title, preco) {
+    const itemExistente = carrinho.find(item => item.id === id);
 
     if (itemExistente) {
         // Se o produto já está no carrinho, apenas atualize a quantidade
@@ -441,17 +403,17 @@ function adicionarAoCarrinho(produto) {
     } else {
         // Se o produto ainda não está no carrinho, adicione-o com quantidade 1
         const novoItemCarrinho = {
-            id: produto.id,
-            image: produto.image,
-            title: produto.title,
-            preco: produto.preco,
+            id: id,
+            image: image,
+            title: title,
+            preco: preco,
             quantidade: 1
         };
         carrinho.push(novoItemCarrinho);
         alert("Produto Adicionado ao Carrinho!!!");
     }
 
-    totalCarrinho += produto.preco;
+    totalCarrinho += preco;
 
     // Atualiza o carrinho após a adição do item
     atualizarCarrinho();
@@ -459,11 +421,6 @@ function adicionarAoCarrinho(produto) {
     // Salva o carrinho no localStorage após a modificação
     salvarCarrinhoNoLocalStorage();
 }
-
-// Exemplo de uso da função adicionarAoCarrinho com um objeto Produto
-const produto1 = new Produto(1, 'caminho/da/imagem1.jpg', 'Produto 1', 10.99);
-adicionarAoCarrinho(produto1);
-
 
 /**
  * Remove um item do carrinho de compras.
@@ -546,14 +503,6 @@ function atualizarTotais() {
     document.getElementById('quantidade-de-produtos').textContent = `Produtos (${carrinho.reduce((total, item) => total + item.quantidade, 0)})`;
 }
 
-/**
- * Função principal para atualizar a exibição do carrinho na página.
- */
-function atualizarCarrinho() {
-    exibirOcultarDivTotal(); // Chama a função para exibir ou ocultar a div total
-    renderizarListaCarrinho(); // Chama a função para renderizar a lista de carrinho
-    atualizarTotais(); // Chama a função para atualizar os totais exibidos
-}
 
 
 /**
@@ -598,18 +547,6 @@ function criarItemHTML(item, index) {
 }
 
 
-/**
- * Função para atualizar os totais exibidos na página.
- */
-function atualizarTotais() {
-    // Calcula o total do carrinho somando o preço de cada item multiplicado pela sua quantidade
-    const totalCarrinho = carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
-
-    // Atualiza os elementos no DOM com os totais calculados
-    document.getElementById('total-produtos').textContent = `R$${totalCarrinho.toFixed(2)}`;
-    document.getElementById('total-carrinho-section').textContent = `R$${totalCarrinho.toFixed(2)}`;
-    document.getElementById('quantidade-de-produtos').textContent = `Produtos (${carrinho.reduce((total, item) => total + item.quantidade, 0)})`;
-}
 
 /**
  * Função principal para atualizar a exibição do carrinho na página.
