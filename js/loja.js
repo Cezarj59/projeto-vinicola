@@ -393,6 +393,7 @@ let carrinho = [];
 // Variável para armazenar o total do carrinho
 let totalCarrinho = 0;
 
+//- localStorage. ----------------------------------------------------------------
 /**
  * Salva o carrinho no localStorage.
  */
@@ -414,6 +415,8 @@ function carregarCarrinhoDoLocalStorage() {
 
 // Chama a função para carregar o carrinho do localStorage quando a página é carregada
 window.addEventListener('load', carregarCarrinhoDoLocalStorage);
+
+//- Fim localStorage ----------------------------------------------------------------
 
 /// Definição do objeto Produto
 class Produto {
