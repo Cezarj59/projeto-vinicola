@@ -388,18 +388,21 @@ window.addEventListener('load', carregarCarrinhoDoLocalStorage);
 
 //################################## 4. Manipulação do Carrinho ##################################
 /**
-* Adiciona um item ao carrinho de compras.
-* @param {number} id - O ID do produto.
-* @param {string} image - O caminho da imagem do produto.
-* @param {string} title - O título do produto.
-* @param {number} preco - O preço do produto.
-*/
+ * Adiciona um item ao carrinho de compras e abre o modal.
+ * @param {number} id - O ID do produto.
+ * @param {string} image - O caminho da imagem do produto.
+ * @param {string} title - O título do produto.
+ * @param {number} preco - O preço do produto.
+ */
 function adicionarAoCarrinho(id, image, title, preco) {
+    // Verifica se o produto já está no carrinho
     const itemExistente = carrinho.find(item => item.id === id);
 
     if (itemExistente) {
         // Se o produto já está no carrinho, apenas atualize a quantidade
         itemExistente.quantidade += 1;
+        // Exibir o modal com as informações do produto adicionado
+        exibirModalProdutoAdicionado(itemExistente);
     } else {
         // Se o produto ainda não está no carrinho, adicione-o com quantidade 1
         const novoItemCarrinho = {
@@ -410,7 +413,8 @@ function adicionarAoCarrinho(id, image, title, preco) {
             quantidade: 1
         };
         carrinho.push(novoItemCarrinho);
-        alert("Produto Adicionado ao Carrinho!!!");
+        // Exibir o modal com as informações do produto adicionado
+        exibirModalProdutoAdicionado(novoItemCarrinho);
     }
 
     totalCarrinho += preco;
@@ -421,14 +425,106 @@ function adicionarAoCarrinho(id, image, title, preco) {
     // Salva o carrinho no localStorage após a modificação
     salvarCarrinhoNoLocalStorage();
 }
+/**
+ * Exibe o modal com as informações do produto adicionado.
+ * @param {Object} produto - O objeto do produto a ser exibido no modal.
+ * Este método popula o modal com os detalhes do produto fornecido e o exibe na interface do usuário.
+ */
+function exibirModalProdutoAdicionado(produto) {
+    // Obtém o elemento do corpo do modal
+    const modalBody = document.querySelector('#confirmacaoProdutoAdicionado .modal-body');
+
+    // Cria o HTML com as informações do produto
+    const produtoHTML = `
+        <img src="${produto.image}" alt="${produto.title}" class="img-fluid">
+        <h5>${produto.title}</h5>
+        <p>Preço: R$${produto.preco.toFixed(2)}</p>
+        <p>Quantidade: ${produto.quantidade}</p>
+    `;
+
+    // Define o conteúdo do corpo do modal com as informações do produto
+    modalBody.innerHTML = produtoHTML;
+
+    // Define o atributo data com o ID do produto no modal
+    const modal = document.querySelector('#cancelar');
+    modal.dataset.productId = produto.id;
+
+    // Exibe o modal
+    $('#confirmacaoProdutoAdicionado').modal('show');
+}
+
+
+// Selecione o botão "Cancelar" do modal
+const btnCancelarModal = document.querySelector('#cancelar');
+// Adicione um ouvinte de evento para o clique no botão "Cancelar"
+btnCancelarModal.addEventListener('click', function () {
+    // Obtém o ID do produto do atributo de dados
+    const itemId = parseInt(this.dataset.productId);
+
+    console.log(itemId);
+    // Chama a função para diminuir a quantidade no carrinho com o ID do produto
+    diminuirQuantidadeNoCarrinho(itemId);
+});
 
 /**
- * Remove um item do carrinho de compras.
+ * Diminui a quantidade de um item no carrinho de compras.
+ * Se houver mais de uma unidade do produto, apenas diminui a quantidade.
+ * Se houver apenas uma unidade, remove o produto do carrinho.
+ * @param {number} itemId - O ID do item a ser atualizado.
+ */
+function diminuirQuantidadeNoCarrinho(itemId) {
+    
+    // Procura pelo item no carrinho cujo ID corresponde ao ID fornecido  
+    const itemNoCarrinho = carrinho.find(item => item.id === itemId);
+
+    console.log(itemNoCarrinho)
+    if (itemNoCarrinho) {
+        // Calcula o valor total do item antes de diminuir a quantidade
+        const valorTotalItem = itemNoCarrinho.preco * itemNoCarrinho.quantidade;
+
+        // Se houver mais de uma unidade do produto, apenas diminui a quantidade
+        if (itemNoCarrinho.quantidade > 1) {
+            itemNoCarrinho.quantidade -= 1;
+        } else {
+            // Se houver apenas uma unidade, remova o produto do carrinho
+            const index = carrinho.findIndex(item => item.id === itemId);
+            if (index !== -1) {
+                carrinho.splice(index, 1);
+            }
+        }
+
+        // Calcula o novo valor total do item após a alteração na quantidade
+        const novoValorTotalItem = itemNoCarrinho.preco * itemNoCarrinho.quantidade;
+
+        // Atualiza o total do carrinho subtraindo o valor total do item antigo e somando o novo
+        totalCarrinho = totalCarrinho - valorTotalItem + novoValorTotalItem;
+
+        // Atualiza o carrinho após a alteração na quantidade
+        atualizarCarrinho();
+
+        // Salva o carrinho no localStorage após a modificação
+        salvarCarrinhoNoLocalStorage();
+    }
+}
+
+
+
+/**
+ * Remove um item do carrinho de compras e atualiza o preço total.
  * @param {number} index - O índice do item a ser removido.
  */
 function removerDoCarrinho(index) {
-    const itemRemovido = carrinho.splice(index, 1)[0];
-    totalCarrinho -= itemRemovido.preco * itemRemovido.quantidade;
+    // Obtém o item a ser removido
+    const itemRemovido = carrinho[index];
+
+    // Remove o item do carrinho
+    carrinho.splice(index, 1);
+
+    // Calcula o preço total a ser subtraído do total do carrinho
+    const precoTotalItem = itemRemovido.preco * itemRemovido.quantidade;
+
+    // Subtrai o preço total do item do total do carrinho
+    totalCarrinho -= precoTotalItem;
 
     // Atualiza o carrinho após a remoção do item
     atualizarCarrinho();
@@ -436,6 +532,7 @@ function removerDoCarrinho(index) {
     // Salva o carrinho no localStorage após a modificação
     salvarCarrinhoNoLocalStorage();
 }
+
 
 /**
  * Atualiza a quantidade de um item no carrinho de compras.
