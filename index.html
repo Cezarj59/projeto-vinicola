@@ -479,6 +479,25 @@
         </section>
     </div>
     <!-- Fim da Seção LOJA -->
+    <!-- Modal Adicionar ao carrinho -->
+    <div class="modal fade" id="confirmacaoProdutoAdicionado" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Produto Adicionado ao Carrinho!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelar" type="button" class="btn btn-danger" data-item-id='${produto.id}' data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Início da Seção CARRINHO -->
     <div id="carrinho">
@@ -680,8 +699,9 @@
                             </div>
                             <!--Input Telefone-->
                             <div class="form-floating mb-4">
-                                <input id="inputTelefoneContato" name="inputTelefoneContato" type="text" placeholder="(00) 0000 0000"
-                                    class="form-control border border-1 border-dark-subtle" required="">
+                                <input id="inputTelefoneContato" name="inputTelefoneContato" type="text"
+                                    placeholder="(00) 0000 0000" class="form-control border border-1 border-dark-subtle"
+                                    required="">
                                 <label for="inputTelefoneContato" class="text-black-50">Telefone</label>
                             </div>
                             <!-- Textarea -->
@@ -1164,10 +1184,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    
+
     <script src="js/navbar.js"></script>
-    <script  src="js/loja.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/loja.js"></script>
     <script src="js/form-revenda.js"></script>
 </body>
 
