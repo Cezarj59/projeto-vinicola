@@ -5,6 +5,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.1.3-purple)
 ![JavaScript](https://img.shields.io/badge/JS-JavaScript-yellow)
 ![Single Page Application](https://img.shields.io/badge/SPA-Simulation-orange)
+![JSDoc](https://img.shields.io/badge/JSDoc-gray)
 
 ## Visão Geral
 
