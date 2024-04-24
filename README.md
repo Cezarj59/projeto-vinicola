@@ -7,6 +7,7 @@
 ![Single Page Application](https://img.shields.io/badge/SPA-Simulation-orange)
 ![JSDoc](https://img.shields.io/badge/JSDoc-gray)
 
+
 ## Visão Geral
 
 Este projeto consiste em um site responsivo que simula uma loja de vinhos online. Desenvolvido como parte do módulo avançado de HTML/CSS do curso de Desenvolvimento de Software da IT Step Computer Academy Brasil, o projeto oferece uma navegação intuitiva, páginas específicas para a loja online, galeria de imagens, informações sobre a vinícola, formulário de contato e destaque para revendedores.
