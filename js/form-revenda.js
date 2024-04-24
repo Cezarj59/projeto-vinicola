@@ -1,7 +1,8 @@
+
 //################################## INÍCIO Funções Utilitárias ##################################
 
 /**
- * Exibe uma mensagem de erro relacionada a um campo do formulário.
+ * @description Exibe uma mensagem de erro relacionada a um campo do formulário.
  * @param {string} campoId - O ID do campo do formulário.
  * @param {string} mensagem - A mensagem de erro a ser exibida.
  */
@@ -14,7 +15,7 @@ function exibirErro(campoId, mensagem) {
 }
 
 /**
- * Exibe uma mensagem de sucesso relacionada a um campo do formulário.
+ * @description Exibe uma mensagem de sucesso relacionada a um campo do formulário.
  * @param {string} campoId - O ID do campo do formulário.
  * @param {string} mensagem - A mensagem de sucesso a ser exibida.
  */
@@ -28,7 +29,7 @@ function exibirSucesso(campoId, mensagem) {
 
 
 /**
- * Remove caracteres não numéricos de uma string.
+ * @description Remove caracteres não numéricos de uma string.
  * @param {string} string - A string da qual remover caracteres não numéricos.
  * @returns {string} - A string resultante contendo apenas caracteres numéricos.
  */
@@ -45,11 +46,10 @@ function removerNaoNumericos(string) {
 }
 
 /**
-* Capitaliza a primeira letra de cada palavra em uma frase.
+* @description Capitaliza a primeira letra de cada palavra em uma frase.
 * @param {string} frase - A frase a ser capitalizada.
-* @returns {string} - A frase com a primeira letra de cada palavra capitalizada.
+* @returns {string} - A frase com a primeira letra de cada palavra capitalizada. Ex: Bom Dia.
 */
-
 function capitalizarPrimeiraLetra(frase) {
     // Divide a frase em palavras separadas por espaços
     let palavras = frase.split(" ");
@@ -71,7 +71,7 @@ function capitalizarPrimeiraLetra(frase) {
 }
 
 /**
- * Remove espaços extras de uma string.
+ * @description Remove espaços extras de uma string.
  * @param {string} str - A string da qual remover espaços extras.
  * @returns {string} - A string sem espaços extras.
  */
@@ -85,7 +85,7 @@ function removerEspacosExtras(str) {
 }
 
 /**
- * Verifica se uma string contém números.
+ * @description Verifica se uma string contém números.
  * @param {string} str - A string a ser verificada.
  * @returns {boolean} - true se a string contiver números, false caso contrário.
  */
@@ -103,7 +103,7 @@ function contemNumero(str) {
 }
 
 /**
- * Verifica se uma string contém caracteres inválidos.
+ * @description Verifica se uma string contém caracteres inválidos.
  * @param {string} str - A string a ser verificada.
  * @returns {boolean} - true se a string contiver caracteres inválidos, false caso contrário.
  */
@@ -125,7 +125,7 @@ function contemCaracteresInvalidos(str) {
     return false;
 }
 /**
- * Verifica se uma string contém mais de duas letras repetidas consecutivas.
+ * @description Verifica se uma string contém mais de duas letras repetidas consecutivas.
  * @param {string} str - A string a ser verificada.
  * @returns {boolean} - true se a string contiver mais de duas letras repetidas consecutivas, false caso contrário.
  */
@@ -139,7 +139,7 @@ function contemLetrasRepetidas(str) {
 
 
 /**
- * Faz a formatação de um nome e atualiza o campo correspondente.
+ * @description Faz a formatação de um nome e atualiza o campo correspondente.
  * @param {string} nome - O nome completo a ser formatado.
  */
 function formatarNome(nome) {
@@ -149,7 +149,7 @@ function formatarNome(nome) {
 }
 
 /**
-* Função genérica para atribuir validação ao perder foco em um elemento.
+* @description Função genérica para atribuir validação ao perder foco em um elemento.
 * @param {string} elementoId - O ID do elemento ao qual será atribuída a validação.
 * @param {Function} validacaoFunction - A função de validação a ser chamada quando o elemento perde o foco.
 */
@@ -161,7 +161,7 @@ function atribuirValidacaoAoPerderFoco(elementoId, validacaoFunction) {
     });
 }
 /**
- * Função genérica para atribuir validação a cada entrada de texto em um elemento.
+ * @description Função genérica para atribuir validação a cada entrada de texto em um elemento.
  * @param {string} elementoId - O ID do elemento ao qual será atribuída a validação.
  * @param {Function} validacaoFunction - A função de validação a ser chamada a cada entrada de texto no elemento.
  */
@@ -178,14 +178,14 @@ function atribuirValidacaoAEntradaDeTexto(elementoId, validacaoFunction) {
 
 
 /**
- * função em jQuery que é executada quando o documento HTML foi completamente carregado e pronto para ser manipulado.
+ * @description função em jQuery que é executada quando o documento HTML foi completamente carregado e pronto para ser manipulado.
  */
 $(document).ready(function () {
 
     //################################## INÍCIO Validar Nome ##################################
 
     /**
-  * Valida o comprimento dos nomes e sobrenomes.
+  * @description Valida o comprimento dos nomes e sobrenomes.
   * @param {string} nome - O nome completo a ser validado.
   * @param {string} nomeCampo - O ID do campo do formulário associado ao nome, usado para exibir mensagens de erro.
   * @param {string} mensagemErro - A mensagem de erro a ser exibida se o nome não atender aos critérios de validação.
@@ -228,7 +228,7 @@ $(document).ready(function () {
 
 
     /**
-  * Valida um nome simples digitado em um campo do formulário.
+  * @description Valida um nome simples digitado em um campo do formulário.
   * @param {string} nomeCampo - O ID do campo do formulário que contém o nome a ser validado.
   * @param {boolean} permiteNumeros - Indica se números são permitidos no nome.
   * @param {string} mensagemErro - A mensagem de erro a ser exibida se o campo estiver vazio.
@@ -263,7 +263,7 @@ $(document).ready(function () {
     }
 
     /**
-  * Valida um nome completo digitado em um campo do formulário.
+  * @description Valida um nome completo digitado em um campo do formulário.
   * @param {string} nomeCampo - O ID do campo do formulário que contém o nome a ser validado.
   * @param {boolean} permiteNumeros - Indica se números são permitidos no nome.
   * @param {string} mensagemErro - A mensagem de erro a ser exibida se o campo estiver vazio.
@@ -304,7 +304,7 @@ $(document).ready(function () {
     //================================== FIM Validar Nome ==================================
     //################################## INÍCIO Validar CPF ##################################
     /**
-     * Verifica se um CPF é válido.
+     * @description Verifica se um CPF é válido.
      * @param {string} cpf - O CPF a ser verificado.
      * @returns {boolean} Retorna verdadeiro se o CPF for válido, caso contrário, retorna falso.
      */
@@ -341,7 +341,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Formata o CPF em um campo de entrada enquanto o usuário digita.
+     * @description Formata o CPF em um campo de entrada enquanto o usuário digita.
      * @param {string} cpfId - O ID do campo de entrada de CPF.
      */
     function formatarCPFAoDigitar(cpfId) {
@@ -371,7 +371,7 @@ $(document).ready(function () {
 
 
     /**
-  * Valida um CPF inserido em um campo de entrada.
+  * @description Valida um CPF inserido em um campo de entrada.
   * @param {string} cpfId - O ID do campo de entrada de CPF.
   * @returns {boolean} - Retorna true se o CPF for válido, caso contrário retorna false.
   */
@@ -401,7 +401,7 @@ $(document).ready(function () {
     //################################## INÍCIO Validar Email ##################################
 
     /**
-     * Verifica se o e-mail não possui espaços em branco.
+     * @description Verifica se o e-mail não possui espaços em branco.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se o e-mail não possuir espaços em branco, caso contrário, retorna falso.
      */
@@ -410,7 +410,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se o e-mail possui o símbolo @.
+     * @description Verifica se o e-mail possui o símbolo @.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se o e-mail possuir o símbolo @, caso contrário, retorna falso.
      */
@@ -419,7 +419,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se há algum caractere antes do @ no e-mail.
+     * @description Verifica se há algum caractere antes do @ no e-mail.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se houver pelo menos um caractere antes do @, caso contrário, retorna falso.
      */
@@ -429,7 +429,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se há algum caractere após o @ no e-mail.
+     * @description Verifica se há algum caractere após o @ no e-mail.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se houver pelo menos um caractere após o @, caso contrário, retorna falso.
      */
@@ -439,7 +439,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se há pelo menos um ponto após o caractere depois do @ no e-mail.
+     * @description Verifica se há pelo menos um ponto após o caractere depois do @ no e-mail.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se houver pelo menos um ponto após o caractere depois do @, caso contrário, retorna falso.
      */
@@ -450,7 +450,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se há pelo menos um caractere após o último ponto no e-mail.
+     * @description Verifica se há pelo menos um caractere após o último ponto no e-mail.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se houver pelo menos um caractere após o último ponto, caso contrário, retorna falso.
      */
@@ -463,7 +463,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se o e-mail contém apenas caracteres permitidos.
+     * @description Verifica se o e-mail contém apenas caracteres permitidos.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se o e-mail contiver apenas caracteres permitidos, caso contrário, retorna falso.
      */
@@ -478,7 +478,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se o e-mail possui apenas um símbolo @.
+     * @description Verifica se o e-mail possui apenas um símbolo @.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se o e-mail possuir apenas um símbolo @, caso contrário, retorna falso.
      */
@@ -493,7 +493,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se a parte do domínio do e-mail não contém pontos no meio.
+     * @description Verifica se a parte do domínio do e-mail não contém pontos no meio.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se a parte do domínio do e-mail não possuir pontos no meio, caso contrário, retorna falso.
      */
@@ -508,7 +508,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se a parte do domínio do e-mail não contém caracteres inválidos.
+     * @description Verifica se a parte do domínio do e-mail não contém caracteres inválidos.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se a parte do domínio do e-mail não contiver caracteres inválidos, caso contrário, retorna falso.
      */
@@ -534,7 +534,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Verifica se o tamanho do e-mail está dentro do limite máximo.
+     * @description Verifica se o tamanho do e-mail está dentro do limite máximo.
      * @param {string} email - O endereço de e-mail a ser verificado.
      * @returns {boolean} Retorna verdadeiro se o tamanho do e-mail estiver dentro do limite máximo, caso contrário, retorna falso.
      */
@@ -543,7 +543,7 @@ $(document).ready(function () {
     }
 
     /**
-    * Valida um endereço de e-mail.
+    * @description Valida um endereço de e-mail.
     * @param {string} emailId - O ID do campo de entrada de e-mail.
     * @returns {boolean} Retorna verdadeiro se o e-mail for válido, caso contrário, retorna falso.
     */
@@ -619,7 +619,7 @@ $(document).ready(function () {
     //################################## INÍCIO Validar Telefone ##################################
 
     /**
-  * Valida um número de telefone inserido em um campo de entrada.
+  * @description Valida um número de telefone inserido em um campo de entrada.
   * @param {string} telefoneId - O ID do campo de entrada de telefone.
   * @returns {boolean} - Retorna true se o telefone for válido, caso contrário retorna false.
   */
@@ -644,7 +644,7 @@ $(document).ready(function () {
 
 
     /**
-     * Formata o número de telefone em um campo de entrada enquanto o usuário digita.
+     * @description Formata o número de telefone em um campo de entrada enquanto o usuário digita.
      * @param {string} telefoneId - O ID do campo de entrada de telefone.
      */
     function formatarTelefoneAoDigitar(telefoneId) {
@@ -697,7 +697,7 @@ $(document).ready(function () {
     //################################## INÍCIO Validar CNPJ ##################################
 
     /**
-     * Valida um número de CNPJ inserido em um campo de entrada.
+     * @description Valida um número de CNPJ inserido em um campo de entrada.
      * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
      * @returns {boolean} - Retorna true se o CNPJ for válido, caso contrário retorna false.
      */
@@ -719,7 +719,7 @@ $(document).ready(function () {
 
 
     /**
-     * Verifica se todos os dígitos de um CNPJ são iguais.
+     * @description Verifica se todos os dígitos de um CNPJ são iguais.
      * @param {string} cnpj - O CNPJ a ser verificado.
      * @returns {boolean} - true se todos os dígitos forem iguais, false caso contrário.
      */
@@ -734,7 +734,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Formata o número de CNPJ em um campo de entrada enquanto o usuário digita.
+     * @description Formata o número de CNPJ em um campo de entrada enquanto o usuário digita.
      * @param {string} cnpjId - O ID do campo de entrada de CNPJ.
      */
     function formatarCnpjAoDigitar(cnpjId) {
@@ -778,7 +778,7 @@ $(document).ready(function () {
     //################################## INÍCIO Validar Numero ##################################
 
     /**
-    * Verifica se um campo de entrada contém um valor válido de acordo com o padrão especificado.
+    * @description Verifica se um campo de entrada contém um valor válido de acordo com o padrão especificado.
     * @param {string} campoId - O ID do campo de entrada.
     * @returns {boolean} - true se o campo estiver no formato válido, false caso contrário.
     */
@@ -810,7 +810,9 @@ $(document).ready(function () {
 
     //################################## INÍCIO Validar UF ##################################
 
-    // Adiciona um evento de validação ao campo UF
+    /** 
+     * @description Adiciona um evento de validação ao campo UF
+     */
     $("#uf").blur(function () {
         let uf = $(this).val(); // Obtém o valor do campo UF
         if (uf != "") {
@@ -822,7 +824,7 @@ $(document).ready(function () {
 
     //################################## INÍCIO Formata CEP ##################################
     /**
-    * Formata o número de CEP em um campo de entrada enquanto o usuário digita.
+    * @description Formata o número de CEP em um campo de entrada enquanto o usuário digita.
     * @param {string} cepId - O ID do campo de entrada de CEP.
     */
     function formatarCepAoDigitar(cepId) {
@@ -862,7 +864,7 @@ $(document).ready(function () {
     //################################## INÍCIO Consumo API Viacep ##################################
 
     /**
-     * Função para buscar o endereço a partir de um CEP e preencher campos de endereço correspondentes.
+     * @description Função para buscar o endereço a partir de um CEP e preencher campos de endereço correspondentes.
      * @param {string} cepId - O ID do campo de entrada de CEP.
      * @param {string} ruaId - O ID do campo de entrada de rua.
      * @param {string} bairroId - O ID do campo de entrada de bairro.
@@ -917,7 +919,7 @@ $(document).ready(function () {
     }
 
     /**
-     * Limpa os campos de endereço.
+     * @description Limpa os campos de endereço.
      * @param {string} ruaId - O ID do campo de entrada de rua.
      * @param {string} bairroId - O ID do campo de entrada de bairro.
      * @param {string} cidadeId - O ID do campo de entrada de cidade.

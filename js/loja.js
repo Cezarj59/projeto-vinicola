@@ -1,7 +1,8 @@
+
 //################################## INÍCIO Funções Utilitárias ##################################
 
 /**
- * Função utilitária para criação de elementos HTML.
+ * @description Cria elementos HTML.
  * @param {string} tag - A tag do elemento HTML.
  * @param {string} className - A classe do elemento HTML.
  * @param {string} innerHTML - O conteúdo interno do elemento HTML.
@@ -15,7 +16,7 @@ function createElement(tag, className, innerHTML) {
 }
 
 /**
- * Função utilitária para adicionar event listener a um elemento.
+ * @description Adiciona um event listener a um elemento.
  * @param {HTMLElement} element - O elemento HTML ao qual o event listener será adicionado.
  * @param {string} event - O tipo de evento a ser ouvido.
  * @param {Function} callback - A função de retorno de chamada a ser executada quando o evento ocorrer.
@@ -25,7 +26,7 @@ function adicionaEventListener(element, event, callback) {
 }
 
 /**
- * Função utilitária para obter um elemento do DOM por seletor.
+ * @description Obtém um elemento do DOM por seletor.
  * @param {string} selector - O seletor do elemento HTML.
  * @returns {HTMLElement} - O elemento HTML selecionado.
  */
@@ -36,7 +37,8 @@ function getElement(selector) {
 //- Funções de Atualização de Interface ----------------------------------------------------------------
 
 /**
- * Função utilitária para atualizar a lista de itens no DOM.
+ * 
+ * @description Atualiza a lista de itens no DOM.
  */
 function updateItemList() {
     const listContainer = getElement('.list');
@@ -51,7 +53,7 @@ function updateItemList() {
 }
 
 /**
- * Função utilitária para criar um item na lista no DOM.
+ * @description Cria um item na lista no DOM.
  * @param {Object} product - O objeto representando o produto.
  * @param {HTMLElement} container - O contêiner onde o item será adicionado.
  */
@@ -79,7 +81,8 @@ function createProductCard(product, container) {
 }
 
 /**
- *  Função para atualizar o Valor Total do carrinho
+ *  @memberof Loja
+ *  @description Atualiza o Valor Total do carrinho
  */
 function updateTotal() {
     const cartProducts = document.getElementsByClassName("cart-product");
@@ -107,8 +110,11 @@ function updateTotal() {
 
 // Array com os dados dos produtos
 /**
- * Cria um array com 100 elementos, onde cada elemento é uma string no formato 'Item N',
+ * @description Cria um array com 100 elementos, onde cada elemento é uma string no formato 'Item N',
  * onde N é o índice mais 1.
+ * @constant
+ * @type  {Array<Object>} 
+ * @default
  */
 
 const products = [
@@ -175,7 +181,7 @@ const products = [
 //################################## 1. Inicialização ##################################
 
 /**
- * Estado inicial da aplicação
+ * @description Estado inicial da aplicação
  */
 const state = {
     /**
@@ -209,7 +215,7 @@ const state = {
 //################################## 2. Controle de Navegação ##################################
 
 /**
- * Objeto para controle de navegação.
+ * @description Objeto para controle de navegação.
  * Responsável por gerenciar a navegação entre páginas.
  * @type {Object}
  */
@@ -238,7 +244,7 @@ const navigation = {
 };
 
 /**
- * Objeto para controle dos botões de navegação.
+ * @description Objeto para controle dos botões de navegação.
  * Responsável pela criação e atualização dinâmica dos botões de navegação entre páginas.
  * @type {Object}
  */
@@ -300,7 +306,7 @@ const navigationButtons = {
 };
 
 /**
- * Calcula os números de página à esquerda e à direita do número da página atual, com base no número máximo de botões visíveis.
+ * @description Calcula os números de página à esquerda e à direita do número da página atual, com base no número máximo de botões visíveis.
  * @returns {Object} Um objeto contendo os números da página máxima à esquerda e à direita.
  */
 function calculateMaxVisible() {
@@ -316,7 +322,7 @@ function calculateMaxVisible() {
 }
 
 /**
- * Atualiza tanto a lista quanto os botões de navegação na página.
+ * @description Atualiza tanto a lista quanto os botões de navegação na página.
  */
 function update() {
     updateItemList();
@@ -324,7 +330,7 @@ function update() {
 }
 
 /**
- * Inicializa o controle de navegação e seus botões associados.
+ * @description Inicializa o controle de navegação e seus botões associados.
  * Adiciona event listeners aos botões de navegação para permitir a interação do usuário.
  */
 function init() {
@@ -363,14 +369,14 @@ let totalCarrinho = 0;
 
 //- localStorage. ----------------------------------------------------------------
 /**
- * Salva o carrinho no localStorage.
+ * @description Salva o carrinho no localStorage.
  */
 function salvarCarrinhoNoLocalStorage() {
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
 /**
- * Carrega o carrinho do localStorage, se existir.
+ * @description Carrega o carrinho do localStorage, se existir.
  */
 function carregarCarrinhoDoLocalStorage() {
     const carrinhoSalvo = localStorage.getItem('carrinho');
@@ -388,7 +394,7 @@ window.addEventListener('load', carregarCarrinhoDoLocalStorage);
 
 //################################## 4. Manipulação do Carrinho ##################################
 /**
- * Adiciona um item ao carrinho de compras e abre o modal.
+ * @description Adiciona um item ao carrinho de compras e abre o modal.
  * @param {number} id - O ID do produto.
  * @param {string} image - O caminho da imagem do produto.
  * @param {string} title - O título do produto.
@@ -426,9 +432,8 @@ function adicionarAoCarrinho(id, image, title, preco) {
     salvarCarrinhoNoLocalStorage();
 }
 /**
- * Exibe o modal com as informações do produto adicionado.
- * @param {Object} produto - O objeto do produto a ser exibido no modal.
- * Este método popula o modal com os detalhes do produto fornecido e o exibe na interface do usuário.
+ * @description Este método popula o modal com os detalhes do produto fornecido e o exibe na interface do usuário.
+ * @param {Object} produto - O objeto do produto a ser exibido no modal. * 
  */
 function exibirModalProdutoAdicionado(produto) {
     // Obtém o elemento do corpo do modal
@@ -467,13 +472,13 @@ btnCancelarModal.addEventListener('click', function () {
 });
 
 /**
- * Diminui a quantidade de um item no carrinho de compras.
- * Se houver mais de uma unidade do produto, apenas diminui a quantidade.
- * Se houver apenas uma unidade, remove o produto do carrinho.
+ * @description 1.Diminui a quantidade de um item no carrinho de compras.
+ *  2.Se houver mais de uma unidade do produto, apenas diminui a quantidade.
+ *  3.Se houver apenas uma unidade, remove o produto do carrinho.
  * @param {number} itemId - O ID do item a ser atualizado.
  */
 function diminuirQuantidadeNoCarrinho(itemId) {
-    
+
     // Procura pelo item no carrinho cujo ID corresponde ao ID fornecido  
     const itemNoCarrinho = carrinho.find(item => item.id === itemId);
 
@@ -510,7 +515,7 @@ function diminuirQuantidadeNoCarrinho(itemId) {
 
 
 /**
- * Remove um item do carrinho de compras e atualiza o preço total.
+ * @description Remove um item do carrinho de compras e atualiza o preço total.
  * @param {number} index - O índice do item a ser removido.
  */
 function removerDoCarrinho(index) {
@@ -535,7 +540,7 @@ function removerDoCarrinho(index) {
 
 
 /**
- * Atualiza a quantidade de um item no carrinho de compras.
+ * @description Atualiza a quantidade de um item no carrinho de compras.
  * @param {number} index - O índice do item a ser atualizado.
  * @param {number} novaQuantidade - A nova quantidade do item.
  */
@@ -556,7 +561,7 @@ function atualizarQuantidade(index, novaQuantidade) {
 }
 
 /**
- * Exibe ou oculta a seção total do carrinho com base no número de itens no carrinho.
+ * @description Exibe ou oculta a seção total do carrinho com base no número de itens no carrinho.
  */
 function exibirOcultarDivTotal() {
     const divTotal = document.getElementById('div-total');
@@ -569,7 +574,7 @@ function exibirOcultarDivTotal() {
 }
 
 /**
- * Função para renderizar a lista de carrinho na página.
+ * @description Função para renderizar a lista de carrinho na página.
  */
 function renderizarListaCarrinho() {
     const listaCarrinhoSection = document.getElementById('lista-carrinho-section');
@@ -588,7 +593,7 @@ function renderizarListaCarrinho() {
 }
 
 /**
- * Função para atualizar os totais exibidos na página.
+ * @description Função para atualizar os totais exibidos na página.
  */
 function atualizarTotais() {
     // Calcula o total do carrinho somando o preço de cada item multiplicado pela sua quantidade
@@ -603,7 +608,7 @@ function atualizarTotais() {
 
 
 /**
- * Cria o HTML para exibir um item no carrinho.
+ * @description Cria o HTML para exibir um item no carrinho.
  * @param {Object} item - O item do carrinho.
  * @param {number} index - O índice do item no carrinho.
  * @returns {string} - O HTML para exibir o item no carrinho.
@@ -646,7 +651,7 @@ function criarItemHTML(item, index) {
 
 
 /**
- * Função principal para atualizar a exibição do carrinho na página.
+ * @description Função principal para atualizar a exibição do carrinho na página.
  */
 function atualizarCarrinho() {
     exibirOcultarDivTotal(); // Chama a função para exibir ou ocultar a div total
@@ -659,7 +664,7 @@ function atualizarCarrinho() {
 //##################################  5. Exibição de Produtos ##################################
 
 /**
- * Função para exibir produtos no offcanvas "Mais Vendidos".
+ * @description Função para exibir produtos no offcanvas "Mais Vendidos".
  */
 function exibirProdutosNoOffcanvasMaisVendidos() {
     const offcanvasBody = document.querySelector('#offcanvas-mais-vendidos .offcanvas-body');
@@ -697,7 +702,8 @@ document.getElementById('offcanvas-mais-vendidos').addEventListener('shown.bs.of
 });
 
 /**
-* Adiciona os 4 primeiros produtos do array ao dropdown Mais Vendidos da navbar 
+* @memberof Loja
+* @description Adiciona os 4 primeiros produtos do array ao dropdown Mais Vendidos da navbar 
 */
 function adicionarProdutosMaisVendidos() {
     const container = document.getElementById('produtos-container');
