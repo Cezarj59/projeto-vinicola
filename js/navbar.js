@@ -1,3 +1,5 @@
+
+//################################## 1. INÍCIO Manipulação da Navbar ##################################
 // Quando o documento estiver pronto, configura a exibição inicial dos elementos
 $(document).ready(function () {
   // Exibe a página inicial e oculta as demais
@@ -7,7 +9,7 @@ $(document).ready(function () {
 
 
 /**
- * Função para alternar entre as páginas do site.
+ * @description Função para alternar entre as páginas do site.
  * @param {number} x - O índice da página a ser exibida.
  */
 function alternaPaginas(x) {
@@ -68,7 +70,7 @@ function alternaPaginas(x) {
 }
 
 /**
- * Função para ativar um item na barra de navegação.
+ * @description Função para ativar um item na barra de navegação.
  * @param {number} index - O índice do item a ser ativado.
  */
 function active(index) {
@@ -82,52 +84,60 @@ function active(index) {
     $(".add-active").eq(index).addClass("active");
   }
 }
+//================================== FIM Manipulação da Navbar ==================================
+
+//################################## 2. INÍCIO Manipulação do offCanvas ##################################
 
 /**
- * Função para abrir o segundo offcanvas.
+ * @description Abre o segundo offcanvas e fecha o primeiro.
  */
 function abrirOffcanvas2() {
   // Fecha o primeiro offcanvas
-  let offcanvas1 = new bootstrap.Offcanvas($("#offcanvasNavbar"));
+  var offcanvas1 = new bootstrap.Offcanvas($('#offcanvasNavbar').get(0));
   offcanvas1.hide();
 
   // Abre o segundo offcanvas
-  let offcanvas2 = new bootstrap.Offcanvas($("#offcanvas-mais-vendidos"));
+  var offcanvas2 = new bootstrap.Offcanvas($('#offcanvas-mais-vendidos').get(0));
   offcanvas2.show();
 }
 
 /**
- * Função para fechar o segundo offcanvas e abrir o primeiro.
+ * @description Fecha o segundo offcanvas e abre o primeiro.
  */
 function fecharOffcanvas2() {
   // Fecha o segundo offcanvas
-  let offcanvas2 = new bootstrap.Offcanvas($("#offcanvas-mais-vendidos"));
+  var offcanvas2 = new bootstrap.Offcanvas($('#offcanvas-mais-vendidos').get(0));
   offcanvas2.hide();
 
   // Abre o primeiro offcanvas
-  let offcanvas1 = new bootstrap.Offcanvas($("#offcanvasNavbar"));
+  var offcanvas1 = new bootstrap.Offcanvas($('#offcanvasNavbar').get(0));
   offcanvas1.show();
 }
 
 /**
- * Função para fechar o offcanvas.
+ * Fecha o offcanvas.
  */
 function fecharOffcanvas() {
-  // Fecha o offcanvas
-  let offcanvas = new bootstrap.Offcanvas($("#offcanvasNavbar"));
-  offcanvas.hide();
+  // Fecha o primeiro offcanvas
+  var offcanvasElement = $('#offcanvasNavbar').get(0);
+  var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+
+  if (offcanvas) {
+    offcanvas.hide();
+  }
 }
 
 
-/**
- * Função para rolar suavemente até o topo da página.
- */
+//================================== FIM Manipulação do offCanva ==================================
+
+//################################## 1. INÍCIO Função botão voltar a o topo ##################################
+
 function voltarAoTopo() {
   $('html, body').animate({ scrollTop: 0 }, 'slow');
 }
 
 /**
- * Função para lidar com o evento de rolagem.
+ * @description Função para lidar com o evento de rolagem.
  */
 $(window).scroll(function () {
   // Obtém uma referência para o elemento de navegação
@@ -157,3 +167,4 @@ $(window).scroll(function () {
     botaoVoltarAoTopo.addClass('d-none');
   }
 });
+//================================== FIM Função botão voltar a o topo ==================================
