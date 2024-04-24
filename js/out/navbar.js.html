@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: navbar.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: navbar.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+//################################## 1. INÍCIO Manipulação da Navbar ##################################
+// Quando o documento estiver pronto, configura a exibição inicial dos elementos
+$(document).ready(function () {
+  // Exibe a página inicial e oculta as demais
+  $("#home").show();
+  $("#loja, #carrinho, #galeria, #sobre-nos, #contato, #revenda").hide();
+});
+
+
+/**
+ * @description Função para alternar entre as páginas do site.
+ * @param {number} x - O índice da página a ser exibida.
+ */
+function alternaPaginas(x) {
+  console.log("chamou a alternaPaginas com x =", x);
+
+  // Exibe o spinner
+  $("#spinner").removeClass("d-none");
+
+  // Simula um atraso (2 segundos) antes de navegar para a próxima página
+  setTimeout(function () {
+    switch (x) {
+      case 0:
+        document.title = "Home";
+        $("#home").show();
+        $("#loja, #carrinho, #galeria, #sobre-nos, #contato, #revenda").hide();
+        break;
+
+      case 1:
+        document.title = "Loja";
+        $("#loja").show();
+        $("#home, #carrinho, #galeria, #sobre-nos, #contato, #revenda").hide();
+        break;
+
+      case 2:
+        document.title = "Carrinho";
+        $("#carrinho").show();
+        $("#home, #loja, #galeria, #sobre-nos, #contato, #revenda").hide();
+        break;
+
+      case 5:
+        document.title = "Galeria";
+        $("#galeria").show();
+        $("#home, #loja, #carrinho, #sobre-nos, #contato, #revenda").hide();
+        break;
+
+      case 7:
+        document.title = "Sobre Nós";
+        $("#sobre-nos").show();
+        $("#home, #loja, #carrinho, #galeria, #contato, #revenda").hide();
+        break;
+
+      case 8:
+        document.title = "Contato";
+        $("#contato").show();
+        $("#home, #loja, #carrinho, #galeria, #sobre-nos, #revenda").hide();
+        break;
+
+      case 9:
+        document.title = "Revenda";
+        $("#revenda").show();
+        $("#home, #loja, #carrinho, #galeria, #sobre-nos, #contato").hide();
+        break;
+    }
+    $("#spinner").addClass("d-none");
+
+    window.scrollTo(0, 0);
+  }, 500);
+}
+
+/**
+ * @description Função para ativar um item na barra de navegação.
+ * @param {number} index - O índice do item a ser ativado.
+ */
+function active(index) {
+  console.log("chamou a active com x =", index);
+
+  // Remover a classe "active" de todos os elementos
+  $(".add-active").removeClass("active");
+
+  // Adicionar a classe "active" ao elemento específico
+  if (index >= 0 &amp;&amp; index &lt; $(".add-active").length) {
+    $(".add-active").eq(index).addClass("active");
+  }
+}
+//================================== FIM Manipulação da Navbar ==================================
+
+//################################## 2. INÍCIO Manipulação do offCanvas ##################################
+
+/**
+ * @description Abre o segundo offcanvas e fecha o primeiro.
+ */
+function abrirOffcanvas2() {
+  // Fecha o primeiro offcanvas
+  var offcanvas1 = new bootstrap.Offcanvas($('#offcanvasNavbar').get(0));
+  offcanvas1.hide();
+
+  // Abre o segundo offcanvas
+  var offcanvas2 = new bootstrap.Offcanvas($('#offcanvas-mais-vendidos').get(0));
+  offcanvas2.show();
+}
+
+/**
+ * @description Fecha o segundo offcanvas e abre o primeiro.
+ */
+function fecharOffcanvas2() {
+  // Fecha o segundo offcanvas
+  var offcanvas2 = new bootstrap.Offcanvas($('#offcanvas-mais-vendidos').get(0));
+  offcanvas2.hide();
+
+  // Abre o primeiro offcanvas
+  var offcanvas1 = new bootstrap.Offcanvas($('#offcanvasNavbar').get(0));
+  offcanvas1.show();
+}
+
+/**
+ * Fecha o offcanvas.
+ */
+function fecharOffcanvas() {
+  // Fecha o primeiro offcanvas
+  var offcanvasElement = $('#offcanvasNavbar').get(0);
+  var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+
+  if (offcanvas) {
+    offcanvas.hide();
+  }
+}
+
+
+//================================== FIM Manipulação do offCanva ==================================
+
+//################################## 1. INÍCIO Função botão voltar a o topo ##################################
+
+function voltarAoTopo() {
+  $('html, body').animate({ scrollTop: 0 }, 'slow');
+}
+
+/**
+ * @description Função para lidar com o evento de rolagem.
+ */
+$(window).scroll(function () {
+  // Obtém uma referência para o elemento de navegação
+  var navbar = $("#navbar");
+
+  // Obtém uma referência para o botão "Voltar ao Topo"
+  var botaoVoltarAoTopo = $('#btnVoltarAoTopo');
+
+  // Verifica se a largura da tela é maior ou igual a 575 pixels (desktop)
+  var isDesktop = $(window).width() >= 575;
+
+  // Verifica se a posição de rolagem é maior que 50 pixels e se a tela é de desktop
+  if (($(document).scrollTop() > 50 || $(document.documentElement).scrollTop() > 50) &amp;&amp; isDesktop) {
+    // Adiciona a classe "fixed-top" ao elemento de navegação
+    navbar.addClass("fixed-top");
+  } else {
+    // Remove a classe "fixed-top" do elemento de navegação
+    navbar.removeClass("fixed-top");
+  }
+
+  // Verifica se a posição de rolagem é maior que 500 pixels
+  if ($(document).scrollTop() > 500 || $(document.documentElement).scrollTop() > 500) {
+    // Remove a classe "d-none" do botão "Voltar ao Topo" para torná-lo visível
+    botaoVoltarAoTopo.removeClass('d-none');
+  } else {
+    // Adiciona a classe "d-none" ao botão "Voltar ao Topo" para ocultá-lo
+    botaoVoltarAoTopo.addClass('d-none');
+  }
+});
+//================================== FIM Função botão voltar a o topo ==================================</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abrirOffcanvas2">abrirOffcanvas2</a></li><li><a href="global.html#active">active</a></li><li><a href="global.html#adicionaEventListener">adicionaEventListener</a></li><li><a href="global.html#adicionarAoCarrinho">adicionarAoCarrinho</a></li><li><a href="global.html#alternaPaginas">alternaPaginas</a></li><li><a href="global.html#atribuirValidacaoAEntradaDeTexto">atribuirValidacaoAEntradaDeTexto</a></li><li><a href="global.html#atribuirValidacaoAoPerderFoco">atribuirValidacaoAoPerderFoco</a></li><li><a href="global.html#atualizarCarrinho">atualizarCarrinho</a></li><li><a href="global.html#atualizarQuantidade">atualizarQuantidade</a></li><li><a href="global.html#atualizarTotais">atualizarTotais</a></li><li><a href="global.html#calculateMaxVisible">calculateMaxVisible</a></li><li><a href="global.html#capitalizarPrimeiraLetra">capitalizarPrimeiraLetra</a></li><li><a href="global.html#carregarCarrinhoDoLocalStorage">carregarCarrinhoDoLocalStorage</a></li><li><a href="global.html#contemCaracteresInvalidos">contemCaracteresInvalidos</a></li><li><a href="global.html#contemLetrasRepetidas">contemLetrasRepetidas</a></li><li><a href="global.html#contemNumero">contemNumero</a></li><li><a href="global.html#createElement">createElement</a></li><li><a href="global.html#createProductCard">createProductCard</a></li><li><a href="global.html#criarItemHTML">criarItemHTML</a></li><li><a href="global.html#diminuirQuantidadeNoCarrinho">diminuirQuantidadeNoCarrinho</a></li><li><a href="global.html#exibirErro">exibirErro</a></li><li><a href="global.html#exibirModalProdutoAdicionado">exibirModalProdutoAdicionado</a></li><li><a href="global.html#exibirOcultarDivTotal">exibirOcultarDivTotal</a></li><li><a href="global.html#exibirProdutosNoOffcanvasMaisVendidos">exibirProdutosNoOffcanvasMaisVendidos</a></li><li><a href="global.html#exibirSucesso">exibirSucesso</a></li><li><a href="global.html#fecharOffcanvas">fecharOffcanvas</a></li><li><a href="global.html#fecharOffcanvas2">fecharOffcanvas2</a></li><li><a href="global.html#formatarNome">formatarNome</a></li><li><a href="global.html#getElement">getElement</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#navigation">navigation</a></li><li><a href="global.html#navigationButtons">navigationButtons</a></li><li><a href="global.html#products">products</a></li><li><a href="global.html#removerDoCarrinho">removerDoCarrinho</a></li><li><a href="global.html#removerEspacosExtras">removerEspacosExtras</a></li><li><a href="global.html#removerNaoNumericos">removerNaoNumericos</a></li><li><a href="global.html#renderizarListaCarrinho">renderizarListaCarrinho</a></li><li><a href="global.html#salvarCarrinhoNoLocalStorage">salvarCarrinhoNoLocalStorage</a></li><li><a href="global.html#state">state</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateItemList">updateItemList</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Apr 23 2024 22:23:43 GMT-0300 (Brasilia Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: loja.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: loja.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+//################################## INÍCIO Funções Utilitárias ##################################
+
+/**
+ * @description Cria elementos HTML.
+ * @param {string} tag - A tag do elemento HTML.
+ * @param {string} className - A classe do elemento HTML.
+ * @param {string} innerHTML - O conteúdo interno do elemento HTML.
+ * @returns {HTMLElement} - O elemento HTML criado.
+ */
+function createElement(tag, className, innerHTML) {
+    const element = document.createElement(tag);
+    if (className) element.classList.add(className);
+    if (innerHTML) element.innerHTML = innerHTML;
+    return element;
+}
+
+/**
+ * @description Adiciona um event listener a um elemento.
+ * @param {HTMLElement} element - O elemento HTML ao qual o event listener será adicionado.
+ * @param {string} event - O tipo de evento a ser ouvido.
+ * @param {Function} callback - A função de retorno de chamada a ser executada quando o evento ocorrer.
+ */
+function adicionaEventListener(element, event, callback) {
+    element.addEventListener(event, callback);
+}
+
+/**
+ * @description Obtém um elemento do DOM por seletor.
+ * @param {string} selector - O seletor do elemento HTML.
+ * @returns {HTMLElement} - O elemento HTML selecionado.
+ */
+function getElement(selector) {
+    return document.querySelector(selector);
+}
+
+//- Funções de Atualização de Interface ----------------------------------------------------------------
+
+/**
+ * 
+ * @description Atualiza a lista de itens no DOM.
+ */
+function updateItemList() {
+    const listContainer = getElement('.list');
+    listContainer.innerHTML = '';
+
+    const page = state.page - 1;
+    const start = page * state.quantidadePorPagina;
+    const end = start + state.quantidadePorPagina;
+
+    const paginateItems = products.slice(start, end);
+    paginateItems.forEach(item => createProductCard(item, listContainer));
+}
+
+/**
+ * @description Cria um item na lista no DOM.
+ * @param {Object} product - O objeto representando o produto.
+ * @param {HTMLElement} container - O contêiner onde o item será adicionado.
+ */
+function createProductCard(product, container) {
+    //Templates em Strings:
+    const card = `
+        &lt;div class="card border-0 col-4" style="width: 15rem; margin-bottom: 20px;">
+            &lt;img src="${product.image}" class="card-img-top bg-body-tertiary" alt="...">
+            &lt;div class="card-body">
+                &lt;h5 class="card-title">${product.title}&lt;/h5>
+                &lt;div class="d-flex flex-column justify-content-center">
+                    &lt;p class="card-text fs-5">R$${product.preco}&lt;/p>
+                    &lt;p class="card-text mb-0">Volume: ${product.volume}&lt;/p>
+                    &lt;p class="card-text">Teor Alcoólico: ${product.alcoholPercentage}%&lt;/p>
+                &lt;/div>
+                &lt;a href="#adicionar-ao-carrinho" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho&lt;/a>
+            &lt;/div>
+        &lt;/div>
+    `;
+
+    // Converter a string HTML em elementos DOM e anexá-los ao container
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = card;
+    container.appendChild(tempDiv.firstElementChild);
+}
+
+/**
+ *  @memberof Loja
+ *  @description Atualiza o Valor Total do carrinho
+ */
+function updateTotal() {
+    const cartProducts = document.getElementsByClassName("cart-product");
+    let totalAmount = 0;
+
+    // Itera sobre todos os produtos no carrinho
+    for (let i = 0; i &lt; cartProducts.length; i++) {
+        // Obtém o preço do produto e a quantidade
+        const productPrice = parseFloat(cartProducts[i].getElementsByClassName("cart-product-price")[0].innerText.replace("R$", "").replace(",", "."));
+        const productQuantity = parseFloat(cartProducts[i].getElementsByClassName("product-qtd-input")[0].value);
+
+        // Calcula o valor total do produto multiplicando o preço pela quantidade e adicionando ao totalAmount
+        totalAmount += productPrice * productQuantity;
+    }
+
+    // Formata o totalAmount para duas casas decimais e atualiza o texto exibido no DOM
+    totalAmount = totalAmount.toFixed(2);
+    totalAmount = totalAmount.replace(".", ",");
+    document.querySelector(".cart-total-container span").innerText = "R$" + totalAmount;
+}
+
+
+//================================== FIM funções Utilitárias ==================================
+//################################## INÍCIO Dados dos Produtos ##################################
+
+// Array com os dados dos produtos
+/**
+ * @description Cria um array com 100 elementos, onde cada elemento é uma string no formato 'Item N',
+ * onde N é o índice mais 1.
+ * @constant
+ * @type  {Array&lt;Object>} 
+ * @default
+ */
+
+const products = [
+    // Lista de objetos representando produtos com informações como ID, imagem, título, volume, percentual alcoólico e preço.
+    { id: 1, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 2, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 3, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 4, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 5, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 6, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 7, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 8, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 9, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 10, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+
+    { id: 11, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 12, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 13, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 14, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 15, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 16, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 17, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 18, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 19, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 20, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+
+    { id: 21, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 22, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 23, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 24, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 25, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 26, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 27, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 28, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 29, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 30, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+
+    { id: 31, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 32, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 33, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 34, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 35, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 36, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 37, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 38, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 39, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 40, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+
+    { id: 41, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 42, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 43, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 44, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 45, image: 'img/mais-vendidos/tinto-suave.png', title: 'Vinho Tinto Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 46, image: 'img/mais-vendidos/tinto-seco.png', title: 'Vinho Tinto Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 47, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 48, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 49, image: 'img/mais-vendidos/branco-seco.png', title: 'Vinho Branco Seco', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    { id: 50, image: 'img/mais-vendidos/rose-suave.png', title: 'Vinho Rosé Suave', volume: '750ml', alcoholPercentage: 11, preco: parseFloat((Math.random() * (100 - 10) + 10).toFixed(2)) },
+    // Adicione mais produtos conforme necessário
+];
+//================================== FIM Dados dos Produtos ==================================
+
+
+//################################## 1. Inicialização ##################################
+
+/**
+ * @description Estado inicial da aplicação
+ */
+const state = {
+    /**
+     * Página atual.
+     * @type {number}
+     */
+    page: 1,
+
+    /**
+     * Número de itens por página.
+     * @type {number}
+     */
+    quantidadePorPagina: 9,
+
+    /**
+     * Total de páginas baseado no número de produtos e itens por página.
+     * @type {number}
+     */
+    totalPage: Math.ceil(products.length / 9),
+
+    /**
+     * Número máximo de botões de página visíveis na paginação.
+     * @type {number}
+     */
+    maxVisibleButtons: 3,
+};
+
+//================================== FIM Inicialização ==================================
+
+
+//################################## 2. Controle de Navegação ##################################
+
+/**
+ * @description Objeto para controle de navegação.
+ * Responsável por gerenciar a navegação entre páginas.
+ * @type {Object}
+ */
+const navigation = {
+    /**
+      * Avança para a próxima página.
+      * Incrementa a página atual e garante que não ultrapasse o limite total de páginas.
+      */
+    next() {
+        state.page = Math.min(state.page + 1, state.totalPage);
+    },
+    /**
+    * Retrocede para a página anterior.
+    * Decrementa a página atual e garante que não seja menor que 1.
+    */
+    prev() {
+        state.page = Math.max(state.page - 1, 1);
+    },
+    /**
+     * Navega para uma página específica.
+     * @param {number} page - O número da página para navegar.
+     */
+    goTo(page) {
+        state.page = Math.max(1, Math.min(page, state.totalPage));
+    },
+};
+
+/**
+ * @description Objeto para controle dos botões de navegação.
+ * Responsável pela criação e atualização dinâmica dos botões de navegação entre páginas.
+ * @type {Object}
+ */
+const navigationButtons = {
+    /** Elemento que contém os botões de navegação. */
+    element: getElement('.controls .numbers'),
+
+    /**
+     * Cria um botão de navegação para uma página específica.
+     * @param {number} number - O número da página para a qual criar o botão.
+     * @returns {HTMLElement} - O elemento do botão criado.
+     */
+    createButton(number) {
+        const button = createElement('a', 'page-link', number);
+
+        // Adiciona a classe 'active' ao botão correspondente à página atual.
+        if (state.page === number) {
+            button.classList.add('active');
+        }
+
+        // Adiciona um event listener para a mudança de página quando o botão é clicado
+        adicionaEventListener(button, 'click', () => {
+            navigation.goTo(number);
+            update();
+        });
+
+        // Adiciona o botão ao elemento de botões de navegação
+        this.element.appendChild(button);
+        return button;
+    },
+
+    /**
+     * Atualiza os botões de navegação com base na página atual e no número máximo de botões visíveis.
+     */
+    updateButtons() {
+        this.element.innerHTML = '';
+
+        const { maxLeft, maxRight } = this.calculateMaxVisible();
+        for (let page = maxLeft; page &lt;= maxRight; page++) {
+            this.createButton(page);
+        }
+    },
+
+    /**
+     * Calcula os números de página à esquerda e à direita do número da página atual, com base no número máximo de botões visíveis.
+     * @returns {Object} - Um objeto contendo o número máximo de página à esquerda e à direita.
+     */
+    calculateMaxVisible() {
+        const { maxVisibleButtons } = state;
+        let maxLeft = Math.max(1, state.page - Math.floor(maxVisibleButtons / 2));
+        let maxRight = Math.min(maxLeft + maxVisibleButtons - 1, state.totalPage);
+
+        if (maxRight - maxLeft + 1 &lt; maxVisibleButtons) {
+            maxLeft = Math.max(1, maxRight - maxVisibleButtons + 1);
+        }
+
+        return { maxLeft, maxRight };
+    },
+};
+
+/**
+ * @description Calcula os números de página à esquerda e à direita do número da página atual, com base no número máximo de botões visíveis.
+ * @returns {Object} Um objeto contendo os números da página máxima à esquerda e à direita.
+ */
+function calculateMaxVisible() {
+    const { maxVisibleButtons } = state;
+    let maxLeft = Math.max(1, state.page - Math.floor(maxVisibleButtons / 2));
+    let maxRight = Math.min(maxLeft + maxVisibleButtons - 1, state.totalPage);
+
+    if (maxRight - maxLeft + 1 &lt; maxVisibleButtons) {
+        maxLeft = Math.max(1, maxRight - maxVisibleButtons + 1);
+    }
+
+    return { maxLeft, maxRight };
+}
+
+/**
+ * @description Atualiza tanto a lista quanto os botões de navegação na página.
+ */
+function update() {
+    updateItemList();
+    navigationButtons.updateButtons();
+}
+
+/**
+ * @description Inicializa o controle de navegação e seus botões associados.
+ * Adiciona event listeners aos botões de navegação para permitir a interação do usuário.
+ */
+function init() {
+    update();
+
+    // Adiciona event listeners aos botões de navegação
+    adicionaEventListener(getElement('.first'), 'click', () => {
+        navigation.goTo(1);
+        update();
+    });
+    adicionaEventListener(getElement('.last'), 'click', () => {
+        navigation.goTo(state.totalPage);
+        update();
+    });
+    adicionaEventListener(getElement('.next'), 'click', () => {
+        navigation.next();
+        update();
+    });
+    adicionaEventListener(getElement('.prev'), 'click', () => {
+        navigation.prev();
+        update();
+    });
+}
+
+// Chama a função de inicialização quando o documento é completamente carregado
+window.addEventListener('load', init);
+
+//==================================  FIM ontrole de Navegação  ==================================
+
+//################################## 4. Manipulação do Carrinho ##################################
+
+// Array para armazenar os itens no carrinho
+let carrinho = [];
+// Variável para armazenar o total do carrinho
+let totalCarrinho = 0;
+
+//- localStorage. ----------------------------------------------------------------
+/**
+ * @description Salva o carrinho no localStorage.
+ */
+function salvarCarrinhoNoLocalStorage() {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+}
+
+/**
+ * @description Carrega o carrinho do localStorage, se existir.
+ */
+function carregarCarrinhoDoLocalStorage() {
+    const carrinhoSalvo = localStorage.getItem('carrinho');
+    if (carrinhoSalvo) {
+        carrinho = JSON.parse(carrinhoSalvo);
+        // Atualiza o carrinho após carregar os itens salvos
+        atualizarCarrinho();
+    }
+}
+
+// Chama a função para carregar o carrinho do localStorage quando a página é carregada
+window.addEventListener('load', carregarCarrinhoDoLocalStorage);
+
+//- Fim Local Storage ----------------------------------------------------------------
+
+//################################## 4. Manipulação do Carrinho ##################################
+/**
+ * @description Adiciona um item ao carrinho de compras e abre o modal.
+ * @param {number} id - O ID do produto.
+ * @param {string} image - O caminho da imagem do produto.
+ * @param {string} title - O título do produto.
+ * @param {number} preco - O preço do produto.
+ */
+function adicionarAoCarrinho(id, image, title, preco) {
+    // Verifica se o produto já está no carrinho
+    const itemExistente = carrinho.find(item => item.id === id);
+
+    if (itemExistente) {
+        // Se o produto já está no carrinho, apenas atualize a quantidade
+        itemExistente.quantidade += 1;
+        // Exibir o modal com as informações do produto adicionado
+        exibirModalProdutoAdicionado(itemExistente);
+    } else {
+        // Se o produto ainda não está no carrinho, adicione-o com quantidade 1
+        const novoItemCarrinho = {
+            id: id,
+            image: image,
+            title: title,
+            preco: preco,
+            quantidade: 1
+        };
+        carrinho.push(novoItemCarrinho);
+        // Exibir o modal com as informações do produto adicionado
+        exibirModalProdutoAdicionado(novoItemCarrinho);
+    }
+
+    totalCarrinho += preco;
+
+    // Atualiza o carrinho após a adição do item
+    atualizarCarrinho();
+
+    // Salva o carrinho no localStorage após a modificação
+    salvarCarrinhoNoLocalStorage();
+}
+/**
+ * @description Este método popula o modal com os detalhes do produto fornecido e o exibe na interface do usuário.
+ * @param {Object} produto - O objeto do produto a ser exibido no modal. * 
+ */
+function exibirModalProdutoAdicionado(produto) {
+    // Obtém o elemento do corpo do modal
+    const modalBody = document.querySelector('#confirmacaoProdutoAdicionado .modal-body');
+
+    // Cria o HTML com as informações do produto
+    const produtoHTML = `
+        &lt;img src="${produto.image}" alt="${produto.title}" class="img-fluid">
+        &lt;h5>${produto.title}&lt;/h5>
+        &lt;p>Preço: R$${produto.preco.toFixed(2)}&lt;/p>
+        &lt;p>Quantidade: ${produto.quantidade}&lt;/p>
+    `;
+
+    // Define o conteúdo do corpo do modal com as informações do produto
+    modalBody.innerHTML = produtoHTML;
+
+    // Define o atributo data com o ID do produto no modal
+    const modal = document.querySelector('#cancelar');
+    modal.dataset.productId = produto.id;
+
+    // Exibe o modal
+    $('#confirmacaoProdutoAdicionado').modal('show');
+}
+
+
+// Selecione o botão "Cancelar" do modal
+const btnCancelarModal = document.querySelector('#cancelar');
+// Adicione um ouvinte de evento para o clique no botão "Cancelar"
+btnCancelarModal.addEventListener('click', function () {
+    // Obtém o ID do produto do atributo de dados
+    const itemId = parseInt(this.dataset.productId);
+
+    console.log(itemId);
+    // Chama a função para diminuir a quantidade no carrinho com o ID do produto
+    diminuirQuantidadeNoCarrinho(itemId);
+});
+
+/**
+ * @description 1.Diminui a quantidade de um item no carrinho de compras.
+ *  2.Se houver mais de uma unidade do produto, apenas diminui a quantidade.
+ *  3.Se houver apenas uma unidade, remove o produto do carrinho.
+ * @param {number} itemId - O ID do item a ser atualizado.
+ */
+function diminuirQuantidadeNoCarrinho(itemId) {
+
+    // Procura pelo item no carrinho cujo ID corresponde ao ID fornecido  
+    const itemNoCarrinho = carrinho.find(item => item.id === itemId);
+
+    console.log(itemNoCarrinho)
+    if (itemNoCarrinho) {
+        // Calcula o valor total do item antes de diminuir a quantidade
+        const valorTotalItem = itemNoCarrinho.preco * itemNoCarrinho.quantidade;
+
+        // Se houver mais de uma unidade do produto, apenas diminui a quantidade
+        if (itemNoCarrinho.quantidade > 1) {
+            itemNoCarrinho.quantidade -= 1;
+        } else {
+            // Se houver apenas uma unidade, remova o produto do carrinho
+            const index = carrinho.findIndex(item => item.id === itemId);
+            if (index !== -1) {
+                carrinho.splice(index, 1);
+            }
+        }
+
+        // Calcula o novo valor total do item após a alteração na quantidade
+        const novoValorTotalItem = itemNoCarrinho.preco * itemNoCarrinho.quantidade;
+
+        // Atualiza o total do carrinho subtraindo o valor total do item antigo e somando o novo
+        totalCarrinho = totalCarrinho - valorTotalItem + novoValorTotalItem;
+
+        // Atualiza o carrinho após a alteração na quantidade
+        atualizarCarrinho();
+
+        // Salva o carrinho no localStorage após a modificação
+        salvarCarrinhoNoLocalStorage();
+    }
+}
+
+
+
+/**
+ * @description Remove um item do carrinho de compras e atualiza o preço total.
+ * @param {number} index - O índice do item a ser removido.
+ */
+function removerDoCarrinho(index) {
+    // Obtém o item a ser removido
+    const itemRemovido = carrinho[index];
+
+    // Remove o item do carrinho
+    carrinho.splice(index, 1);
+
+    // Calcula o preço total a ser subtraído do total do carrinho
+    const precoTotalItem = itemRemovido.preco * itemRemovido.quantidade;
+
+    // Subtrai o preço total do item do total do carrinho
+    totalCarrinho -= precoTotalItem;
+
+    // Atualiza o carrinho após a remoção do item
+    atualizarCarrinho();
+
+    // Salva o carrinho no localStorage após a modificação
+    salvarCarrinhoNoLocalStorage();
+}
+
+
+/**
+ * @description Atualiza a quantidade de um item no carrinho de compras.
+ * @param {number} index - O índice do item a ser atualizado.
+ * @param {number} novaQuantidade - A nova quantidade do item.
+ */
+function atualizarQuantidade(index, novaQuantidade) {
+    const item = carrinho[index];
+
+    // Atualiza a quantidade do item
+    item.quantidade = parseInt(novaQuantidade, 10);
+
+    // Calcula o novo total do carrinho
+    totalCarrinho = carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+
+    // Atualiza o carrinho após a atualização da quantidade do item
+    atualizarCarrinho();
+
+    // Salva o carrinho no localStorage após a modificação
+    salvarCarrinhoNoLocalStorage();
+}
+
+/**
+ * @description Exibe ou oculta a seção total do carrinho com base no número de itens no carrinho.
+ */
+function exibirOcultarDivTotal() {
+    const divTotal = document.getElementById('div-total');
+
+    if (carrinho.length > 0) {
+        divTotal.classList.remove('d-none');
+    } else {
+        divTotal.classList.add('d-none');
+    }
+}
+
+/**
+ * @description Função para renderizar a lista de carrinho na página.
+ */
+function renderizarListaCarrinho() {
+    const listaCarrinhoSection = document.getElementById('lista-carrinho-section');
+    listaCarrinhoSection.innerHTML = '';
+
+    // Itera sobre os itens do carrinho e cria elementos HTML para cada um
+    carrinho.forEach((item, index) => {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item d-flex justify-content-between align-items-center px-0';
+
+        const itemHTML = criarItemHTML(item, index);
+
+        listItem.innerHTML = itemHTML;
+        listaCarrinhoSection.appendChild(listItem);
+    });
+}
+
+/**
+ * @description Função para atualizar os totais exibidos na página.
+ */
+function atualizarTotais() {
+    // Calcula o total do carrinho somando o preço de cada item multiplicado pela sua quantidade
+    const totalCarrinho = carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+
+    // Atualiza os elementos no DOM com os totais calculados
+    document.getElementById('total-produtos').textContent = `R$${totalCarrinho.toFixed(2)}`;
+    document.getElementById('total-carrinho-section').textContent = `R$${totalCarrinho.toFixed(2)}`;
+    document.getElementById('quantidade-de-produtos').textContent = `Produtos (${carrinho.reduce((total, item) => total + item.quantidade, 0)})`;
+}
+
+
+
+/**
+ * @description Cria o HTML para exibir um item no carrinho.
+ * @param {Object} item - O item do carrinho.
+ * @param {number} index - O índice do item no carrinho.
+ * @returns {string} - O HTML para exibir o item no carrinho.
+ */
+function criarItemHTML(item, index) {
+    return `
+        &lt;section class="row col-12 mx-auto pb-1">
+            &lt;article class="col-12 col-md-6 d-flex">
+                &lt;img src="${item.image}" class="img-thumbnail" alt="${item.title}" ">
+                &lt;div>
+                    &lt;span class="p-1 fs-5">${item.title}&lt;/span>
+                    &lt;div class="btn-carrinho">
+                        &lt;span>
+                            &lt;a href="javascript:void(0);" class="p-1"
+                                onclick="removerDoCarrinho(${index})">Excluir&lt;/a>
+                        &lt;/span>
+                        &lt;span>
+                            &lt;a href="javascript:void(0);" class="p-1">Salvar&lt;/a>
+                        &lt;/span>
+                        &lt;span>
+                            &lt;a href="javascript:void(0);" class="p-1">Comprar&lt;/a>
+                        &lt;/span>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/article>
+            &lt;div class="col-12 col-md-6 d-flex justify-content-between justify-content-md-end  mt-3 mt-lg-0">
+                &lt;div class="me-4">
+                    &lt;span>Quantidade:&lt;/span>
+                    &lt;input style="width: 50px;" type="number" min="1" value="${item.quantidade}"
+                        onchange="atualizarQuantidade(${index}, this.value)">
+                &lt;/div>
+                &lt;div>
+                    &lt;span>R$${(item.preco * item.quantidade).toFixed(2)}&lt;/span>
+                &lt;/div>
+            &lt;/div>
+        &lt;/section>
+    `;
+}
+
+
+
+/**
+ * @description Função principal para atualizar a exibição do carrinho na página.
+ */
+function atualizarCarrinho() {
+    exibirOcultarDivTotal(); // Chama a função para exibir ou ocultar a div total
+    renderizarListaCarrinho(); // Chama a função para renderizar a lista de carrinho
+    atualizarTotais(); // Chama a função para atualizar os totais exibidos
+}
+
+//================================== FIM Manipulação do Carrinho ==================================
+
+//##################################  5. Exibição de Produtos ##################################
+
+/**
+ * @description Função para exibir produtos no offcanvas "Mais Vendidos".
+ */
+function exibirProdutosNoOffcanvasMaisVendidos() {
+    const offcanvasBody = document.querySelector('#offcanvas-mais-vendidos .offcanvas-body');
+
+    // Limpa o conteúdo atual do offcanvas
+    offcanvasBody.innerHTML = '';
+
+    // Pega os 4 primeiros produtos do array
+    const produtosMaisVendidos = products.slice(0, 4);
+
+    // Cria elementos HTML para cada produto e adiciona ao offcanvas
+    produtosMaisVendidos.forEach((produto) => {
+        const cardHTML = `
+            &lt;div class="card border-0 mb-3" style="width: 18rem;">
+                &lt;img src="${produto.image}" class="card-img-top bg-body-tertiary" alt="...">
+                &lt;div class="card-body">
+                    &lt;h5 class="card-title">${produto.title}&lt;/h5>
+                    &lt;div class="d-flex flex-column justify-content-center">
+                        &lt;p class="card-text mb-0">Volume: ${produto.volume}&lt;/p>
+                        &lt;p class="card-text fs-5">Preço: R$${produto.preco}&lt;/p>
+                        &lt;a href="#" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${produto.id},'${produto.image}', '${produto.title}', ${produto.preco})">Adicionar ao Carrinho&lt;/a>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        `;
+
+        // Adiciona o card ao corpo do offcanvas
+        offcanvasBody.innerHTML += cardHTML;
+    });
+}
+
+// Chama a função para exibir os produtos mais vendidos quando o offcanvas é aberto
+document.getElementById('offcanvas-mais-vendidos').addEventListener('shown.bs.offcanvas', function () {
+    exibirProdutosNoOffcanvasMaisVendidos();
+});
+
+/**
+* @memberof Loja
+* @description Adiciona os 4 primeiros produtos do array ao dropdown Mais Vendidos da navbar 
+*/
+function adicionarProdutosMaisVendidos() {
+    const container = document.getElementById('produtos-container');
+
+    // Pega os 4 primeiros produtos
+    const produtosParaExibir = products.slice(0, 4);
+
+    // Itera sobre os produtos e cria elementos HTML para cada um
+    produtosParaExibir.forEach(product => {
+        const card = `
+            &lt;li>
+                &lt;div class="card border-0" style="width: 18rem;">
+                    &lt;img src="${product.image}" class="card-img-top  bg-body-tertiary" alt="...">
+                    &lt;div class="card-body">
+                        &lt;h5 class="card-title">${product.title}&lt;/h5>
+                        &lt;div class="d-flex flex-column justify-content-center">
+                            &lt;p class="card-text mb-0">Volume: ${product.volume}&lt;/p>
+                            &lt;p class="card-text fs-5">Preço: R$${product.preco}&lt;/p>
+                            &lt;a href="#adicionar-ao-carrinho" class="btn btn-danger col-12" onclick="adicionarAoCarrinho(${product.id},'${product.image}', '${product.title}', ${product.preco})">Adicionar ao Carrinho&lt;/a>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/li>
+        `;
+
+        // Converter a string HTML em elementos DOM e anexá-los ao container
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = card;
+        container.appendChild(tempDiv.firstElementChild);
+    });
+}
+
+// Chama a função para adicionar os produtos mais vendidos quando a página é carregada
+window.onload = adicionarProdutosMaisVendidos;
+
+//================================== FIM  Exibição de Produtos ==================================
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abrirOffcanvas2">abrirOffcanvas2</a></li><li><a href="global.html#active">active</a></li><li><a href="global.html#adicionaEventListener">adicionaEventListener</a></li><li><a href="global.html#adicionarAoCarrinho">adicionarAoCarrinho</a></li><li><a href="global.html#alternaPaginas">alternaPaginas</a></li><li><a href="global.html#atribuirValidacaoAEntradaDeTexto">atribuirValidacaoAEntradaDeTexto</a></li><li><a href="global.html#atribuirValidacaoAoPerderFoco">atribuirValidacaoAoPerderFoco</a></li><li><a href="global.html#atualizarCarrinho">atualizarCarrinho</a></li><li><a href="global.html#atualizarQuantidade">atualizarQuantidade</a></li><li><a href="global.html#atualizarTotais">atualizarTotais</a></li><li><a href="global.html#calculateMaxVisible">calculateMaxVisible</a></li><li><a href="global.html#capitalizarPrimeiraLetra">capitalizarPrimeiraLetra</a></li><li><a href="global.html#carregarCarrinhoDoLocalStorage">carregarCarrinhoDoLocalStorage</a></li><li><a href="global.html#contemCaracteresInvalidos">contemCaracteresInvalidos</a></li><li><a href="global.html#contemLetrasRepetidas">contemLetrasRepetidas</a></li><li><a href="global.html#contemNumero">contemNumero</a></li><li><a href="global.html#createElement">createElement</a></li><li><a href="global.html#createProductCard">createProductCard</a></li><li><a href="global.html#criarItemHTML">criarItemHTML</a></li><li><a href="global.html#diminuirQuantidadeNoCarrinho">diminuirQuantidadeNoCarrinho</a></li><li><a href="global.html#exibirErro">exibirErro</a></li><li><a href="global.html#exibirModalProdutoAdicionado">exibirModalProdutoAdicionado</a></li><li><a href="global.html#exibirOcultarDivTotal">exibirOcultarDivTotal</a></li><li><a href="global.html#exibirProdutosNoOffcanvasMaisVendidos">exibirProdutosNoOffcanvasMaisVendidos</a></li><li><a href="global.html#exibirSucesso">exibirSucesso</a></li><li><a href="global.html#fecharOffcanvas">fecharOffcanvas</a></li><li><a href="global.html#fecharOffcanvas2">fecharOffcanvas2</a></li><li><a href="global.html#formatarNome">formatarNome</a></li><li><a href="global.html#getElement">getElement</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#navigation">navigation</a></li><li><a href="global.html#navigationButtons">navigationButtons</a></li><li><a href="global.html#products">products</a></li><li><a href="global.html#removerDoCarrinho">removerDoCarrinho</a></li><li><a href="global.html#removerEspacosExtras">removerEspacosExtras</a></li><li><a href="global.html#removerNaoNumericos">removerNaoNumericos</a></li><li><a href="global.html#renderizarListaCarrinho">renderizarListaCarrinho</a></li><li><a href="global.html#salvarCarrinhoNoLocalStorage">salvarCarrinhoNoLocalStorage</a></li><li><a href="global.html#state">state</a></li><li><a href="global.html#update">update</a></li><li><a href="global.html#updateItemList">updateItemList</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Apr 23 2024 22:23:43 GMT-0300 (Brasilia Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
