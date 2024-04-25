@@ -1,12 +1,13 @@
 # Projeto Front End - Vinícola 
 
-![HTML5](https://img.shields.io/badge/HTML5-Responsive-red)
-![CSS3](https://img.shields.io/badge/CSS3-Style-blue)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.1.3-purple)
-![JavaScript](https://img.shields.io/badge/JS-JavaScript-yellow)
-![Static Badge](https://shields.io./badge/DOM%20Manipulation-jQuery-black)
-![Single Page Application](https://img.shields.io/badge/SPA-Simulation-orange)
-![Documnetation](https://shields.io./badge/Documentation-JSDoc-blue)
+![HTML5](https://img.shields.io/badge/HTML5-Responsive-E34F26)
+![CSS3](https://img.shields.io/badge/CSS3-Style-1572B6)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.1.3-7952B3)
+![JavaScript](https://img.shields.io/badge/JS-JavaScript-F7DF1E)
+![Static Badge](https://shields.io./badge/DOM%20Manipulation-jQuery-000000)
+![Single Page Application](https://img.shields.io/badge/SPA-Simulation-FFA500)
+![Static Badge](https://shields.io./badge/Via%20Cep-API-FFFF00)
+![Documnetation](https://shields.io/badge/Documentation-JSDoc-333333)
 
 
 ## Visão Geral
@@ -85,12 +86,7 @@ O projeto faz uso da biblioteca jQuery para simplificar a manipulação do DOM e
 
 Os offcanvas são utilizados para exibir menus e conteúdos em dispositivos móveis, garantindo uma experiência de navegação intuitiva e responsiva.
 
-## Tecnologias Utilizadas
+## Consumo da API ViaCEP
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/64px-HTML5_logo_and_wordmark.svg.png" alt="HTML5" width="32"> HTML5
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/64px-CSS3_logo_and_wordmark.svg.png" alt="CSS3" width="32"> CSS3
-<img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/JQuery_logo.svg/64px-JQuery_logo.svg.png" alt="jQuery" width="32"> jQuery
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/64px-Bootstrap_logo.svg.png" alt="Bootstrap" width="32"> Bootstrap
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/64px-Unofficial_JavaScript_logo_2.svg.png" alt="JavaScript" width="32"> JavaScript
-<img src="https://avatars.githubusercontent.com/u/202047?v=4" alt="JSDoc" width="32"> JSDoc
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/64px-Git_icon.svg.png" alt="Git" width="32"> Git
+A aplicação consome a API ViaCEP para preencher automaticamente os campos de endereço no formulário de revendedores, proporcionando uma experiência mais ágil e conveniente para os usuários.
+
